@@ -1,2 +1,0 @@
-    <div class="record-pools">${[{ type: 'all', label: '全部卡池' }, ...pools].map((p) => `<button class="pool-chip ${state.recordFilter.pool === p.type ? 'active' : ''}" data-action="record-pool" data-pool="${attr(p.type)}">${esc(p.label)}</button>`).join('')}</div>
-    <button class="ghost-btn" data-action="records-reset">重置</button>
