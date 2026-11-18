@@ -77,8 +77,25 @@ export function analyzeGame({ gameId, account, catalog }) {
   const decided = fiveUp + fiveLoss;
   const limitedFive = fiveUp;
   const standardFive = fiveLoss;
-  const upPities = fiveExact.filter((r) => r.up === 'win' && Number(r.pity) > 0).map((r) => Number(r.pity));
-  const avgUpPity = upPities.length ? upPities.reduce((a, b) => a + b, 0) / upPities.length : null;
+  const limitedCost = (poolSet) => {
+    const rows = fiveExact
+      .filter((r) => poolSet.has(String(r.uigfType || r.gachaType)))
+      .sort((a, b) => (a.time || '').localeCompare(b.time || ''));
+    let cost = 0;
+    const samples = [];
+    for (const r of rows) {
+      const pity = Number(r.pity) || 0;
+      if (!pity) continue;
+      cost += pity;
+      if (r.up === 'win') {
+        samples.push(cost);
+        cost = 0;
+      }
+    }
+    return { avg: samples.length ? samples.reduce((a, b) => a + b, 0) / samples.length : null, count: samples.length };
+  };
+  const charCost = limitedCost(CHARACTER_POOLS[gameId] || new Set());
+  const weaponCost = limitedCost(WEAPON_POOLS[gameId] || new Set());
 
   const officialFull = snapshots
     .filter((s) => s.fullHistory && s.totalPulls > 0)
@@ -259,9 +276,13 @@ export function analyzeGame({ gameId, account, catalog }) {
     rates: {
       five: lifetimePulls ? lifetimeFive / lifetimePulls : 0,
       exactFive: exactTotal ? exactFive / exactTotal : 0,
-      avgPity: avgUpPity,
-      exactAvgPity: avgUpPity,
-      upPityCount: upPities.length,
+      avgPity: charCost.avg,
+      exactAvgPity: charCost.avg,
+      avgChar: charCost.avg,
+      avgWeapon: weaponCost.avg,
+      charSamples: charCost.count,
+      weaponSamples: weaponCost.count,
+      upPityCount: charCost.count,
       expectedFive: game.expectedFive?.['301'] || game.expectedFive?.['11'] || game.expectedFive?.['2'] || 62.5,
       upRate: fiveExact.length ? fiveUp / fiveExact.length : null,
       hitRateAll: fiveExact.length ? fiveUp / fiveExact.length : null,
