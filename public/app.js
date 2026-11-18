@@ -79,6 +79,7 @@ function toast(message, type = 'ok', ms = 3600) {
   const el = document.createElement('div');
   el.className = `toast ${type}`;
   el.innerHTML = `<span class="toast-icon">${type === 'err' ? '!' : '✓'}</span><span>${esc(message)}</span>`;
+  root.innerHTML = '';
   root.appendChild(el);
   setTimeout(() => { el.style.opacity = '0'; el.style.transform = 'translateY(8px)'; el.style.transition = '.25s'; setTimeout(() => el.remove(), 250); }, ms);
 }
@@ -191,10 +192,26 @@ function renderShell() {
     return `<button class="game-tab ${state.game === id ? 'active' : ''}" data-action="switch-game" data-game="${id}" style="--tab-color:${meta.color}"><span class="dot"></span>${meta.label}</button>`;
   }).join('');
   const logged = state.auth.status === 'Confirmed';
-  $('#account-chip').innerHTML = `<button class="auth-entry ${logged ? 'on' : ''}" data-action="open-auth"><span class="auth-entry-icon">${logged ? '米' : ICONS.qr}</span><span class="auth-entry-copy"><strong>${logged ? (esc(state.auth.user?.nickname) || '米游社') : '米游社登录'}</strong></span></button>`;
+  const avatar = state.auth.user?.avatar || '';
+  $('#account-chip').innerHTML = `<button class="auth-entry ${logged ? 'on' : ''}" data-action="open-auth"><span class="auth-entry-icon">${logged ? (avatar ? `<img class="auth-avatar" src="${attr(avatar)}" alt="">` : '米') : ICONS.qr}</span><span class="auth-entry-copy"><strong>${logged ? (esc(state.auth.user?.nickname) || '米游社') : '米游社登录'}</strong></span></button>`;
   $('#side-version').textContent = `v${state.shell?.displayVersion || state.shell?.version || '1.05'}`;
+  const updateSlot = $('#update-slot');
+  if (updateSlot) {
+    if (state.update?.checking) updateSlot.innerHTML = '<span class="update-checking">检查更新</span>';
+    else if (state.update?.hasUpdate) updateSlot.innerHTML = `<button class="update-pill" data-action="apply-update">新版本 v${esc(state.update.latest)}</button>`;
+    else updateSlot.innerHTML = '';
+  }
   const foot = $('#foot-meta');
   if (foot) foot.textContent = '';
+}
+
+async function checkUpdatesOnStartup() {
+  if (!window.desktop?.checkUpdates) return;
+  state.update = { checking: true };
+  renderShell();
+  try { state.update = await window.desktop.checkUpdates(); }
+  catch { state.update = null; }
+  renderShell();
 }
 
 async function setGame(game) {
@@ -252,7 +269,6 @@ async function refreshAll() {
   await loadDashboard();
   if (state.view === 'records') await loadRecords(state.recordFilter.page || 1);
   if (state.view === 'catalog') await loadCatalog();
-  toast('已刷新');
 }
 
 // ---------------- dashboard ----------------
@@ -1229,7 +1245,7 @@ document.addEventListener('click', async (e) => {
   try {
     if (action === 'go') { e.preventDefault(); navigate(el.dataset.view); return; }
     if (action === 'switch-game') { setGame(el.dataset.game); return; }
-    if (action === 'refresh') { setBusy(el, true); await refreshAll(); setBusy(el, false); return; }
+    if (action === 'refresh') { await refreshAll(); toast('已刷新'); return; }
     if (action === 'switch-import-tab') {
       if ((el.dataset.tab === 'screenshot' || el.dataset.tab === 'manual') && !state.catalog) await loadCatalog();
       state.importTab = el.dataset.tab;
@@ -2004,6 +2020,7 @@ async function saveShareImage(dataUrl) {
     renderShell();
     renderView();
     startCollectorPolling();
+    checkUpdatesOnStartup().catch(() => {});
     if (location.hash) {
       const h = location.hash.replace('#', '');
       if (['dashboard', 'records', 'import', 'catalog', 'settings'].includes(h)) navigate(h);

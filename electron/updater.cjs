@@ -125,28 +125,7 @@ function setupUpdater(getWindow) {
     }
   });
   ipcMain.handle('update:version', () => app.getVersion());
-  setTimeout(async () => {
-    try {
-      const info = await checkUpdates();
-      if (!info.hasUpdate) return;
-      const dialogOptions = {
-        type: 'info',
-        title: '发现新版本',
-        message: `米游档案 ${info.latest}`,
-        detail: '是否下载并更新？更新后会自动重启。',
-        buttons: ['更新', '稍后'],
-        defaultId: 0,
-        cancelId: 1,
-      };
-      const choice = getWindow() ? await dialog.showMessageBox(getWindow(), dialogOptions) : await dialog.showMessageBox(dialogOptions);
-      if (choice.response === 0) {
-        getWindow()?.webContents.send('update:status', { stage: 'downloading', version: info.latest });
-        await applyUpdate();
-        app.relaunch();
-        app.exit(0);
-      }
-    } catch { /* offline / no release */ }
-  }, 8000).unref?.();
+
 }
 
 module.exports = { setupUpdater, checkUpdates };
