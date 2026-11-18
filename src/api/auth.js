@@ -301,6 +301,108 @@ export async function fetchZzzOfficialStats(sessionId) {
   return data.data || {};
 }
 
+const ZZZ_TYPES = {
+  GACHA_TYPE_CHARACTER_UP: '2',
+  GACHA_TYPE_CHARACTER_RETURN: '102',
+  GACHA_TYPE_WEAPON_UP: '3',
+  GACHA_TYPE_WEAPON_RETURN: '103',
+  GACHA_TYPE_PERMANENT: '1',
+  GACHA_TYPE_BANGBOO: '5',
+};
+
+async function zzzGet(session, path, params) {
+  const url = new URL(`https://act-api-takumi.mihoyo.com/event/nap_gacha_record/api/zzz/${path}`);
+  for (const [k, v] of Object.entries(params)) url.searchParams.set(k, String(v));
+  const res = await fetch(url, {
+    headers: {
+      Cookie: cookieHeader(session),
+      'User-Agent': QR_HEADERS['User-Agent'],
+      Referer: 'https://act.mihoyo.com/zzz/event/gacha-record/index.html',
+      Origin: 'https://act.mihoyo.com',
+      Accept: 'application/json, text/plain, */*',
+    },
+    signal: AbortSignal.timeout(25000),
+  });
+  absorbCookies(session, res);
+  const data = await res.json().catch(() => ({}));
+  if (data.retcode !== 0) throw new Error(data.message || `官方调频接口 ${data.retcode}`);
+  return data.data || {};
+}
+
+function zzzTime(ts) {
+  const n = Number(ts);
+  if (!n) return '';
+  return new Date((n + 8 * 3600) * 1000).toISOString().slice(0, 19).replace('T', ' ');
+}
+
+export async function fetchZzzFullHistory(sessionId, role) {
+  const session = requireSession(sessionId);
+  const roles = role ? [role] : await getRolesForGame(sessionId, 'zzz');
+  const current = roles[0];
+  if (!current?.uid || !current?.region) throw new Error('缺少绝区零 UID / 区服');
+  const base = { uid: current.uid, region: current.region };
+  const index = await zzzGet(session, 'index', base);
+  const records = [];
+  const seen = new Set();
+  const perType = {};
+  const currentPity = {};
+  const add = (row, type, version = '') => {
+    if (!row?.item_id || !row?.record_time) return;
+    const id = `zzzfull_${type}_${row.record_time}_${row.item_id}`;
+    if (seen.has(id)) return;
+    seen.add(id);
+    const itemType = row.item_type === 'ItemType_Weapon' ? '音擎' : row.item_type === 'ItemType_Bangboo' ? '邦布' : '代理人';
+    const isLimited = ['2', '3', '102', '103'].includes(type);
+    records.push({
+      id: '',
+      uid: current.uid,
+      gachaType: type,
+      uigfType: type,
+      itemId: String(row.item_id),
+      count: 1,
+      time: zzzTime(row.record_time),
+      name: row.name || '',
+      itemType,
+      rank: 5,
+      lang: 'zh-cn',
+      poolName: getGame('zzz').pools[type] || '调频',
+      pity: Number(row.count) || null,
+      up: isLimited ? (row.is_up ? 'win' : 'loss') : null,
+      version: version || null,
+      source: 'official-full',
+      synthetic: true,
+      sort: Number(row.sort) || 0,
+    });
+  };
+
+  for (const stat of index.type_stats || []) {
+    const type = ZZZ_TYPES[stat.gacha_type];
+    if (!type) continue;
+    perType[type] = { total: Number(stat.total_count) || 0, five: Number(stat.s_count) || 0 };
+    currentPity[type] = Number(stat.next_s_cur_times) || 0;
+    const versions = stat.has_data_vers || [];
+    for (let i = 0; i < versions.length; i += 8) {
+      const chunk = versions.slice(i, i + 8);
+      const hist = await zzzGet(session, 'hist_pool_stat', { ...base, gacha_type: type, vers: chunk.join(',') });
+      for (const pool of hist.list || []) for (const row of pool.cur_records || []) add(row, type, pool.version);
+    }
+    const cur = await zzzGet(session, 'cur_pool_stat', { ...base, gacha_type: type });
+    for (const pool of cur.list || []) for (const row of pool.cur_records || []) add(row, type, pool.version);
+  }
+
+  records.sort((a, b) => String(a.time).localeCompare(String(b.time)));
+  const totals = {
+    exact: Number(index.total_gacha_count) || records.length,
+    perType,
+    currentPity,
+    daily: {},
+    start: records[0]?.time || null,
+    end: records.at(-1)?.time || null,
+    fetchedAt: new Date().toISOString(),
+  };
+  return { records, totals, role: current, totalS: Number(index.total_s_count) || records.length };
+}
+
 export async function getAllRoles(sessionId) {
   const result = { roles: {}, errors: {} };
   for (const game of ['genshin', 'hsr', 'zzz']) {

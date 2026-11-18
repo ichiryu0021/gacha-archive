@@ -5,7 +5,7 @@ import http from 'node:http';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  APP_VERSION, ASSET_DIR, BUNDLED_DATA_DIR, DATA_DIR, GAMES, GAME_IDS, HOST, PORT, PUBLIC_DIR, ROOT, UPLOAD_DIR,
+  APP_VERSION, APP_DISPLAY_VERSION, ASSET_DIR, BUNDLED_DATA_DIR, DATA_DIR, GAMES, GAME_IDS, HOST, PORT, PUBLIC_DIR, ROOT, UPLOAD_DIR,
   getGame, isAllowedAssetHost,
 } from './config.js';
 import { Store } from './store.js';
@@ -17,8 +17,8 @@ import {
   sourceFromAuthkey, summarizePullTotals,
 } from './api/gacha.js';
 import { scanLocalLinks } from './api/cache.js';
-import { createQrSession, fetchZzzOfficialStats, generateAuthkey, getAllRoles, getRolesForGame, getSavedSessionInfo, logoutSession, pollQrSession, restoreMiyousheSession } from './api/auth.js';
-import { buildCsv, buildUigf, importUigf, snapshotFromZzz } from './api/uigf.js';
+import { createQrSession, fetchZzzFullHistory, generateAuthkey, getAllRoles, getRolesForGame, getSavedSessionInfo, logoutSession, pollQrSession, restoreMiyousheSession } from './api/auth.js';
+import { buildCsv, buildUigf, importUigf } from './api/uigf.js';
 import { parseScreenshot, saveReviewedRecords } from './api/ocr.js';
 import { Collector } from './api/collector.js';
 
@@ -212,6 +212,7 @@ async function routeApi(req, res, url) {
   if (req.method === 'GET' && pathname === '/api/state') {
     return ok(res, {
       version: APP_VERSION,
+      displayVersion: APP_DISPLAY_VERSION,
       dataDir: DATA_DIR,
       gameOrder: store.state.settings?.gameOrder || GAME_IDS,
       hiddenGames: store.state.settings?.hiddenGames || [],
@@ -437,13 +438,22 @@ async function routeApi(req, res, url) {
   if (req.method === 'POST' && pathname === '/api/auth/zzz-stats') {
     const body = await readJsonBody(req);
     const sessionId = String(body.sessionId || '');
-    const raw = await fetchZzzOfficialStats(sessionId);
-    const snapshot = store.addSnapshot('zzz', snapshotFromZzz(raw));
+    const full = await fetchZzzFullHistory(sessionId, body.role || null);
+    const merged = store.mergeRecords('zzz', full.records, {
+      source: 'official-full',
+      meta: { uid: full.role.uid, region: full.role.region, gameBiz: 'nap_cn', lang: 'zh-cn' },
+      lastSource: 'zzz-official',
+    });
+    store.setFullTotals('zzz', full.totals);
     await store.flush(true);
     return ok(res, {
+      addedFive: merged.added,
+      upgradedFive: merged.upgraded || 0,
+      totalFetched: full.totals.exact,
+      fiveStars: full.records.length,
       snapshot: {
-        id: snapshot.id, totalPulls: snapshot.totalPulls, fiveStars: snapshot.fiveStars,
-        perType: snapshot.perType, periodEnd: snapshot.periodEnd,
+        totalPulls: full.totals.exact, fiveStars: full.records.length,
+        perType: full.totals.perType, periodEnd: full.totals.end,
       },
       dashboard: summaryResponse('zzz'),
     });
