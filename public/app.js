@@ -1351,7 +1351,21 @@ document.addEventListener('click', async (e) => {
     if (action === 'apply-update') {
       if (!window.desktop?.applyUpdate) return;
       setBusy(el, true, '更新中');
-      try { await window.desktop.applyUpdate(); } catch (e) { setBusy(el, false); toast(e.message, 'err', 6000); }
+      try {
+        const result = await window.desktop.applyUpdate();
+        if (result && result.ok === false) {
+          if (result.code === 'HOTFIX_FAILED' && result.canFull) {
+            const yes = await confirmDialog('热更新失败', '是否下载完整版？不会丢失数据。', '下载完整版');
+            if (!yes) { setBusy(el, false); return; }
+            setBusy(el, true, '下载完整版');
+            const full = await window.desktop.applyUpdate({ full: true });
+            if (full && full.ok === false) { setBusy(el, false); toast(full.message || '完整版更新失败', 'err', 7000); }
+          } else {
+            setBusy(el, false);
+            toast(result.message || '更新失败', 'err', 7000);
+          }
+        }
+      } catch (e) { setBusy(el, false); toast(e.message, 'err', 6000); }
       return;
     }
     if (action === 'manual-mode') {

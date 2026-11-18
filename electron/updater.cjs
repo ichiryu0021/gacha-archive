@@ -12,6 +12,7 @@ const REPO = 'miyou-archive';
 const API = `https://api.github.com/repos/${OWNER}/${REPO}/releases/latest`;
 const UA = 'MiyouArchive-Updater';
 let latestAsset = null;
+let latestFullAsset = null;
 let latestVersion = '';
 
 function compareVersion(a, b) {
@@ -29,10 +30,13 @@ async function checkUpdates() {
   if (!res.ok) throw new Error(`GitHub ${res.status}`);
   const data = await res.json();
   const latest = String(data.tag_name || data.name || '').replace(/^v/i, '');
-  const asset = (data.assets || []).find((a) => /\.zip$/i.test(a.name) && /clean|干净|miyou/i.test(a.name))
-    || (data.assets || []).find((a) => /\.zip$/i.test(a.name));
+  const zips = (data.assets || []).filter((a) => /\.zip$/i.test(a.name));
+  const hotfix = zips.find((a) => /miyou|hotfix/i.test(a.name)) || null;
+  const full = zips.find((a) => a !== hotfix) || null;
+  const asset = hotfix || full;
   if (!asset) throw new Error('release 没有 zip 资源');
   latestAsset = asset.browser_download_url;
+  latestFullAsset = full?.browser_download_url || null;
   latestVersion = latest;
   return {
     current,
@@ -42,6 +46,7 @@ async function checkUpdates() {
     notes: data.body || '',
     publishedAt: data.published_at || '',
     asset: asset.name,
+    fullAsset: full?.name || '',
   };
 }
 
@@ -64,24 +69,38 @@ async function findAppRoot(dir) {
   return null;
 }
 
-async function applyUpdate() {
-  if (!latestAsset) throw new Error('请先检查更新');
+async function verifyAppDir(dir, version) {
+  const required = ['package.json', 'src/server.js', 'public/app.js', 'electron/main.cjs', 'electron/preload.cjs'];
+  for (const name of required) {
+    const file = path.join(dir, name);
+    if (!fs.existsSync(file)) throw new Error(`更新包缺少 ${name}`);
+  }
+  const pkg = JSON.parse(await fsp.readFile(path.join(dir, 'package.json'), 'utf8'));
+  if (version && compareVersion(pkg.version, version) < 0) throw new Error('更新包版本不匹配');
+  return pkg.version;
+}
+
+async function applyUpdate(full = false) {
+  const assetUrl = full ? latestFullAsset : latestAsset;
+  if (!assetUrl) throw new Error(full ? '没有完整更新包' : '请先检查更新');
   const work = await fsp.mkdtemp(path.join(os.tmpdir(), 'miyou-update-'));
   const zip = path.join(work, 'update.zip');
   try {
-    await download(latestAsset, zip);
+    await download(assetUrl, zip);
     const extract = path.join(work, 'extract');
     await fsp.mkdir(extract, { recursive: true });
     await execFileAsync('tar.exe', ['-xf', zip, '-C', extract], { windowsHide: true, timeout: 10 * 60 * 1000 });
     const sourceApp = await findAppRoot(extract);
     if (!sourceApp) throw new Error('更新包结构不正确');
+    await verifyAppDir(sourceApp, latestVersion);
     const targetApp = app.getAppPath();
     const backupDir = path.join(path.dirname(process.execPath), 'data', 'backups');
     await fsp.mkdir(backupDir, { recursive: true });
     const stamp = new Date().toISOString().replace(/[:.]/g, '-');
     await fsp.cp(targetApp, path.join(backupDir, `app-before-${stamp}`), { recursive: true }).catch(() => {});
     await fsp.cp(sourceApp, targetApp, { recursive: true, force: true });
-    return { ok: true, version: latestVersion };
+    await verifyAppDir(targetApp, latestVersion);
+    return { ok: true, version: latestVersion, full };
   } finally {
     await fsp.rm(work, { recursive: true, force: true }).catch(() => {});
   }
@@ -89,11 +108,21 @@ async function applyUpdate() {
 
 function setupUpdater(getWindow) {
   ipcMain.handle('update:check', async () => checkUpdates());
-  ipcMain.handle('update:apply', async () => {
-    const result = await applyUpdate();
-    getWindow()?.webContents.send('update:status', { stage: 'restart', ...result });
-    setTimeout(() => { app.relaunch(); app.exit(0); }, 800);
-    return result;
+  ipcMain.handle('update:apply', async (_event, options = {}) => {
+    const full = Boolean(options?.full);
+    try {
+      const result = await applyUpdate(full);
+      getWindow()?.webContents.send('update:status', { stage: 'restart', ...result });
+      setTimeout(() => { app.relaunch(); app.exit(0); }, 800);
+      return result;
+    } catch (e) {
+      return {
+        ok: false,
+        code: full ? 'FULL_UPDATE_FAILED' : 'HOTFIX_FAILED',
+        message: e.message,
+        canFull: !full && Boolean(latestFullAsset),
+      };
+    }
   });
   ipcMain.handle('update:version', () => app.getVersion());
   setTimeout(async () => {
