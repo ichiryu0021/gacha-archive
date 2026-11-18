@@ -5,8 +5,8 @@ import { ASSET_DIR, DATA_DIR, GAME_IDS, isAllowedAssetHost } from '../config.js'
 import { hash, normalizeName, similarity, writeJsonAtomic } from '../utils.js';
 
 const CATALOG_FILES = Object.fromEntries(GAME_IDS.map((g) => [g, path.join(DATA_DIR, `catalog-${g}.json`)]));
-const HSR_BASE = 'https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/';
-const ZZZ_BASE = 'https://raw.githubusercontent.com/Genshin-Optimizer/zzz-hakushin-data/master/';
+const HSR_BASE = 'https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/';
+const ZZZ_WIKI = 'https://sg-act-public-api.hoyolab.com/hoyowiki/zzz/wapi/get_entry_page_list';
 
 const cache = new Map();
 
@@ -18,6 +18,7 @@ function buildIndex(catalog) {
     const keys = new Set([
       normalizeName(item.name),
       normalizeName(item.name.replace(/[「」]/g, '')),
+      ...(item.aliases || []).map((v) => normalizeName(v)),
     ]);
     for (const key of keys) {
       if (!key) continue;
@@ -87,27 +88,48 @@ async function syncHsr() {
   };
 }
 
+async function fetchZzzWiki(menuId) {
+  const out = [];
+  for (let page = 1; page <= 10; page++) {
+    const res = await fetch(ZZZ_WIKI, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-rpc-language': 'zh-cn',
+        'x-rpc-wiki_app': 'zzz',
+        Referer: 'https://wiki.hoyolab.com/',
+        'User-Agent': 'GachaArchive/0.9',
+      },
+      body: JSON.stringify({ filters: [], menu_id: String(menuId), page_num: page, page_size: 30, use_es: true }),
+      signal: AbortSignal.timeout(25000),
+    });
+    if (!res.ok) throw new Error(`HoYoWiki HTTP ${res.status}`);
+    const json = await res.json();
+    if (json.retcode !== 0) throw new Error(json.message || `HoYoWiki ${json.retcode}`);
+    const list = json.data?.list || [];
+    out.push(...list);
+    if (list.length < 30 || out.length >= (json.data?.total || 0)) break;
+  }
+  return out;
+}
+
 async function syncZzz() {
-  const [chars, weapons, bangboo] = await Promise.all([
-    fetchJson(`${ZZZ_BASE}character.json`),
-    fetchJson(`${ZZZ_BASE}weapon.json`),
-    fetchJson(`${ZZZ_BASE}bangboo.json`),
-  ]);
+  const [agents, engines, bangboo] = await Promise.all([fetchZzzWiki(8), fetchZzzWiki(11), fetchZzzWiki(15)]);
   const items = [];
-  for (const [id, v] of Object.entries(chars)) {
-    if (!v.CHS || /[{}]/.test(v.CHS)) continue;
-    items.push({ id: String(id), name: v.CHS, type: '代理人', rarity: rankMap(v.rank || 4), iconUrl: `https://enka.network/ui/zzz/${v.icon}.png`, icon: v.icon, element: v.element });
+  for (const item of agents) {
+    const rarity = item.filter_values?.agent_rarity?.values?.[0] === 'S' ? 5 : 4;
+    items.push({ id: String(item.entry_page_id || ''), name: item.name, aliases: item.name.includes('·') ? [item.name.split('·')[0]] : [], type: '代理人', rarity, iconUrl: item.icon_url || '', element: item.filter_values?.agent_stats?.values?.[0] || '' });
   }
-  for (const [id, v] of Object.entries(weapons)) {
-    if (!v.CHS || /[{}]/.test(v.CHS)) continue;
-    items.push({ id: String(id), name: v.CHS, type: '音擎', rarity: rankMap(v.rank || 3), iconUrl: `https://enka.network/ui/zzz/${v.icon}.png`, icon: v.icon });
+  for (const item of engines) {
+    const rarity = item.filter_values?.w_engine_rarity?.values?.[0] === 'S' ? 5 : 4;
+    items.push({ id: String(item.entry_page_id || ''), name: item.name, type: '音擎', rarity, iconUrl: item.icon_url || '', path: item.filter_values?.filter_key_13?.values?.[0] || '' });
   }
-  for (const [id, v] of Object.entries(bangboo)) {
-    if (!v.CHS || /[{}]/.test(v.CHS)) continue;
-    items.push({ id: String(id), name: v.CHS, type: '邦布', rarity: rankMap(v.rank || 3), iconUrl: '', icon: v.icon });
+  for (const item of bangboo) {
+    const rarity = item.filter_values?.bangboo_rarity?.values?.[0] === 'S' ? 5 : 4;
+    items.push({ id: String(item.entry_page_id || ''), name: item.name, type: '邦布', rarity, iconUrl: item.icon_url || '' });
   }
   return {
-    game: 'zzz', version: 'live', source: 'Genshin-Optimizer/zzz-hakushin-data + Enka UI', updatedAt: new Date().toISOString(),
+    game: 'zzz', version: 'official-wiki', source: 'HoYoWiki (official)', updatedAt: new Date().toISOString(),
     items: items.sort((a, b) => a.name.localeCompare(b.name, 'zh-CN')),
   };
 }

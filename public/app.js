@@ -189,7 +189,7 @@ function renderShell() {
   if (foot) foot.textContent = '';
 }
 
-function setGame(game) {
+async function setGame(game) {
   if (!GAME_META[game] || game === state.game) return;
   state.game = game;
   state.dashboard = null;
@@ -199,7 +199,23 @@ function setGame(game) {
   state.pendingLink = null;
   document.body.dataset.game = game;
   renderShell();
-  loadDashboard().catch((e) => toast(e.message, 'err'));
+  renderView();
+  try {
+    if (state.view === 'records') {
+      await loadDashboard();
+      await loadRecords(1);
+    } else if (state.view === 'catalog') {
+      await loadCatalog();
+      renderView();
+    } else if (state.view === 'import' && state.importTab === 'screenshot') {
+      await loadCatalog();
+      await loadDashboard();
+    } else {
+      await loadDashboard();
+    }
+  } catch (e) {
+    toast(e.message, 'err');
+  }
 }
 
 function navigate(view) {

@@ -2,14 +2,14 @@
   "game": "hsr",
   "version": "live",
   "source": "Mar-7th/StarRailRes",
-  "updatedAt": "2026-11-18T08:12:33.823Z",
+  "updatedAt": "2026-11-18T10:27:01.084Z",
   "items": [
     {
       "id": "21006",
       "name": "「我」的诞生",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21006.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21006.png",
       "path": "Mage"
     },
     {
@@ -17,7 +17,7 @@
       "name": "阿格莱雅",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1402.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1402.png",
       "path": "Memory",
       "element": "Thunder"
     },
@@ -26,7 +26,7 @@
       "name": "阿兰",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1008.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1008.png",
       "path": "Warrior",
       "element": "Thunder"
     },
@@ -35,7 +35,7 @@
       "name": "艾丝妲",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1009.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1009.png",
       "path": "Shaman",
       "element": "Fire"
     },
@@ -44,7 +44,7 @@
       "name": "爱如此刻永恒",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23052.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23052.png",
       "path": "Memory"
     },
     {
@@ -52,7 +52,7 @@
       "name": "白厄",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1408.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1408.png",
       "path": "Warrior",
       "element": "Physical"
     },
@@ -61,7 +61,7 @@
       "name": "白露",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1211.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1211.png",
       "path": "Priest",
       "element": "Thunder"
     },
@@ -70,7 +70,7 @@
       "name": "比阳光更明亮的",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23015.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23015.png",
       "path": "Warrior"
     },
     {
@@ -78,7 +78,7 @@
       "name": "别让世界静下来",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21013.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21013.png",
       "path": "Mage"
     },
     {
@@ -86,7 +86,7 @@
       "name": "波提欧",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1315.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1315.png",
       "path": "Rogue",
       "element": "Physical"
     },
@@ -95,7 +95,7 @@
       "name": "蕃息",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20015.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20015.png",
       "path": "Priest"
     },
     {
@@ -103,7 +103,7 @@
       "name": "不死途",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1504.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1504.png",
       "path": "Rogue",
       "element": "Thunder"
     },
@@ -112,7 +112,7 @@
       "name": "不息的演算",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/24004.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/24004.png",
       "path": "Mage"
     },
     {
@@ -120,7 +120,7 @@
       "name": "布洛妮娅",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1101.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1101.png",
       "path": "Shaman",
       "element": "Wind"
     },
@@ -129,7 +129,7 @@
       "name": "残泪",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20024.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20024.png",
       "path": "Elation"
     },
     {
@@ -137,7 +137,7 @@
       "name": "嗤笑",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20023.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20023.png",
       "path": "Elation"
     },
     {
@@ -145,7 +145,7 @@
       "name": "春水初生",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21024.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21024.png",
       "path": "Rogue"
     },
     {
@@ -153,7 +153,7 @@
       "name": "纯粹思维的洗礼",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23020.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23020.png",
       "path": "Rogue"
     },
     {
@@ -161,7 +161,7 @@
       "name": "此身为剑",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23014.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23014.png",
       "path": "Warrior"
     },
     {
@@ -169,7 +169,7 @@
       "name": "此时恰好",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21014.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21014.png",
       "path": "Priest"
     },
     {
@@ -177,7 +177,7 @@
       "name": "大黑塔",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1401.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1401.png",
       "path": "Mage",
       "element": "Ice"
     },
@@ -186,7 +186,7 @@
       "name": "大丽花",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1321.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1321.png",
       "path": "Warlock",
       "element": "Fire"
     },
@@ -195,7 +195,7 @@
       "name": "丹恒",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1002.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1002.png",
       "path": "Rogue",
       "element": "Wind"
     },
@@ -204,7 +204,7 @@
       "name": "丹恒•腾荒",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1414.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1414.png",
       "path": "Knight",
       "element": "Physical"
     },
@@ -213,7 +213,7 @@
       "name": "丹恒•饮月",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1213.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1213.png",
       "path": "Warrior",
       "element": "Imaginary"
     },
@@ -222,7 +222,7 @@
       "name": "但战斗还未结束",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23003.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23003.png",
       "path": "Shaman"
     },
     {
@@ -230,7 +230,7 @@
       "name": "当第一声「阿哈」响起",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23065.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23065.png",
       "path": "Elation"
     },
     {
@@ -238,7 +238,7 @@
       "name": "当她决定看见",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23054.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23054.png",
       "path": "Elation"
     },
     {
@@ -246,7 +246,7 @@
       "name": "当一颗星照亮夜空",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23060.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23060.png",
       "path": "Mage"
     },
     {
@@ -254,7 +254,7 @@
       "name": "到不了的彼岸",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23009.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23009.png",
       "path": "Warrior"
     },
     {
@@ -262,7 +262,7 @@
       "name": "等价交换",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21021.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21021.png",
       "path": "Priest"
     },
     {
@@ -270,7 +270,7 @@
       "name": "点个关注吧！",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21017.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21017.png",
       "path": "Rogue"
     },
     {
@@ -278,7 +278,7 @@
       "name": "调和",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20019.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20019.png",
       "path": "Shaman"
     },
     {
@@ -286,7 +286,7 @@
       "name": "多流汗，少流泪",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21052.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21052.png",
       "path": "Memory"
     },
     {
@@ -294,7 +294,7 @@
       "name": "烦恼着，幸福着",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23016.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23016.png",
       "path": "Rogue"
     },
     {
@@ -302,7 +302,7 @@
       "name": "芳华待灼",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21046.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21046.png",
       "path": "Shaman"
     },
     {
@@ -310,7 +310,7 @@
       "name": "放个短假",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21066.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21066.png",
       "path": "Elation"
     },
     {
@@ -318,7 +318,7 @@
       "name": "飞向粉色的明天",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/22006.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/22006.png",
       "path": "Memory"
     },
     {
@@ -326,7 +326,7 @@
       "name": "飞霄",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1220.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1220.png",
       "path": "Rogue",
       "element": "Wind"
     },
@@ -335,7 +335,7 @@
       "name": "绯英",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1505.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1505.png",
       "path": "Elation",
       "element": "Physical"
     },
@@ -344,7 +344,7 @@
       "name": "翡翠",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1314.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1314.png",
       "path": "Mage",
       "element": "Quantum"
     },
@@ -353,7 +353,7 @@
       "name": "焚影",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20021.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20021.png",
       "path": "Memory"
     },
     {
@@ -361,7 +361,7 @@
       "name": "风堇",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1409.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1409.png",
       "path": "Memory",
       "element": "Wind"
     },
@@ -370,7 +370,7 @@
       "name": "锋镝",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20000.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20000.png",
       "path": "Rogue"
     },
     {
@@ -378,7 +378,7 @@
       "name": "拂晓之前",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23010.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23010.png",
       "path": "Mage"
     },
     {
@@ -386,7 +386,7 @@
       "name": "符玄",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1208.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1208.png",
       "path": "Knight",
       "element": "Quantum"
     },
@@ -395,7 +395,7 @@
       "name": "孤独的疗愈",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/24003.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/24003.png",
       "path": "Warlock"
     },
     {
@@ -403,7 +403,7 @@
       "name": "菇菇嘎嘎历险记",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21064.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21064.png",
       "path": "Elation"
     },
     {
@@ -411,7 +411,7 @@
       "name": "故事的下一页",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21054.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21054.png",
       "path": "Memory"
     },
     {
@@ -419,7 +419,7 @@
       "name": "棺的回响",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23008.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23008.png",
       "path": "Priest"
     },
     {
@@ -427,7 +427,7 @@
       "name": "桂乃芬",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1210.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1210.png",
       "path": "Warlock",
       "element": "Fire"
     },
@@ -436,7 +436,7 @@
       "name": "过往未来",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21025.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21025.png",
       "path": "Shaman"
     },
     {
@@ -444,7 +444,7 @@
       "name": "海瑟音",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1410.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1410.png",
       "path": "Warlock",
       "element": "Physical"
     },
@@ -453,7 +453,7 @@
       "name": "海洋为何而歌",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23047.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23047.png",
       "path": "Warlock"
     },
     {
@@ -461,7 +461,7 @@
       "name": "寒鸦",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1215.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1215.png",
       "path": "Shaman",
       "element": "Physical"
     },
@@ -470,7 +470,7 @@
       "name": "好戏开演",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21041.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21041.png",
       "path": "Warlock"
     },
     {
@@ -478,7 +478,7 @@
       "name": "何物为真",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21035.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21035.png",
       "path": "Priest"
     },
     {
@@ -486,7 +486,7 @@
       "name": "黑塔",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1013.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1013.png",
       "path": "Mage",
       "element": "Ice"
     },
@@ -495,7 +495,7 @@
       "name": "黑天鹅",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1307.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1307.png",
       "path": "Warlock",
       "element": "Wind"
     },
@@ -504,7 +504,7 @@
       "name": "黑夜如影随行",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21047.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21047.png",
       "path": "Rogue"
     },
     {
@@ -512,7 +512,7 @@
       "name": "嘿，我在这儿",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/22001.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/22001.png",
       "path": "Priest"
     },
     {
@@ -520,7 +520,7 @@
       "name": "后会有期",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21029.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21029.png",
       "path": "Warlock"
     },
     {
@@ -528,7 +528,7 @@
       "name": "虎克",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1109.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1109.png",
       "path": "Warrior",
       "element": "Fire"
     },
@@ -537,7 +537,7 @@
       "name": "琥珀",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20003.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20003.png",
       "path": "Knight"
     },
     {
@@ -545,7 +545,7 @@
       "name": "花儿不会忘记",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21057.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21057.png",
       "path": "Memory"
     },
     {
@@ -553,7 +553,7 @@
       "name": "花花世界迷人眼",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23053.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23053.png",
       "path": "Elation"
     },
     {
@@ -561,7 +561,7 @@
       "name": "花火",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1306.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1306.png",
       "path": "Shaman",
       "element": "Quantum"
     },
@@ -570,7 +570,7 @@
       "name": "欢迎来到银河城",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23057.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23057.png",
       "path": "Elation"
     },
     {
@@ -578,7 +578,7 @@
       "name": "欢愉满溢祝福",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/24006.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/24006.png",
       "path": "Elation"
     },
     {
@@ -586,7 +586,7 @@
       "name": "黄泉",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1308.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1308.png",
       "path": "Warlock",
       "element": "Thunder"
     },
@@ -595,7 +595,7 @@
       "name": "谎言在风中飘扬",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23043.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23043.png",
       "path": "Warlock"
     },
     {
@@ -603,7 +603,7 @@
       "name": "回到大地的飞行",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23034.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23034.png",
       "path": "Shaman"
     },
     {
@@ -611,7 +611,7 @@
       "name": "火花",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1501.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1501.png",
       "path": "Elation",
       "element": "Fire"
     },
@@ -620,7 +620,7 @@
       "name": "藿藿",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1217.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1217.png",
       "path": "Priest",
       "element": "Wind"
     },
@@ -629,7 +629,7 @@
       "name": "姬子",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1003.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1003.png",
       "path": "Mage",
       "element": "Fire"
     },
@@ -638,7 +638,7 @@
       "name": "姬子•启行",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1510.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1510.png",
       "path": "Mage",
       "element": "Fire"
     },
@@ -647,7 +647,7 @@
       "name": "吉尔伽美什",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1509.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1509.png",
       "path": "Warrior",
       "element": "Thunder"
     },
@@ -656,7 +656,7 @@
       "name": "记一位星神的陨落",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/24000.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/24000.png",
       "path": "Warrior"
     },
     {
@@ -664,7 +664,7 @@
       "name": "记忆的质料",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/24002.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/24002.png",
       "path": "Knight"
     },
     {
@@ -672,7 +672,7 @@
       "name": "记忆永不落幕",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/24005.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/24005.png",
       "path": "Memory"
     },
     {
@@ -680,7 +680,7 @@
       "name": "记忆中的模样",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21004.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21004.png",
       "path": "Shaman"
     },
     {
@@ -688,7 +688,7 @@
       "name": "加拉赫",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1301.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1301.png",
       "path": "Priest",
       "element": "Fire"
     },
@@ -697,7 +697,7 @@
       "name": "嘉果",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20008.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20008.png",
       "path": "Priest"
     },
     {
@@ -705,7 +705,7 @@
       "name": "假日浴场大冒险",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21061.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21061.png",
       "path": "Warlock"
     },
     {
@@ -713,7 +713,7 @@
       "name": "将光阴织成黄金",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23036.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23036.png",
       "path": "Memory"
     },
     {
@@ -721,7 +721,7 @@
       "name": "椒丘",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1218.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1218.png",
       "path": "Warlock",
       "element": "Fire"
     },
@@ -730,7 +730,7 @@
       "name": "杰帕德",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1104.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1104.png",
       "path": "Knight",
       "element": "Ice"
     },
@@ -739,7 +739,7 @@
       "name": "今日好手气",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21065.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21065.png",
       "path": "Elation"
     },
     {
@@ -747,7 +747,7 @@
       "name": "今日亦是和平的一日",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21034.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21034.png",
       "path": "Mage"
     },
     {
@@ -755,7 +755,7 @@
       "name": "金血铭刻的时代",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23048.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23048.png",
       "path": "Shaman"
     },
     {
@@ -763,7 +763,7 @@
       "name": "惊魂夜",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23017.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23017.png",
       "path": "Priest"
     },
     {
@@ -771,7 +771,7 @@
       "name": "景元",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1204.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1204.png",
       "path": "Mage",
       "element": "Thunder"
     },
@@ -780,7 +780,7 @@
       "name": "镜流",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1212.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1212.png",
       "path": "Warrior",
       "element": "Ice"
     },
@@ -789,7 +789,7 @@
       "name": "镜中故我",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23019.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23019.png",
       "path": "Shaman"
     },
     {
@@ -797,7 +797,7 @@
       "name": "俱殁",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20016.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20016.png",
       "path": "Warrior"
     },
     {
@@ -805,7 +805,7 @@
       "name": "决心如汗珠般闪耀",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21015.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21015.png",
       "path": "Warlock"
     },
     {
@@ -813,7 +813,7 @@
       "name": "卡芙卡",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1005.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1005.png",
       "path": "Warlock",
       "element": "Thunder"
     },
@@ -822,7 +822,7 @@
       "name": "开疆",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20017.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20017.png",
       "path": "Knight"
     },
     {
@@ -830,7 +830,7 @@
       "name": "克拉拉",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1107.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1107.png",
       "path": "Warrior",
       "element": "Physical"
     },
@@ -839,7 +839,7 @@
       "name": "刻律德菈",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1412.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1412.png",
       "path": "Shaman",
       "element": "Wind"
     },
@@ -848,7 +848,7 @@
       "name": "朗道的选择",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21009.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21009.png",
       "path": "Knight"
     },
     {
@@ -856,7 +856,7 @@
       "name": "乐圮",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20009.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20009.png",
       "path": "Warrior"
     },
     {
@@ -864,7 +864,7 @@
       "name": "离弦",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20007.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20007.png",
       "path": "Rogue"
     },
     {
@@ -872,7 +872,7 @@
       "name": "黎明恰如此燃烧",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23044.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23044.png",
       "path": "Warrior"
     },
     {
@@ -880,7 +880,7 @@
       "name": "理想燃烧的地狱",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23046.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23046.png",
       "path": "Rogue"
     },
     {
@@ -888,7 +888,7 @@
       "name": "两个人的演唱会",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21043.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21043.png",
       "path": "Knight"
     },
     {
@@ -896,7 +896,7 @@
       "name": "猎物的视线",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21008.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21008.png",
       "path": "Warlock"
     },
     {
@@ -904,7 +904,7 @@
       "name": "灵砂",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1222.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1222.png",
       "path": "Priest",
       "element": "Fire"
     },
@@ -913,7 +913,7 @@
       "name": "灵钥",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20013.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20013.png",
       "path": "Mage"
     },
     {
@@ -921,7 +921,7 @@
       "name": "玲可",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1110.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1110.png",
       "path": "Priest",
       "element": "Quantum"
     },
@@ -930,7 +930,7 @@
       "name": "流萤",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1310.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1310.png",
       "path": "Warrior",
       "element": "Fire"
     },
@@ -939,7 +939,7 @@
       "name": "镂月裁云之意",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21032.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21032.png",
       "path": "Shaman"
     },
     {
@@ -947,7 +947,7 @@
       "name": "卢卡",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1111.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1111.png",
       "path": "Warlock",
       "element": "Physical"
     },
@@ -956,7 +956,7 @@
       "name": "乱破",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1317.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1317.png",
       "path": "Mage",
       "element": "Imaginary"
     },
@@ -965,7 +965,7 @@
       "name": "轮契",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20012.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20012.png",
       "path": "Shaman"
     },
     {
@@ -973,7 +973,7 @@
       "name": "论剑",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21010.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21010.png",
       "path": "Rogue"
     },
     {
@@ -981,7 +981,7 @@
       "name": "罗刹",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1203.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1203.png",
       "path": "Priest",
       "element": "Imaginary"
     },
@@ -990,7 +990,7 @@
       "name": "落日时起舞",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23030.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23030.png",
       "path": "Warrior"
     },
     {
@@ -998,7 +998,7 @@
       "name": "没有回报的加冕",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23045.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23045.png",
       "path": "Warrior"
     },
     {
@@ -1006,7 +1006,7 @@
       "name": "美梦小镇大冒险",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21036.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21036.png",
       "path": "Shaman"
     },
     {
@@ -1014,7 +1014,7 @@
       "name": "梦的蒙太奇",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21048.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21048.png",
       "path": "Priest"
     },
     {
@@ -1022,7 +1022,7 @@
       "name": "梦应归于何处",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23025.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23025.png",
       "path": "Warrior"
     },
     {
@@ -1030,7 +1030,7 @@
       "name": "米沙",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1312.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1312.png",
       "path": "Warrior",
       "element": "Ice"
     },
@@ -1039,7 +1039,7 @@
       "name": "秘密誓心",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21012.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21012.png",
       "path": "Warrior"
     },
     {
@@ -1047,7 +1047,7 @@
       "name": "铭记于心的约定",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21042.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21042.png",
       "path": "Warrior"
     },
     {
@@ -1055,7 +1055,7 @@
       "name": "命运从未公平",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23023.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23023.png",
       "path": "Knight"
     },
     {
@@ -1063,7 +1063,7 @@
       "name": "貊泽",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1223.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1223.png",
       "path": "Rogue",
       "element": "Thunder"
     },
@@ -1072,7 +1072,7 @@
       "name": "那刻夏",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1405.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1405.png",
       "path": "Mage",
       "element": "Wind"
     },
@@ -1081,7 +1081,7 @@
       "name": "那无数个春天",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23029.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23029.png",
       "path": "Warlock"
     },
     {
@@ -1089,7 +1089,7 @@
       "name": "娜塔莎",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1105.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1105.png",
       "path": "Priest",
       "element": "Physical"
     },
@@ -1098,7 +1098,7 @@
       "name": "你将起身歌唱",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23063.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23063.png",
       "path": "Memory"
     },
     {
@@ -1106,7 +1106,7 @@
       "name": "匿影",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20018.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20018.png",
       "path": "Warlock"
     },
     {
@@ -1114,7 +1114,7 @@
       "name": "暖夜不会漫长",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21028.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21028.png",
       "path": "Priest"
     },
     {
@@ -1122,7 +1122,7 @@
       "name": "佩拉",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1106.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1106.png",
       "path": "Warlock",
       "element": "Ice"
     },
@@ -1131,7 +1131,7 @@
       "name": "偏偏希望无价",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23028.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23028.png",
       "path": "Mage"
     },
     {
@@ -1139,7 +1139,7 @@
       "name": "片刻，留在眼底",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23018.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23018.png",
       "path": "Mage"
     },
     {
@@ -1147,7 +1147,7 @@
       "name": "齐颂",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20005.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20005.png",
       "path": "Shaman"
     },
     {
@@ -1155,7 +1155,7 @@
       "name": "千冶•刃",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1507.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1507.png",
       "path": "Warlock",
       "element": "Fire"
     },
@@ -1164,7 +1164,7 @@
       "name": "青雀",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1201.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1201.png",
       "path": "Mage",
       "element": "Quantum"
     },
@@ -1173,7 +1173,7 @@
       "name": "让告别，更美一些",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23040.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23040.png",
       "path": "Memory"
     },
     {
@@ -1181,7 +1181,7 @@
       "name": "忍法帖•缭乱破魔",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23033.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23033.png",
       "path": "Mage"
     },
     {
@@ -1189,7 +1189,7 @@
       "name": "忍事录•音律狩猎",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/22003.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/22003.png",
       "path": "Warrior"
     },
     {
@@ -1197,7 +1197,7 @@
       "name": "刃",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1205.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1205.png",
       "path": "Warrior",
       "element": "Wind"
     },
@@ -1206,7 +1206,7 @@
       "name": "如果时间是一朵花",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23038.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23038.png",
       "path": "Shaman"
     },
     {
@@ -1214,7 +1214,7 @@
       "name": "如泥酣眠",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23012.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23012.png",
       "path": "Rogue"
     },
     {
@@ -1222,7 +1222,7 @@
       "name": "阮•梅",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1303.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1303.png",
       "path": "Shaman",
       "element": "Ice"
     },
@@ -1231,7 +1231,7 @@
       "name": "睿见",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20020.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20020.png",
       "path": "Mage"
     },
     {
@@ -1239,7 +1239,7 @@
       "name": "赛飞儿",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1406.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1406.png",
       "path": "Warlock",
       "element": "Quantum"
     },
@@ -1248,7 +1248,7 @@
       "name": "三月七",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1001.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1001.png",
       "path": "Knight",
       "element": "Ice"
     },
@@ -1257,7 +1257,7 @@
       "name": "三月七",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1224.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1224.png",
       "path": "Rogue",
       "element": "Imaginary"
     },
@@ -1266,7 +1266,7 @@
       "name": "桑博",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1108.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1108.png",
       "path": "Warlock",
       "element": "Wind"
     },
@@ -1275,7 +1275,7 @@
       "name": "砂金",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1304.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1304.png",
       "path": "Knight",
       "element": "Imaginary"
     },
@@ -1284,7 +1284,7 @@
       "name": "砂金•戏浪",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1513.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1513.png",
       "path": "Elation",
       "element": "Quantum"
     },
@@ -1293,7 +1293,7 @@
       "name": "生命当付之一炬",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23041.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23041.png",
       "path": "Mage"
     },
     {
@@ -1301,7 +1301,7 @@
       "name": "胜利只在朝夕间",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21050.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21050.png",
       "path": "Memory"
     },
     {
@@ -1309,7 +1309,7 @@
       "name": "时节不居",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23013.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23013.png",
       "path": "Priest"
     },
     {
@@ -1317,7 +1317,7 @@
       "name": "驶向第二次生命",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23027.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23027.png",
       "path": "Rogue"
     },
     {
@@ -1325,7 +1325,7 @@
       "name": "戍御",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20010.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20010.png",
       "path": "Knight"
     },
     {
@@ -1333,7 +1333,7 @@
       "name": "素裳",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1206.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1206.png",
       "path": "Rogue",
       "element": "Physical"
     },
@@ -1342,7 +1342,7 @@
       "name": "溯忆",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20022.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20022.png",
       "path": "Memory"
     },
     {
@@ -1350,7 +1350,7 @@
       "name": "所见即我",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23062.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23062.png",
       "path": "Warrior"
     },
     {
@@ -1358,7 +1358,7 @@
       "name": "她已闭上双眼",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23011.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23011.png",
       "path": "Knight"
     },
     {
@@ -1366,7 +1366,7 @@
       "name": "缇宝",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1403.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1403.png",
       "path": "Shaman",
       "element": "Quantum"
     },
@@ -1375,7 +1375,7 @@
       "name": "天才们的问候",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21051.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21051.png",
       "path": "Memory"
     },
     {
@@ -1383,7 +1383,7 @@
       "name": "天才们的休憩",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21020.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21020.png",
       "path": "Mage"
     },
     {
@@ -1391,7 +1391,7 @@
       "name": "天倾",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20002.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20002.png",
       "path": "Warrior"
     },
     {
@@ -1399,7 +1399,7 @@
       "name": "停云",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1202.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1202.png",
       "path": "Shaman",
       "element": "Thunder"
     },
@@ -1408,7 +1408,7 @@
       "name": "同一种心情",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21007.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21007.png",
       "path": "Priest"
     },
     {
@@ -1416,7 +1416,7 @@
       "name": "托帕&账账",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1112.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1112.png",
       "path": "Rogue",
       "element": "Fire"
     },
@@ -1425,7 +1425,7 @@
       "name": "瓦尔特",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1004.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1004.png",
       "path": "Warlock",
       "element": "Imaginary"
     },
@@ -1434,7 +1434,7 @@
       "name": "晚安与睡颜",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21001.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21001.png",
       "path": "Warlock"
     },
     {
@@ -1442,7 +1442,7 @@
       "name": "万敌",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1404.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1404.png",
       "path": "Warrior",
       "element": "Imaginary"
     },
@@ -1451,7 +1451,7 @@
       "name": "汪！散步时间！",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21026.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21026.png",
       "path": "Warrior"
     },
     {
@@ -1459,7 +1459,7 @@
       "name": "忘归人",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1225.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1225.png",
       "path": "Warlock",
       "element": "Fire"
     },
@@ -1468,7 +1468,7 @@
       "name": "唯有沉默",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21003.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21003.png",
       "path": "Rogue"
     },
     {
@@ -1476,7 +1476,7 @@
       "name": "唯有香如故",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23032.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23032.png",
       "path": "Priest"
     },
     {
@@ -1484,7 +1484,7 @@
       "name": "为了明日的旅途",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/22002.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/22002.png",
       "path": "Shaman"
     },
     {
@@ -1492,7 +1492,7 @@
       "name": "未来，有我们一起",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/22007.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/22007.png",
       "path": "Elation"
     },
     {
@@ -1500,7 +1500,7 @@
       "name": "我将，巡征追猎",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23031.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23031.png",
       "path": "Rogue"
     },
     {
@@ -1508,7 +1508,7 @@
       "name": "我们是地火",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21023.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21023.png",
       "path": "Knight"
     },
     {
@@ -1516,7 +1516,7 @@
       "name": "无边曼舞",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21044.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21044.png",
       "path": "Warlock"
     },
     {
@@ -1524,7 +1524,7 @@
       "name": "无处可逃",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21033.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21033.png",
       "path": "Warrior"
     },
     {
@@ -1532,7 +1532,7 @@
       "name": "无可取代的东西",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23002.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23002.png",
       "path": "Warrior"
     },
     {
@@ -1540,7 +1540,7 @@
       "name": "舞！舞！舞！",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21018.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21018.png",
       "path": "Shaman"
     },
     {
@@ -1548,7 +1548,7 @@
       "name": "勿忘她的火焰",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23050.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23050.png",
       "path": "Warlock"
     },
     {
@@ -1556,7 +1556,7 @@
       "name": "物穰",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20001.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20001.png",
       "path": "Priest"
     },
     {
@@ -1564,7 +1564,7 @@
       "name": "希儿",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1102.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1102.png",
       "path": "Rogue",
       "element": "Quantum"
     },
@@ -1573,7 +1573,7 @@
       "name": "希露瓦",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1103.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1103.png",
       "path": "Mage",
       "element": "Thunder"
     },
@@ -1582,7 +1582,7 @@
       "name": "昔涟",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1415.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1415.png",
       "path": "Memory",
       "element": "Ice"
     },
@@ -1591,7 +1591,7 @@
       "name": "遐蝶",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1407.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1407.png",
       "path": "Memory",
       "element": "Quantum"
     },
@@ -1600,7 +1600,7 @@
       "name": "献给明日的色彩",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23055.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23055.png",
       "path": "Elation"
     },
     {
@@ -1608,7 +1608,7 @@
       "name": "相抗",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20014.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20014.png",
       "path": "Rogue"
     },
     {
@@ -1616,7 +1616,7 @@
       "name": "向浪花掷下盛夏",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23064.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23064.png",
       "path": "Elation"
     },
     {
@@ -1624,7 +1624,7 @@
       "name": "向着不可追问处",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23037.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23037.png",
       "path": "Mage"
     },
     {
@@ -1632,7 +1632,7 @@
       "name": "向着地平线的终点",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/22008.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/22008.png",
       "path": "Rogue"
     },
     {
@@ -1640,7 +1640,7 @@
       "name": "谐乐静默之后",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21045.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21045.png",
       "path": "Mage"
     },
     {
@@ -1648,7 +1648,7 @@
       "name": "邂逅于下一个花季",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23058.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23058.png",
       "path": "Elation"
     },
     {
@@ -1656,7 +1656,7 @@
       "name": "新手任务开始前",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/22000.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/22000.png",
       "path": "Warlock"
     },
     {
@@ -1664,7 +1664,7 @@
       "name": "星海巡航",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/24001.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/24001.png",
       "path": "Rogue"
     },
     {
@@ -1672,7 +1672,7 @@
       "name": "星火悄然闪耀",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23061.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23061.png",
       "path": "Mage"
     },
     {
@@ -1680,7 +1680,7 @@
       "name": "星期日",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1313.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1313.png",
       "path": "Shaman",
       "element": "Imaginary"
     },
@@ -1689,7 +1689,7 @@
       "name": "星神★阿哈",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1511.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1511.png",
       "path": "Elation",
       "element": "Quantum"
     },
@@ -1698,7 +1698,7 @@
       "name": "行于流逝的岸",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23024.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23024.png",
       "path": "Warlock"
     },
     {
@@ -1706,7 +1706,7 @@
       "name": "雪衣",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1214.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1214.png",
       "path": "Warrior",
       "element": "Quantum"
     },
@@ -1715,7 +1715,7 @@
       "name": "血火啊，燃烧前路",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23039.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23039.png",
       "path": "Warrior"
     },
     {
@@ -1723,7 +1723,7 @@
       "name": "延长记号",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21022.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21022.png",
       "path": "Warlock"
     },
     {
@@ -1731,7 +1731,7 @@
       "name": "鼹鼠党欢迎你",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21005.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21005.png",
       "path": "Warrior"
     },
     {
@@ -1739,7 +1739,7 @@
       "name": "彦卿",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1209.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1209.png",
       "path": "Rogue",
       "element": "Ice"
     },
@@ -1748,7 +1748,7 @@
       "name": "爻光",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1502.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1502.png",
       "path": "Elation",
       "element": "Physical"
     },
@@ -1757,7 +1757,7 @@
       "name": "夜色流光溢彩",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23026.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23026.png",
       "path": "Shaman"
     },
     {
@@ -1765,7 +1765,7 @@
       "name": "一场谎言的终幕",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23056.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23056.png",
       "path": "Rogue"
     },
     {
@@ -1773,7 +1773,7 @@
       "name": "一场术后对话",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21000.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21000.png",
       "path": "Priest"
     },
     {
@@ -1781,7 +1781,7 @@
       "name": "一行往日的血",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21058.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21058.png",
       "path": "Warrior"
     },
     {
@@ -1789,7 +1789,7 @@
       "name": "以世界之名",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23004.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23004.png",
       "path": "Warlock"
     },
     {
@@ -1797,7 +1797,7 @@
       "name": "氤氲麦香的梦",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21060.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21060.png",
       "path": "Mage"
     },
     {
@@ -1805,7 +1805,7 @@
       "name": "银河沦陷日",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21040.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21040.png",
       "path": "Mage"
     },
     {
@@ -1813,7 +1813,7 @@
       "name": "银河铁道之夜",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23000.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23000.png",
       "path": "Mage"
     },
     {
@@ -1821,7 +1821,7 @@
       "name": "银狼",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1006.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1006.png",
       "path": "Warlock",
       "element": "Quantum"
     },
@@ -1830,7 +1830,7 @@
       "name": "银狼LV.999",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1506.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1506.png",
       "path": "Elation",
       "element": "Imaginary"
     },
@@ -1839,7 +1839,7 @@
       "name": "银枝",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1302.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1302.png",
       "path": "Mage",
       "element": "Physical"
     },
@@ -1848,7 +1848,7 @@
       "name": "永远的迷境饭",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/22005.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/22005.png",
       "path": "Shaman"
     },
     {
@@ -1856,7 +1856,7 @@
       "name": "幽邃",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20004.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20004.png",
       "path": "Warlock"
     },
     {
@@ -1864,7 +1864,7 @@
       "name": "游戏尘寰",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23021.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23021.png",
       "path": "Shaman"
     },
     {
@@ -1872,7 +1872,7 @@
       "name": "于那终点再见",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21062.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21062.png",
       "path": "Rogue"
     },
     {
@@ -1880,7 +1880,7 @@
       "name": "于夜色中",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23001.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23001.png",
       "path": "Rogue"
     },
     {
@@ -1888,7 +1888,7 @@
       "name": "余生的第一天",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21002.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21002.png",
       "path": "Knight"
     },
     {
@@ -1896,7 +1896,7 @@
       "name": "与行星相会",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21011.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21011.png",
       "path": "Shaman"
     },
     {
@@ -1904,7 +1904,7 @@
       "name": "宇宙大生意",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/22004.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/22004.png",
       "path": "Mage"
     },
     {
@@ -1912,7 +1912,7 @@
       "name": "宇宙市场趋势",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21016.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21016.png",
       "path": "Knight"
     },
     {
@@ -1920,7 +1920,7 @@
       "name": "雨一直下",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23007.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23007.png",
       "path": "Warlock"
     },
     {
@@ -1928,7 +1928,7 @@
       "name": "驭空",
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1207.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1207.png",
       "path": "Shaman",
       "element": "Imaginary"
     },
@@ -1937,7 +1937,7 @@
       "name": "渊环",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20011.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20011.png",
       "path": "Warlock"
     },
     {
@@ -1945,7 +1945,7 @@
       "name": "远坂凛",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1508.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1508.png",
       "path": "Mage",
       "element": "Quantum"
     },
@@ -1954,7 +1954,7 @@
       "name": "愿虹光永驻天空",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23042.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23042.png",
       "path": "Memory"
     },
     {
@@ -1962,7 +1962,7 @@
       "name": "愿旅途永远坦然",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21053.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21053.png",
       "path": "Knight"
     },
     {
@@ -1970,7 +1970,7 @@
       "name": "云璃",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1221.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1221.png",
       "path": "Warrior",
       "element": "Physical"
     },
@@ -1979,7 +1979,7 @@
       "name": "在火的远处",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21038.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21038.png",
       "path": "Warrior"
     },
     {
@@ -1987,7 +1987,7 @@
       "name": "在蓝天下",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21019.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21019.png",
       "path": "Warrior"
     },
     {
@@ -1995,7 +1995,7 @@
       "name": "在世界尽头相会吧！",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/22009.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/22009.png",
       "path": "Elation"
     },
     {
@@ -2003,7 +2003,7 @@
       "name": "早餐的仪式感",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21027.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21027.png",
       "path": "Mage"
     },
     {
@@ -2011,7 +2011,7 @@
       "name": "长路终有归途",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23035.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23035.png",
       "path": "Warlock"
     },
     {
@@ -2019,7 +2019,7 @@
       "name": "长夜月",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1413.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1413.png",
       "path": "Memory",
       "element": "Ice"
     },
@@ -2028,7 +2028,7 @@
       "name": "这就是我啦！",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21030.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21030.png",
       "path": "Knight"
     },
     {
@@ -2036,7 +2036,7 @@
       "name": "真理医生",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1305.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1305.png",
       "path": "Rogue",
       "element": "Imaginary"
     },
@@ -2045,7 +2045,7 @@
       "name": "真珠",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1503.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1503.png",
       "path": "Elation",
       "element": "Ice"
     },
@@ -2054,7 +2054,7 @@
       "name": "知更鸟",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1309.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1309.png",
       "path": "Shaman",
       "element": "Physical"
     },
@@ -2063,7 +2063,7 @@
       "name": "知更鸟•晴歌",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1512.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1512.png",
       "path": "Memory",
       "element": "Wind"
     },
@@ -2072,7 +2072,7 @@
       "name": "织造命运之线",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21039.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21039.png",
       "path": "Knight"
     },
     {
@@ -2080,7 +2080,7 @@
       "name": "直到明天的明天",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21055.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21055.png",
       "path": "Priest"
     },
     {
@@ -2088,7 +2088,7 @@
       "name": "只需等待",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23006.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23006.png",
       "path": "Warlock"
     },
     {
@@ -2096,7 +2096,7 @@
       "name": "制胜的瞬间",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23005.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23005.png",
       "path": "Knight"
     },
     {
@@ -2104,7 +2104,7 @@
       "name": "致长夜的星光",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23049.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23049.png",
       "path": "Memory"
     },
     {
@@ -2112,7 +2112,7 @@
       "name": "智库",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/20006.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20006.png",
       "path": "Mage"
     },
     {
@@ -2120,7 +2120,7 @@
       "name": "重返幽冥",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21031.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21031.png",
       "path": "Rogue"
     },
     {
@@ -2128,7 +2128,7 @@
       "name": "重塑时光之忆",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23022.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23022.png",
       "path": "Warlock"
     },
     {
@@ -2136,7 +2136,7 @@
       "name": "追逐风的时候",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21056.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21056.png",
       "path": "Shaman"
     },
     {
@@ -2144,7 +2144,7 @@
       "name": "灼尽炼狱的新骸",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23059.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23059.png",
       "path": "Warlock"
     },
     {
@@ -2152,7 +2152,7 @@
       "name": "纵然山河万程",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/23051.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23051.png",
       "path": "Knight"
     },
     {
@@ -2160,7 +2160,7 @@
       "name": "最后的赢家",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/light_cone/21037.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21037.png",
       "path": "Rogue"
     },
     {
@@ -2168,7 +2168,7 @@
       "name": "Archer",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1015.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1015.png",
       "path": "Rogue",
       "element": "Quantum"
     },
@@ -2177,7 +2177,7 @@
       "name": "Saber",
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1014.png",
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1014.png",
       "path": "Warrior",
       "element": "Wind"
     }

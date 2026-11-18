@@ -415,6 +415,17 @@ async function routeApi(req, res, url) {
     const body = await readJsonBody(req);
     const sessionId = String(body.sessionId || '');
     const game = sanitizeGame(body.game);
+    try {
+      const scanned = await scanLocalLinks();
+      const cached = scanned.found?.[game];
+      if (cached?.linkId) {
+        const cachedSource = getRememberedSource(cached.linkId);
+        if (cachedSource) {
+          const result = await resync(cachedSource);
+          return ok(res, { ...result, fromCache: true });
+        }
+      }
+    } catch { /* fallback to generated authkey */ }
     const key = await generateAuthkey(sessionId, game, body.role || {});
     const source = sourceFromAuthkey(game, key.authkey, {
       region: key.role.region, gameBiz: key.role.game_biz, lang: 'zh-cn', source: 'miyoushe',
