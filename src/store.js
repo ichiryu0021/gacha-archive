@@ -163,6 +163,15 @@ export class Store {
         const t = stamp(r);
         match = candidates.find((x) => !x.used && (x.r.synthetic || r.synthetic) && Math.abs(stamp(x.r) - t) <= 180000) || null;
       }
+      // Screenshot rows often have no timestamp. Match by name + pool + pity
+      // when at least one side lacks time; official rows upgrade synthetic ones.
+      if (!match && r.name && (!r.time || candidates.some((x) => !x.r.time))) {
+        const pity = Number(r.pity) || 0;
+        match = candidates.find((x) => !x.used
+          && (x.r.synthetic || r.synthetic)
+          && (!x.r.time || !r.time)
+          && (!pity || !Number(x.r.pity) || Number(x.r.pity) === pity)) || null;
+      }
       if (match) {
         const existing = match.r;
         match.used = true;

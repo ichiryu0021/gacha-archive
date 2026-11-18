@@ -118,7 +118,9 @@ async function syncZzz() {
   const items = [];
   for (const item of agents) {
     const rarity = item.filter_values?.agent_rarity?.values?.[0] === 'S' ? 5 : 4;
-    items.push({ id: String(item.entry_page_id || ''), name: item.name, aliases: item.name.includes('·') ? [item.name.split('·')[0]] : [], type: '代理人', rarity, iconUrl: item.icon_url || '', element: item.filter_values?.agent_stats?.values?.[0] || '' });
+    const parts = item.name.split('·');
+    const aliases = [...new Set([...parts, ...(item.name === '亚历山德丽娜·莎芭丝缇安' ? ['丽娜'] : []), ...(item.name === '猫宫又奈' ? ['猫又'] : [])])].filter((v) => v && v !== item.name);
+    items.push({ id: String(item.entry_page_id || ''), name: item.name, aliases, type: '代理人', rarity, iconUrl: item.icon_url || '', element: item.filter_values?.agent_stats?.values?.[0] || '' });
   }
   for (const item of engines) {
     const rarity = item.filter_values?.w_engine_rarity?.values?.[0] === 'S' ? 5 : 4;
@@ -210,7 +212,7 @@ export function catalogPublic(game) {
     items: catalog.items.map((i) => ({
       id: i.id, name: i.name, type: i.type, rarity: i.rarity,
       iconUrl: i.iconUrl ? `/api/asset?game=${encodeURIComponent(game)}&u=${encodeURIComponent(i.iconUrl)}` : '',
-      weaponType: i.weaponType || '', path: i.path || '', element: i.element || '',
+      weaponType: i.weaponType || '', path: i.path || '', element: i.element || '', aliases: i.aliases || [],
     })),
   };
 }

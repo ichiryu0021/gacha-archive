@@ -1,6 +1,7 @@
 import { getGame } from '../config.js';
 import { datePart, monthPart, withinPeriod } from '../utils.js';
 import { loadCatalog } from './catalog.js';
+import { versionFor, versionOrder } from './versions.js';
 
 const CHARACTER_POOLS = { genshin: new Set(['301']), hsr: new Set(['11', '21']), zzz: new Set(['2', '102']) };
 const WEAPON_POOLS = { genshin: new Set(['302']), hsr: new Set(['12', '22']), zzz: new Set(['3', '103']) };
@@ -51,7 +52,7 @@ function slimRecord(r) {
   return {
     id: r.id, time: r.time, name: r.name, itemId: r.itemId, itemType: r.itemType,
     rank: r.rank, gachaType: r.gachaType, uigfType: r.uigfType,
-    poolName: r.poolName, pity: r.pity, up: r.up,
+    poolName: r.poolName, pity: r.pity, up: r.up, version: r.version || null,
     source: r.source, synthetic: r.synthetic,
   };
 }
@@ -70,7 +71,10 @@ export function analyzeGame({ gameId, account, catalog }) {
   const perType = totals.perType || {};
   const currentPityStored = totals.currentPity || {};
 
-  for (const r of fiveExact) r.up = inferUp(gameId, r);
+  for (const r of fiveExact) {
+    r.up = inferUp(gameId, r);
+    r.version = r.version || versionFor(gameId, r.time);
+  }
 
   const exactFive = fiveExact.length;
   const fiveUp = fiveExact.filter((r) => r.up === 'win').length;
@@ -213,6 +217,15 @@ export function analyzeGame({ gameId, account, catalog }) {
     monthlyMap.set(m, (monthlyMap.get(m) || 0) + 1);
   }
   const monthly = [...monthlyMap.entries()].sort((a, b) => a[0].localeCompare(b[0])).map(([month, five]) => ({ month, five }));
+  const versionMap = new Map();
+  for (const r of fiveExact) {
+    if (!r.version) continue;
+    versionMap.set(r.version, (versionMap.get(r.version) || 0) + 1);
+  }
+  const order = versionOrder(gameId);
+  const versions = [...versionMap.entries()]
+    .sort((a, b) => (order.indexOf(a[0]) - order.indexOf(b[0])) || a[0].localeCompare(b[0]))
+    .map(([label, five]) => ({ label, five }));
 
   const buckets = [
     { label: '1–40', min: 1, max: 40, count: 0 },
@@ -300,6 +313,7 @@ export function analyzeGame({ gameId, account, catalog }) {
     },
     pools,
     monthly,
+    versions,
     fiveItems,
     recentFive: [...fiveExact].sort((a, b) => b.time.localeCompare(a.time)).slice(0, 12).map(slimRecord),
     records: [...fiveExact].sort((a, b) => b.time.localeCompare(a.time)).map(slimRecord),

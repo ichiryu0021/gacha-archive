@@ -191,3 +191,17 @@ test('overall hit rate uses limited five-stars over all five-stars', () => {
   assert.equal(result.rates.upWins, 2);
   assert.equal(Math.round(result.rates.upRate * 1000) / 1000, 0.5);
 });
+
+test('matches screenshot rows without timestamps and upgrades them later', () => {
+  const store = new Store();
+  store.touch = () => {};
+  store.state.accounts.genshin = null;
+  const shot = { id: '', name: '菲欧妮', rank: 5, gachaType: '301', uigfType: '301', pity: 88, time: '', synthetic: true, source: 'screenshot' };
+  assert.equal(store.mergeRecords('genshin', [shot], { source: 'screenshot' }).added, 1);
+  assert.equal(store.mergeRecords('genshin', [{ ...shot }], { source: 'screenshot' }).added, 0);
+  const official = { id: '999999999999999999', name: '菲欧妮', rank: 5, gachaType: '301', uigfType: '301', pity: 88, time: '2025-01-01 12:00:00', synthetic: false, source: 'official' };
+  const result = store.mergeRecords('genshin', [official], { source: 'official' });
+  assert.equal(result.upgraded, 1);
+  assert.equal(store.state.accounts.genshin.records.length, 1);
+  assert.equal(store.state.accounts.genshin.records[0].synthetic, false);
+});
