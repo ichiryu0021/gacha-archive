@@ -1,6 +1,6 @@
 # 米游档案
 
-[GitHub](https://github.com/ichiryu0021/miyou-archive) · MIT License · v1.0.6
+[GitHub](https://github.com/ichiryu0021/miyou-archive) · MIT License · v1.0.7
 
 本地桌面版米哈游五星抽卡档案：原神 / 崩坏：星穹铁道 / 绝区零，另含崩坏3 / 未定事件簿手动档案。自动读取本机游戏缓存、后台半自动同步、截图 OCR 补录，只保存五星记录。
 

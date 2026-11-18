@@ -1433,6 +1433,49 @@ function readScreenshot(file) {
   reader.readAsDataURL(file);
 }
 
+async function autoMatchBars(result) {
+  if (!result?.bars?.length) return;
+  const img = await loadImageElement(state.ocr.preview);
+  if (!img?.naturalWidth) return;
+  const allIndex = await loadIconIndex(state.game);
+  const wanted = state.game === 'hsr' ? '角色' : state.game === 'zzz' ? '代理人' : state.game === 'genshin' ? '角色' : '';
+  const preferred = wanted ? allIndex.filter((entry) => entry.item.type === wanted) : [];
+  const index = preferred.length ? preferred : allIndex;
+  if (!index.length) return;
+  const added = [];
+  for (const bar of result.bars) {
+    if (!bar.iconBox) continue;
+    const box = bar.iconBox;
+    const canvas = document.createElement('canvas');
+    canvas.width = 110;
+    canvas.height = 110;
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, 110, 110);
+    ctx.drawImage(img, box.x, box.y, box.w, box.h, 0, 0, 110, 110);
+    const desc = canvasDescriptor(canvas, 0.08);
+    let best = null;
+    for (const entry of index) {
+      const score = descriptorScore(desc, entry.desc);
+      if (!best || score > best.score) best = { item: entry.item, score };
+    }
+    if (!best || best.score < 0.3) continue;
+    const item = best.item;
+    added.push({
+      time: '', name: item.name, itemId: item.id, itemType: item.type,
+      rank: item.rarity || 5, pity: bar.pity, confidence: best.score, source: 'screenshot',
+    });
+  }
+  if (!added.length) return;
+  const existing = result.candidates || [];
+  const seen = new Set(existing.map((r) => `${r.pity}|${r.name}`));
+  for (const row of added) {
+    const key = `${row.pity}|${row.name}`;
+    if (!seen.has(key)) { existing.push(row); seen.add(key); }
+  }
+  result.candidates = existing;
+}
+
 async function runOcr() {
   if (!state.ocr?.imageData) return;
   state.ocr.result = null; state.ocr.error = '';
@@ -1443,6 +1486,7 @@ async function runOcr() {
     const data = await api('/api/ocr', { method: 'POST', body: JSON.stringify({ game: state.game, imageData: state.ocr.imageData }) });
     state.ocr.result = data.result;
     state.ocr.imageData = null;
+    await autoMatchBars(data.result);
     renderView();
     toast(data.result.candidates.length ? `识别到 ${data.result.candidates.length} 条五星候选` : '没有识别到五星行');
   } catch (err) {

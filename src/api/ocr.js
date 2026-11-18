@@ -217,12 +217,32 @@ export async function parseScreenshot({ game, dataUrl }) {
     });
   }
   candidates.sort((a, b) => a.time.localeCompare(b.time));
+  const bars = [];
+  for (const line of ocr.lines || []) {
+    const text = fixDigitLike(line.text || '').replace(/\s+/g, '');
+    if (/已垫/.test(text)) continue;
+    const m = text.match(/^(\d{1,3})抽$/);
+    if (!m) continue;
+    const words = (line.words || []).filter((w) => w.text && w.text.trim());
+    if (!words.length) continue;
+    const x = Math.min(...words.map((w) => w.x));
+    const y = Math.min(...words.map((w) => w.y));
+    const bottom = Math.max(...words.map((w) => w.y + w.h));
+    const height = bottom - y;
+    const size = Math.max(72, Math.min(150, Math.round(height * 3.4)));
+    bars.push({
+      pity: Number(m[1]),
+      x, y, w: Math.max(...words.map((w) => w.x + w.w)) - x, h: height,
+      iconBox: { x: Math.max(0, x - size - 12), y: Math.max(0, y + height / 2 - size / 2), w: size, h: size },
+    });
+  }
   const rawText = (ocr.lines || []).map((l) => l.text).join('\n');
   return {
     imageUrl: `/api/uploads/${name}`,
     game,
     width: ocr.width, height: ocr.height, scale: ocr.scale,
     candidates,
+    bars,
     summary: summaryFromText(rawText, game),
     rawText: rawText.slice(0, 12000),
     ocrLineCount: ocr.lines?.length || 0,
