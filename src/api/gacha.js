@@ -137,6 +137,9 @@ function normalizeRecord(game, item, type) {
   let rank = Number(item.rank_type) || 0;
   let name = item.name || '';
   let itemType = item.item_type || '';
+  if (game.id === 'zzz' && rank) {
+    rank = rank >= 4 ? 5 : rank === 3 ? 4 : rank === 2 ? 3 : rank;
+  }
   if (!rank || !itemType) {
     const m = matchItem(game.id, name);
     if (m.item) {

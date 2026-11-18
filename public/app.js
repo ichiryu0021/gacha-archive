@@ -250,6 +250,11 @@ function renderDashboard() {
   const progress = Math.min(100, cap ? (currentPity / cap) * 100 : 0);
   const recent = d.recentFive?.[0];
   const warnings = (d.warnings || []).slice(0, 2);
+  const avgCharText = d.rates.avgChar != null ? d.rates.avgChar.toFixed(1) : '—';
+  const avgWeaponText = d.rates.avgWeapon != null ? d.rates.avgWeapon.toFixed(1) : '—';
+  const avgValue = `<span class="avg-pair"><span>角色 <b>${avgCharText}</b></span><span>武器 <b>${avgWeaponText}</b></span></span>`;
+  const avgNote = `角色 ${d.rates.charSamples || 0} 次 · 武器 ${d.rates.weaponSamples || 0} 次`;
+
 
   return `
     <div class="page-head">
@@ -304,7 +309,7 @@ function renderDashboard() {
     </div>
     <div class="stat-row">
       ${statCard('五星档案', fmt(d.counts.lifetimeFive), '张', `${d.counts.exactFive} 张有逐条明细`)}
-      ${statCard('平均出金', d.rates.avgPity != null ? d.rates.avgPity.toFixed(1) : '—', d.rates.avgPity != null ? '抽' : '', d.rates.avgPity != null ? `UP ${d.rates.upPityCount || 0} 张 · 官方理论约 ${d.rates.expectedFive.toFixed(1)} 抽` : '暂无 UP 记录', d.rates.avgPity != null && d.rates.avgPity < d.rates.expectedFive ? 'good' : '')}
+      ${statCard('平均出金', avgValue, '', avgNote, '')}
       ${statCard('非常驻命中', fmt(d.counts.limitedFive || 0), '张', `命中 ${d.rates.upWins} / 五星 ${d.counts.exactFive}`)}
       ${statCard('数据覆盖', `${d.coverage.percent}%`, '', `自 ${d.coverage.launchDate} 起`)}
     </div>
