@@ -1,6 +1,6 @@
 # 米游档案
 
-[GitHub](https://github.com/ichiryu0021/miyou-archive) · MIT License · v1.06
+[GitHub](https://github.com/ichiryu0021/miyou-archive) · [MIT License](https://github.com/ichiryu0021/miyou-archive/blob/main/LICENSE) · v1.06 · 开源项目
 
 本地桌面版米哈游五星抽卡档案：原神 / 崩坏：星穹铁道 / 绝区零，另含崩坏3 / 未定事件簿手动档案。自动读取本机游戏缓存、后台半自动同步、截图 OCR 补录，只保存五星记录。
 
@@ -38,3 +38,14 @@
 - 软件启动后会自动检查 GitHub Release。
 - 设置 → 软件更新可手动检查；更新会直接替换本地程序文件并自动重启。
 - 分发包从 GitHub Release 的 zip 资源下载。
+
+## 开源与致谢
+
+- 代码：MIT License
+- Electron：MIT
+- QR Code Generator for JavaScript：MIT，Copyright (c) 2009 Kazuhiko Arase
+- genshin-db：MIT
+- 星穹铁道 / 绝区零图鉴：HoYoWiki 官方 Wiki 数据
+- 游戏素材版权归 miHoYo / HoYoverse 所有；本项目为非官方工具
+
+详细许可见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。

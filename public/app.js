@@ -1048,7 +1048,11 @@ function renderSettings() {
     </div>
     <div class="card">
       <div class="card-head"><div class="card-title"><span class="mark"></span><h3>运行信息</h3><span>ABOUT</span></div></div>
-      <div class="kv"><span>版本</span><b>v${esc(state.shell?.version || '0.9.0')}</b></div>
+      <div class="kv"><span>版本</span><b>v${esc(state.shell?.displayVersion || state.shell?.version || '1.06')}</b></div>
+      <div class="kv"><span>开源协议</span><b>MIT License</b></div>
+      <div class="kv"><span>项目地址</span><b><a href="https://github.com/ichiryu0021/miyou-archive" target="_blank" rel="noreferrer" style="color:var(--accent)">GitHub</a></b></div>
+      <div class="kv"><span>开源组件</span><b>Electron · QR Code · genshin-db</b></div>
+      <div class="kv"><span>数据来源</span><b>HoYoWiki · genshin-db</b></div>
       <div class="kv"><span>数据目录</span><b>${esc(state.dataDir || './data')}</b></div>
       <div class="kv"><span>图鉴</span><b>${c ? `${c.items.length} 条 · ${esc(c.version || '')}` : '按需加载'}</b></div>
       <div class="kv"><span>当前账号</span><b>${state.dashboard?.meta?.uid ? `UID ${esc(state.dashboard.meta.uid)}` : '未绑定'}</b></div>
@@ -1056,7 +1060,7 @@ function renderSettings() {
     </div>
     <div class="card">
       <div class="card-head"><div class="card-title"><span class="mark"></span><h3>软件更新</h3><span>UPDATE</span></div></div>
-      <div class="setting-row"><div class="setting-copy"><strong>当前版本</strong><span>v${esc(state.shell?.displayVersion || state.shell?.version || '1.05')}</span></div><button class="ghost-btn" data-action="check-update">检查更新</button></div>
+      <div class="setting-row"><div class="setting-copy"><strong>当前版本</strong><span>v${esc(state.shell?.displayVersion || state.shell?.version || '1.06')}</span></div><button class="ghost-btn" data-action="check-update">检查更新</button></div>
       ${state.update?.checking ? '<div class="kv"><span>状态</span><b>检查中…</b></div>' : ''}
       ${state.update && !state.update.checking ? `<div class="kv"><span>最新版本</span><b>v${esc(state.update.latest || '—')}</b></div>${state.update.hasUpdate ? `<div style="padding:10px 16px 14px"><button class="primary-btn" data-action="apply-update">更新到 v${esc(state.update.latest)}</button></div>` : ''}` : ''}
     </div>
