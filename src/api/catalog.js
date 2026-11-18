@@ -5,7 +5,7 @@ import { ASSET_DIR, DATA_DIR, GAME_IDS, isAllowedAssetHost } from '../config.js'
 import { hash, normalizeName, similarity, writeJsonAtomic } from '../utils.js';
 
 const CATALOG_FILES = Object.fromEntries(GAME_IDS.map((g) => [g, path.join(DATA_DIR, `catalog-${g}.json`)]));
-const HSR_BASE = 'https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/';
+const HSR_WIKI = 'https://sg-act-public-api.hoyolab.com/hoyowiki/hsr/wapi/get_entry_page_list';
 const ZZZ_WIKI = 'https://sg-act-public-api.hoyolab.com/hoyowiki/zzz/wapi/get_entry_page_list';
 
 const cache = new Map();
@@ -75,28 +75,15 @@ async function fetchJson(url) {
   return res.json();
 }
 
-async function syncHsr() {
-  const chars = await fetchJson(`${HSR_BASE}index_new/cn/characters.json`);
-  const cones = await fetchJson(`${HSR_BASE}index_new/cn/light_cones.json`);
-  const items = [
-    ...Object.entries(chars).filter(([, v]) => v.name && !v.name.includes('{')).map(([id, v]) => ({ id: String(id), name: v.name, type: '角色', rarity: v.rarity, iconUrl: HSR_BASE + v.icon, path: v.path, element: v.element })),
-    ...Object.entries(cones).map(([id, v]) => ({ id: String(id), name: v.name, type: '光锥', rarity: v.rarity, iconUrl: HSR_BASE + v.icon, path: v.path })),
-  ];
-  return {
-    game: 'hsr', version: 'live', source: 'Mar-7th/StarRailRes', updatedAt: new Date().toISOString(),
-    items: items.sort((a, b) => a.name.localeCompare(b.name, 'zh-CN')),
-  };
-}
-
-async function fetchZzzWiki(menuId) {
+async function fetchHsrWiki(menuId) {
   const out = [];
   for (let page = 1; page <= 10; page++) {
-    const res = await fetch(ZZZ_WIKI, {
+    const res = await fetch(HSR_WIKI, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'x-rpc-language': 'zh-cn',
-        'x-rpc-wiki_app': 'zzz',
+        'x-rpc-wiki_app': 'hsr',
         Referer: 'https://wiki.hoyolab.com/',
         'User-Agent': 'GachaArchive/0.9',
       },
@@ -111,6 +98,37 @@ async function fetchZzzWiki(menuId) {
     if (list.length < 30 || out.length >= (json.data?.total || 0)) break;
   }
   return out;
+}
+
+function hsrRarity(item, key) {
+  const value = item.filter_values?.[key]?.values?.[0] || '';
+  const map = { '五星': 5, '四星': 4, '三星': 3 };
+  return map[value] || 4;
+}
+
+async function syncHsr() {
+  const [chars, cones] = await Promise.all([fetchHsrWiki(104), fetchHsrWiki(107)]);
+  const items = [];
+  for (const item of chars) {
+    const parts = String(item.name || '').split(/[•·]/).filter(Boolean);
+    items.push({
+      id: String(item.entry_page_id || ''), name: item.name, aliases: parts.length > 1 ? parts : [],
+      type: '角色', rarity: hsrRarity(item, 'character_rarity'), iconUrl: item.icon_url || '',
+      path: item.filter_values?.character_paths?.values?.[0] || '',
+      element: item.filter_values?.character_combat_type?.values?.[0] || '',
+    });
+  }
+  for (const item of cones) {
+    items.push({
+      id: String(item.entry_page_id || ''), name: item.name,
+      type: '光锥', rarity: hsrRarity(item, 'equipment_rarity'), iconUrl: item.icon_url || '',
+      path: item.filter_values?.equipment_paths?.values?.[0] || '',
+    });
+  }
+  return {
+    game: 'hsr', version: 'official-wiki', source: 'HoYoWiki (official)', updatedAt: new Date().toISOString(),
+    items: items.sort((a, b) => a.name.localeCompare(b.name, 'zh-CN')),
+  };
 }
 
 async function syncZzz() {

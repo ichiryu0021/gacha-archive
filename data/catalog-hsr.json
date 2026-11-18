@@ -1,2185 +1,2346 @@
 {
   "game": "hsr",
-  "version": "live",
-  "source": "Mar-7th/StarRailRes",
-  "updatedAt": "2026-11-18T10:27:01.084Z",
+  "version": "official-wiki",
+  "source": "HoYoWiki (official)",
+  "updatedAt": "2026-11-18T11:45:56.315Z",
   "items": [
     {
-      "id": "21006",
+      "id": "3951",
+      "name": " 永远的迷境饭",
+      "type": "光锥",
+      "rarity": 4,
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/09/01/326064416/a1455436e2d3e33088277e6e6ce0aa34_4209448769779962879.png",
+      "path": "同谐"
+    },
+    {
+      "id": "50",
       "name": "「我」的诞生",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21006.png",
-      "path": "Mage"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/78bdd2715945e3f1e87dc677d50f481e_7231314384566776724.png",
+      "path": "智识"
     },
     {
-      "id": "1402",
+      "id": "3286",
       "name": "阿格莱雅",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1402.png",
-      "path": "Memory",
-      "element": "Thunder"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/01/23/9ee894bafdf7f133df0ea84853584d95_2215993949928521727.png",
+      "path": "记忆",
+      "element": "雷"
     },
     {
-      "id": "1008",
+      "id": "11",
       "name": "阿兰",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1008.png",
-      "path": "Warrior",
-      "element": "Thunder"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/ec16879888ecb38f5e4a793d596817b5_7471037767326702542.png",
+      "path": "毁灭",
+      "element": "雷"
     },
     {
-      "id": "1009",
+      "id": "12",
       "name": "艾丝妲",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1009.png",
-      "path": "Shaman",
-      "element": "Fire"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/9ac18d37eab70ad1b7485d8025ec7499_4987547298490400207.png",
+      "path": "同谐",
+      "element": "火"
     },
     {
-      "id": "23052",
+      "id": "4061",
       "name": "爱如此刻永恒",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23052.png",
-      "path": "Memory"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/11/22/11038150/ba861a3c7753a3fc32efb86b1019542c_5646416711414193023.png",
+      "path": "记忆"
     },
     {
-      "id": "1408",
+      "id": "3769",
       "name": "白厄",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1408.png",
-      "path": "Warrior",
-      "element": "Physical"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/06/28/11038150/f7998db4ca780a9256d7d290671006eb_4957789866718055273.png",
+      "path": "毁灭",
+      "element": "物理"
     },
     {
-      "id": "1211",
+      "id": "29",
       "name": "白露",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1211.png",
-      "path": "Priest",
-      "element": "Thunder"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/9c766b0feb6256141c1ec7afcd3dff35_6990891585355987615.png",
+      "path": "丰饶",
+      "element": "雷"
     },
     {
-      "id": "23015",
+      "id": "1398",
       "name": "比阳光更明亮的",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23015.png",
-      "path": "Warrior"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/30/7998136/274e4d01efb391334126171753e400d7_8569025007475060876.png",
+      "path": "毁灭"
     },
     {
-      "id": "21013",
+      "id": "57",
       "name": "别让世界静下来",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21013.png",
-      "path": "Mage"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/0d119463b9a6b8fbbc03d4b0de786994_5214933404516381671.png",
+      "path": "智识"
     },
     {
-      "id": "1315",
+      "id": "2367",
       "name": "波提欧",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1315.png",
-      "path": "Rogue",
-      "element": "Physical"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/05/16/2e87ab79a2514476e7a737a633c999a9_2708128530537338369.png",
+      "path": "巡猎",
+      "element": "物理"
     },
     {
-      "id": "20015",
+      "id": "604",
       "name": "蕃息",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20015.png",
-      "path": "Priest"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/07/7998136/5a80fde8cde86159d8636e51e17da61a_3071857468062301570.png",
+      "path": "丰饶"
     },
     {
-      "id": "1504",
+      "id": "4781",
       "name": "不死途",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1504.png",
-      "path": "Rogue",
-      "element": "Thunder"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/06/07/130460543/552153081a7cc7dcc115c709697aecc5_8958413748032586601.png",
+      "path": "巡猎",
+      "element": "雷"
     },
     {
-      "id": "24004",
+      "id": "2648",
       "name": "不息的演算",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/24004.png",
-      "path": "Mage"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/07/30/326693439/b95f197312c263bca5665a910e4ef32a_4799008457360518980.png",
+      "path": "智识"
     },
     {
-      "id": "1101",
+      "id": "14",
       "name": "布洛妮娅",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1101.png",
-      "path": "Shaman",
-      "element": "Wind"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/7c97499ec8dac5bd41a0ab91b8bba9a2_9011443874790929649.png",
+      "path": "同谐",
+      "element": "风"
     },
     {
-      "id": "20024",
+      "id": "4774",
       "name": "残泪",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20024.png",
-      "path": "Elation"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/03/02/326064416/967e4f5bad008cb58c1e40712b43b7f5_2237176151074930263.png",
+      "path": "欢愉"
     },
     {
-      "id": "20023",
+      "id": "4775",
       "name": "嗤笑",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20023.png",
-      "path": "Elation"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/03/01/326064416/e1827481a0a9c5c98d1f40e1fd6a8f2a_3525069283104031034.png",
+      "path": "欢愉"
     },
     {
-      "id": "21024",
+      "id": "599",
       "name": "春水初生",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21024.png",
-      "path": "Rogue"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/07/7998136/68a16d2bf57ab6f1bdb8de10e95a29a5_2021228097320403006.png",
+      "path": "巡猎"
     },
     {
-      "id": "23020",
+      "id": "1823",
       "name": "纯粹思维的洗礼",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23020.png",
-      "path": "Rogue"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/01/15/894bd6c5ea494cc540d46244e0c8b895_5844722423980463535.png",
+      "path": "巡猎"
     },
     {
-      "id": "23014",
+      "id": "1545",
       "name": "此身为剑",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23014.png",
-      "path": "Warrior"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/10/09/327648380/0f027ac017c57d6b62617d379e3087fc_7169863041443585992.png",
+      "path": "毁灭"
     },
     {
-      "id": "21014",
+      "id": "589",
       "name": "此时恰好",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21014.png",
-      "path": "Priest"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/07/7998136/7987eb5ae6739d63ce70a2900444e5d5_3722969671638428926.png",
+      "path": "丰饶"
     },
     {
-      "id": "1401",
+      "id": "3285",
       "name": "大黑塔",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1401.png",
-      "path": "Mage",
-      "element": "Ice"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/11/25/417971351/26f213fa4ea0d56e005125e37ce20ae0_7851674632196464898.png",
+      "path": "智识",
+      "element": "冰"
     },
     {
-      "id": "1321",
+      "id": "4060",
       "name": "大丽花",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1321.png",
-      "path": "Warlock",
-      "element": "Fire"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/06/07/130460543/38d2c22623444abf51898715f0290ca5_5410014391858093098.png",
+      "path": "虚无",
+      "element": "火"
     },
     {
-      "id": "1002",
+      "id": "8",
       "name": "丹恒",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1002.png",
-      "path": "Rogue",
-      "element": "Wind"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/f22589fcc8472c64f735d67ca72f0432_7471037767326702542.png",
+      "path": "巡猎",
+      "element": "风"
     },
     {
-      "id": "1414",
+      "id": "3957",
       "name": "丹恒•腾荒",
+      "aliases": [
+        "丹恒",
+        "腾荒"
+      ],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1414.png",
-      "path": "Knight",
-      "element": "Physical"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/10/13/d135f7ff305d974c82ba46de8a337f86_4542786094767954183.png",
+      "path": "存护",
+      "element": "物理"
     },
     {
-      "id": "1213",
+      "id": "1226",
       "name": "丹恒•饮月",
+      "aliases": [
+        "丹恒",
+        "饮月"
+      ],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1213.png",
-      "path": "Warrior",
-      "element": "Imaginary"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/07/07/84496276/8f0c086968f504bde0b12d6b94b4622c_6180903279327474961.png",
+      "path": "毁灭",
+      "element": "虚数"
     },
     {
-      "id": "23003",
+      "id": "70",
       "name": "但战斗还未结束",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23003.png",
-      "path": "Shaman"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/57c5d042f75dbb37b1e78b211cf645c9_6343871253887740107.png",
+      "path": "同谐"
     },
     {
-      "id": "23065",
+      "id": "10632",
       "name": "当第一声「阿哈」响起",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23065.png",
-      "path": "Elation"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/11/03/8819368bcfeca86786bcd5522ce44cdb_1799013675642758596.png",
+      "path": "欢愉"
     },
     {
-      "id": "23054",
+      "id": "4779",
       "name": "当她决定看见",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23054.png",
-      "path": "Elation"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/02/13/326064416/c3e0ac04207ee26a205b0bfdd888818b_5308955386118138690.png",
+      "path": "欢愉"
     },
     {
-      "id": "23060",
+      "id": "6574",
       "name": "当一颗星照亮夜空",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23060.png",
-      "path": "Mage"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/07/14/326064416/c76861d27d272f8a6abb9358fba8b1d5_1708944288513452961.png",
+      "path": "智识"
     },
     {
-      "id": "23009",
+      "id": "1230",
       "name": "到不了的彼岸",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23009.png",
-      "path": "Warrior"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/07/20/7998136/d33e5d082c7b67a779c44c663bab3b51_5997614579255060169.png",
+      "path": "毁灭"
     },
     {
-      "id": "21021",
+      "id": "596",
       "name": "等价交换",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21021.png",
-      "path": "Priest"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/07/7998136/ab7c174f1a5b621d837484e1cc9186f7_3683881911360140978.png",
+      "path": "丰饶"
     },
     {
-      "id": "21017",
+      "id": "592",
       "name": "点个关注吧！",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21017.png",
-      "path": "Rogue"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/07/7998136/6d091aed961227e1ee9544a6ed402e71_1544442331446954280.png",
+      "path": "巡猎"
     },
     {
-      "id": "20019",
+      "id": "605",
       "name": "调和",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20019.png",
-      "path": "Shaman"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/07/7998136/a89aa4a324c84fd1111fdc5c6644e969_1357690521492914841.png",
+      "path": "同谐"
     },
     {
-      "id": "21052",
+      "id": "3327",
       "name": "多流汗，少流泪",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21052.png",
-      "path": "Memory"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/01/24/130460543/dcd54b4bb2e18436d6291f9c3fffa411_2705749012580744577.png",
+      "path": "记忆"
     },
     {
-      "id": "23016",
+      "id": "1544",
       "name": "烦恼着，幸福着",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23016.png",
-      "path": "Rogue"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/10/26/1019313/4f2ab7074d519b215cd150b8cf1f433a_4632452927144568599.png",
+      "path": "巡猎"
     },
     {
-      "id": "21046",
+      "id": "2954",
       "name": "芳华待灼",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21046.png",
-      "path": "Shaman"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/08/23/417971351/e77436eb84092269f1c359edb40ed8fd_5541795414871819494.png",
+      "path": "同谐"
     },
     {
-      "id": "21066",
+      "id": "10196",
       "name": "放个短假",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21066.png",
-      "path": "Elation"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/09/13/326064416/a63546a2a3e4e319b6d2a3b76feddd96_3138230057484423706.png",
+      "path": "欢愉"
     },
     {
-      "id": "22006",
+      "id": "4062",
       "name": "飞向粉色的明天",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/22006.png",
-      "path": "Memory"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/12/02/326064416/ee520eef4fbc73d404f1f6ea1891c96e_680421281982579843.png",
+      "path": "记忆"
     },
     {
-      "id": "1220",
+      "id": "2947",
       "name": "飞霄",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1220.png",
-      "path": "Rogue",
-      "element": "Wind"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/09/03/7f4bec62392b7e08bf91b3231d8f3134_3308390208226913806.png",
+      "path": "巡猎",
+      "element": "风"
     },
     {
-      "id": "1505",
+      "id": "5005",
       "name": "绯英",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1505.png",
-      "path": "Elation",
-      "element": "Physical"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/06/07/130460543/de66947382ef23cc7e02d46216ef9c68_4112844643263348582.png",
+      "path": "欢愉",
+      "element": "物理"
     },
     {
-      "id": "1314",
+      "id": "2495",
       "name": "翡翠",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1314.png",
-      "path": "Mage",
-      "element": "Quantum"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/07/01/38b9cbe10fa924f10b14d2c2f272dfa5_3494595402307116422.png",
+      "path": "智识",
+      "element": "量子"
     },
     {
-      "id": "20021",
+      "id": "3352",
       "name": "焚影",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20021.png",
-      "path": "Memory"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/01/19/326693439/ef2a854ec6aa39be5d61a2899208dcba_4276670451450606431.png",
+      "path": "记忆"
     },
     {
-      "id": "1409",
+      "id": "3688",
       "name": "风堇",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1409.png",
-      "path": "Memory",
-      "element": "Wind"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/05/19/11038150/52d62c134ec8b8a1da9e776076076aed_7898951934172591490.png",
+      "path": "记忆",
+      "element": "风"
     },
     {
-      "id": "20000",
+      "id": "30",
       "name": "锋镝",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20000.png",
-      "path": "Rogue"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/ae5412a4ed43aff9988dfbcfd1ac28a6_889032155449973530.png",
+      "path": "巡猎"
     },
     {
-      "id": "23010",
+      "id": "73",
       "name": "拂晓之前",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23010.png",
-      "path": "Mage"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/ac79e739072fa86b2f6d5f851bb2c916_952669953280599733.png",
+      "path": "智识"
     },
     {
-      "id": "1208",
+      "id": "804",
       "name": "符玄",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1208.png",
-      "path": "Knight",
-      "element": "Quantum"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/07/07/84496276/973836d5f252e7c09d7e7759c785b777_1222315012785569851.png",
+      "path": "存护",
+      "element": "量子"
     },
     {
-      "id": "24003",
-      "name": "孤独的疗愈",
+      "id": "1400",
+      "name": "﻿孤独的疗愈",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/24003.png",
-      "path": "Warlock"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/09/09/59155606/261c174b5f60fec1fc913dc176098b69_2006967022124559651.png",
+      "path": "虚无"
     },
     {
-      "id": "21064",
+      "id": "4777",
       "name": "菇菇嘎嘎历险记",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21064.png",
-      "path": "Elation"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/03/02/326064416/99a2dec9645afe6eb5a94c36528bdf94_5288580455349266087.png",
+      "path": "欢愉"
     },
     {
-      "id": "21054",
+      "id": "3888",
       "name": "故事的下一页",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21054.png",
-      "path": "Memory"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/07/14/326064416/daeeaa8e0fafcc474da75ee44b80ca54_9206512541197434292.png",
+      "path": "记忆"
     },
     {
-      "id": "23008",
+      "id": "806",
       "name": "棺的回响",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23008.png",
-      "path": "Priest"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/07/01/7998136/e0fbe9f982c1e21d0d0d117bf159e01f_4969186422556279291.png",
+      "path": "丰饶"
     },
     {
-      "id": "1210",
+      "id": "1392",
       "name": "桂乃芬",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1210.png",
-      "path": "Warlock",
-      "element": "Fire"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/27/84496276/a76666754012d7c7c341f4af35be8b8d_5298212639453533805.png",
+      "path": "虚无",
+      "element": "火"
     },
     {
-      "id": "21025",
+      "id": "600",
       "name": "过往未来",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21025.png",
-      "path": "Shaman"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/07/7998136/4d1efe5f2474ada233b6640adf41820a_3575043626450433531.png",
+      "path": "同谐"
     },
     {
-      "id": "1410",
+      "id": "3885",
       "name": "海瑟音",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1410.png",
-      "path": "Warlock",
-      "element": "Physical"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/08/12/11038150/dea51d0a487fadcc5c612a235435b174_2251691600929384226.png",
+      "path": "虚无",
+      "element": "物理"
     },
     {
-      "id": "23047",
+      "id": "3949",
       "name": "海洋为何而歌",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23047.png",
-      "path": "Warlock"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/08/15/11038150/5fec9e758e99973eff1c45be6e201f4a_8805267303526805195.png",
+      "path": "虚无"
     },
     {
-      "id": "1215",
+      "id": "1537",
       "name": "寒鸦",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1215.png",
-      "path": "Shaman",
-      "element": "Physical"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/09/29/84496276/5b8509618612814947c11333901d0094_7332110864482589801.png",
+      "path": "同谐",
+      "element": "物理"
     },
     {
-      "id": "21041",
+      "id": "1934",
       "name": "好戏开演",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21041.png",
-      "path": "Warlock"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/02/07/213942066/92c78689a4f0620bc9565818addde074_2550687428131957039.png",
+      "path": "虚无"
     },
     {
-      "id": "21035",
+      "id": "1928",
       "name": "何物为真",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21035.png",
-      "path": "Priest"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/03/06/171301880/0002a0b5db7671221242b223d08ab7ee_7103753900379402127.png",
+      "path": "丰饶"
     },
     {
-      "id": "1013",
+      "id": "13",
       "name": "黑塔",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1013.png",
-      "path": "Mage",
-      "element": "Ice"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/a755d7167aa226264cb5aa26f70f9736_6990891585355987615.png",
+      "path": "智识",
+      "element": "冰"
     },
     {
-      "id": "1307",
+      "id": "1806",
       "name": "黑天鹅",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1307.png",
-      "path": "Warlock",
-      "element": "Wind"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/02/05/11038150/2262abfd4d364802d02de83985ce2ccc_2459345234462464307.png",
+      "path": "虚无",
+      "element": "风"
     },
     {
-      "id": "21047",
+      "id": "3067",
       "name": "黑夜如影随行",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21047.png",
-      "path": "Rogue"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/09/30/326693439/1db592d0aafedeec3ea323327917adf9_6472133372382674779.png",
+      "path": "巡猎"
     },
     {
-      "id": "22001",
+      "id": "1596",
       "name": "嘿，我在这儿",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/22001.png",
-      "path": "Priest"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/11/15/146729530/40ea525490b8fe6bfe9ca4294e95825f_7066598270434147237.png",
+      "path": "丰饶"
     },
     {
-      "id": "21029",
+      "id": "61",
       "name": "后会有期",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21029.png",
-      "path": "Warlock"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/0dd0f27534855716735efe4702fec1af_942516886148531175.png",
+      "path": "虚无"
     },
     {
-      "id": "1109",
+      "id": "22",
       "name": "虎克",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1109.png",
-      "path": "Warrior",
-      "element": "Fire"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/22823e36686017767fa0310dd44d2eb4_115117260001571580.png",
+      "path": "毁灭",
+      "element": "火"
     },
     {
-      "id": "20003",
+      "id": "33",
       "name": "琥珀",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20003.png",
-      "path": "Knight"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/6370ebb889f79eb2e1f639e65e7edb33_3088154659918113028.png",
+      "path": "存护"
     },
     {
-      "id": "21057",
+      "id": "3892",
       "name": "花儿不会忘记",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21057.png",
-      "path": "Memory"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/07/14/326064416/20b4a7fa8b12632feb44d0f690c16cdc_4580210924088616357.png",
+      "path": "记忆"
     },
     {
-      "id": "23053",
+      "id": "4778",
       "name": "花花世界迷人眼",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23053.png",
-      "path": "Elation"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/03/02/326064416/c84118492addd4cdb1529a8416c4ccca_6187264305703876193.png",
+      "path": "欢愉"
     },
     {
-      "id": "1306",
+      "id": "1807",
       "name": "花火",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1306.png",
-      "path": "Shaman",
-      "element": "Quantum"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/02/27/e036508b1ca8c5732a77e34b682e05b9_1612166978437617005.png",
+      "path": "同谐",
+      "element": "量子"
     },
     {
-      "id": "23057",
+      "id": "5218",
       "name": "欢迎来到银河城",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23057.png",
-      "path": "Elation"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/04/22/11038150/acee19636395578bff37d1e9b5664036_6418271581853452861.png",
+      "path": "欢愉"
     },
     {
-      "id": "24006",
+      "id": "5008",
       "name": "欢愉满溢祝福",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/24006.png",
-      "path": "Elation"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/04/02/326064416/a0cc09f1348c34f73d26d736e67f2803_57716326102833173.png",
+      "path": "欢愉"
     },
     {
-      "id": "1308",
+      "id": "1919",
       "name": "黄泉",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1308.png",
-      "path": "Warlock",
-      "element": "Thunder"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/03/23/11038150/9cb4a2305547a5dabf6c30ee58f8245a_957159746107830468.png",
+      "path": "虚无",
+      "element": "雷"
     },
     {
-      "id": "23043",
+      "id": "3774",
       "name": "谎言在风中飘扬",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23043.png",
-      "path": "Warlock"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/06/10/326064416/a2e4b63a4d3792f784141fdeb2855573_2992898570718388718.png",
+      "path": "虚无"
     },
     {
-      "id": "23034",
+      "id": "3288",
       "name": "回到大地的飞行",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23034.png",
-      "path": "Shaman"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/11/25/326064416/87989e444dbaa65b077722d82ba72acb_2997150082776952684.png",
+      "path": "同谐"
     },
     {
-      "id": "1501",
+      "id": "4737",
       "name": "火花",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1501.png",
-      "path": "Elation",
-      "element": "Fire"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/02/26/11038150/ee8f8967ca7f156547da8dca56686fb7_8728486776457066589.png",
+      "path": "欢愉",
+      "element": "火"
     },
     {
-      "id": "1217",
+      "id": "1533",
       "name": "藿藿",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1217.png",
-      "path": "Priest",
-      "element": "Wind"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/01/03/313359586/03d42b83135aed98ab433ba450dce0e6_5098263691934045133.png",
+      "path": "丰饶",
+      "element": "风"
     },
     {
-      "id": "1003",
+      "id": "9",
       "name": "姬子",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1003.png",
-      "path": "Mage",
-      "element": "Fire"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/6170656b26d7383d0ee34f002284d3ff_7335309365701961860.png",
+      "path": "智识",
+      "element": "火"
     },
     {
-      "id": "1510",
+      "id": "5335",
       "name": "姬子•启行",
+      "aliases": [
+        "姬子",
+        "启行"
+      ],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1510.png",
-      "path": "Mage",
-      "element": "Fire"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/05/19/130460543/d429061c443607c580bb519d1c8cbbc0_3546575610362216970.png",
+      "path": "智识",
+      "element": "火"
     },
     {
-      "id": "1509",
+      "id": "5338",
       "name": "吉尔伽美什",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1509.png",
-      "path": "Warrior",
-      "element": "Thunder"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/07/24/11038150/c27c0fedf0ec17bb5029537f2f3fcbd3_4467119762501782582.png",
+      "path": "毁灭",
+      "element": "雷"
     },
     {
-      "id": "24000",
+      "id": "76",
       "name": "记一位星神的陨落",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/24000.png",
-      "path": "Warrior"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/2908b86aeaca11fb174c20f2dd24d5d5_4824814422205447232.png",
+      "path": "毁灭"
     },
     {
-      "id": "24002",
+      "id": "78",
       "name": "记忆的质料",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/24002.png",
-      "path": "Knight"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/9e938799af42b5af667482599e170c21_839491542014512762.png",
+      "path": "存护"
     },
     {
-      "id": "24005",
+      "id": "3574",
       "name": "记忆永不落幕",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/24005.png",
-      "path": "Memory"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/03/06/130460543/406c2c5028151e72d46284791c64667e_6267181890120738062.png",
+      "path": "记忆"
     },
     {
-      "id": "21004",
+      "id": "48",
       "name": "记忆中的模样",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21004.png",
-      "path": "Shaman"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/f72de4833b12bd30234a4ecc82f59b7e_7824066832447018591.png",
+      "path": "同谐"
     },
     {
-      "id": "1301",
+      "id": "1924",
       "name": "加拉赫",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1301.png",
-      "path": "Priest",
-      "element": "Fire"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/03/20/c21f99431377dfc00a2e5ff5e1933d3f_7709442928600875177.png",
+      "path": "丰饶",
+      "element": "火"
     },
     {
-      "id": "20008",
+      "id": "38",
       "name": "嘉果",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20008.png",
-      "path": "Priest"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/38e02b996f5174858ae86d624b0e89b7_3395133034215442072.png",
+      "path": "丰饶"
     },
     {
-      "id": "21061",
+      "id": "3895",
       "name": "假日浴场大冒险",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21061.png",
-      "path": "Warlock"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/07/14/326064416/3647952e0b4f350f98f44042eff7f4e3_2724288753299138900.png",
+      "path": "虚无"
     },
     {
-      "id": "23036",
+      "id": "3330",
       "name": "将光阴织成黄金",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23036.png",
-      "path": "Memory"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/02/06/130460543/5b88cb1e9bfcb4b180368da18f25ad8c_1660324090567638826.png",
+      "path": "记忆"
     },
     {
-      "id": "1218",
+      "id": "2643",
       "name": "椒丘",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1218.png",
-      "path": "Warlock",
-      "element": "Fire"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/08/13/11038150/d3aadc0440493c83499888df97057eec_7015325816285365030.png",
+      "path": "虚无",
+      "element": "火"
     },
     {
-      "id": "1104",
+      "id": "17",
       "name": "杰帕德",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1104.png",
-      "path": "Knight",
-      "element": "Ice"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/21ae001edc80f597d35df15f35537d00_4983283866355038276.png",
+      "path": "存护",
+      "element": "冰"
     },
     {
-      "id": "21065",
+      "id": "4776",
       "name": "今日好手气",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21065.png",
-      "path": "Elation"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/03/02/326064416/ba9f53373cd16865591b251b3668da3e_8112638692513936499.png",
+      "path": "欢愉"
     },
     {
-      "id": "21034",
+      "id": "66",
       "name": "今日亦是和平的一日",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21034.png",
-      "path": "Mage"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/2170522acf2fc7e6a657b0f26a81f7b0_8571278187657403042.png",
+      "path": "智识"
     },
     {
-      "id": "23048",
+      "id": "3950",
       "name": "金血铭刻的时代",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23048.png",
-      "path": "Shaman"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/09/01/326064416/2e34251edd343bb9e5652f8e3f1c4d9c_2515176354895944225.png",
+      "path": "同谐"
     },
     {
-      "id": "23017",
+      "id": "1602",
       "name": "惊魂夜",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23017.png",
-      "path": "Priest"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/11/15/146729530/02562750cc9ba0728940900bb29bff85_7891932131497743597.png",
+      "path": "丰饶"
     },
     {
-      "id": "1204",
+      "id": "26",
       "name": "景元",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1204.png",
-      "path": "Mage",
-      "element": "Thunder"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/df37aacd31ab40efdcb16ef03a5b68ed_4983283866355038276.png",
+      "path": "智识",
+      "element": "雷"
     },
     {
-      "id": "1212",
+      "id": "1387",
       "name": "镜流",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1212.png",
-      "path": "Warrior",
-      "element": "Ice"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/27/84496276/2455cabb24d079ba955efe42d0321787_424208313823064668.png",
+      "path": "毁灭",
+      "element": "冰"
     },
     {
-      "id": "23019",
+      "id": "1822",
       "name": "镜中故我",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23019.png",
-      "path": "Shaman"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2023/12/25/9abbea4b755e183768a9a2a30600cad0_964949891846795661.png",
+      "path": "同谐"
     },
     {
-      "id": "20016",
+      "id": "606",
       "name": "俱殁",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20016.png",
-      "path": "Warrior"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/07/7998136/fd7bce2c11da292517c3f7dfafe8c8ac_8594114211287819571.png",
+      "path": "毁灭"
     },
     {
-      "id": "21015",
+      "id": "590",
       "name": "决心如汗珠般闪耀",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21015.png",
-      "path": "Warlock"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/07/7998136/1d947dcdbad2ebbac2592da8873e1707_1747743481739952799.png",
+      "path": "虚无"
     },
     {
-      "id": "1005",
+      "id": "791",
       "name": "卡芙卡",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1005.png",
-      "path": "Warlock",
-      "element": "Thunder"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/24/84496276/4893a52c54b02106778799cbebd289f6_4056499725021663945.png",
+      "path": "虚无",
+      "element": "雷"
     },
     {
-      "id": "20017",
+      "id": "603",
       "name": "开疆",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20017.png",
-      "path": "Knight"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/07/7998136/80ade2b7938f6e11665335161a397ac4_6943024485398362366.png",
+      "path": "存护"
     },
     {
-      "id": "1107",
+      "id": "23",
+      "name": "开拓者 - 存护",
+      "aliases": [],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/9d99c7926e8519f151abeac02a1f7210_8780278128209122769.gif",
+      "path": "存护",
+      "element": "火"
+    },
+    {
+      "id": "6",
+      "name": "开拓者 - 毁灭",
+      "aliases": [],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/a9edba85fe403f0d2b7d69e48540634d_4987547298490400207.gif",
+      "path": "毁灭",
+      "element": "物理"
+    },
+    {
+      "id": "2511",
+      "name": "开拓者 - 同谐",
+      "aliases": [],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/05/07/9f98e014cdff0dc0e3993121fc0926db_5009274647413414611.gif",
+      "path": "同谐",
+      "element": "虚数"
+    },
+    {
+      "id": "5006",
+      "name": "开拓者•欢愉",
+      "aliases": [
+        "开拓者",
+        "欢愉"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/06/07/130460543/3fbf433b9e673b329833104f7c3a978e_118389013754244284.gif",
+      "path": "欢愉",
+      "element": "雷"
+    },
+    {
+      "id": "3287",
+      "name": "开拓者•记忆",
+      "aliases": [
+        "开拓者",
+        "记忆"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/01/15/d27dcfb432f6d37bbaee53ad2fc10806_1588612886867072142.gif",
+      "path": "记忆",
+      "element": "冰"
+    },
+    {
+      "id": "20",
       "name": "克拉拉",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1107.png",
-      "path": "Warrior",
-      "element": "Physical"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/36ac7d1e87145434d0617a511066a3db_1713347165320581354.png",
+      "path": "毁灭",
+      "element": "物理"
     },
     {
-      "id": "1412",
+      "id": "3886",
       "name": "刻律德菈",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1412.png",
-      "path": "Shaman",
-      "element": "Wind"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/09/01/326064416/e463ff55f41eba2695b9f2dd94866896_2195765095840814344.png",
+      "path": "同谐",
+      "element": "风"
     },
     {
-      "id": "21009",
+      "id": "53",
       "name": "朗道的选择",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21009.png",
-      "path": "Knight"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/ba9cd6f22f1b334d869b5414229ee7bd_942516886148531175.png",
+      "path": "存护"
     },
     {
-      "id": "20009",
+      "id": "39",
       "name": "乐圮",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20009.png",
-      "path": "Warrior"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/55aab6796596e6d87c1f9fb552d66f21_1461491922069311906.png",
+      "path": "毁灭"
     },
     {
-      "id": "20007",
+      "id": "37",
       "name": "离弦",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20007.png",
-      "path": "Rogue"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/9d9a9d30b8acf8cebc8267c7c1131108_3395133034215442072.png",
+      "path": "巡猎"
     },
     {
-      "id": "23044",
+      "id": "3887",
       "name": "黎明恰如此燃烧",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23044.png",
-      "path": "Warrior"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/07/14/11038150/486be081ce3e68cd6725f0e16bc18ac1_5205244955806036651.png",
+      "path": "毁灭"
     },
     {
-      "id": "23046",
+      "id": "3901",
       "name": "理想燃烧的地狱",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23046.png",
-      "path": "Rogue"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/07/10/326064416/970063c870f6cc2c5b4f1cf46daeae92_4683613547209672312.png",
+      "path": "巡猎"
     },
     {
-      "id": "21043",
+      "id": "2371",
       "name": "两个人的演唱会",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21043.png",
-      "path": "Knight"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/04/16/c720442776f84f543c14518de8c8663f_5213217699580238187.png",
+      "path": "存护"
     },
     {
-      "id": "21008",
+      "id": "52",
       "name": "猎物的视线",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21008.png",
-      "path": "Warlock"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/1c7c012eeb05699acc8c2ad33cee412a_9207997407084704522.png",
+      "path": "虚无"
     },
     {
-      "id": "1222",
+      "id": "2948",
       "name": "灵砂",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1222.png",
-      "path": "Priest",
-      "element": "Fire"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/09/25/11038150/0d39def2cfde0e142e0b417ca8cea94d_1610256986596622840.png",
+      "path": "丰饶",
+      "element": "火"
     },
     {
-      "id": "20013",
+      "id": "43",
       "name": "灵钥",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20013.png",
-      "path": "Mage"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/7b6d62181c849c2feb691e4d652c38b1_3215083535974850026.png",
+      "path": "智识"
     },
     {
-      "id": "1110",
+      "id": "1228",
       "name": "玲可",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1110.png",
-      "path": "Priest",
-      "element": "Quantum"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/07/07/84496276/021e173536079b09ced5d996b8d1f638_2463374175404965619.png",
+      "path": "丰饶",
+      "element": "量子"
     },
     {
-      "id": "1310",
+      "id": "2494",
       "name": "流萤",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1310.png",
-      "path": "Warrior",
-      "element": "Fire"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/06/13/313359586/7b9020cf084a8592afa259673e9bdcf3_3925468424858529501.png",
+      "path": "毁灭",
+      "element": "火"
     },
     {
-      "id": "21032",
+      "id": "64",
       "name": "镂月裁云之意",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21032.png",
-      "path": "Shaman"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/09f103a321dcd967fa90049b49997560_1511327361354317201.png",
+      "path": "同谐"
     },
     {
-      "id": "1111",
+      "id": "801",
       "name": "卢卡",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1111.png",
-      "path": "Warlock",
-      "element": "Physical"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/28/84496276/c6d6b8bef93b257573df2eab95302f0e_2085700383517821744.png",
+      "path": "虚无",
+      "element": "物理"
     },
     {
-      "id": "1317",
+      "id": "3057",
       "name": "乱破",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1317.png",
-      "path": "Mage",
-      "element": "Imaginary"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/09/05/11038150/e0417148ff4428ef0d371efbb0c80e0b_5415786627602961380.png",
+      "path": "智识",
+      "element": "虚数"
     },
     {
-      "id": "20012",
+      "id": "42",
       "name": "轮契",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20012.png",
-      "path": "Shaman"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/a1168a9158a5ab79d763fa22026bc12e_3215083535974850026.png",
+      "path": "同谐"
     },
     {
-      "id": "21010",
+      "id": "54",
       "name": "论剑",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21010.png",
-      "path": "Rogue"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/2f53efe41f6c16ce298f0bbafc170949_1511327361354317201.png",
+      "path": "巡猎"
     },
     {
-      "id": "1203",
+      "id": "711",
       "name": "罗刹",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1203.png",
-      "path": "Priest",
-      "element": "Imaginary"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/28/84496276/de2c1931c57092369663e30a201ce7f6_7123949262150391402.png",
+      "path": "丰饶",
+      "element": "虚数"
     },
     {
-      "id": "23030",
+      "id": "2956",
       "name": "落日时起舞",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23030.png",
-      "path": "Warrior"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/07/30/4f112f0dbb53f86def1d68b607875b82_2698456100476958626.png",
+      "path": "毁灭"
     },
     {
-      "id": "23045",
+      "id": "3900",
       "name": "没有回报的加冕",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23045.png",
-      "path": "Warrior"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/07/09/326064416/d4ed30750b940f74041afde90b48fb48_2749985231272541677.png",
+      "path": "毁灭"
     },
     {
-      "id": "21036",
+      "id": "1929",
       "name": "美梦小镇大冒险",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21036.png",
-      "path": "Shaman"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/03/06/326693439/d3339d405c7c9ada557bdf8e3e5b6c16_7284095021837230972.png",
+      "path": "同谐"
     },
     {
-      "id": "21048",
+      "id": "3168",
       "name": "梦的蒙太奇",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21048.png",
-      "path": "Priest"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/10/24/326693439/224cfcf1fa51d7d0f7d0803f9f44989f_8030153620345582531.png",
+      "path": "丰饶"
     },
     {
-      "id": "23025",
+      "id": "2645",
       "name": "梦应归于何处",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23025.png",
-      "path": "Warrior"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/06/19/e4a585ed5dad231872aa0a28ed9a362d_1527074370716145770.png",
+      "path": "毁灭"
     },
     {
-      "id": "1312",
+      "id": "1808",
       "name": "米沙",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1312.png",
-      "path": "Warrior",
-      "element": "Ice"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/02/05/11038150/cb544dfa0bbac9570be20fe13f044026_4709978452391422836.png",
+      "path": "毁灭",
+      "element": "冰"
     },
     {
-      "id": "21012",
+      "id": "56",
       "name": "秘密誓心",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21012.png",
-      "path": "Warrior"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/2fa2a29d45df6b229d2525f720b831c1_4357389817891565749.png",
+      "path": "毁灭"
     },
     {
-      "id": "21042",
+      "id": "1935",
       "name": "铭记于心的约定",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21042.png",
-      "path": "Warrior"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/02/04/3d2c000744065606335224819b4c2c8e_1440791885639005208.png",
+      "path": "毁灭"
     },
     {
-      "id": "23023",
+      "id": "2369",
       "name": "命运从未公平",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23023.png",
-      "path": "Knight"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/04/16/4dc0c4cf986936473875c166a6d36ab7_8812724644606177897.png",
+      "path": "存护"
     },
     {
-      "id": "1223",
+      "id": "2949",
       "name": "貊泽",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1223.png",
-      "path": "Rogue",
-      "element": "Thunder"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/09/03/52fdc9fa18b6f6ee6579d87fcfcb8bbc_3706451518418557464.png",
+      "path": "巡猎",
+      "element": "雷"
     },
     {
-      "id": "1405",
+      "id": "3561",
       "name": "那刻夏",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1405.png",
-      "path": "Mage",
-      "element": "Wind"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/04/18/620060559c78e5d6deb730e0db54ab4f_4758946096267394893.png",
+      "path": "智识",
+      "element": "风"
     },
     {
-      "id": "23029",
+      "id": "2955",
       "name": "那无数个春天",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23029.png",
-      "path": "Warlock"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/08/23/417971351/667b4f120af6ff3672e4b4e73680975c_4981485607791604458.png",
+      "path": "虚无"
     },
     {
-      "id": "1105",
+      "id": "18",
       "name": "娜塔莎",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1105.png",
-      "path": "Priest",
-      "element": "Physical"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/59abc9abc0795ead8a3d3ac2c03530f1_1713347165320581354.png",
+      "path": "丰饶",
+      "element": "物理"
     },
     {
-      "id": "23063",
+      "id": "10193",
       "name": "你将起身歌唱",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23063.png",
-      "path": "Memory"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/09/13/326064416/0ba3e57106566dff164d8df1a56ce3e0_3919750814599668132.png",
+      "path": "记忆"
     },
     {
-      "id": "20018",
+      "id": "607",
       "name": "匿影",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20018.png",
-      "path": "Warlock"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/07/7998136/3613ba0849924760bfeb6c55e1bdd580_529310416878422169.png",
+      "path": "虚无"
     },
     {
-      "id": "21028",
+      "id": "60",
       "name": "暖夜不会漫长",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21028.png",
-      "path": "Priest"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/142eb386d41e9d22c53702acd5d7cafe_4815329713662711142.png",
+      "path": "丰饶"
     },
     {
-      "id": "1106",
+      "id": "19",
       "name": "佩拉",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1106.png",
-      "path": "Warlock",
-      "element": "Ice"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/9ca6f9a8509b3e8dd05fb551056d273d_933159568797000001.png",
+      "path": "虚无",
+      "element": "冰"
     },
     {
-      "id": "23028",
+      "id": "2646",
       "name": "偏偏希望无价",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23028.png",
-      "path": "Mage"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/07/30/326693439/40ba19555b72a9afcd6ae1d6575d76b3_6967614770549198399.png",
+      "path": "智识"
     },
     {
-      "id": "23018",
+      "id": "1595",
       "name": "片刻，留在眼底",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23018.png",
-      "path": "Mage"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/12/05/0e2afe2fd46c9699a4e73807bf63e794_4690802445219194102.png",
+      "path": "智识"
     },
     {
-      "id": "20005",
+      "id": "35",
       "name": "齐颂",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20005.png",
-      "path": "Shaman"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/9dad65422e26642596fd50e29ec15739_1662713748597895257.png",
+      "path": "同谐"
     },
     {
-      "id": "1507",
+      "id": "5217",
       "name": "千冶•刃",
+      "aliases": [
+        "千冶",
+        "刃"
+      ],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1507.png",
-      "path": "Warlock",
-      "element": "Fire"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/06/09/130460543/4c00fe191686ee721b9e0dcffc8a764b_9014839424678952465.png",
+      "path": "虚无",
+      "element": "火"
     },
     {
-      "id": "1201",
+      "id": "24",
       "name": "青雀",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1201.png",
-      "path": "Mage",
-      "element": "Quantum"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/e8150c747e37c2b29ebb426291a062d9_7335309365701961860.png",
+      "path": "智识",
+      "element": "量子"
     },
     {
-      "id": "23040",
+      "id": "3698",
       "name": "让告别，更美一些",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23040.png",
-      "path": "Memory"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/04/14/130460543/7b2eb92a1f462aa630ea553363040d07_6315295306622507066.png",
+      "path": "记忆"
     },
     {
-      "id": "23033",
+      "id": "3169",
       "name": "忍法帖•缭乱破魔",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23033.png",
-      "path": "Mage"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/10/24/326693439/b2c478416669da0b93624d5a6141c394_2928699210662497988.png",
+      "path": "智识"
     },
     {
-      "id": "22003",
+      "id": "3167",
       "name": "忍事录•音律狩猎",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/22003.png",
-      "path": "Warrior"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/10/25/417971351/491e277f1d8a52ea7ee0a99d069907a0_5350483043775145707.png",
+      "path": "毁灭"
     },
     {
-      "id": "1205",
+      "id": "789",
       "name": "刃",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1205.png",
-      "path": "Warrior",
-      "element": "Wind"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/23/84496276/64c098cc21d7f053a020f4e051407e41_4364357903791387806.png",
+      "path": "毁灭",
+      "element": "风"
     },
     {
-      "id": "23038",
+      "id": "3576",
       "name": "如果时间是一朵花",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23038.png",
-      "path": "Shaman"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/02/27/326064416/166e250be240a84d1c2031700931bfc7_4579400418756018466.png",
+      "path": "同谐"
     },
     {
-      "id": "23012",
+      "id": "74",
       "name": "如泥酣眠",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23012.png",
-      "path": "Rogue"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/fc67f4c1de98897ba23ffd613650a206_1944942577070479685.png",
+      "path": "巡猎"
     },
     {
-      "id": "1303",
+      "id": "1638",
       "name": "阮•梅",
+      "aliases": [
+        "阮",
+        "梅"
+      ],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1303.png",
-      "path": "Shaman",
-      "element": "Ice"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/24/11038150/d8ac43b6abd3b9210deebd8a50eae5d1_4761174834578468282.png",
+      "path": "同谐",
+      "element": "冰"
     },
     {
-      "id": "20020",
+      "id": "602",
       "name": "睿见",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20020.png",
-      "path": "Mage"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/07/7998136/5550a7cbd82c04408983c7141fe90218_7979302097776306880.png",
+      "path": "智识"
     },
     {
-      "id": "1406",
+      "id": "3691",
       "name": "赛飞儿",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1406.png",
-      "path": "Warlock",
-      "element": "Quantum"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/06/03/ca21832c7d70a46b019dd60a8bae852b_1543742098100123953.png",
+      "path": "虚无",
+      "element": "量子"
     },
     {
-      "id": "1001",
-      "name": "三月七",
+      "id": "7",
+      "name": "三月七 - 存护",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1001.png",
-      "path": "Knight",
-      "element": "Ice"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/0047e5284a840424de8b21d1ccd042cd_933159568797000001.png",
+      "path": "存护",
+      "element": "冰"
     },
     {
-      "id": "1224",
-      "name": "三月七",
+      "id": "2657",
+      "name": "三月七•巡猎",
+      "aliases": [
+        "三月七",
+        "巡猎"
+      ],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1224.png",
-      "path": "Rogue",
-      "element": "Imaginary"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/07/23/d36e559a0a718d050fc2c911fa3d3365_3686857019305661695.png",
+      "path": "巡猎",
+      "element": "虚数"
     },
     {
-      "id": "1108",
+      "id": "21",
       "name": "桑博",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1108.png",
-      "path": "Warlock",
-      "element": "Wind"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/8cc98741a00c642fd5e47c86b22bf8d9_1867355418239514355.png",
+      "path": "虚无",
+      "element": "风"
     },
     {
-      "id": "1304",
+      "id": "1920",
       "name": "砂金",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1304.png",
-      "path": "Knight",
-      "element": "Imaginary"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/04/03/3912553045c7ee6d816b6f1224d25ce7_5596945107422903292.png",
+      "path": "存护",
+      "element": "虚数"
     },
     {
-      "id": "1513",
+      "id": "6566",
       "name": "砂金•戏浪",
+      "aliases": [
+        "砂金",
+        "戏浪"
+      ],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1513.png",
-      "path": "Elation",
-      "element": "Quantum"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/09/11/326064416/04693b66e6cafc713881ea1e609cd87b_419379344874388246.png",
+      "path": "欢愉",
+      "element": "量子"
     },
     {
-      "id": "23041",
+      "id": "3697",
       "name": "生命当付之一炬",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23041.png",
-      "path": "Mage"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/05/12/130460543/ac0e30706c21e8124009de94bba5f403_1675523301622630214.png",
+      "path": "智识"
     },
     {
-      "id": "21050",
+      "id": "3329",
       "name": "胜利只在朝夕间",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21050.png",
-      "path": "Memory"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/01/16/130460543/2ffd094970e86efa2690a2cab9c54953_7567328063820602963.png",
+      "path": "记忆"
     },
     {
-      "id": "23013",
+      "id": "75",
       "name": "时节不居",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23013.png",
-      "path": "Priest"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/94b2bbafc016ef0d9a055eab3f96f9c5_6343871253887740107.png",
+      "path": "丰饶"
     },
     {
-      "id": "23027",
+      "id": "2501",
       "name": "驶向第二次生命",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23027.png",
-      "path": "Rogue"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/05/24/90b1764276960d7f7d53fde956be50aa_6987640505724242005.png",
+      "path": "巡猎"
     },
     {
-      "id": "20010",
+      "id": "40",
       "name": "戍御",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20010.png",
-      "path": "Knight"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/358af6ff373ee2148e6d28744331b975_1461491922069311906.png",
+      "path": "存护"
     },
     {
-      "id": "1206",
+      "id": "27",
       "name": "素裳",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1206.png",
-      "path": "Rogue",
-      "element": "Physical"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/34ed53d517bff61c71243b3ef9985a2a_9011443874790929649.png",
+      "path": "巡猎",
+      "element": "物理"
     },
     {
-      "id": "20022",
+      "id": "3351",
       "name": "溯忆",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20022.png",
-      "path": "Memory"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/01/19/326693439/def5d81487cabaa8142a12a0480707b5_5463894812614188620.png",
+      "path": "记忆"
     },
     {
-      "id": "23062",
+      "id": "6576",
       "name": "所见即我",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23062.png",
-      "path": "Warrior"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/07/30/11038150/d463d0f4dcb528ef8c0dda70df52e81b_555870673871098212.png",
+      "path": "毁灭"
     },
     {
-      "id": "23011",
+      "id": "1399",
       "name": "她已闭上双眼",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23011.png",
-      "path": "Knight"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/10/13/146729530/a519d2e49b5bbefb2f189a80c30571cd_1675616892588909410.png",
+      "path": "存护"
     },
     {
-      "id": "1403",
-      "name": "缇宝",
+      "id": "3322",
+      "name": "缇宝 ",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1403.png",
-      "path": "Shaman",
-      "element": "Quantum"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/02/24/326064416/23cc5742dc549396d4cb20b5f8a0c97c_2383988154766977513.png",
+      "path": "同谐",
+      "element": "量子"
     },
     {
-      "id": "21051",
+      "id": "3328",
       "name": "天才们的问候",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21051.png",
-      "path": "Memory"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/01/24/130460543/24b78b2d1d2fde3ae1ac76d1eba76140_4488335383636291447.png",
+      "path": "记忆"
     },
     {
-      "id": "21020",
+      "id": "595",
       "name": "天才们的休憩",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21020.png",
-      "path": "Mage"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/07/7998136/e92e4a0ff4acdb25556880c7e60d8bc6_7857015744515297414.png",
+      "path": "智识"
     },
     {
-      "id": "20002",
+      "id": "32",
       "name": "天倾",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20002.png",
-      "path": "Warrior"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/d1d8dd99e096763e5ae961608e78afcb_952669953280599733.png",
+      "path": "毁灭"
     },
     {
-      "id": "1202",
+      "id": "25",
       "name": "停云",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1202.png",
-      "path": "Shaman",
-      "element": "Thunder"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/96067b8aa9c14528544fbc50c8ce7ec5_4740490797942876174.png",
+      "path": "同谐",
+      "element": "雷"
     },
     {
-      "id": "21007",
+      "id": "51",
       "name": "同一种心情",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21007.png",
-      "path": "Priest"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/07e286c59ffe9e045abdd364b6d3f5f0_918735250537819040.png",
+      "path": "丰饶"
     },
     {
-      "id": "1112",
+      "id": "1389",
       "name": "托帕&账账",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1112.png",
-      "path": "Rogue",
-      "element": "Fire"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/27/84496276/1ce49a269c54787b7fd60eeb8dc21b3e_857344954345485675.png",
+      "path": "巡猎",
+      "element": "火"
     },
     {
-      "id": "1004",
+      "id": "10",
       "name": "瓦尔特",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1004.png",
-      "path": "Warlock",
-      "element": "Imaginary"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/131c3de4c924022727ce61ac726d051a_4490115586020920921.png",
+      "path": "虚无",
+      "element": "虚数"
     },
     {
-      "id": "21001",
+      "id": "45",
       "name": "晚安与睡颜",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21001.png",
-      "path": "Warlock"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/fb3acf8862148ccc99297b9c2669502c_7824066832447018591.png",
+      "path": "虚无"
     },
     {
-      "id": "1404",
+      "id": "3324",
       "name": "万敌",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1404.png",
-      "path": "Warrior",
-      "element": "Imaginary"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/03/13/57f705fccc23ffb78b84df8b7d3c5b08_7299343108790016405.png",
+      "path": "毁灭",
+      "element": "虚数"
     },
     {
-      "id": "21026",
+      "id": "58",
       "name": "汪！散步时间！",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21026.png",
-      "path": "Warrior"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/6a96e7124f871628ce2974fd0724aaa2_2539696960201429253.png",
+      "path": "毁灭"
     },
     {
-      "id": "1225",
+      "id": "3151",
       "name": "忘归人",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1225.png",
-      "path": "Warlock",
-      "element": "Fire"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/12/18/920d73741a3983357bdaacf0f02257ad_2990798908524761453.png",
+      "path": "虚无",
+      "element": "火"
     },
     {
-      "id": "21003",
+      "id": "47",
       "name": "唯有沉默",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21003.png",
-      "path": "Rogue"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/5906dd1fb682903b2c8fa6b3a314febf_918735250537819040.png",
+      "path": "巡猎"
     },
     {
-      "id": "23032",
+      "id": "3068",
       "name": "唯有香如故",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23032.png",
-      "path": "Priest"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/09/30/326693439/d1ff58c9ad9e8d172988e845fb12fd35_7030424953049541360.png",
+      "path": "丰饶"
     },
     {
-      "id": "22002",
+      "id": "2502",
       "name": "为了明日的旅途",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/22002.png",
-      "path": "Shaman"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/05/07/1b836a1205682a9c6f088fbf0ebabb69_4375918032796644928.png",
+      "path": "同谐"
     },
     {
-      "id": "22007",
+      "id": "5220",
       "name": "未来，有我们一起",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/22007.png",
-      "path": "Elation"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/05/12/326064416/ee561b63c46b2277286dacdfc3f5823d_4495152305214506589.png",
+      "path": "欢愉"
     },
     {
-      "id": "23031",
-      "name": "我将，巡征追猎",
+      "id": "3069",
+      "name": "我将,巡征追猎",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23031.png",
-      "path": "Rogue"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/09/10/417971351/ea80ce754858ff9a2860736795a35bd3_8494550450715775391.png",
+      "path": "巡猎"
     },
     {
-      "id": "21023",
+      "id": "598",
       "name": "我们是地火",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21023.png",
-      "path": "Knight"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/07/7998136/4486373d5bee10c92254cf888e6e49a0_2325834475855080989.png",
+      "path": "存护"
     },
     {
-      "id": "21044",
+      "id": "2503",
       "name": "无边曼舞",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21044.png",
-      "path": "Warlock"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/05/17/326693439/ff00ea6257b47373b18e3ab3b8d4f418_8147110520531310407.png",
+      "path": "虚无"
     },
     {
-      "id": "21033",
+      "id": "65",
       "name": "无处可逃",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21033.png",
-      "path": "Warrior"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/619ed38d6def02c0b6c698806b6095a0_1321403954333962126.png",
+      "path": "毁灭"
     },
     {
-      "id": "23002",
+      "id": "69",
       "name": "无可取代的东西",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23002.png",
-      "path": "Warrior"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/e29a90c94a312c8c3630484be112281f_1321403954333962126.png",
+      "path": "毁灭"
     },
     {
-      "id": "21018",
+      "id": "593",
       "name": "舞！舞！舞！",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21018.png",
-      "path": "Shaman"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/07/7998136/6cf47bcf4d76f5cb3e32209201fdb2fd_5608070713183206925.png",
+      "path": "同谐"
     },
     {
-      "id": "23050",
+      "id": "4717",
       "name": "勿忘她的火焰",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23050.png",
-      "path": "Warlock"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/12/27/326064416/7b3da1c62718fd9c8da3a5907024cb23_7422965458653432935.png",
+      "path": "虚无"
     },
     {
-      "id": "20001",
+      "id": "31",
       "name": "物穰",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20001.png",
-      "path": "Priest"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/0f53b682edec6beabb9bc4f3b184c1cb_4824814422205447232.png",
+      "path": "丰饶"
     },
     {
-      "id": "1102",
+      "id": "15",
       "name": "希儿",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1102.png",
-      "path": "Rogue",
-      "element": "Quantum"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/51d48aafbbf69b8e92256a381445ad07_4740490797942876174.png",
+      "path": "巡猎",
+      "element": "量子"
     },
     {
-      "id": "1103",
+      "id": "16",
       "name": "希露瓦",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1103.png",
-      "path": "Mage",
-      "element": "Thunder"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/6660b8c2be9a0db0130a8a2bd1825e0c_115117260001571580.png",
+      "path": "智识",
+      "element": "雷"
     },
     {
-      "id": "1415",
+      "id": "4003",
       "name": "昔涟",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1415.png",
-      "path": "Memory",
-      "element": "Ice"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/11/02/11038150/ab1c3cf2d6128a383c1c93f7afec1f05_8691208272719077090.png",
+      "path": "记忆",
+      "element": "冰"
     },
     {
-      "id": "1407",
+      "id": "3560",
       "name": "遐蝶",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1407.png",
-      "path": "Memory",
-      "element": "Quantum"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/04/09/11038150/ba59a0f78b8b0fd5eae4b82d7003f87d_1875341243114719055.png",
+      "path": "记忆",
+      "element": "量子"
     },
     {
-      "id": "23055",
+      "id": "10394",
       "name": "献给明日的色彩",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23055.png",
-      "path": "Elation"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/09/24/c36e3ad6df5f2ff6f05f97f0a84bb57f_2001189491613333381.png",
+      "path": "欢愉"
     },
     {
-      "id": "20014",
+      "id": "601",
       "name": "相抗",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20014.png",
-      "path": "Rogue"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/07/7998136/49b760cf864733ceaa886107c6ffa09b_7702812846989943747.png",
+      "path": "巡猎"
     },
     {
-      "id": "23064",
+      "id": "10194",
       "name": "向浪花掷下盛夏",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23064.png",
-      "path": "Elation"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/09/13/326064416/edd665081085a6b6b5d2d788684d9bba_7399755157473823064.png",
+      "path": "欢愉"
     },
     {
-      "id": "23037",
+      "id": "3331",
       "name": "向着不可追问处",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23037.png",
-      "path": "Mage"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/01/12/417971351/093d7aa123be82b4a6ecc06b8e42f66c_7072747612618032169.png",
+      "path": "智识"
     },
     {
-      "id": "22008",
+      "id": "10195",
       "name": "向着地平线的终点",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/22008.png",
-      "path": "Rogue"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/09/13/326064416/f188b5801ba5fac2eedde9742f4842bb_8676055900610872535.png",
+      "path": "巡猎"
     },
     {
-      "id": "21045",
+      "id": "2647",
       "name": "谐乐静默之后",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21045.png",
-      "path": "Mage"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/07/30/326693439/de46ad848380c6da1ea41c2d63a19b06_5637539227918155780.png",
+      "path": "智识"
     },
     {
-      "id": "23058",
+      "id": "5219",
       "name": "邂逅于下一个花季",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23058.png",
-      "path": "Elation"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/05/12/326064416/daa221c7ca8cd3252d8a86243f5dd087_4959402028534107816.png",
+      "path": "欢愉"
     },
     {
-      "id": "22000",
-      "name": "新手任务开始前",
+      "id": "807",
+      "name": "新手任务开始前\n",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/22000.png",
-      "path": "Warlock"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/06/07/7998136/7624d4c80658642109c1677e74e97499_6935245463977096242.png",
+      "path": "虚无"
     },
     {
-      "id": "24001",
+      "id": "77",
       "name": "星海巡航",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/24001.png",
-      "path": "Rogue"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/5581a8188cda5393ac8c254177819ee0_7267104140862379789.png",
+      "path": "巡猎"
     },
     {
-      "id": "23061",
+      "id": "6575",
       "name": "星火悄然闪耀",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23061.png",
-      "path": "Mage"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/07/30/11038150/f5ffb3bd6a165aa4dbcea8c613bde4b2_7435079153364047783.png",
+      "path": "智识"
     },
     {
-      "id": "1313",
+      "id": "3150",
       "name": "星期日",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1313.png",
-      "path": "Shaman",
-      "element": "Imaginary"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/11/28/313359586/15e9a4cf851b51cc2ec34eb5a7459dca_2899211807187087338.png",
+      "path": "同谐",
+      "element": "虚数"
     },
     {
-      "id": "1511",
+      "id": "10393",
       "name": "星神★阿哈",
+      "aliases": [],
       "type": "角色",
-      "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1511.png",
-      "path": "Elation",
-      "element": "Quantum"
+      "rarity": 4,
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/11/03/4be8e2a62848f153a772004023dd982d_4103344157180208239.png",
+      "path": "",
+      "element": ""
     },
     {
-      "id": "23024",
+      "id": "2370",
       "name": "行于流逝的岸",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23024.png",
-      "path": "Warlock"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/03/26/326693439/8707622cabd577ddf02a0fd00fbd6fd1_5022746560518718047.png",
+      "path": "虚无"
     },
     {
-      "id": "1214",
+      "id": "1640",
       "name": "雪衣",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1214.png",
-      "path": "Warrior",
-      "element": "Quantum"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/25/11038150/c4c71675cb2e2b0ecd158de74ee4bd50_168648737189270316.png",
+      "path": "毁灭",
+      "element": "量子"
     },
     {
-      "id": "23039",
+      "id": "3575",
       "name": "血火啊，燃烧前路",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23039.png",
-      "path": "Warrior"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/03/21/326064416/5cdc0db8fcf96722874e4c0df78cf853_219924735896260852.png",
+      "path": "毁灭"
     },
     {
-      "id": "21022",
+      "id": "597",
       "name": "延长记号",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21022.png",
-      "path": "Warlock"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/07/7998136/4b93cba23cd52e090a92b423980b7003_487515826086696185.png",
+      "path": "虚无"
     },
     {
-      "id": "21005",
+      "id": "49",
       "name": "鼹鼠党欢迎你",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21005.png",
-      "path": "Warrior"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/e35c7c440672f1a6626f7b379b2da5a0_4357389817891565749.png",
+      "path": "毁灭"
     },
     {
-      "id": "1209",
+      "id": "28",
       "name": "彦卿",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1209.png",
-      "path": "Rogue",
-      "element": "Ice"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/2fbbdcb50ff8388ec2c6723c6385fb84_4490115586020920921.png",
+      "path": "巡猎",
+      "element": "冰"
     },
     {
-      "id": "1502",
+      "id": "4736",
       "name": "爻光",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1502.png",
-      "path": "Elation",
-      "element": "Physical"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/06/07/130460543/2ced130b6cdbe08275400efdbebc0a4e_173732853528546205.png",
+      "path": "欢愉",
+      "element": "物理"
     },
     {
-      "id": "23026",
+      "id": "2500",
       "name": "夜色流光溢彩",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23026.png",
-      "path": "Shaman"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/05/07/ca03ae75713f4ef7dbd4c68d671d1b0f_4402507865225057642.png",
+      "path": "同谐"
     },
     {
-      "id": "23056",
+      "id": "5007",
       "name": "一场谎言的终幕",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23056.png",
-      "path": "Rogue"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/03/24/326064416/73cfc468659279ad2530808d214186e4_4816835842157921712.png",
+      "path": "巡猎"
     },
     {
-      "id": "21000",
+      "id": "44",
       "name": "一场术后对话",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21000.png",
-      "path": "Priest"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/bbc831d2b1685bc85083551e51047e3f_2901581893313933971.png",
+      "path": "丰饶"
     },
     {
-      "id": "21058",
+      "id": "3893",
       "name": "一行往日的血",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21058.png",
-      "path": "Warrior"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/07/14/326064416/6a976c20deac42e6c3af6e2a76f8cfea_6058209926279613810.png",
+      "path": "毁灭"
     },
     {
-      "id": "23004",
+      "id": "71",
       "name": "以世界之名",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23004.png",
-      "path": "Warlock"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/e83831b4e3d1b31683d2ab65a934d305_7267104140862379789.png",
+      "path": "虚无"
     },
     {
-      "id": "21060",
+      "id": "3894",
       "name": "氤氲麦香的梦",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21060.png",
-      "path": "Mage"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/07/14/326064416/de79d201a05c72060b1422b66984bab8_7926798150191853951.png",
+      "path": "智识"
     },
     {
-      "id": "21040",
+      "id": "1933",
       "name": "银河沦陷日",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21040.png",
-      "path": "Mage"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/02/07/213942066/308f393b2e20915e921de1e7f2e207b6_5697608064754312224.png",
+      "path": "智识"
     },
     {
-      "id": "23000",
+      "id": "67",
       "name": "银河铁道之夜",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23000.png",
-      "path": "Mage"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/e4aaa93b8aec53396fdcf6296388597f_8571278187657403042.png",
+      "path": "智识"
     },
     {
-      "id": "1006",
+      "id": "710",
       "name": "银狼",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1006.png",
-      "path": "Warlock",
-      "element": "Quantum"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/06/07/7998136/b59604087f67ed3d1828c08a104be302_7489703962207497890.png",
+      "path": "虚无",
+      "element": "量子"
     },
     {
-      "id": "1506",
+      "id": "4997",
       "name": "银狼LV.999",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1506.png",
-      "path": "Elation",
-      "element": "Imaginary"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/04/19/11038150/fe2943d5ec89d9774d9c8d4f891c2b8e_883649974620982486.png",
+      "path": "欢愉",
+      "element": "虚数"
     },
     {
-      "id": "1302",
+      "id": "1535",
       "name": "银枝",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1302.png",
-      "path": "Mage",
-      "element": "Physical"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/12/04/9448edefb4d1253e987da31271c15981_1168181326229101463.png",
+      "path": "智识",
+      "element": "物理"
     },
     {
-      "id": "22005",
-      "name": "永远的迷境饭",
-      "type": "光锥",
-      "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/22005.png",
-      "path": "Shaman"
-    },
-    {
-      "id": "20004",
+      "id": "34",
       "name": "幽邃",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20004.png",
-      "path": "Warlock"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/f60585e5777a3536bb916e7b56d2682d_2427113140670896624.png",
+      "path": "虚无"
     },
     {
-      "id": "23021",
+      "id": "1936",
       "name": "游戏尘寰",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23021.png",
-      "path": "Shaman"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/02/27/08f28fd17c7293362ce7db20de8df1df_4242746970141722423.png",
+      "path": "同谐"
     },
     {
-      "id": "21062",
+      "id": "3896",
       "name": "于那终点再见",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21062.png",
-      "path": "Rogue"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/07/14/326064416/42c2f36b8cc15a7592c2f3415c0baaf0_5708491941237412964.png",
+      "path": "巡猎"
     },
     {
-      "id": "23001",
+      "id": "68",
       "name": "于夜色中",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23001.png",
-      "path": "Rogue"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/f342952758193dcdcd8dd1dde1cc969d_4815329713662711142.png",
+      "path": "巡猎"
     },
     {
-      "id": "21002",
+      "id": "46",
       "name": "余生的第一天",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21002.png",
-      "path": "Knight"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/d30f1640606c482d1dde06f5234be0b2_4059157342224776055.png",
+      "path": "存护"
     },
     {
-      "id": "21011",
+      "id": "55",
       "name": "与行星相会",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21011.png",
-      "path": "Shaman"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/6678fe8d31a180e31a1e04ef1d8eadaf_7231314384566776724.png",
+      "path": "同谐"
     },
     {
-      "id": "22004",
+      "id": "3693",
       "name": "宇宙大生意",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/22004.png",
-      "path": "Mage"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/04/14/130460543/182416723cb94bb9a6a1c06b2a256905_2669485758263091938.png",
+      "path": "智识"
     },
     {
-      "id": "21016",
+      "id": "591",
       "name": "宇宙市场趋势",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21016.png",
-      "path": "Knight"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/07/7998136/9faeed2842482f716b42c0cd21667cbf_8149889544022949159.png",
+      "path": "存护"
     },
     {
-      "id": "23007",
+      "id": "805",
       "name": "雨一直下",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23007.png",
-      "path": "Warlock"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/06/07/7998136/dd30c9e39b8126dde54946cf2581215f_4234182455576051184.png",
+      "path": "虚无"
     },
     {
-      "id": "1207",
+      "id": "712",
       "name": "驭空",
+      "aliases": [],
       "type": "角色",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1207.png",
-      "path": "Shaman",
-      "element": "Imaginary"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/13/84496276/767cb7131b41bb1058c2ee329b77593e_1216609127861628136.png",
+      "path": "同谐",
+      "element": "虚数"
     },
     {
-      "id": "20011",
+      "id": "41",
       "name": "渊环",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20011.png",
-      "path": "Warlock"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/d06cf98794a5d7affdcb105ccc6b6863_2427113140670896624.png",
+      "path": "虚无"
     },
     {
-      "id": "1508",
+      "id": "5339",
       "name": "远坂凛",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1508.png",
-      "path": "Mage",
-      "element": "Quantum"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/06/02/130460543/c470d8e3dfc310b0c793a795db1ea631_580151480386490032.png",
+      "path": "智识",
+      "element": "量子"
     },
     {
-      "id": "23042",
+      "id": "3775",
       "name": "愿虹光永驻天空",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23042.png",
-      "path": "Memory"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/06/10/326064416/d74bce46d35be53f14946e83aa6a3c02_7867510019057461715.png",
+      "path": "记忆"
     },
     {
-      "id": "21053",
+      "id": "3889",
       "name": "愿旅途永远坦然",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21053.png",
-      "path": "Knight"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/07/14/326064416/04d67b9d746c29b5e1f40de5ae603082_8343169336207033977.png",
+      "path": "存护"
     },
     {
-      "id": "1221",
+      "id": "2642",
       "name": "云璃",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1221.png",
-      "path": "Warrior",
-      "element": "Physical"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/07/23/974192119b3f17e13fac2014f98a0d40_6234648188106281351.png",
+      "path": "毁灭",
+      "element": "物理"
     },
     {
-      "id": "21038",
+      "id": "1931",
       "name": "在火的远处",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21038.png",
-      "path": "Warrior"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/02/07/213942066/641afab83e8fa778429903a620f4d927_8588825767471221889.png",
+      "path": "毁灭"
     },
     {
-      "id": "21019",
+      "id": "594",
       "name": "在蓝天下",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21019.png",
-      "path": "Warrior"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/07/7998136/423cba6ba9da519750873231e12092f4_2658038750381156690.png",
+      "path": "毁灭"
     },
     {
-      "id": "22009",
-      "name": "在世界尽头相会吧！",
-      "type": "光锥",
-      "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/22009.png",
-      "path": "Elation"
-    },
-    {
-      "id": "21027",
+      "id": "59",
       "name": "早餐的仪式感",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21027.png",
-      "path": "Mage"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/e00975de10154b3fe32fc2c309a0fc08_1117849229478748330.png",
+      "path": "智识"
     },
     {
-      "id": "23035",
+      "id": "3292",
       "name": "长路终有归途",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23035.png",
-      "path": "Warlock"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/12/17/326064416/ab792bee4c7a2f4683bab449bb259bb6_2986423809029639302.png",
+      "path": "虚无"
     },
     {
-      "id": "1413",
+      "id": "3956",
       "name": "长夜月",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1413.png",
-      "path": "Memory",
-      "element": "Ice"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/09/23/11038150/696247b90aa665a2f91be7a2c4c27042_3598614019750556193.png",
+      "path": "记忆",
+      "element": "冰"
     },
     {
-      "id": "21030",
+      "id": "62",
       "name": "这就是我啦！",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21030.png",
-      "path": "Knight"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/b592f633647f6c155a5eec01740e8a02_2539696960201429253.png",
+      "path": "存护"
     },
     {
-      "id": "1305",
+      "id": "1639",
       "name": "真理医生",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1305.png",
-      "path": "Rogue",
-      "element": "Imaginary"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/01/16/11038150/3fb391fb0d308ea8e89ea3ca32e8dc3b_5197007872396944154.png",
+      "path": "巡猎",
+      "element": "虚数"
     },
     {
-      "id": "1503",
+      "id": "10192",
       "name": "真珠",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1503.png",
-      "path": "Elation",
-      "element": "Ice"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/09/20/6d8ea7dccd66194d6088769e539db054_286958356489763761.png",
+      "path": "欢愉",
+      "element": "冰"
     },
     {
-      "id": "1309",
+      "id": "2366",
       "name": "知更鸟",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1309.png",
-      "path": "Shaman",
-      "element": "Physical"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/29/11038150/e1714be4caece69c5515e59f5bec8612_2346960396711782554.png",
+      "path": "同谐",
+      "element": "物理"
     },
     {
-      "id": "1512",
+      "id": "6565",
       "name": "知更鸟•晴歌",
+      "aliases": [
+        "知更鸟",
+        "晴歌"
+      ],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1512.png",
-      "path": "Memory",
-      "element": "Wind"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/09/03/11038150/8506a0ef5d573f51f56e4ad5cbcd5df7_7232513692551845070.png",
+      "path": "记忆",
+      "element": "风"
     },
     {
-      "id": "21039",
+      "id": "1932",
       "name": "织造命运之线",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21039.png",
-      "path": "Knight"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/02/07/213942066/e515681790e9ceb9c890e4506efd932e_4078083902221717060.png",
+      "path": "存护"
     },
     {
-      "id": "21055",
+      "id": "3890",
       "name": "直到明天的明天",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21055.png",
-      "path": "Priest"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/07/14/326064416/3414edab419cc188f575ebb18bd14bec_3222447426594635349.png",
+      "path": "丰饶"
     },
     {
-      "id": "23006",
+      "id": "1231",
       "name": "只需等待",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23006.png",
-      "path": "Warlock"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/22/84496276/cd8fbed3fe69c8584e08e8a9e0ccce00_2036100191059986968.png",
+      "path": "虚无"
     },
     {
-      "id": "23005",
+      "id": "72",
       "name": "制胜的瞬间",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23005.png",
-      "path": "Knight"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/e8affe99a96952944134a87057777439_1944942577070479685.png",
+      "path": "存护"
     },
     {
-      "id": "23049",
+      "id": "4005",
       "name": "致长夜的星光",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23049.png",
-      "path": "Memory"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/10/01/11038150/a944d2e5f33f0b0802fbad8d9971df1b_5620932816767724849.png",
+      "path": "记忆"
     },
     {
-      "id": "20006",
+      "id": "36",
       "name": "智库",
       "type": "光锥",
       "rarity": 3,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/20006.png",
-      "path": "Mage"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/baea8daf8de7c33dfcbd2a2a551d0e4f_839491542014512762.png",
+      "path": "智识"
     },
     {
-      "id": "21031",
+      "id": "63",
       "name": "重返幽冥",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21031.png",
-      "path": "Rogue"
+      "iconUrl": "https://upload-static.hoyoverse.com/hoyowiki/2023/02/21/24cdcb5829ccaeaf564f9d143e13fd27_3463177043058966924.png",
+      "path": "巡猎"
     },
     {
-      "id": "23022",
+      "id": "1937",
       "name": "重塑时光之忆",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23022.png",
-      "path": "Warlock"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/02/06/6668036/38b8751c03fae5f57727485edda3a9d0_2647703592169654115.png",
+      "path": "虚无"
     },
     {
-      "id": "21056",
+      "id": "3891",
       "name": "追逐风的时候",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21056.png",
-      "path": "Shaman"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/07/14/326064416/a06584ade169122ca31d8a0d205f459e_339643754902823655.png",
+      "path": "同谐"
     },
     {
-      "id": "23059",
+      "id": "5340",
       "name": "灼尽炼狱的新骸",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23059.png",
-      "path": "Warlock"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/05/31/326064416/260215a1a1b9d0867e3df1e00b51ea6a_7448425911809599291.png",
+      "path": "虚无"
     },
     {
-      "id": "23051",
+      "id": "4006",
       "name": "纵然山河万程",
       "type": "光锥",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/23051.png",
-      "path": "Knight"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/10/14/326064416/6ed70198fdf9451acc1f061d284170b3_1132854303879466138.png",
+      "path": "存护"
     },
     {
-      "id": "21037",
+      "id": "1930",
       "name": "最后的赢家",
       "type": "光锥",
       "rarity": 4,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/light_cone/21037.png",
-      "path": "Rogue"
+      "iconUrl": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/03/06/171301880/a416b6e354d225586a18232b31195689_3904017079895174562.png",
+      "path": "巡猎"
     },
     {
-      "id": "1015",
+      "id": "3768",
       "name": "Archer",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1015.png",
-      "path": "Rogue",
-      "element": "Quantum"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/07/11/32ae4e75ef1e446892e64c9cf0c7d4e6_118940061397586473.png",
+      "path": "巡猎",
+      "element": "量子"
     },
     {
-      "id": "1014",
+      "id": "3767",
       "name": "Saber",
+      "aliases": [],
       "type": "角色",
       "rarity": 5,
-      "iconUrl": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1014.png",
-      "path": "Warrior",
-      "element": "Wind"
+      "iconUrl": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/07/10/ea53741e3c1d3c18430b02c2ed713309_5539779096135615996.png",
+      "path": "毁灭",
+      "element": "风"
     }
   ]
 }
