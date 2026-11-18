@@ -464,8 +464,7 @@ function renderRecords() {
   </div>
   <div class="toolbar">
     <div class="search-box">${ICONS.search}<input id="record-search" class="input" placeholder="搜索角色、武器或卡池…" value="${attr(state.recordFilter.search)}"></div>
-    <select id="record-pool" class="select" style="width:170px"><option value="all">全部卡池</option>${pools.map((p) => `<option value="${attr(p.type)}" ${state.recordFilter.pool === p.type ? 'selected' : ''}>${esc(p.label)}</option>`).join('')}</select>
-    <select id="record-source" class="select" style="width:130px"><option value="all">全部来源</option><option value="official" ${state.recordFilter.source === 'official' ? 'selected' : ''}>官方</option><option value="screenshot" ${state.recordFilter.source === 'screenshot' ? 'selected' : ''}>截图</option><option value="uigf" ${state.recordFilter.source === 'uigf' ? 'selected' : ''}>UIGF</option></select>
+    <div class="record-pools">${[{ type: 'all', label: '全部卡池' }, ...pools].map((p) => `<button class="pool-chip ${state.recordFilter.pool === p.type ? 'active' : ''}" data-action="record-pool" data-pool="${attr(p.type)}">${esc(p.label)}</button>`).join('')}</div>
     <button class="ghost-btn" data-action="records-reset">重置</button>
   </div>
   ${loading ? `<div class="loading-line"><span class="spinner"></span>读取记录…</div>` : (data.records.length ? renderRecordGroups(data.records) : `<div class="empty-state"><div class="orb">${ICONS.records}</div><h2>暂无记录</h2><div class="empty-actions"><button class="primary-btn" data-action="go" data-view="import">开始同步</button></div></div>`)}
@@ -1086,8 +1085,6 @@ function bindView() {
       clearTimeout(timer);
       timer = setTimeout(() => loadRecords(1).catch((err) => toast(err.message, 'err')), 280);
     });
-    $('#record-pool')?.addEventListener('change', (e) => { state.recordFilter.pool = e.target.value; loadRecords(1).catch((err) => toast(err.message, 'err')); });
-    $('#record-source')?.addEventListener('change', (e) => { state.recordFilter.source = e.target.value; loadRecords(1).catch((err) => toast(err.message, 'err')); });
   }
   if (state.view === 'catalog') {
     let timer = null;
@@ -1269,6 +1266,11 @@ document.addEventListener('click', async (e) => {
       return;
     }
     if (action === 'records-page') { await loadRecords(Number(el.dataset.page)); return; }
+    if (action === 'record-pool') {
+      state.recordFilter.pool = el.dataset.pool || 'all';
+      loadRecords(1).catch((err) => toast(err.message, 'err'));
+      return;
+    }
     if (action === 'records-reset') { state.recordFilter = { search: '', pool: 'all', source: 'all', page: 1 }; await loadRecords(1); return; }
     if (action === 'catalog-sync') {
       setBusy(el, true, '同步中');

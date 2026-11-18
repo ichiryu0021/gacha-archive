@@ -541,3 +541,8 @@ td .cell-sub { color: var(--muted-2); font-size: 9px; margin-top: 2px; }
 .avg-pair { display: flex; flex-direction: column; gap: 1px; font-family: var(--font); font-size: 10px; letter-spacing: 0; line-height: 1.15; }
 .avg-pair span { display: flex; align-items: baseline; gap: 5px; color: var(--muted-2); }
 .avg-pair b { font-family: var(--mono); font-size: 17px; font-weight: 300; color: var(--text); letter-spacing: -.03em; }
+
+.record-pools { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
+.pool-chip { border: 1px solid var(--line); background: rgba(255,255,255,.025); color: var(--muted); border-radius: 8px; padding: 7px 10px; font-size: 10px; cursor: pointer; white-space: nowrap; }
+.pool-chip:hover { border-color: rgba(var(--accent-rgb),.28); color: var(--text); }
+.pool-chip.active { color: var(--text); border-color: rgba(var(--accent-rgb),.5); background: rgba(var(--accent-rgb),.1); }
