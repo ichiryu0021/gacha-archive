@@ -50,6 +50,8 @@ const state = {
   iconMatch: null,
   iconIndex: {},
   update: null,
+  manualFilters: {},
+  manualMode: 'single',
   auth: { sessionId: '', status: '', url: '', user: null, rolesByGame: {}, errors: {}, startedAt: 0 },
   busy: false,
 };
@@ -288,19 +290,19 @@ function renderDashboard() {
       <div class="page-head-actions">
         <button class="ghost-btn" data-action="go" data-view="records">${ICONS.records} 查看五星</button>
         <button class="primary-btn" data-action="go" data-view="import">${ICONS.import} 补录历史</button>
-        <span class="pill ${state.collector?.enabled ? 'accent' : ''}" title="后台只读本机游戏缓存，不需要登录"><span class="pulse" style="width:4px;height:4px"></span>后台采集${state.collector?.enabled ? '中' : '已暂停'}</span>
+        <span class="pill ${state.collector?.enabled ? 'accent' : ''}"><span class="pulse" style="width:4px;height:4px"></span>后台采集${state.collector?.enabled ? '中' : '已暂停'}</span>
       </div>
     </div>
     <div class="hero">
       <div class="card hero-card">
         <div class="hero-top">
           <div>
-            <div class="hero-kicker"><span class="dot"></span> LIFETIME PULLS / 生涯抽数</div>
+            <div class="hero-kicker"><span class="dot"></span> TOTAL PULLS / 总抽数</div>
             <div class="hero-number-row"><div class="hero-number">${heroValue}</div><div class="hero-unit">${hasTotals ? '抽' : '待补录'}</div></div>
-            <div class="hero-sub">已归档 <b>${fmt(d.counts.lifetimeFive)}</b> 张五星${d.meta?.uid ? ` · UID ${esc(d.meta.uid)}` : ''} · 官方窗口 ${esc(d.coverage.officialWindow)}</div>
+            <div class="hero-sub">限定池 <b>${fmt(d.counts.limitedExact)}</b> 抽 · <b>${fmt(d.counts.lifetimeFive)}</b> 张五星${d.meta?.uid ? ` · UID ${esc(d.meta.uid)}` : ''}</div>
             <div class="hero-pills">
               <span class="pill accent"><b>${d.counts.lifetimeFive}</b> 五星</span>
-              <span class="pill"><b>${d.counts.limitedFive || 0}</b> 非常驻</span>
+              <span class="pill"><b>${d.counts.limitedFiveAll || 0}</b> 限定五星</span>
               <span class="pill"><b>${d.counts.overlapFive ? fmt(d.counts.overlapFive) : '0'}</b> 重叠五星</span>
             </div>
           </div>
@@ -352,7 +354,7 @@ function renderDashboard() {
     </div>
     <div class="content-grid">
       <div class="card">
-        <div class="card-head"><div class="card-title"><span class="mark"></span><h3>最近的金色</h3><span>RECENT FIVE-STARS</span></div></div>
+        <div class="card-head"><div class="card-title"><span class="mark"></span><h3>最近的出金</h3><span>RECENT FIVE-STARS</span></div></div>
         ${d.recentFive?.length ? `<div class="timeline">${d.recentFive.map((r) => itemRow(r)).join('')}</div>` : `<div class="empty-chart">还没有五星记录</div>`}
       </div>
     </div>`;
@@ -372,26 +374,28 @@ function renderCoverage(d) {
     segments.push(`<div class="timeline-seg snapshot" style="left:${pos(i.start)}%;width:${Math.max(0.4, pos(i.end) - pos(i.start))}%" title="历史汇总 ${i.start} → ${i.end}"></div>`);
   }
   if (d.coverage.exactRange?.start) {
-    segments.push(`<div class="timeline-seg exact" style="left:${pos(d.coverage.exactRange.start)}%;width:${Math.max(0.4, pos(d.coverage.exactRange.end) - pos(d.coverage.exactRange.start))}%" title="官方近期 ${d.coverage.exactRange.start} → ${d.coverage.exactRange.end}"></div>`);
+    segments.push(`<div class="timeline-seg exact" style="left:${pos(d.coverage.exactRange.start)}%;width:${Math.max(0.4, pos(d.coverage.exactRange.end) - pos(d.coverage.exactRange.start))}%" title="限定池 ${d.coverage.exactRange.start} → ${d.coverage.exactRange.end}"></div>`);
   }
   if (d.counts.overlap > 0 && d.coverage.intervals.length && d.coverage.exactRange?.start) {
     const left = Math.max(pos(d.coverage.intervals[0].start), pos(d.coverage.exactRange.start));
     const right = Math.min(pos(d.coverage.intervals[d.coverage.intervals.length - 1].end), pos(d.coverage.exactRange.end));
     if (right > left) segments.push(`<div class="timeline-seg overlap" style="left:${left}%;width:${right - left}%" title="重叠段"></div>`);
   }
-  const startYear = d.coverage.launchDate.slice(0, 4);
+  const startYear = Number(d.coverage.launchDate.slice(0, 4));
   const nowYear = new Date().getFullYear();
+  const years = [];
+  for (let y = startYear; y <= nowYear; y++) years.push(y);
+  const coverageLabels = d.versionLabels?.length ? d.versionLabels : (d.versions || []).map((v) => v.label);
   return `<div class="coverage-head">
     <div><div class="card-title"><span class="mark"></span><h3>生涯覆盖</h3><span>DATA COVERAGE</span></div></div>
     <div class="coverage-summary">
-      <span class="coverage-badge exact"><i class="swatch"></i>官方近期 ${fmt(d.counts.exact)} 抽</span>
+      <span class="coverage-badge exact"><i class="swatch"></i>限定池 ${fmt(d.counts.limitedExact)} 抽</span>
       <span class="coverage-badge snapshot"><i class="swatch"></i>历史汇总 ${fmt(d.counts.snapshotOnly)} 抽</span>
       ${d.counts.overlap ? `<span class="coverage-badge overlap"><i class="swatch"></i>重叠 ${fmt(d.counts.overlap)} 抽</span>` : ''}
     </div>
   </div>
   <div class="timeline-rail">${segments.join('')}</div>
-  <div class="timeline-years"><span>${startYear}</span><span>${startYear}-${Number(startYear) + 1}</span><span>${nowYear}</span></div>
-  <div class="timeline-legend"><span><i style="background:var(--accent)"></i>官方接口（逐抽校验）</span><span><i style="background:#d6a45d"></i>截图 / 汇总补录</span><span><i style="background:#d87878"></i>重叠区间（已扣重）</span></div>
+  <div class="timeline-years">${(coverageLabels.length ? coverageLabels : years).map((y) => `<span>${y}</span>`).join('')}</div>
 `;
 }
 
@@ -506,7 +510,7 @@ function recordRow(r, maxPity) {
   const wide = pity ? Math.min(100, (pity / maxPity) * 100) : 0;
   const tags = [
     r.up ? `<span class="up-tag ${r.up === 'win' ? 'win' : 'loss'}">${r.up === 'win' ? 'UP' : '歪'}</span>` : '',
-    pity > 0 && pity < 20 ? '<span class="luck-tag">欧</span>' : '',
+    pity > 0 && pity < 20 && r.up !== 'loss' ? '<span class="luck-tag">欧</span>' : '',
     pity > 0 && pity <= 10 ? '<span class="luck-tag chain">连金</span>' : '',
   ].filter(Boolean).join('');
   return `<div class="record-row">
@@ -530,6 +534,8 @@ function renderImport() {
     ['paste', '粘贴链接', 'LINK'],
     ['screenshot', '截图补录', 'OCR'],
     ['summary', '历史汇总', 'SUMMARY'],
+    ['uigf', '导入 UIGF', 'UIGF'],
+    ['manual', '手动添加', 'MANUAL'],
   ];
   return `<div class="page-head"><div><div class="eyebrow">SYNC · DATA RECOVERY</div><h1>数据补录</h1></div><div class="page-head-actions"><span class="pill"><b>${fmt(d?.counts.lifetime || 0)}</b> 生涯抽</span><span class="pill accent"><b>${fmt(d?.counts.lifetimeFive || 0)}</b> 五星</span></div></div>
   <div class="tabs">${tabs.map(([id, label, tag]) => `<button class="tab ${state.importTab === id ? 'active' : ''}" data-action="switch-import-tab" data-tab="${id}">${label}<span class="count">${tag}</span></button>`).join('')}</div>
@@ -542,7 +548,63 @@ function renderImportPanel() {
   if (state.importTab === 'paste') main = renderPasteImport();
   if (state.importTab === 'screenshot') main = renderScreenshotImport();
   if (state.importTab === 'summary') main = renderSummaryImport();
+  if (state.importTab === 'uigf') main = renderUigfImport();
+  if (state.importTab === 'manual') main = renderManualImport();
   return `<div class="import-layout" style="grid-template-columns:1fr"><div class="import-main">${main}</div></div>`;
+}
+
+function renderManualImport() {
+  const d = state.dashboard;
+  const game = state.game;
+  const pools = (d?.pools || []).filter((p) => p.type);
+  const items = (state.catalog?.items || []).filter((i) => i.type === '角色' || i.type === '代理人');
+  const f = state.manualFilters || {};
+  const field = game === 'hsr' ? 'path' : game === 'genshin' ? 'region' : game === 'zzz' ? 'path' : '';
+  const versions = d?.versionLabels || (d?.versions || []).map((v) => v.label);
+  const attrs = [...new Set(items.map((i) => i.element).filter(Boolean))].sort();
+  const factions = field ? [...new Set(items.map((i) => i[field]).filter(Boolean))].sort() : [];
+  const recordNames = new Set((d?.records || []).filter((r) => !f.version || r.version === f.version).map((r) => r.name));
+  const filtered = items.filter((i) => {
+    if (f.attr && i.element !== f.attr) return false;
+    if (f.field && i[field] !== f.field) return false;
+    if (f.version && i.version !== f.version && !recordNames.has(i.name)) return false;
+    return true;
+  });
+  const factionLabel = game === 'hsr' ? '命途' : game === 'genshin' ? '地区' : game === 'zzz' ? '职业' : '';
+  const mode = state.manualMode || 'single';
+  const single = `<form id="manual-form" class="form-grid" style="margin-top:14px">
+      <div class="field"><label>角色</label><select class="input" name="name"><option value="">选择角色</option>${filtered.map((i) => `<option value="${attr(i.name)}">${esc(i.name)}</option>`).join('')}</select></div>
+      <div class="field"><label>其他名称</label><input class="input" name="manualName" placeholder="找不到时手动输入"></div>
+      <div class="field"><label>卡池</label><select class="input" name="gachaType">${pools.map((p) => `<option value="${attr(p.type)}">${esc(p.label)}</option>`).join('')}</select></div>
+      <div class="field"><label>版本</label><select class="input" name="version"><option value="">不填</option>${versions.map((v) => `<option value="${attr(v)}" ${f.version === v ? 'selected' : ''}>${esc(v)}</option>`).join('')}</select></div>
+      <div class="field"><label>抽数</label><input class="input" type="number" min="1" name="pity"></div>
+      <div class="field"><label>时间（可选）</label><input class="input" type="datetime-local" name="time"></div>
+      <div class="span-2"><button class="primary-btn" type="submit">保存记录</button></div>
+    </form>
+    <div class="manual-filter">
+      <span class="manual-filter-label">筛选</span>
+      <select class="input" id="manual-version"><option value="">全部版本</option>${versions.map((v) => `<option value="${attr(v)}" ${f.version === v ? 'selected' : ''}>${esc(v)}</option>`).join('')}</select>
+      <select class="input" id="manual-attr"><option value="">全部属性</option>${attrs.map((v) => `<option value="${attr(v)}" ${f.attr === v ? 'selected' : ''}>${esc(v)}</option>`).join('')}</select>
+      ${factionLabel ? `<select class="input" id="manual-field"><option value="">全部${factionLabel}</option>${factions.map((v) => `<option value="${attr(v)}" ${f.field === v ? 'selected' : ''}>${esc(v)}</option>`).join('')}</select>` : ''}
+      <span class="manual-count">${filtered.length}</span>
+    </div>`;
+  const table = `<div class="manual-table">
+    <div class="manual-note">第一行最新，向下按从新到旧填写；UP/歪由软件判断。</div>
+    <div class="manual-table-head"><span>Excel 表格</span><a class="ghost-btn" href="/api/manual/template?game=${state.game}">${ICONS.download} 下载模板</a></div>
+    <div class="dropzone" id="manual-excel-drop" style="margin-top:14px">${ICONS.upload}<strong>拖入 Excel，或点击选择</strong><input type="file" id="manual-excel-file" accept=".xlsx,.xls,.csv" hidden></div>
+  </div>`;
+  return `<div class="card">
+    <div class="card-head"><div class="card-title"><span class="mark"></span><h3>手动添加</h3><span>MANUAL</span></div></div>
+    <div class="manual-modes"><button class="ghost-btn ${mode === 'single' ? 'active' : ''}" data-action="manual-mode" data-mode="single">单个添加</button><button class="ghost-btn ${mode === 'table' ? 'active' : ''}" data-action="manual-mode" data-mode="table">表格导入</button></div>
+    ${mode === 'table' ? table : single}
+  </div>`;
+}
+
+function renderUigfImport() {
+  return `<div class="card">
+    <div class="card-head"><div class="card-title"><span class="mark"></span><h3>导入 UIGF / SRGF</h3><span>JSON</span></div></div>
+    <div class="dropzone" id="uigf-dropzone" style="margin-top:14px">${ICONS.upload}<strong>拖入 JSON 文件，或点击选择</strong><input type="file" id="uigf-tab-file" accept="application/json,.json" multiple hidden></div>
+  </div>`;
 }
 
 function renderAutoImport() {
@@ -566,7 +628,7 @@ function renderAutoImport() {
         const found = scan?.found?.[id];
         return `<div class="scan-card"><div class="scan-head"><div class="scan-name"><span class="game-dot" style="color:${meta.color};background:${meta.color}"></span>${meta.name}</div><span class="scan-state ${found ? 'found' : ''}">${found ? '已找到链接' : scan ? '未找到' : '等待扫描'}</span></div>
           <div class="scan-meta">${found ? `${esc(found.region || found.gameBiz || '区服未知')}<br>${esc(found.preview || 'authkey 已隐藏')}` : '未找到'}</div>
-          ${found ? `<button class="primary-btn compact" data-action="sync-link" data-game="${id}" data-link="${attr(found.linkId)}">读取并同步</button>` : `<button class="ghost-btn" data-action="scan-links">扫描</button>`}
+          ${found ? `<button class="ghost-btn" data-action="copy-scan-link" data-link="${attr(found.linkId)}">复制链接</button><button class="primary-btn compact" data-action="sync-link" data-game="${id}" data-link="${attr(found.linkId)}">读取并同步</button>` : `<button class="ghost-btn" data-action="scan-links">扫描</button>`}
         </div>`;
       }).join('')}
     </div>
@@ -580,7 +642,7 @@ function renderPasteImport() {
   return `<div class="card">
     <div class="card-head"><div class="card-title"><span class="mark"></span><h3>粘贴抽卡链接</h3><span>MANUAL URL</span></div></div>
     <div class="field" style="margin-top:14px"><label>抽卡记录链接</label><textarea id="paste-url" class="input" rows="5" placeholder="https://public-operation-hk4e.mihoyo.com/gacha_info/api/getGachaLog?authkey=..."></textarea></div>
-    <div style="display:flex;gap:8px;margin-top:12px"><button class="primary-btn" data-action="parse-link">${ICONS.link} 解析链接</button>${link ? `<button class="primary-btn" data-action="sync-paste">${ICONS.download} 读取并同步</button>` : ''}</div>
+    <div style="display:flex;gap:8px;margin-top:12px"><button class="primary-btn" data-action="parse-link">${ICONS.link} 解析链接</button><button class="ghost-btn" data-action="copy-paste-link">复制链接</button>${link ? `<button class="primary-btn" data-action="sync-paste">${ICONS.download} 读取并同步</button>` : ''}</div>
     ${link ? `<div class="link-preview"><div class="lp-icon">${ICONS.check || ICONS.link}</div><div class="lp-copy"><strong>${esc(link.gameName)} · 已识别${link.isOversea ? '国际服' : '国服'}</strong><span>${esc(link.preview)}</span></div><span class="badge accent">待同步</span></div>` : ''}
   </div>`;
 }
@@ -1078,6 +1140,22 @@ function renderView() {
   else if (state.view === 'catalog') root.innerHTML = renderCatalog();
   else if (state.view === 'settings') root.innerHTML = renderSettings();
   bindView();
+  if (state.view === 'import' && state.importTab === 'manual') {
+    const setFilter = (key, value) => { state.manualFilters = { ...(state.manualFilters || {}), [key]: value }; renderView(); };
+    $('#manual-version')?.addEventListener('change', (e) => setFilter('version', e.target.value));
+    $('#manual-attr')?.addEventListener('change', (e) => setFilter('attr', e.target.value));
+    $('#manual-field')?.addEventListener('change', (e) => setFilter('field', e.target.value));
+    $('#manual-form')?.addEventListener('submit', saveManualRecord);
+    const excel = $('#manual-excel-file');
+    const excelDrop = $('#manual-excel-drop');
+    excel?.addEventListener('change', () => { if (excel.files?.[0]) importManualExcel(excel.files[0]); });
+    if (excelDrop) {
+      excelDrop.addEventListener('click', (e) => { if (e.target !== excel) excel?.click(); });
+      for (const type of ['dragenter', 'dragover']) excelDrop.addEventListener(type, (e) => { e.preventDefault(); excelDrop.classList.add('dragover'); });
+      excelDrop.addEventListener('dragleave', () => excelDrop.classList.remove('dragover'));
+      excelDrop.addEventListener('drop', (e) => { e.preventDefault(); excelDrop.classList.remove('dragover'); const file = e.dataTransfer.files?.[0]; if (file) importManualExcel(file); });
+    }
+  }
   if (state.view === 'import' && state.importTab === 'qr' && state.qr?.url) drawQr();
 }
 
@@ -1120,6 +1198,8 @@ function bindView() {
   if (state.view === 'settings') {
     $('#uigf-file')?.addEventListener('change', importUigfFile);
   }
+  if (state.view === 'import') {
+  }
   if (state.view === 'import' && state.importTab === 'qr' && state.qr?.url) drawQr();
 }
 
@@ -1147,7 +1227,7 @@ document.addEventListener('click', async (e) => {
     if (action === 'switch-game') { setGame(el.dataset.game); return; }
     if (action === 'refresh') { setBusy(el, true); await refreshAll(); setBusy(el, false); return; }
     if (action === 'switch-import-tab') {
-      if (el.dataset.tab === 'screenshot' && !state.catalog) await loadCatalog();
+      if ((el.dataset.tab === 'screenshot' || el.dataset.tab === 'manual') && !state.catalog) await loadCatalog();
       state.importTab = el.dataset.tab;
       state.pendingLink = null;
       if (state.importTab !== 'qr') clearQrTimer();
@@ -1203,6 +1283,12 @@ document.addEventListener('click', async (e) => {
       toast(found ? `找到 ${found} 个可用的抽卡链接` : '没有找到链接，请先打开游戏内记录页');
       return;
     }
+    if (action === 'copy-scan-link') {
+      const data = await api(`/api/links/url?linkId=${encodeURIComponent(el.dataset.link || '')}`);
+      await copyText(data.url);
+      toast('链接已复制');
+      return;
+    }
     if (action === 'sync-link') {
       setBusy(el, true, '同步中');
       const data = await api('/api/sync', { method: 'POST', body: JSON.stringify({ game: el.dataset.game, linkId: el.dataset.link }) });
@@ -1220,6 +1306,13 @@ document.addEventListener('click', async (e) => {
       setBusy(el, false);
       renderView();
       toast('链接已识别，可以开始同步');
+      return;
+    }
+    if (action === 'copy-paste-link') {
+      const url = $('#paste-url')?.value?.trim();
+      if (!url) throw new Error('没有可复制的链接');
+      await copyText(url);
+      toast('链接已复制');
       return;
     }
     if (action === 'sync-paste') {
@@ -1253,20 +1346,16 @@ document.addEventListener('click', async (e) => {
       try { await window.desktop.applyUpdate(); } catch (e) { setBusy(el, false); toast(e.message, 'err', 6000); }
       return;
     }
+    if (action === 'manual-mode') {
+      state.manualMode = el.dataset.mode === 'table' ? 'table' : 'single';
+      renderView();
+      return;
+    }
     if (action === 'manual-add') {
-      const pools = state.dashboard?.pools || [];
-      const modal = openModal(`<h2>添加五星</h2><form id="manual-form" class="form-grid"><div class="field span-2"><label>名称</label><input class="input" name="name" required></div><div class="field"><label>时间</label><input class="input" type="datetime-local" name="time" required></div><div class="field"><label>卡池</label><select class="input" name="gachaType">${pools.map((p) => `<option value="${attr(p.type)}">${esc(p.label)}</option>`).join('')}</select></div><div class="field"><label>抽数</label><input class="input" type="number" min="0" name="pity"></div><div class="span-2" style="display:flex;justify-content:flex-end"><button class="primary-btn" type="submit">保存</button></div></form>`);
-      $('#manual-form').onsubmit = async (ev) => {
-        ev.preventDefault();
-        const fd = Object.fromEntries(new FormData(ev.target).entries());
-        try {
-          await api('/api/records/manual', { method: 'POST', body: JSON.stringify({ game: state.game, ...fd }) });
-          modal.close();
-          await loadRecords(1);
-          await loadDashboard();
-          toast('已添加');
-        } catch (err) { toast(err.message, 'err'); }
-      };
+      state.importTab = 'manual';
+      if (!state.catalog) await loadCatalog().catch(() => {});
+      state.view = 'import';
+      renderShell(); renderView();
       return;
     }
     if (action === 'records-page') { await loadRecords(Number(el.dataset.page)); return; }
@@ -1623,17 +1712,68 @@ async function qrGetLink(el) {
   finally { setBusy(el, false); }
 }
 
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return;
+  } catch {}
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  document.execCommand('copy');
+  ta.remove();
+}
+
 async function importUigfFile(e) {
-  const file = e.target.files?.[0];
+  const files = [...(e.target.files || [])];
+  await importUigfFiles(files);
+  e.target.value = '';
+}
+
+async function importUigfFiles(files) {
+  if (!files.length) return;
+  const messages = [];
+  for (const file of files) {
+    if (!/\.json$/i.test(file.name) && file.type && !/json/i.test(file.type)) { messages.push(`${file.name}：不是 JSON`); continue; }
+    try {
+      const data = JSON.parse(await file.text());
+      const result = await api('/api/import/uigf', { method: 'POST', body: JSON.stringify(data) });
+      messages.push(...result.summary.map((x) => `${x.gameName}：${x.totalPulls} 抽 / ${x.importedFive} 张五星`));
+    } catch (err) {
+      messages.push(`${file.name}：${err.message}`);
+    }
+  }
+  await refreshAll();
+  toast(messages.join('；'), 'ok', 6000);
+}
+
+async function importManualExcel(file) {
   if (!file) return;
   try {
-    const text = await file.text();
-    const data = JSON.parse(text);
-    const result = await api('/api/import/uigf', { method: 'POST', body: JSON.stringify(data) });
+    const buffer = await file.arrayBuffer();
+    let binary = '';
+    const bytes = new Uint8Array(buffer);
+    for (let i = 0; i < bytes.length; i += 0x8000) binary += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+    const data = await api('/api/manual/import', { method: 'POST', body: JSON.stringify({ game: state.game, fileName: file.name, data: btoa(binary) }) });
     await refreshAll();
-    toast(result.summary.map((s) => `${s.gameName}：${s.totalPulls} 抽 / 导入 ${s.importedFive} 张五星`).join('；'), 'ok', 6000);
-  } catch (err) { toast(err.message, 'err', 6000); }
-  finally { e.target.value = ''; }
+    toast(`已导入 ${data.count || 0} 条${data.skipped ? `，跳过 ${data.skipped} 行` : ''}`);
+  } catch (err) {
+    toast(err.message, 'err', 6000);
+  }
+}
+
+async function saveManualRecord(e) {
+  e.preventDefault();
+  const fd = Object.fromEntries(new FormData(e.target).entries());
+  if (!fd.name) { toast('请选择角色', 'err'); return; }
+  try {
+    await api('/api/records/manual', { method: 'POST', body: JSON.stringify({ game: state.game, ...fd }) });
+    await refreshAll();
+    toast('已添加');
+  } catch (err) { toast(err.message, 'err', 5000); }
 }
 
 // boot

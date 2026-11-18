@@ -546,3 +546,24 @@ td .cell-sub { color: var(--muted-2); font-size: 11px; margin-top: 2px; }
 .pool-chip { flex: 0 0 auto; border: 1px solid var(--line); background: rgba(255,255,255,.025); color: var(--muted); border-radius: 8px; padding: 6px 8px; font-size: 11.5px; cursor: pointer; white-space: nowrap; }
 .pool-chip:hover { border-color: rgba(var(--accent-rgb),.28); color: var(--text); }
 .pool-chip.active { color: var(--text); border-color: rgba(var(--accent-rgb),.5); background: rgba(var(--accent-rgb),.1); }
+
+
+:root { color-scheme: dark; }
+select, select option { color-scheme: dark; }
+select option { background-color: #111722; color: #e8edf7; }
+select option:checked { background-color: #24324a; color: #ffffff; }
+
+.badge.danger { color: #ff8a8a; border-color: rgba(255,120,120,.35); background: rgba(255,80,80,.08); }
+
+.dropzone.dragover { border-color: rgba(var(--accent-rgb),.65); background: rgba(var(--accent-rgb),.09); }
+
+.manual-filter { display: flex; align-items: center; gap: 8px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+.manual-filter .input { max-width: 160px; }
+.manual-filter-label { font-size: 11px; color: var(--muted-2); }
+.manual-count { margin-left: auto; font-size: 11px; color: var(--muted-2); }
+
+.manual-modes { display: flex; gap: 8px; margin-top: 12px; }
+.manual-modes .ghost-btn.active { border-color: rgba(var(--accent-rgb),.55); color: var(--text); background: rgba(var(--accent-rgb),.08); }
+.manual-table-head { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+
+.manual-note { margin-top: 12px; font-size: 11px; color: var(--muted-2); }

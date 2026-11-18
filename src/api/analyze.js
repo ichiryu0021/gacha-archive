@@ -53,7 +53,7 @@ function slimRecord(r) {
     id: r.id, time: r.time, name: r.name, itemId: r.itemId, itemType: r.itemType,
     rank: r.rank, gachaType: r.gachaType, uigfType: r.uigfType,
     poolName: r.poolName, pity: r.pity, up: r.up, version: r.version || null,
-    source: r.source, synthetic: r.synthetic,
+    source: r.source, synthetic: r.synthetic, order: r.order ?? null,
   };
 }
 
@@ -66,7 +66,8 @@ export function analyzeGame({ gameId, account, catalog }) {
   const snapshots = [...(account?.snapshots || [])].sort((a, b) => String(a.periodStart || '').localeCompare(String(b.periodStart || '')));
 
   const totals = account?.totals || {};
-  const exactTotal = Math.max(0, Number(totals.exact) || 0);
+  const allExactTotal = Math.max(0, Number(totals.exact) || 0);
+  const exactTotal = allExactTotal;
   const hasExactTotals = exactTotal > 0;
   const perType = totals.perType || {};
   const currentPityStored = totals.currentPity || {};
@@ -76,6 +77,11 @@ export function analyzeGame({ gameId, account, catalog }) {
     r.version = r.version || versionFor(gameId, r.time);
   }
 
+  const limitedPoolSet = new Set([...(CHARACTER_POOLS[gameId] || []), ...(WEAPON_POOLS[gameId] || [])]);
+  const careerFive = fiveExact.filter((r) => limitedPoolSet.has(String(r.uigfType || r.gachaType)));
+  const careerPulls = Object.entries(perType)
+    .filter(([key]) => limitedPoolSet.has(String(key)))
+    .reduce((sum, [, n]) => sum + (Number(n?.total ?? n) || 0), 0) || exactTotal;
   const exactFive = fiveExact.length;
   const fiveUp = fiveExact.filter((r) => r.up === 'win').length;
   const fiveLoss = fiveExact.filter((r) => r.up === 'loss').length;
@@ -118,8 +124,10 @@ export function analyzeGame({ gameId, account, catalog }) {
     });
   }
 
-  const firstExact = totals.start || fiveExact[0]?.time || account?.lastSync || null;
-  const lastExact = totals.end || fiveExact[fiveExact.length - 1]?.time || account?.lastSync || null;
+  const firstCareer = careerFive[0]?.time || totals.start || account?.lastSync || null;
+  const lastCareer = careerFive[careerFive.length - 1]?.time || totals.end || account?.lastSync || null;
+  const firstExact = firstCareer;
+  const lastExact = lastCareer;
   const exactRange = { start: datePart(firstExact || ''), end: datePart(lastExact || '') };
   const intervals = selectedSnapshots.map((s) => ({
     start: datePart(s.periodStart || game.launchDate),
@@ -202,7 +210,7 @@ export function analyzeGame({ gameId, account, catalog }) {
   }));
 
   const itemMap = new Map();
-  for (const r of fiveExact) {
+  for (const r of careerFive) {
     const entry = itemMap.get(r.name) || { name: r.name, rank: 5, count: 0, lastTime: r.time, itemId: r.itemId, type: r.itemType };
     entry.count++;
     if (r.time > entry.lastTime) entry.lastTime = r.time;
@@ -211,14 +219,14 @@ export function analyzeGame({ gameId, account, catalog }) {
   const fiveItems = [...itemMap.values()].sort((a, b) => b.count - a.count || b.lastTime.localeCompare(a.lastTime));
 
   const monthlyMap = new Map();
-  for (const r of fiveExact) {
+  for (const r of careerFive) {
     const m = monthPart(r.time);
     if (!m) continue;
     monthlyMap.set(m, (monthlyMap.get(m) || 0) + 1);
   }
   const monthly = [...monthlyMap.entries()].sort((a, b) => a[0].localeCompare(b[0])).map(([month, five]) => ({ month, five }));
   const versionMap = new Map();
-  for (const r of fiveExact) {
+  for (const r of careerFive) {
     if (!r.version) continue;
     versionMap.set(r.version, (versionMap.get(r.version) || 0) + 1);
   }
@@ -226,6 +234,11 @@ export function analyzeGame({ gameId, account, catalog }) {
   const versions = [...versionMap.entries()]
     .sort((a, b) => (order.indexOf(a[0]) - order.indexOf(b[0])) || a[0].localeCompare(b[0]))
     .map(([label, five]) => ({ label, five }));
+  const versionLabels = [...new Set([...order, ...versions.map((v) => v.label)])]
+    .sort((a, b) => {
+      const pa = a.split('.').map(Number); const pb = b.split('.').map(Number);
+      return (pa[0] - pb[0]) || (pa[1] || 0) - (pb[1] || 0);
+    });
 
   const buckets = [
     { label: '1–40', min: 1, max: 40, count: 0 },
@@ -234,7 +247,7 @@ export function analyzeGame({ gameId, account, catalog }) {
     { label: '71–80', min: 71, max: 80, count: 0 },
     { label: '81+', min: 81, max: 999, count: 0 },
   ];
-  for (const r of fiveExact) {
+  for (const r of careerFive) {
     if (!r.pity) continue;
     const b = buckets.find((x) => r.pity >= x.min && r.pity <= x.max);
     if (b) b.count++;
@@ -274,8 +287,10 @@ export function analyzeGame({ gameId, account, catalog }) {
     mode: 'five-star-only',
     meta: account ? { uid: account.uid, nickname: account.nickname, region: account.region, lastSync: account.lastSync } : null,
     counts: {
-      exact: exactTotal,
+      exact: allExactTotal,
       exactFive,
+      limitedExact: careerPulls,
+      limitedFiveAll: careerFive.length,
       lifetime: lifetimePulls,
       lifetimeFive,
       snapshotOnly: Math.max(0, lifetimePulls - exactTotal),
@@ -314,8 +329,9 @@ export function analyzeGame({ gameId, account, catalog }) {
     pools,
     monthly,
     versions,
+    versionLabels,
     fiveItems,
-    recentFive: [...fiveExact].sort((a, b) => b.time.localeCompare(a.time)).slice(0, 12).map(slimRecord),
+    recentFive: [...careerFive].sort((a, b) => b.time.localeCompare(a.time)).slice(0, 12).map(slimRecord),
     records: [...fiveExact].sort((a, b) => b.time.localeCompare(a.time)).map(slimRecord),
     snapshots: snapshotDetails,
     coverage: {

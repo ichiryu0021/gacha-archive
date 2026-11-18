@@ -7,6 +7,7 @@
 - **Electron** — MIT License — https://github.com/electron/electron
 - **QR Code Generator for JavaScript** — Copyright (c) 2009 Kazuhiko Arase — MIT License — http://www.d-project.com/
 - **genshin-db** — MIT License — https://github.com/theBowja/genshin-db
+- **SheetJS xlsx** — Apache License 2.0 — https://github.com/SheetJS/sheetjs
 
 ## 数据与素材
 

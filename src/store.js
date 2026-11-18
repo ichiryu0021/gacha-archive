@@ -145,11 +145,12 @@ export class Store {
       r.uigfType = String(r.uigfType || r.uigf_gacha_type || r.gachaType);
       r.rank = Number(r.rank || r.rank_type || 0) || 0;
       r.source = r.source || options.source || 'official';
+      r.order = Number.isFinite(Number(r.order)) ? Number(r.order) : null;
       r.synthetic = Boolean(r.synthetic || !r.id);
       if (!r.name && !r.time) { skipped++; continue; }
       if (r.id && byId.has(r.id)) {
         const existing = byId.get(r.id);
-        for (const key of ['pity', 'up', 'name', 'rank', 'itemId', 'itemType', 'poolName', 'time', 'source']) {
+        for (const key of ['pity', 'up', 'name', 'rank', 'itemId', 'itemType', 'poolName', 'time', 'source', 'order']) {
           if (r[key] !== undefined && r[key] !== null) existing[key] = r[key];
         }
         existing.synthetic = false;
@@ -175,7 +176,7 @@ export class Store {
       if (match) {
         const existing = match.r;
         match.used = true;
-        for (const key of ['pity', 'up', 'version', 'name', 'rank', 'itemId', 'itemType', 'poolName', 'time', 'source']) {
+        for (const key of ['pity', 'up', 'version', 'name', 'rank', 'itemId', 'itemType', 'poolName', 'time', 'source', 'order']) {
           if (r[key] !== undefined && r[key] !== null && r[key] !== '') existing[key] = r[key];
         }
         if (!r.id) {
@@ -207,7 +208,11 @@ export class Store {
       identities.get(identity).push({ r, used: false });
       added++;
     }
-    acc.records.sort((a, b) => (a.time || '').localeCompare(b.time || '') || String(a.id).localeCompare(String(b.id)));
+    acc.records.sort((a, b) => {
+      if (a.time && b.time) return a.time.localeCompare(b.time) || String(a.id).localeCompare(String(b.id));
+      if (!a.time && !b.time) return (Number(a.order) || 0) - (Number(b.order) || 0) || String(a.id).localeCompare(String(b.id));
+      return a.time ? -1 : 1;
+    });
     if (incoming[0]?.uid && !acc.uid) acc.uid = String(incoming[0].uid);
     if (options.meta) {
       for (const key of ['uid', 'nickname', 'region', 'gameBiz', 'lang', 'timezone']) {

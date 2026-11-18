@@ -17,3 +17,7 @@ electron-out.log
 pack-*.log
 __pycache__/
 *.pyc
+
+data/imports/
+
+data/electron/

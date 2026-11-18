@@ -6,6 +6,15 @@ const net = require('node:net');
 const path = require('node:path');
 const { pathToFileURL } = require('node:url');
 
+const portableDataRoot = app.isPackaged
+  ? path.join(path.dirname(process.execPath), 'data')
+  : path.join(app.getAppPath(), 'data');
+const legacyUserData = app.getPath('userData');
+fs.mkdirSync(path.join(portableDataRoot, 'electron'), { recursive: true });
+app.commandLine.appendSwitch('user-data-dir', path.join(portableDataRoot, 'electron'));
+app.setPath('userData', path.join(portableDataRoot, 'electron'));
+app.setPath('sessionData', path.join(portableDataRoot, 'electron'));
+
 const gotLock = app.requestSingleInstanceLock();
 if (!gotLock) {
   app.quit();
@@ -28,9 +37,7 @@ function freePort() {
 }
 
 async function prepareDataDir() {
-  const target = app.isPackaged
-    ? path.join(path.dirname(process.execPath), 'data')
-    : path.join(app.getAppPath(), 'data');
+  const target = portableDataRoot;
   await fsp.mkdir(path.join(target, 'uploads'), { recursive: true });
   await fsp.mkdir(path.join(target, 'assets'), { recursive: true });
   const bundled = path.join(app.getAppPath(), 'data');
@@ -41,7 +48,7 @@ async function prepareDataDir() {
     }
   }
   // one-time migration from the old AppData location, never delete source
-  const old = path.join(app.getPath('userData'), 'data');
+  const old = path.join(legacyUserData, 'data');
   const oldApp = path.join(old, 'app.json');
   const newApp = path.join(target, 'app.json');
   if (!fs.existsSync(newApp) && fs.existsSync(oldApp)) {

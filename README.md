@@ -1,6 +1,6 @@
 # 米游档案
 
-[GitHub](https://github.com/ichiryu0021/miyou-archive) · [MIT License](https://github.com/ichiryu0021/miyou-archive/blob/main/LICENSE) · v1.06 · 开源项目
+[GitHub](https://github.com/ichiryu0021/miyou-archive) · [MIT License](https://github.com/ichiryu0021/miyou-archive/blob/main/LICENSE) · v1.07 · 开源项目
 
 本地桌面版米哈游五星抽卡档案：原神 / 崩坏：星穹铁道 / 绝区零，另含崩坏3 / 未定事件簿手动档案。自动读取本机游戏缓存、后台半自动同步、截图 OCR 补录，只保存五星记录。
 
@@ -18,7 +18,8 @@
 - 同一五星会按名称、卡池、时间窗口自动匹配；官方记录会升级截图记录，避免重复。
 - 五星记录按卡池分组；横条显示出金抽数，>20 为红、<20 为绿；<20 标「欧」，≤10 标「连金」。
 - 设置里可调整游戏顺序、隐藏游戏卡片。
-- 截图补录支持点击图标本地匹配（浏览器本地算法，无需安装 OpenCV）。
+- 手动添加支持按版本、属性、命途/地区筛选角色。
+- 截图补录支持点击图标本地匹配。
 - 数据与备份保存在软件目录下的 `data`，不写入 AppData。
 - 米游社登录状态保存到 `data/miyoushe-session.dat`，使用 Windows DPAPI 加密；重启后自动恢复并显示昵称。
 - 支持 UIGF v4 / v3 / SRGF v1 导入，及 UIGF/CSV/整库备份导出。
@@ -27,7 +28,7 @@
 
 `src/` 本地服务与抓取逻辑 · `electron/` 桌面壳 · `public/` 界面 · `data/` 内置图鉴 · `tests/` 测试。
 
-数据保存在 `%APPDATA%\米游档案\data`，含 `app.json`、`app.json.bak` 和 `backups/`。
+数据保存在软件目录下 `data`，含 `app.json`、`app.json.bak` 和 `backups/`。
 
 ## 说明
 

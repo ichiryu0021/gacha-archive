@@ -1,7 +1,7 @@
 {
   "name": "miyou-archive",
-  "version": "1.6.0",
-  "displayVersion": "1.06",
+  "version": "1.7.0",
+  "displayVersion": "1.07",
   "private": true,
   "license": "MIT",
   "description": "米哈游五星抽卡本地档案：自动读链、官方同步、截图补录、图鉴与自动更新",
@@ -25,5 +25,8 @@
     "type": "git",
     "url": "https://github.com/ichiryu0021/miyou-archive.git"
   },
-  "productName": "米游档案"
+  "productName": "米游档案",
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  }
 }

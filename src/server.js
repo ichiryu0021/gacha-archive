@@ -21,6 +21,57 @@ import { createQrSession, fetchZzzFullHistory, generateAuthkey, getAllRoles, get
 import { buildCsv, buildUigf, importUigf } from './api/uigf.js';
 import { parseScreenshot, saveReviewedRecords } from './api/ocr.js';
 import { Collector } from './api/collector.js';
+import * as XLSX from 'xlsx';
+
+
+const MANUAL_HEADERS = ['名称', '卡池', '版本', '抽数', '时间'];
+const MANUAL_DEFAULT_POOL = { genshin: '301', hsr: '11', zzz: '2', hi3: '1', tot: '1' };
+
+function manualCell(row, keys) {
+  for (const key of keys) {
+    const value = row[key];
+    if (value !== undefined && value !== null && String(value).trim() !== '') return String(value).trim();
+  }
+  return '';
+}
+
+function manualPool(game, value) {
+  const text = String(value || '').trim();
+  if (!text) return MANUAL_DEFAULT_POOL[game.id] || game.types[0];
+  for (const [type, label] of Object.entries(game.pools || {})) {
+    if (text === type || text === label) return type;
+  }
+  return MANUAL_DEFAULT_POOL[game.id] || game.types[0];
+}
+
+function manualTime(value) {
+  if (!value) return '';
+  let text = String(value).trim().replace(/^(\d{4})\/(\d{1,2})\/(\d{1,2})/, (_, y, m, d) => `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`);
+  text = text.replace('T', ' ').slice(0, 19);
+  if (/^\d{4}-\d{2}-\d{2}$/.test(text)) text += ' 00:00:00';
+  if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/.test(text)) text += ':00';
+  if (!/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(text)) throw new Error(`时间格式不正确：${text}`);
+  return text;
+}
+
+function manualRecord(game, row, order = 0) {
+  const g = getGame(game);
+  const name = manualCell(row, ['名称', '角色', 'name', 'Name']);
+  if (!name) return null;
+  const gachaType = manualPool(g, manualCell(row, ['卡池', 'pool', 'gacha_type', 'gachaType']));
+  const version = manualCell(row, ['版本', 'version']);
+  const pityText = manualCell(row, ['抽数', 'pity']);
+  const pity = Number(pityText);
+  const time = manualTime(manualCell(row, ['时间', 'time']));
+  return {
+    id: '', uid: '', gachaType, uigfType: g.uigfMap[gachaType] || gachaType,
+    itemId: '', count: 1, time, name, itemType: '', rank: 5, lang: 'zh-cn',
+    poolName: g.pools[gachaType] || '手动', source: 'manual', synthetic: true,
+    pity: Number.isFinite(pity) && pity > 0 ? pity : null,
+    version: version || undefined,
+    order,
+  };
+}
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 await fsp.mkdir(DATA_DIR, { recursive: true });
@@ -254,21 +305,74 @@ async function routeApi(req, res, url) {
       pools: analysis.pools, generatedAt: analysis.generatedAt,
     });
   }
+  if (req.method === 'GET' && pathname === '/api/manual/template') {
+    const game = sanitizeGame(url.searchParams.get('game'));
+    const g = getGame(game);
+    const first = MANUAL_DEFAULT_POOL[game] || g.types[0];
+    const ws = XLSX.utils.aoa_to_sheet([MANUAL_HEADERS]);
+    ws['!cols'] = [{ wch: 18 }, { wch: 20 }, { wch: 10 }, { wch: 10 }, { wch: 20 }];
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, '手动记录');
+    const help = XLSX.utils.aoa_to_sheet([
+      ['填写说明'],
+      ['第一行填写最新记录，向下按从新到旧顺序填写。'],
+      ['卡池填写卡池名称；版本和时间可以留空。'],
+      ['结果（UP/歪）由软件自动判断，不需要填写。'],
+      ['请勿修改表头，不需要的行请整行删除。'],
+    ]);
+    help['!cols'] = [{ wch: 64 }];
+    XLSX.utils.book_append_sheet(wb, help, '说明');
+    const buffer = XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' });
+    res.writeHead(200, {
+      'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      'Content-Disposition': 'attachment; filename="miyou-manual-template.xlsx"',
+      'Content-Length': buffer.length,
+    });
+    res.end(buffer);
+    return;
+  }
+  if (req.method === 'POST' && pathname === '/api/manual/import') {
+    const body = await readJsonBody(req, 30 * 1024 * 1024);
+    const game = sanitizeGame(body.game);
+    const base64 = String(body.data || '').replace(/^data:.*?base64,/, '');
+    if (!base64) throw new Error('没有收到表格文件');
+    let workbook;
+    try { workbook = XLSX.read(Buffer.from(base64, 'base64'), { type: 'buffer', cellDates: true }); }
+    catch { throw new Error('无法读取这个表格，请使用导出的模板'); }
+    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+    const rows = XLSX.utils.sheet_to_json(sheet, { defval: '', raw: false });
+    const records = [];
+    const errors = [];
+    for (const [index, row] of rows.entries()) {
+      try {
+        const rec = manualRecord(game, row, index);
+        if (rec) records.push(rec);
+      } catch (e) {
+        errors.push(`第 ${index + 2} 行：${e.message}`);
+      }
+    }
+    if (!records.length) throw new Error(errors[0] || '表格里没有可导入的记录');
+    const result = store.mergeRecords(game, records, { source: 'manual' });
+    await store.flush(true);
+    return ok(res, { result, count: records.length, skipped: rows.length - records.length, errors: errors.slice(0, 5) });
+  }
   if (req.method === 'POST' && pathname === '/api/records/manual') {
     const body = await readJsonBody(req);
     const game = sanitizeGame(body.game);
     const name = String(body.name || '').trim();
     const time = String(body.time || '').replace('T', ' ').slice(0, 19);
     if (!name) throw new Error('缺少名称');
-    if (!/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}(:\d{2})?$/.test(time)) throw new Error('时间格式不正确');
+    if (time && !/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}(:\d{2})?$/.test(time)) throw new Error('时间格式不正确');
     const gachaType = String(body.gachaType || '1');
+    const version = String(body.version || '').trim();
+    const up = body.up === 'win' || body.up === 'loss' ? body.up : '';
     const g = getGame(game);
     const rec = {
       id: '', uid: '', gachaType, uigfType: g.uigfMap[gachaType] || gachaType,
-      itemId: '', count: 1, time: time.length === 16 ? time + ':00' : time,
-      name, itemType: '', rank: 5, lang: 'zh-cn',
+      itemId: '', count: 1, time: time ? (time.length === 16 ? time + ':00' : time) : '',
+      name, itemType: String(body.itemType || ''), rank: 5, lang: 'zh-cn',
       poolName: g.pools[gachaType] || '手动', source: 'manual', synthetic: true,
-      pity: Number(body.pity) || null,
+      pity: Number(body.pity) || null, version: version || undefined, up: up || undefined,
     };
     const result = store.mergeRecords(game, [rec], { source: 'manual' });
     await store.flush(true);
@@ -277,6 +381,12 @@ async function routeApi(req, res, url) {
   if (req.method === 'POST' && pathname === '/api/links/scan') {
     const result = await scanLocalLinks();
     return ok(res, result);
+  }
+  if (req.method === 'GET' && pathname === '/api/links/url') {
+    const linkId = new URL(req.url, 'http://127.0.0.1').searchParams.get('linkId') || '';
+    const source = getRememberedSource(linkId);
+    if (!source) throw new Error('链接已过期，请重新扫描');
+    return ok(res, { url: source.rawUrl || source.displayUrl || '' });
   }
   if (req.method === 'POST' && pathname === '/api/links/parse') {
     const body = await readJsonBody(req);
