@@ -35,9 +35,10 @@ function inferUp(gameId, record) {
   const game = getGame(gameId);
   if (record.rank !== 5) return null;
   const pool = String(record.uigfType || record.gachaType);
-  const standard = new Set(game.standard5);
+  const norm = (v) => String(v || '').replace(/[「」『』“”"]/g, '').trim();
+  const standard = new Set((game.standard5 || []).map(norm));
   if (CHARACTER_POOLS[gameId]?.has(pool) || WEAPON_POOLS[gameId]?.has(pool)) {
-    return standard.has(record.name) ? 'loss' : 'win';
+    return standard.has(norm(record.name)) ? 'loss' : 'win';
   }
   return null;
 }
