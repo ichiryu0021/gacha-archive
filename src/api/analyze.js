@@ -72,7 +72,7 @@ export function analyzeGame({ gameId, account, catalog }) {
   const currentPityStored = totals.currentPity || {};
 
   for (const r of fiveExact) {
-    r.up = inferUp(gameId, r);
+    if (r.up !== 'win' && r.up !== 'loss') r.up = inferUp(gameId, r);
     r.version = r.version || versionFor(gameId, r.time);
   }
 

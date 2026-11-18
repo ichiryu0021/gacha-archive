@@ -175,6 +175,13 @@ export class Store {
       if (match) {
         const existing = match.r;
         match.used = true;
+        for (const key of ['pity', 'up', 'version', 'name', 'rank', 'itemId', 'itemType', 'poolName', 'time', 'source']) {
+          if (r[key] !== undefined && r[key] !== null && r[key] !== '') existing[key] = r[key];
+        }
+        if (!r.id) {
+          skipped++;
+          continue;
+        }
         if (r.id && existing.synthetic) {
           const oldId = existing.id;
           Object.assign(existing, r, {
@@ -213,9 +220,21 @@ export class Store {
     return { added, skipped, upgraded, total: acc.records.length };
   }
 
+  setFullTotals(game, totals) {
+    const acc = this.ensureAccount(game);
+    acc.totals = { ...totals, full: true, daily: {}, updatedAt: new Date().toISOString() };
+    this.touch();
+    return acc.totals;
+  }
+
   setTotals(game, totals) {
     const acc = this.ensureAccount(game);
     const prev = acc.totals || {};
+    if (prev.full && !totals.replaceFull) {
+      acc.totals = { ...prev, currentPity: totals.currentPity || prev.currentPity, updatedAt: new Date().toISOString() };
+      this.touch();
+      return acc.totals;
+    }
     const mergedDaily = { ...(prev.daily || {}) };
     for (const [key, count] of Object.entries(totals.daily || {})) {
       mergedDaily[key] = Math.max(Number(mergedDaily[key]) || 0, Number(count) || 0);
