@@ -5,7 +5,7 @@ import http from 'node:http';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  APP_VERSION, ASSET_DIR, BUNDLED_DATA_DIR, DATA_DIR, GAMES, GAME_IDS, HOST, PORT, PUBLIC_DIR, ROOT, UPLOAD_DIR,
+  APP_VERSION, APP_DISPLAY_VERSION, ASSET_DIR, BUNDLED_DATA_DIR, DATA_DIR, GAMES, GAME_IDS, HOST, PORT, PUBLIC_DIR, ROOT, UPLOAD_DIR,
   getGame, isAllowedAssetHost,
 } from './config.js';
 import { Store } from './store.js';
@@ -212,6 +212,7 @@ async function routeApi(req, res, url) {
   if (req.method === 'GET' && pathname === '/api/state') {
     return ok(res, {
       version: APP_VERSION,
+      displayVersion: APP_DISPLAY_VERSION,
       dataDir: DATA_DIR,
       gameOrder: store.state.settings?.gameOrder || GAME_IDS,
       hiddenGames: store.state.settings?.hiddenGames || [],

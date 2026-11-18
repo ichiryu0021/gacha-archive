@@ -190,7 +190,7 @@ function renderShell() {
   }).join('');
   const logged = state.auth.status === 'Confirmed';
   $('#account-chip').innerHTML = `<button class="auth-entry ${logged ? 'on' : ''}" data-action="open-auth"><span class="auth-entry-icon">${logged ? '米' : ICONS.qr}</span><span class="auth-entry-copy"><strong>${logged ? (esc(state.auth.user?.nickname) || '米游社') : '米游社登录'}</strong></span></button>`;
-  $('#side-version').textContent = `v${state.shell?.version || '0.9.0'}`;
+  $('#side-version').textContent = `v${state.shell?.displayVersion || state.shell?.version || '1.05'}`;
   const foot = $('#foot-meta');
   if (foot) foot.textContent = '';
 }
@@ -307,7 +307,7 @@ function renderDashboard() {
           <div style="text-align:right;position:relative;z-index:1">
             <div class="hero-kicker" style="justify-content:flex-end">最新五星</div>
             <div style="margin-top:12px;display:flex;justify-content:flex-end">${recent ? itemIcon(recent.name, recent.itemId, 'large') : '<div class="item-icon large"><span class="fallback">✦</span></div>'}</div>
-            <div style="font-size:10px;color:var(--muted);margin-top:8px">${recent ? esc(recent.name) : '等待记录'}</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:8px">${recent ? esc(recent.name) : '等待记录'}</div>
           </div>
         </div>
       </div>
@@ -323,10 +323,10 @@ function renderDashboard() {
         <div class="card" style="padding:16px 19px;min-height:105px">
           <div style="display:flex;justify-content:space-between;align-items:center">
             <div class="stat-label">当前垫抽 <span class="mini">${currentPool ? esc(currentPool.label) : '暂无'}</span></div>
-            <div style="font-family:var(--mono);font-size:24px;font-weight:300;color:var(--accent)">${d.pity.hasCurrent ? currentPity : '—'}<small style="font-size:9px;color:var(--muted)">${d.pity.hasCurrent ? `/${cap}` : ''}</small></div>
+            <div style="font-family:var(--mono);font-size:26px;font-weight:300;color:var(--accent)">${d.pity.hasCurrent ? currentPity : '—'}<small style="font-size:11px;color:var(--muted)">${d.pity.hasCurrent ? `/${cap}` : ''}</small></div>
           </div>
           <div class="pool-bar" style="margin-top:11px"><i style="width:${progress}%"></i></div>
-          <div style="font-size:8.5px;color:var(--muted-2);margin-top:7px">${d.pity.hasCurrent ? `距离保底还有 ${Math.max(0, cap - currentPity)} 抽 · 当前垫抽为近似值` : '同步官方接口后显示当前垫抽'}</div>
+          <div style="font-size:10.5px;color:var(--muted-2);margin-top:7px">${d.pity.hasCurrent ? `距离保底还有 ${Math.max(0, cap - currentPity)} 抽 · 当前垫抽为近似值` : '同步官方接口后显示当前垫抽'}</div>
         </div>
       </div>
     </div>
@@ -554,7 +554,7 @@ function renderAutoImport() {
     <div class="card-head" style="margin-bottom:10px"><div class="card-title"><span class="mark"></span><h3>后台半自动采集</h3><span>AUTO COLLECTOR</span></div><span class="badge ${colOn ? 'accent' : ''}">${colOn ? '运行中' : '已暂停'}</span></div>
     <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px">
       <button class="primary-btn" data-action="collector-toggle" data-enabled="${colOn ? 'false' : 'true'}">${colOn ? '暂停后台采集' : '开启后台采集'}</button>
-      <span style="font-size:9px;color:var(--muted-2)">${col?.lastRun ? `上次扫描 ${timeAgo(col.lastRun)}` : '等待首次扫描'} · 间隔 ${Math.round((col?.intervalMs || 30000) / 1000)} 秒</span>
+      <span style="font-size:11px;color:var(--muted-2)">${col?.lastRun ? `上次扫描 ${timeAgo(col.lastRun)}` : '等待首次扫描'} · 间隔 ${Math.round((col?.intervalMs || 30000) / 1000)} 秒</span>
     </div>
     ${events.length ? `<div style="margin-top:12px;border-top:1px solid var(--line);padding-top:8px">${events.slice(0, 4).map((e) => `<div class="kv"><span>${esc(GAME_META[e.game]?.name || e.gameName || e.game)} · ${esc(e.ok ? '已同步' : '未同步')}</span><b>${esc(e.message)}${e.added ? ` · +${e.added} 金` : ''}${e.upgraded ? ` · 提升 ${e.upgraded}` : ''}</b></div>`).join('')}</div>` : ''}
   </div>`;
@@ -571,7 +571,7 @@ function renderAutoImport() {
       }).join('')}
     </div>
     <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap"><button class="primary-btn" data-action="scan-links">${ICONS.refresh} 扫描本机链接</button><button class="ghost-btn" data-action="switch-import-tab" data-tab="paste">没有找到？粘贴链接</button></div>
-    ${scan ? `<details style="margin-top:16px"><summary style="cursor:pointer;color:var(--muted);font-size:10px">查看扫描诊断（${scan.diagnostics?.length || 0} 项）</summary><div style="margin-top:10px;max-height:220px;overflow:auto;font-family:var(--mono);font-size:8.5px;color:var(--muted-2);line-height:1.8">${(scan.diagnostics || []).map((x) => `${esc(x.type)} · ${esc(x.game)} · ${esc(x.path || x.file || x.installDir || '')}${x.exists === false ? ' · 不存在' : ''}${x.error ? ' · ' + esc(x.error) : ''}`).join('<br>')}</div></details>` : ''}
+    ${scan ? `<details style="margin-top:16px"><summary style="cursor:pointer;color:var(--muted);font-size:12px">查看扫描诊断（${scan.diagnostics?.length || 0} 项）</summary><div style="margin-top:10px;max-height:220px;overflow:auto;font-family:var(--mono);font-size:10.5px;color:var(--muted-2);line-height:1.8">${(scan.diagnostics || []).map((x) => `${esc(x.type)} · ${esc(x.game)} · ${esc(x.path || x.file || x.installDir || '')}${x.exists === false ? ' · 不存在' : ''}${x.error ? ' · ' + esc(x.error) : ''}`).join('<br>')}</div></details>` : ''}
   </div>`;
 }
 
@@ -1022,7 +1022,7 @@ function renderCatalog() {
     <div class="search-box">${ICONS.search}<input id="catalog-search" class="input" placeholder="搜索角色、武器、光锥、音擎…" value="${attr(f.search)}"></div>
     <select id="catalog-type" class="select" style="width:140px"><option value="all">全部类型</option>${types.map((t) => `<option value="${attr(t)}" ${f.type === t ? 'selected' : ''}>${esc(t)}</option>`).join('')}</select>
     <select id="catalog-rarity" class="select" style="width:120px"><option value="all">全部星级</option><option value="5" ${f.rarity === '5' ? 'selected' : ''}>五星</option><option value="4" ${f.rarity === '4' ? 'selected' : ''}>四星</option><option value="3" ${f.rarity === '3' ? 'selected' : ''}>三星</option></select>
-    <span class="hint" style="margin-left:auto;color:var(--muted-2);font-size:9px">${c.items.length} 条 · ${esc(c.version || '')}</span>
+    <span class="hint" style="margin-left:auto;color:var(--muted-2);font-size:11px">${c.items.length} 条 · ${esc(c.version || '')}</span>
   </div>
   <div class="card"><div class="catalog-grid">${items.length ? items.map((i) => `<div class="catalog-item"><div class="art ${i.iconUrl ? '' : 'img-missing'}"><span class="fallback">✦</span>${i.iconUrl ? `<img loading="lazy" src="${attr(i.iconUrl)}" alt="" onerror="this.remove();this.parentElement.classList.add('img-missing')">` : ''}<span class="rarity-line">${'★'.repeat(Math.min(5, i.rarity || 0))}</span>${owned.has(i.name) ? `<span class="owned">✓</span>` : ''}</div><div class="meta"><strong title="${attr(i.name)}">${esc(i.name)}</strong><span>${esc(i.type)}${i.path ? ` · ${esc(i.path)}` : ''}</span></div></div>`).join('') : `<div class="catalog-empty">没有匹配的图鉴条目</div>`}</div></div>
 `;
@@ -1056,7 +1056,7 @@ function renderSettings() {
     </div>
     <div class="card">
       <div class="card-head"><div class="card-title"><span class="mark"></span><h3>软件更新</h3><span>UPDATE</span></div></div>
-      <div class="setting-row"><div class="setting-copy"><strong>当前版本</strong><span>v${esc(state.shell?.version || '1.0.0')}</span></div><button class="ghost-btn" data-action="check-update">检查更新</button></div>
+      <div class="setting-row"><div class="setting-copy"><strong>当前版本</strong><span>v${esc(state.shell?.displayVersion || state.shell?.version || '1.05')}</span></div><button class="ghost-btn" data-action="check-update">检查更新</button></div>
       ${state.update?.checking ? '<div class="kv"><span>状态</span><b>检查中…</b></div>' : ''}
       ${state.update && !state.update.checking ? `<div class="kv"><span>最新版本</span><b>v${esc(state.update.latest || '—')}</b></div>${state.update.hasUpdate ? `<div style="padding:10px 16px 14px"><button class="primary-btn" data-action="apply-update">更新到 v${esc(state.update.latest)}</button></div>` : ''}` : ''}
     </div>
