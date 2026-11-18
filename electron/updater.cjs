@@ -46,7 +46,7 @@ async function checkUpdates() {
 }
 
 async function download(url, dest) {
-  const res = await fetch(url, { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(120000) });
+  const res = await fetch(url, { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(30 * 60 * 1000) });
   if (!res.ok) throw new Error(`下载失败 ${res.status}`);
   await fsp.writeFile(dest, Buffer.from(await res.arrayBuffer()));
 }
@@ -72,7 +72,7 @@ async function applyUpdate() {
     await download(latestAsset, zip);
     const extract = path.join(work, 'extract');
     await fsp.mkdir(extract, { recursive: true });
-    await execFileAsync('tar.exe', ['-xf', zip, '-C', extract], { windowsHide: true, timeout: 120000 });
+    await execFileAsync('tar.exe', ['-xf', zip, '-C', extract], { windowsHide: true, timeout: 10 * 60 * 1000 });
     const sourceApp = await findAppRoot(extract);
     if (!sourceApp) throw new Error('更新包结构不正确');
     const targetApp = app.getAppPath();
