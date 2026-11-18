@@ -26,7 +26,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 await fsp.mkdir(DATA_DIR, { recursive: true });
 await fsp.mkdir(UPLOAD_DIR, { recursive: true });
 await fsp.mkdir(ASSET_DIR, { recursive: true });
-for (const name of ['catalog-genshin.json', 'catalog-hsr.json', 'catalog-zzz.json', 'catalog-hi3.json', 'catalog-tot.json']) {
+for (const name of ['catalog-genshin.json', 'catalog-hsr.json', 'catalog-zzz.json', 'catalog-hi3.json', 'catalog-tot.json', 'versions-zzz.json']) {
   const target = path.join(DATA_DIR, name);
   const source = path.join(BUNDLED_DATA_DIR, name);
   if (!fs.existsSync(target) && fs.existsSync(source)) await fsp.copyFile(source, target);

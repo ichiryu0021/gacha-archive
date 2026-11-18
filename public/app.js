@@ -130,7 +130,13 @@ function iconSvg(name, cls = '') { return `<span class="${cls}">${ICONS[name] ||
 
 function catalogItem(name, itemId = '') {
   const items = state.catalog?.items || [];
-  return items.find((i) => i.id === String(itemId)) || items.find((i) => i.name === name) || null;
+  const norm = (v) => String(v || '').replace(/[「」『』·\s]/g, '').toLowerCase();
+  const q = norm(name);
+  return items.find((i) => i.id === String(itemId))
+    || items.find((i) => norm(i.name) === q)
+    || items.find((i) => (i.aliases || []).some((a) => norm(a) === q))
+    || items.find((i) => q.length >= 2 && norm(i.name).includes(q))
+    || null;
 }
 
 function itemIcon(name, itemId = '', size = '', rank = 5) {
@@ -145,7 +151,7 @@ function itemRow(r, compact = false) {
     ${itemIcon(r.name, r.itemId, compact ? 'small' : '', r.rank)}
     <div class="item-meta">
       <div class="item-name">${esc(r.name)}</div>
-      <div class="subline">${esc(r.poolName || '')} · ${esc(dateFull(r.time))}</div>
+      <div class="subline">${esc(r.poolName || '')} · ${esc(r.version || dateFull(r.time))}</div>
     </div>
     ${r.up ? `<span class="up-tag ${r.up}">${r.up === 'win' ? 'UP' : '歪'}</span>` : ''}
     <span class="pity-tag"><b>${r.pity ?? '—'}</b> 抽</span>
@@ -231,6 +237,7 @@ function navigate(view) {
 }
 
 async function loadDashboard() {
+  if (!state.catalog || state.catalog.game !== state.game) await loadCatalog().catch(() => {});
   const data = await api(`/api/dashboard?game=${state.game}`);
   state.dashboard = data.dashboard;
   if (state.view === 'dashboard' || state.view === 'import') renderView();
@@ -336,7 +343,7 @@ function renderDashboard() {
     <div class="content-grid">
       <div class="card chart-card">
         <div class="card-head"><div class="card-title"><span class="mark"></span><h3>出金次数</h3><span>GOLD COUNT</span></div></div>
-        ${renderMonthly(d.monthly)}
+        ${renderMonthly(d.versions?.length ? d.versions : d.monthly)}
       </div>
       <div class="card">
         <div class="card-head"><div class="card-title"><span class="mark"></span><h3>卡池分布</h3><span>POOL DISTRIBUTION</span></div></div>
@@ -347,10 +354,6 @@ function renderDashboard() {
       <div class="card">
         <div class="card-head"><div class="card-title"><span class="mark"></span><h3>最近的金色</h3><span>RECENT FIVE-STARS</span></div></div>
         ${d.recentFive?.length ? `<div class="timeline">${d.recentFive.map((r) => itemRow(r)).join('')}</div>` : `<div class="empty-chart">还没有五星记录</div>`}
-      </div>
-      <div class="card">
-        <div class="card-head"><div class="card-title"><span class="mark"></span><h3>数据来源</h3><span>SOURCES</span></div></div>
-        ${renderSources(d)}
       </div>
     </div>`;
 }
@@ -398,7 +401,7 @@ function renderMonthly(monthly) {
   const max = Math.max(1, ...data.map((m) => m.five));
   return `<div class="chart-wrap"><div class="month-chart">
     <div class="month-grid"><i></i><i></i><i></i></div>
-    <div class="month-bars">${data.map((m) => `<div class="month-col"><span class="month-value">${m.five || ''}</span><div class="month-bar-wrap"><div class="month-bar" style="height:${(m.five / max) * 100}%"></div></div><span class="month-label">${m.month.slice(2, 7).replace('-', '/')}</span></div>`).join('')}</div>
+    <div class="month-bars">${data.map((m) => `<div class="month-col"><span class="month-value">${m.five || ''}</span><div class="month-bar-wrap"><div class="month-bar" style="height:${(m.five / max) * 100}%"></div></div><span class="month-label">${m.label || m.month.slice(2, 7).replace('-', '/')}</span></div>`).join('')}</div>
   </div></div>`;
 }
 
@@ -426,15 +429,6 @@ function renderPoolTable(d) {
   </div>`;
 }
 
-function renderSources(d) {
-  const items = [];
-  items.push({ icon: 'shield', title: '官方抽卡接口', desc: `逐条校验后只保存五星，窗口 ${d.coverage.officialWindow}`, status: d.counts.exact ? `${fmt(d.counts.exact)} 抽` : '未同步', tone: d.counts.exact ? '' : 'warn' });
-  if (d.coverage.hasOfficialFull) items.push({ icon: 'spark', title: '绝区零官方全量统计', desc: '米游社调频统计工具，含开服至今汇总', status: '已接入', tone: '' });
-  if (d.counts.snapshotOnly) items.push({ icon: 'image', title: '历史截图 / 汇总补录', desc: '只保留五星行与总抽数，非五星不落库', status: `${fmt(d.counts.snapshotOnly)} 抽`, tone: '' });
-  if (!items.length) items.push({ icon: 'warn', title: '还没有数据源', desc: '从自动读取开始，或手动录入历史汇总', status: '待同步', tone: 'warn' });
-  return `<div class="source-list">${items.map((i) => `<div class="source-item"><div class="source-icon">${ICONS[i.icon] || ICONS.shield}</div><div class="source-copy"><strong>${esc(i.title)}</strong><span>${esc(i.desc)}</span></div><span class="source-status ${i.tone}">${esc(i.status)}</span></div>`).join('')}</div>
-    <div style="margin-top:15px;display:flex;gap:7px"><button class="ghost-btn" style="flex:1;justify-content:center" data-action="go" data-view="import">管理数据源</button><button class="ghost-btn" data-action="refresh" title="刷新">${ICONS.refresh}</button></div>`;
-}
 
 function renderFeatureCards() {
   return `<div class="grid cols-3" style="margin-top:15px">
@@ -517,7 +511,7 @@ function recordRow(r, maxPity) {
     pity > 0 && pity <= 10 ? '<span class="luck-tag chain">连金</span>' : '',
   ].filter(Boolean).join('');
   return `<div class="record-row">
-    <div class="record-time"><span>${esc(dateFull(r.time))}</span><small>${r.source === 'official' ? '官方' : r.source === 'screenshot' ? '截图' : r.source === 'uigf' ? 'UIGF' : '本地'}</small></div>
+    <div class="record-time"><span>${esc(r.version || '未知版本')}</span><small>${r.source === 'official' ? '官方' : r.source === 'screenshot' ? '截图' : r.source === 'uigf' ? 'UIGF' : '本地'}</small></div>
     <div class="record-item">${itemIcon(r.name, r.itemId, 'small', r.rank)}<div class="record-name"><strong>${esc(r.name)}</strong><span>${esc(r.itemType || '五星')}</span></div></div>
     <div class="record-bar-line">
       <span class="pity-number">${pity || '—'}</span>
@@ -1004,6 +998,7 @@ function renderSummaryImport() {
 // ---------------- catalog ----------------
 
 async function loadCatalog() {
+  if (state.catalog && state.catalog.game !== state.game) state.catalog = null;
   if (state.catalog) { renderView(); return; }
   const data = await api(`/api/catalog?game=${state.game}`);
   state.catalog = data.catalog;
