@@ -4,11 +4,11 @@
 
 所有抽卡数据保存在自己电脑的软件目录里，不上传云端，不依赖账号，不写 AppData。无广告、无捆绑、无后台推广，纯绿色便携使用。
 
-![生涯概览](https://raw.githubusercontent.com/ichiryu0021/miyou-archive-assets/main/dashboard.png)
+![生涯概览](docs/screenshots/dashboard.png)
 
-![五星记录](https://raw.githubusercontent.com/ichiryu0021/miyou-archive-assets/main/records.png)
+![五星记录](docs/screenshots/records.png)
 
-![数据录入](https://raw.githubusercontent.com/ichiryu0021/miyou-archive-assets/main/manual.png)
+![数据录入](docs/screenshots/manual.png)
 
 ## 核心功能
 
