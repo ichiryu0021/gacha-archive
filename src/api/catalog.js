@@ -5,8 +5,8 @@ import { ASSET_DIR, DATA_DIR, GAME_IDS, isAllowedAssetHost } from '../config.js'
 import { hash, normalizeName, similarity, writeJsonAtomic } from '../utils.js';
 
 const CATALOG_FILES = Object.fromEntries(GAME_IDS.map((g) => [g, path.join(DATA_DIR, `catalog-${g}.json`)]));
-const HSR_BASE = 'https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/';
-const ZZZ_BASE = 'https://raw.githubusercontent.com/Genshin-Optimizer/zzz-hakushin-data/master/';
+const HSR_BASE = 'https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/';
+const ZZZ_BASE = 'https://cdn.jsdelivr.net/gh/Genshin-Optimizer/zzz-hakushin-data@master/';
 
 const cache = new Map();
 
