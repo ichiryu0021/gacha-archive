@@ -1,62 +1,63 @@
 # 米游档案
 
-[GitHub](https://github.com/ichiryu0021/miyou-archive) · [MIT License](https://github.com/ichiryu0021/miyou-archive/blob/main/LICENSE) · v1.10 · 开源项目
+本地优先的米哈游抽卡记录归档工具，支持原神、崩坏：星穹铁道、绝区零，以及崩坏3、未定事件簿。
 
-本地桌面版米哈游五星抽卡档案：原神 / 崩坏：星穹铁道 / 绝区零，另含崩坏3 / 未定事件簿手动档案。自动读取本机游戏缓存、后台半自动同步、截图 OCR 录入，只保存五星记录。
+所有抽卡数据保存在自己电脑的软件目录里，不上传云端，不依赖账号，不写 AppData。无广告、无捆绑、无后台推广，纯绿色便携使用。
+
+![预览](docs/preview.png)
+
+## 核心功能
+
+- **本地保存，防止数据丢失**：记录、备份、米游社登录态全部保存在软件目录 `data/`。
+- **自动归档**：读取本机游戏缓存和官方抽卡接口，自动合并五星记录。
+- **五星档案**：只保留五星，按卡池分组，统计出金抽数、UP/歪、命中率、平均出金。
+- **版本统计**：按版本查看抽数、五星和生涯覆盖。
+- **多种录入方式**：自动读取、粘贴链接、截图 OCR、手动添加、Excel 表格、UIGF 导入。
+- **分享总结**：一键生成 JPG 抽卡总结，可复制到剪贴板或保存文件。
+- **本地备份**：支持 UIGF、CSV 导出和整库备份。
+- **自动更新**：启动检查新版本，小版本走最小更新，更新不覆盖用户数据。
+
+## 支持游戏
+
+| 游戏 | 自动同步 | 手动/Excel | 分享 | 版本统计 |
+|---|---|---|---|---|
+| 原神 | ✓ | ✓ | ✓ | ✓ |
+| 崩坏：星穹铁道 | ✓ | ✓ | ✓ | ✓ |
+| 绝区零 | ✓ | ✓ | ✓ | ✓ |
+| 崩坏3 | — | ✓ | ✓ | 手动 |
+| 未定事件簿 | — | ✓ | ✓ | 手动 |
+
+崩坏3、未定没有公开抽卡接口，使用手动录入和 Excel 兜底。
+
+## 数据与隐私
+
+- 数据目录：软件目录下的 `data/`
+- 不写入 `%APPDATA%`
+- 抽卡 authkey 只保存在内存，不落盘
+- 米游社登录态使用 Windows DPAPI 加密
+- 不收集使用数据，不上传抽卡记录
 
 ## 启动
 
-- 便携版：运行 `dist/米游档案-win32-x64/米游档案.exe`
-- 源码运行：双击 `启动.cmd`（首次需要已安装 Node.js 22.5+，并执行 `npm install`）
-- 不打开浏览器、不暴露网页地址；桌面窗口内运行，数据仅保存在本机。
+- 便携版：运行 `米游档案-win32-x64/米游档案.exe`
+- 源码运行：安装 Node.js 22.5+ 后执行 `npm install`，再运行 `npm start`
 
-## 数据
+## 开发
 
-- 官方接口完整读取以计算总抽数和垫抽，但只落库五星。
-- 后台采集默认开启：只在检测到游戏进程时工作，打开游戏内抽卡历史页后自动发现新链接并合并。
-- 同一游戏成功采集后当天不再自动重复采集；绝区零优先使用米游社全量数据。
-- 绝区零支持官方调频统计全量历史，可从 1.0 追溯。
-- 同一五星会按名称、卡池、时间窗口自动匹配；官方记录会升级截图记录，避免重复。
-- 五星记录按卡池分组；横条显示出金抽数，>20 为红、<20 为绿；<20 标「欧」，≤10 标「连金」。
-- 设置里可调整游戏顺序、隐藏游戏卡片。
-- 手动添加支持按版本、属性、命途/地区筛选角色。
-- 非 UP 五星名单在 `data/up-pools.json`，可随卡池更新调整。
-- 截图录入支持点击图标本地匹配。
-- 数据与备份保存在软件目录下的 `data`，不写入 AppData。
-- 米游社登录状态保存到 `data/miyoushe-session.dat`，使用 Windows DPAPI 加密；重启后自动恢复并显示昵称。
-- 支持 UIGF v4 / v3 / SRGF v1 导入，及 UIGF/CSV/整库备份导出。
-
-## 开发文档
-
-- [架构说明](docs/ARCHITECTURE.md)
-- [发布与更新规则](docs/RELEASE.md)
-- [数据与规则](docs/DATA.md)
-- [游戏功能矩阵](docs/FEATURE_MATRIX.md)
-- [多 AI 协作黑板](BLACKBOARD.md)
-
-## 目录
-
-`src/` 本地服务与抓取逻辑 · `electron/` 桌面壳 · `public/` 界面 · `data/` 内置图鉴 · `tests/` 测试。
-
-数据保存在软件目录下 `data`，含 `app.json`、`app.json.bak` 和 `backups/`。
-
-## 说明
-
-抽卡接口与米游社统计均为非官方公开接口，可能失效或触发风控。仅建议个人非商业使用；角色、武器与图标版权归 miHoYo/HoYoverse 所有。
-
-## 更新
-
-- 软件启动后会自动检查 GitHub Release。
-- 设置 → 软件更新可手动检查；更新会直接替换本地程序文件并自动重启。
-- 分发包从 GitHub Release 的 zip 资源下载。
+```powershell
+npm install
+npm start
+npm test
+```
 
 ## 开源与致谢
 
 - 代码：MIT License
 - Electron：MIT
-- QR Code Generator for JavaScript：MIT，Copyright (c) 2009 Kazuhiko Arase
+- QR Code Generator for JavaScript：MIT
 - genshin-db：MIT
-- 星穹铁道 / 绝区零图鉴：HoYoWiki 官方 Wiki 数据
+- SheetJS xlsx：Apache-2.0
+- 星穹铁道 / 绝区零图鉴：HoYoWiki 官方数据
 - 游戏素材版权归 miHoYo / HoYoverse 所有；本项目为非官方工具
 
 详细许可见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
