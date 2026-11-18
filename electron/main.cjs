@@ -1,4 +1,4 @@
-﻿const { app, BrowserWindow, Menu, dialog, shell } = require('electron');
+﻿const { app, BrowserWindow, Menu, dialog, shell, clipboard, ipcMain, nativeImage, ClipboardItem } = require('electron');
 const { setupUpdater } = require('./updater.cjs');
 const fs = require('node:fs');
 const fsp = require('node:fs/promises');
@@ -41,7 +41,7 @@ async function prepareDataDir() {
   await fsp.mkdir(path.join(target, 'uploads'), { recursive: true });
   await fsp.mkdir(path.join(target, 'assets'), { recursive: true });
   const bundled = path.join(app.getAppPath(), 'data');
-  for (const name of ['catalog-genshin.json', 'catalog-hsr.json', 'catalog-zzz.json', 'catalog-hi3.json', 'catalog-tot.json', 'versions-zzz.json', 'versions-hsr.json']) {
+  for (const name of ['catalog-genshin.json', 'catalog-hsr.json', 'catalog-zzz.json', 'catalog-hi3.json', 'catalog-tot.json', 'versions-zzz.json', 'versions-hsr.json', 'up-pools.json']) {
     const dest = path.join(target, name);
     if (!fs.existsSync(dest) && fs.existsSync(path.join(bundled, name))) {
       await fsp.copyFile(path.join(bundled, name), dest);
@@ -59,6 +59,30 @@ async function prepareDataDir() {
   }
   process.env.GACHA_DATA_DIR = target;
 }
+
+ipcMain.handle('share:copy-image', async (_event, dataUrl) => {
+  const image = nativeImage.createFromDataURL(String(dataUrl || ''));
+  if (image.isEmpty()) throw new Error('图片生成失败');
+  if (typeof clipboard.write === 'function' && typeof ClipboardItem === 'function') {
+    const blob = new Blob([image.toPNG()], { type: 'image/png' });
+    await clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+  } else if (typeof clipboard.writeImage === 'function') {
+    clipboard.writeImage(image);
+  } else {
+    throw new Error('当前系统不支持写入图片剪贴板');
+  }
+  return { ok: true };
+});
+
+ipcMain.handle('share:save-image', async (_event, dataUrl, name) => {
+  const safeName = String(name || '米游档案-分享.jpg').replace(/[\\/:*?"<>|]/g, '-');
+  const options = { defaultPath: path.join(app.getPath('pictures'), safeName), filters: [{ name: 'JPEG', extensions: ['jpg', 'jpeg'] }] };
+  const result = mainWindow ? await dialog.showSaveDialog(mainWindow, options) : await dialog.showSaveDialog(options);
+  if (result.canceled || !result.filePath) return { canceled: true };
+  const base64 = String(dataUrl || '').replace(/^data:image\/jpeg;base64,/, '');
+  await fsp.writeFile(result.filePath, Buffer.from(base64, 'base64'));
+  return { ok: true, path: result.filePath };
+});
 
 async function waitForServer(url) {
   for (let i = 0; i < 100; i++) {
@@ -104,6 +128,14 @@ function createWindow() {
   Menu.setApplicationMenu(null);
   mainWindow.loadURL(serverUrl);
   mainWindow.once('ready-to-show', () => mainWindow.show());
+  mainWindow.webContents.on('context-menu', (_event, params) => {
+    if (params.mediaType !== 'image') return;
+    const menu = Menu.buildFromTemplate([{
+      label: '复制图片',
+      click: () => mainWindow.webContents.copyImageAt(params.x, params.y),
+    }]);
+    menu.popup({ window: mainWindow });
+  });
   mainWindow.webContents.setWindowOpenHandler(({ url }) => {
     if (/^https?:\/\//i.test(url) && !url.startsWith(serverUrl)) shell.openExternal(url);
     return { action: 'deny' };

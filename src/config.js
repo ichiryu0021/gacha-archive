@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -5,14 +6,17 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export const ROOT = path.resolve(__dirname, '..');
 export const PUBLIC_DIR = path.join(ROOT, 'public');
 export const DATA_DIR = process.env.GACHA_DATA_DIR ? path.resolve(process.env.GACHA_DATA_DIR) : path.join(ROOT, 'data');
+const UP_POOL_DATA = (() => {
+  try { return JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'up-pools.json'), 'utf8')); } catch { return {}; }
+})();
 export const BUNDLED_DATA_DIR = path.join(ROOT, 'data');
 export const UPLOAD_DIR = path.join(DATA_DIR, 'uploads');
 export const ASSET_DIR = path.join(DATA_DIR, 'assets');
 export const DB_FILE = path.join(DATA_DIR, 'app.json');
 export const PORT = Number(process.env.PORT || 8787);
 export const HOST = '127.0.0.1';
-export const APP_VERSION = '1.7.0';
-export const APP_DISPLAY_VERSION = '1.07';
+export const APP_VERSION = '1.8.0';
+export const APP_DISPLAY_VERSION = '1.08';
 
 export const GAMES = {
   genshin: {
@@ -40,11 +44,12 @@ export const GAMES = {
     },
     uigfMap: { '100': '100', '200': '200', '301': '301', '400': '301', '302': '302', '500': '500' },
     pityCap: { '100': 90, '200': 90, '301': 90, '302': 80, '500': 90 },
-    standard5: [
-      '迪卢克', '琴', '莫娜', '七七', '刻晴', '提纳里', '迪希雅',
+    nonUp5: UP_POOL_DATA.genshin?.nonUp5 || [],
+    standard5: (UP_POOL_DATA.genshin?.standard5?.length ? UP_POOL_DATA.genshin.standard5 : [
+      '迪卢克', '琴', '莫娜', '七七', '刻晴', '提纳里', '迪希雅', '梦见月瑞希',
       '天空之刃', '天空之傲', '天空之卷', '天空之翼', '天空之脊', '狼的末路',
       '四风原典', '阿莫斯之弓', '和璞鸢', '风鹰剑',
-    ],
+    ]),
     expectedFive: { '301': 62.5, '302': 53.5, '200': 62.5, '100': 34.6, '500': 62.5 },
     launchDate: '2020-09-28',
     officialWindow: '约 1 年',
@@ -75,11 +80,12 @@ export const GAMES = {
     },
     uigfMap: { '1': '1', '2': '2', '11': '11', '12': '12', '21': '21', '22': '22' },
     pityCap: { '1': 90, '2': 50, '11': 90, '12': 80, '21': 90, '22': 80 },
-    standard5: [
+    nonUp5: UP_POOL_DATA.hsr?.nonUp5 || [],
+    standard5: (UP_POOL_DATA.hsr?.standard5?.length ? UP_POOL_DATA.hsr.standard5 : [
       '姬子', '瓦尔特', '布洛妮娅', '杰帕德', '克拉拉', '彦卿', '白露',
       '银河铁道之夜', '无可取代的东西', '但战斗还未结束', '制胜的瞬间',
       '时节不居', '以世界之名', '如泥酣眠',
-    ],
+    ]),
     expectedFive: { '11': 62.5, '12': 53.5, '1': 62.5, '2': 34.6, '21': 62.5, '22': 53.5 },
     launchDate: '2023-04-26',
     officialWindow: '约 6 个月 / 联动池 24 个月',
@@ -149,10 +155,11 @@ export const GAMES = {
     },
     uigfMap: { '1': '1', '2': '2', '3': '3', '5': '5', '102': '2', '103': '3' },
     pityCap: { '1': 90, '2': 90, '3': 80, '5': 80, '102': 90, '103': 80 },
-    standard5: [
+    nonUp5: UP_POOL_DATA.zzz?.nonUp5 || [],
+    standard5: (UP_POOL_DATA.zzz?.standard5?.length ? UP_POOL_DATA.zzz.standard5 : [
       '猫又', '丽娜', '格莉丝', '莱卡恩', '11号', '珂蕾妲',
       '「钢铁肉垫」', '「燃狱齿轮」', '「啜泣摇篮」', '「硫磺石」', '「嵌合编译器」', '「拘缚者」',
-    ],
+    ]),
     expectedFive: { '2': 62.5, '3': 53.5, '1': 62.5, '5': 50, '102': 62.5, '103': 53.5 },
     launchDate: '2024-07-04',
     officialWindow: '以接口实际返回为准；官方统计工具含全量汇总',

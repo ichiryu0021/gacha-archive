@@ -1,0 +1,68 @@
+{
+  "updatedAt": "2026-11-19",
+  "version": "4.7",
+  "sources": {
+    "genshin": "https://m.925g.com/gonglue/323743.html",
+    "hsr": "https://www.playbyone.com/article/12510.html",
+    "zzz": "https://news.17173.com/content/02122026/143513630.shtml",
+    "hsrNonUp": "https://bannerhistory.app/tw/hsr-acquisition"
+  },
+  "genshin": {
+    "standard5": [
+      "迪卢克",
+      "琴",
+      "莫娜",
+      "七七",
+      "刻晴",
+      "提纳里",
+      "迪希雅",
+      "梦见月瑞希"
+    ],
+    "nonUp5": []
+  },
+  "hsr": {
+    "standard5": [
+      "姬子",
+      "瓦尔特",
+      "布洛妮娅",
+      "杰帕德",
+      "克拉拉",
+      "彦卿",
+      "白露",
+      "符玄",
+      "刃",
+      "希儿",
+      "云璃",
+      "银枝",
+      "银狼"
+    ],
+    "nonUp5": [
+      "符玄",
+      "刃",
+      "希儿",
+      "云璃",
+      "银枝",
+      "银狼"
+    ]
+  },
+  "zzz": {
+    "standard5": [
+      "猫又",
+      "丽娜",
+      "格莉丝",
+      "莱卡恩",
+      "11号",
+      "珂蕾妲"
+    ],
+    "nonUp5": []
+  },
+  "hi3": {
+    "standard5": [],
+    "nonUp5": []
+  },
+  "tot": {
+    "standard5": [],
+    "nonUp5": []
+  },
+  "note": "星铁：7 名常驻 + 6 名星缘相邀非UP限定，均按非常驻UP角色处理"
+}

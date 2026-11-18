@@ -77,7 +77,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 await fsp.mkdir(DATA_DIR, { recursive: true });
 await fsp.mkdir(UPLOAD_DIR, { recursive: true });
 await fsp.mkdir(ASSET_DIR, { recursive: true });
-for (const name of ['catalog-genshin.json', 'catalog-hsr.json', 'catalog-zzz.json', 'catalog-hi3.json', 'catalog-tot.json', 'versions-zzz.json', 'versions-hsr.json']) {
+for (const name of ['catalog-genshin.json', 'catalog-hsr.json', 'catalog-zzz.json', 'catalog-hi3.json', 'catalog-tot.json', 'versions-zzz.json', 'versions-hsr.json', 'up-pools.json']) {
   const target = path.join(DATA_DIR, name);
   const source = path.join(BUNDLED_DATA_DIR, name);
   if (!fs.existsSync(target) && fs.existsSync(source)) await fsp.copyFile(source, target);
@@ -233,6 +233,25 @@ async function resync(source, options = {}) {
     errors: data.errors,
     meta: data.meta,
     totals,
+  };
+}
+
+async function syncZzzMiyoushe() {
+  const saved = getSavedSessionInfo();
+  if (!saved) throw new Error('米游社未登录');
+  const full = await fetchZzzFullHistory(saved.sessionId);
+  const merged = store.mergeRecords('zzz', full.records, {
+    source: 'official-full',
+    meta: { uid: full.role.uid, region: full.role.region, gameBiz: 'nap_cn', lang: 'zh-cn' },
+    lastSource: 'zzz-official',
+  });
+  store.setFullTotals('zzz', full.totals);
+  await store.flush(true);
+  return {
+    totalFetched: full.totals.exact,
+    addedFive: merged.added,
+    upgradedFive: merged.upgraded || 0,
+    fiveStars: full.records.length,
   };
 }
 
@@ -586,7 +605,7 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-collector = new Collector({ store, syncFn: resync });
+collector = new Collector({ store, syncFn: resync, zzzSyncFn: syncZzzMiyoushe });
 await collector.start();
 setTimeout(() => { autoCheckCatalogs().catch(() => {}); }, 6000).unref?.();
 

@@ -181,7 +181,7 @@ function renderShell() {
   $('#side-nav').innerHTML = [
     ['dashboard', '总览', 'overview'],
     ['records', '五星记录', 'records'],
-    ['import', '数据补录', 'import'],
+    ['import', '数据录入', 'import'],
     ['catalog', '角色图鉴', 'catalog'],
     ['settings', '设置', 'settings'],
   ].map(([view, label, icon]) => `<button class="nav-item ${state.view === view ? 'active' : ''}" data-action="go" data-view="${view}">${ICONS[icon]}<span>${label}</span></button>`).join('');
@@ -288,8 +288,8 @@ function renderDashboard() {
         <h1>生涯概览</h1>
       </div>
       <div class="page-head-actions">
-        <button class="ghost-btn" data-action="go" data-view="records">${ICONS.records} 查看五星</button>
-        <button class="primary-btn" data-action="go" data-view="import">${ICONS.import} 补录历史</button>
+        <button class="ghost-btn" data-action="share-summary">${ICONS.spark} 分享总结</button><button class="ghost-btn" data-action="go" data-view="records">${ICONS.records} 查看五星</button>
+        <button class="primary-btn" data-action="go" data-view="import">${ICONS.import} 录入历史</button>
         <span class="pill ${state.collector?.enabled ? 'accent' : ''}"><span class="pulse" style="width:4px;height:4px"></span>后台采集${state.collector?.enabled ? '中' : '已暂停'}</span>
       </div>
     </div>
@@ -298,7 +298,7 @@ function renderDashboard() {
         <div class="hero-top">
           <div>
             <div class="hero-kicker"><span class="dot"></span> TOTAL PULLS / 总抽数</div>
-            <div class="hero-number-row"><div class="hero-number">${heroValue}</div><div class="hero-unit">${hasTotals ? '抽' : '待补录'}</div></div>
+            <div class="hero-number-row"><div class="hero-number">${heroValue}</div><div class="hero-unit">${hasTotals ? '抽' : '待录入'}</div></div>
             <div class="hero-sub">限定池 <b>${fmt(d.counts.limitedExact)}</b> 抽 · <b>${fmt(d.counts.lifetimeFive)}</b> 张五星${d.meta?.uid ? ` · UID ${esc(d.meta.uid)}` : ''}</div>
             <div class="hero-pills">
               <span class="pill accent"><b>${d.counts.lifetimeFive}</b> 五星</span>
@@ -437,7 +437,7 @@ function renderPoolTable(d) {
 function renderFeatureCards() {
   return `<div class="grid cols-3" style="margin-top:15px">
     <div class="card"><div class="source-icon" style="margin-bottom:12px">${ICONS.link}</div><h3>自动读链</h3></div>
-    <div class="card"><div class="source-icon" style="margin-bottom:12px">${ICONS.image}</div><h3>截图补录</h3></div>
+    <div class="card"><div class="source-icon" style="margin-bottom:12px">${ICONS.image}</div><h3>截图录入</h3></div>
     <div class="card"><div class="source-icon" style="margin-bottom:12px">${ICONS.catalog}</div><h3>官方图鉴</h3></div>
   </div>`;
 }
@@ -532,12 +532,12 @@ function renderImport() {
   const tabs = [
     ['auto', '自动读取', 'AUTO'],
     ['paste', '粘贴链接', 'LINK'],
-    ['screenshot', '截图补录', 'OCR'],
+    ['screenshot', '截图录入', 'OCR'],
     ['summary', '历史汇总', 'SUMMARY'],
     ['uigf', '导入 UIGF', 'UIGF'],
     ['manual', '手动添加', 'MANUAL'],
   ];
-  return `<div class="page-head"><div><div class="eyebrow">SYNC · DATA RECOVERY</div><h1>数据补录</h1></div><div class="page-head-actions"><span class="pill"><b>${fmt(d?.counts.lifetime || 0)}</b> 生涯抽</span><span class="pill accent"><b>${fmt(d?.counts.lifetimeFive || 0)}</b> 五星</span></div></div>
+  return `<div class="page-head"><div><div class="eyebrow">SYNC · DATA RECOVERY</div><h1>数据录入</h1></div><div class="page-head-actions"><span class="pill"><b>${fmt(d?.counts.lifetime || 0)}</b> 生涯抽</span><span class="pill accent"><b>${fmt(d?.counts.lifetimeFive || 0)}</b> 五星</span></div></div>
   <div class="tabs">${tabs.map(([id, label, tag]) => `<button class="tab ${state.importTab === id ? 'active' : ''}" data-action="switch-import-tab" data-tab="${id}">${label}<span class="count">${tag}</span></button>`).join('')}</div>
   <div class="tab-panel" id="import-panel">${renderImportPanel()}</div>`;
 }
@@ -616,12 +616,16 @@ function renderAutoImport() {
     <div class="card-head" style="margin-bottom:10px"><div class="card-title"><span class="mark"></span><h3>后台半自动采集</h3><span>AUTO COLLECTOR</span></div><span class="badge ${colOn ? 'accent' : ''}">${colOn ? '运行中' : '已暂停'}</span></div>
     <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px">
       <button class="primary-btn" data-action="collector-toggle" data-enabled="${colOn ? 'false' : 'true'}">${colOn ? '暂停后台采集' : '开启后台采集'}</button>
-      <span style="font-size:11px;color:var(--muted-2)">${col?.lastRun ? `上次扫描 ${timeAgo(col.lastRun)}` : '等待首次扫描'} · 间隔 ${Math.round((col?.intervalMs || 30000) / 1000)} 秒</span>
+      <span style="font-size:11px;color:var(--muted-2)">${col?.lastRun ? `上次扫描 ${timeAgo(col.lastRun)}` : '等待游戏启动'} · 间隔 ${Math.round((col?.intervalMs || 30000) / 1000)} 秒</span>
     </div>
-    ${events.length ? `<div style="margin-top:12px;border-top:1px solid var(--line);padding-top:8px">${events.slice(0, 4).map((e) => `<div class="kv"><span>${esc(GAME_META[e.game]?.name || e.gameName || e.game)} · ${esc(e.ok ? '已同步' : '未同步')}</span><b>${esc(e.message)}${e.added ? ` · +${e.added} 金` : ''}${e.upgraded ? ` · 提升 ${e.upgraded}` : ''}</b></div>`).join('')}</div>` : ''}
+    ${(col?.runningGames || []).length ? `<div style="margin-top:12px;border-top:1px solid var(--line);padding-top:8px">${(col.runningGames || []).map((game) => {
+      const e = events.find((item) => item.game === game);
+      return `<div class="kv"><span>${esc(GAME_META[game]?.name || game)} · ${esc(e ? (e.ok ? '已同步' : '未同步') : '等待同步')}</span><b>${esc(e?.message || '游戏已启动')}${e?.added ? ` · +${e.added} 金` : ''}${e?.upgraded ? ` · 提升 ${e.upgraded}` : ''}</b></div>`;
+    }).join('')}</div>` : ''}
   </div>`;
   return `${collectorCard}<div class="card">
     <div class="card-head"><div class="card-title"><span class="mark"></span><h3>读取本机游戏缓存</h3><span>WEBCACHE</span></div></div>
+    <div class="auto-hint">需要打开游戏内抽卡历史</div>
     <div class="scan-grid" style="margin-top:16px">
       ${state.gameOrder.filter((id) => !state.hiddenGames.includes(id)).map((id) => {
         const meta = GAME_META[id];
@@ -865,7 +869,7 @@ function renderScreenshotImport() {
   const items = state.catalog?.items || [];
   const fiveNames = [...new Set(items.filter((i) => i.rarity === 5).map((i) => i.name))];
   return `<div class="card">
-    <div class="card-head"><div class="card-title"><span class="mark"></span><h3>从截图补录五星</h3><span>LOCAL OCR</span></div></div>
+    <div class="card-head"><div class="card-title"><span class="mark"></span><h3>从截图录入五星</h3><span>LOCAL OCR</span></div></div>
     <div class="dropzone" id="ocr-dropzone" style="margin-top:14px">${ICONS.upload}<strong>拖入截图，或点击选择</strong><input type="file" id="ocr-file" accept="image/png,image/jpeg,image/webp" hidden></div>
     ${ocr?.preview ? `<div style="margin-top:16px"><div class="ocr-zoom"><img id="ocr-preview-img" class="preview-img click-crop" src="${attr(ocr.preview)}" alt=""></div><div style="display:flex;justify-content:center;margin-top:10px"><button class="primary-btn" data-action="ocr-run">${ICONS.spark} 开始识别</button></div></div>` : ''}
     ${state.iconMatch ? renderIconMatch() : ''}
@@ -1043,7 +1047,7 @@ function renderSummaryImport() {
   const snaps = d?.snapshots || [];
   const pre = state.pendingSummary || {};
   return `<div class="card">
-    <div class="card-head"><div class="card-title"><span class="mark"></span><h3>历史汇总补录</h3><span>AGGREGATE</span></div></div>
+    <div class="card-head"><div class="card-title"><span class="mark"></span><h3>历史汇总录入</h3><span>AGGREGATE</span></div></div>
     <form id="snapshot-form" class="form-grid" style="margin-top:16px">
       <div class="field"><label>覆盖开始</label><input class="input" type="date" name="periodStart" value="${esc(d?.coverage?.start || '2024-07-04')}" required></div>
       <div class="field"><label>覆盖结束</label><input class="input" type="date" name="periodEnd" value="${esc(new Date().toISOString().slice(0, 10))}" required></div>
@@ -1052,7 +1056,7 @@ function renderSummaryImport() {
       <div class="field span-2"><label>备注 / 来源</label><input class="input" name="note" placeholder="例如：提瓦特小助手 2025-01 截图"></div>
       <div class="span-2" style="display:flex;justify-content:flex-end"><button class="primary-btn" type="submit">${ICONS.download} 保存汇总</button></div>
     </form>
-    ${snaps.length ? `<div style="margin-top:24px"><div class="card-title" style="margin-bottom:10px"><span class="mark"></span><h3>已录入汇总</h3><span>${snaps.length} 段</span></div><div class="table-wrap"><table><thead><tr><th>区间</th><th>来源</th><th>总抽</th><th>五星</th><th>与官方重叠</th><th></th></tr></thead><tbody>${snaps.map((s) => `<tr><td class="time-cell">${esc(String(s.periodStart || '').slice(0, 10))} → ${esc(String(s.periodEnd || '').slice(0, 10))}</td><td><span class="badge ${s.source === 'zzz-official' ? 'accent' : ''}">${s.source === 'zzz-official' ? '官方全量' : '补录'}</span></td><td>${fmt(s.totalPulls)}</td><td>${fmt(s.fiveStars)}</td><td>${s.exactFiveWithin ? `<span class="badge gold">${s.exactFiveWithin} 张五星</span>` : '<span class="muted">—</span>'}</td><td><button class="ghost-btn danger" style="padding:5px 7px" data-action="snapshot-delete" data-id="${attr(s.id)}">删除</button></td></tr>`).join('')}</tbody></table></div></div>` : ''}
+    ${snaps.length ? `<div style="margin-top:24px"><div class="card-title" style="margin-bottom:10px"><span class="mark"></span><h3>已录入汇总</h3><span>${snaps.length} 段</span></div><div class="table-wrap"><table><thead><tr><th>区间</th><th>来源</th><th>总抽</th><th>五星</th><th>与官方重叠</th><th></th></tr></thead><tbody>${snaps.map((s) => `<tr><td class="time-cell">${esc(String(s.periodStart || '').slice(0, 10))} → ${esc(String(s.periodEnd || '').slice(0, 10))}</td><td><span class="badge ${s.source === 'zzz-official' ? 'accent' : ''}">${s.source === 'zzz-official' ? '官方全量' : '录入'}</span></td><td>${fmt(s.totalPulls)}</td><td>${fmt(s.fiveStars)}</td><td>${s.exactFiveWithin ? `<span class="badge gold">${s.exactFiveWithin} 张五星</span>` : '<span class="muted">—</span>'}</td><td><button class="ghost-btn danger" style="padding:5px 7px" data-action="snapshot-delete" data-id="${attr(s.id)}">删除</button></td></tr>`).join('')}</tbody></table></div></div>` : ''}
   </div>`;
 }
 
@@ -1322,6 +1326,10 @@ document.addEventListener('click', async (e) => {
       state.pendingLink = null;
       await reloadAfterSync(data);
       setBusy(el, false);
+      return;
+    }
+    if (action === 'share-summary') {
+      await openShareSummary();
       return;
     }
     if (action === 'check-update') {
@@ -1774,6 +1782,190 @@ async function saveManualRecord(e) {
     await refreshAll();
     toast('已添加');
   } catch (err) { toast(err.message, 'err', 5000); }
+}
+
+async function drawShareCard() {
+  const d = state.dashboard;
+  if (!d) throw new Error('还没有可分享的数据');
+  const W = 1200, H = 1800;
+  const canvas = document.createElement('canvas');
+  canvas.width = W; canvas.height = H;
+  const ctx = canvas.getContext('2d');
+  const accent = GAME_META[state.game]?.color || '#9b8cff';
+  const gameName = GAME_META[state.game]?.name || '米游档案';
+  const pad = 72;
+  const round = (x, y, w, h, r) => roundRect(ctx, x, y, w, h, r);
+  const font = (size, weight = 400) => `${weight} ${size}px "Microsoft YaHei", "PingFang SC", sans-serif`;
+
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#090d16');
+  bg.addColorStop(0.55, '#111526');
+  bg.addColorStop(1, '#171226');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  const glow = ctx.createRadialGradient(W * 0.86, 80, 10, W * 0.86, 80, 600);
+  glow.addColorStop(0, `${accent}42`);
+  glow.addColorStop(1, `${accent}00`);
+  ctx.fillStyle = glow; ctx.fillRect(0, 0, W, 900);
+
+  ctx.fillStyle = accent; round(pad, 62, 8, 38, 4); ctx.fill();
+  ctx.fillStyle = '#f5f2ff'; ctx.font = font(28, 600); ctx.fillText('米游档案', pad + 26, 92);
+  ctx.fillStyle = '#8e96ab'; ctx.font = font(16, 400); ctx.fillText('MIYOU ARCHIVE · SHARE', pad + 26, 120);
+
+  ctx.fillStyle = '#f7f5ff'; ctx.font = font(64, 700); ctx.fillText(gameName, pad, 238);
+  ctx.fillStyle = '#8e96ab'; ctx.font = font(20, 400);
+  ctx.fillText(d.meta?.uid ? `UID ${d.meta.uid}` : '本地抽卡档案', pad, 278);
+
+  const currency = {
+    genshin: { unit: '原石', rate: 160 },
+    hsr: { unit: '星琼', rate: 160 },
+    zzz: { unit: '菲林', rate: 160 },
+    hi3: { unit: '水晶', rate: 280 },
+    tot: { unit: '未名星石', rate: 180 },
+  }[state.game] || { unit: '抽卡资源', rate: 160 };
+  const spent = d.counts.exact * currency.rate;
+  ctx.fillStyle = '#a9a3c7'; ctx.font = font(18, 500); ctx.fillText('总共消耗（估测）', pad, 372);
+  ctx.fillStyle = '#ffffff'; ctx.font = font(124, 700); ctx.fillText(fmt(spent), pad, 492);
+  ctx.fillStyle = accent; ctx.font = font(22, 600); ctx.fillText(currency.unit, pad + 10, 530);
+
+  const cardY = 596, cardW = 490, cardH = 142, gap = 20;
+  const charPools = {
+    genshin: ['301', '400'],
+    hsr: ['11', '21'],
+    zzz: ['2', '102'],
+  }[state.game];
+  const limitedCharFive = charPools
+    ? (d.records || []).filter((r) => charPools.includes(String(r.uigfType || r.gachaType)) && r.up === 'win').length
+    : (d.counts.limitedFiveAll || 0);
+  const stats = [
+    ['限定五星角色', String(limitedCharFive), 'LIMITED CHARACTERS'],
+    ['总抽数', fmt(d.counts.exact), 'TOTAL PULLS'],
+    ['命中率', d.rates.upRate == null ? '—' : pct(d.rates.upRate), 'WIN RATE'],
+    ['平均出金', d.rates.avgChar != null ? d.rates.avgChar.toFixed(1) : '—', 'AVG PITY'],
+  ];
+  stats.forEach(([label, value, en], i) => {
+    const x = pad + (i % 2) * (cardW + gap);
+    const y = cardY + Math.floor(i / 2) * (cardH + gap);
+    ctx.fillStyle = 'rgba(255,255,255,0.045)'; round(x, y, cardW, cardH, 22); ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,0.08)'; ctx.lineWidth = 1; round(x, y, cardW, cardH, 22); ctx.stroke();
+    ctx.fillStyle = '#8e96ab'; ctx.font = font(18, 400); ctx.fillText(label, x + 28, y + 42);
+    ctx.fillStyle = '#f7f5ff'; ctx.font = font(44, 700); ctx.fillText(value, x + 28, y + 100);
+    ctx.fillStyle = '#6f7890'; ctx.font = font(13, 500); ctx.fillText(en, x + 30, y + 126);
+  });
+
+  const limitedTypes = {
+    genshin: { char: ['301', '400'], weapon: ['302'] },
+    hsr: { char: ['11', '21'], weapon: ['12', '22'] },
+    zzz: { char: ['2', '102'], weapon: ['3', '103'] },
+  }[state.game] || { char: [], weapon: [] };
+  const allRecords = d.records || [];
+  const typeOf = (r) => String(r.uigfType || r.gachaType || '');
+  const charRows = (limitedTypes.char.length ? allRecords.filter((r) => limitedTypes.char.includes(typeOf(r))) : allRecords).slice(0, 10);
+  const weaponRows = allRecords.filter((r) => limitedTypes.weapon.includes(typeOf(r))).slice(0, 10);
+  const loadRows = (rows) => Promise.all(rows.map(async (r) => {
+    const item = catalogItem(r.name, r.itemId);
+    if (!item?.iconUrl) return null;
+    const src = item.iconUrl.startsWith('/api/asset') ? item.iconUrl : `/api/asset?u=${encodeURIComponent(item.iconUrl)}`;
+    return loadImageElement(src);
+  }));
+  const [charImages, weaponImages] = await Promise.all([loadRows(charRows), loadRows(weaponRows)]);
+
+  const sectionY = 960;
+  ctx.fillStyle = '#d9d3ec'; ctx.font = font(24, 600); ctx.fillText('欧皇时刻（也许）', pad, sectionY);
+  ctx.strokeStyle = 'rgba(255,255,255,0.08)'; ctx.beginPath(); ctx.moveTo(pad, sectionY + 22); ctx.lineTo(W - pad, sectionY + 22); ctx.stroke();
+
+  const drawColumn = (rows, images, x, label) => {
+    ctx.fillStyle = accent; ctx.font = font(16, 600); ctx.fillText(label, x, sectionY + 62);
+    if (!rows.length) {
+      ctx.fillStyle = '#6f7890'; ctx.font = font(16, 400); ctx.fillText('暂无记录', x, sectionY + 96);
+      return;
+    }
+    rows.forEach((r, i) => {
+      const y = sectionY + 80 + i * 64;
+      ctx.fillStyle = 'rgba(255,255,255,0.04)'; round(x, y, 500, 56, 14); ctx.fill();
+      const image = images[i];
+      if (image) {
+        ctx.save(); ctx.beginPath(); ctx.arc(x + 28, y + 28, 23, 0, Math.PI * 2); ctx.clip();
+        ctx.drawImage(image, x + 5, y + 5, 46, 46); ctx.restore();
+        ctx.strokeStyle = `${accent}55`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(x + 28, y + 28, 23, 0, Math.PI * 2); ctx.stroke();
+      } else {
+        ctx.fillStyle = `${accent}33`; ctx.beginPath(); ctx.arc(x + 28, y + 28, 23, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = accent; ctx.font = font(17, 600); ctx.textAlign = 'center'; ctx.fillText(r.name.slice(0, 1), x + 28, y + 35); ctx.textAlign = 'left';
+      }
+      ctx.fillStyle = '#f7f5ff'; ctx.font = font(18, 600); ctx.fillText(r.name, x + 64, y + 34);
+      if (r.pity) {
+        const result = r.up === 'win' ? '欧' : r.up === 'loss' ? '非' : '';
+        ctx.fillStyle = result === '欧' ? '#f08b8b' : result === '非' ? '#7fe0a8' : accent;
+        ctx.font = font(15, 500); ctx.textAlign = 'right';
+        ctx.fillText(`${r.pity} 抽${result ? ` · ${result}` : ''}`, x + 475, y + 34);
+        ctx.textAlign = 'left';
+      }
+    });
+  };
+  drawColumn(charRows, charImages, pad, '限定角色');
+  drawColumn(weaponRows, weaponImages, W / 2 + 24, '限定武器');
+
+  ctx.strokeStyle = 'rgba(255,255,255,0.09)'; ctx.beginPath(); ctx.moveTo(pad, 1720); ctx.lineTo(W - pad, 1720); ctx.stroke();
+  ctx.fillStyle = '#6f7890'; ctx.font = font(14, 400); ctx.fillText('MIYOU ARCHIVE · 本地抽卡档案', pad, 1762);
+  ctx.textAlign = 'right'; ctx.fillText(new Date().toLocaleDateString('zh-CN'), W - pad, 1762); ctx.textAlign = 'left';
+
+  return canvas.toDataURL('image/jpeg', 0.95);
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  const radius = Math.min(r, w / 2, h / 2);
+  ctx.beginPath();
+  ctx.moveTo(x + radius, y);
+  ctx.arcTo(x + w, y, x + w, y + h, radius);
+  ctx.arcTo(x + w, y + h, x, y + h, radius);
+  ctx.arcTo(x, y + h, x, y, radius);
+  ctx.arcTo(x, y, x + w, y, radius);
+  ctx.closePath();
+}
+
+async function openShareSummary() {
+  try {
+    const dataUrl = await drawShareCard();
+    const modal = openModal(`<h2>分享抽卡总结</h2><div class="share-preview"><img src="${dataUrl}" alt="抽卡总结"></div><div class="modal-actions"><button class="ghost-btn" data-share-copy>复制图片</button><button class="primary-btn" data-share-save>保存 JPG</button><button class="ghost-btn" data-close>关闭</button></div>`);
+    $('[data-share-copy]').onclick = () => copyShareImage(dataUrl);
+    $('[data-share-save]').onclick = () => saveShareImage(dataUrl);
+  } catch (err) { toast(err.message, 'err'); }
+}
+
+async function imageDataToPng(dataUrl) {
+  const img = new Image();
+  img.src = dataUrl;
+  await img.decode();
+  const canvas = document.createElement('canvas');
+  canvas.width = img.width; canvas.height = img.height;
+  canvas.getContext('2d').drawImage(img, 0, 0);
+  return await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
+}
+
+async function copyShareImage(dataUrl) {
+  try {
+    if (window.desktop?.copyImage) {
+      await window.desktop.copyImage(dataUrl);
+    } else {
+      const png = await imageDataToPng(dataUrl);
+      await navigator.clipboard.write([new ClipboardItem({ 'image/png': png })]);
+    }
+    toast('图片已复制到剪贴板');
+  } catch (err) { toast(`复制失败：${err.message}`, 'err', 5000); }
+}
+
+async function saveShareImage(dataUrl) {
+  try {
+    if (window.desktop?.saveImage) {
+      const result = await window.desktop.saveImage(dataUrl, `米游档案-${GAME_META[state.game]?.label || '分享'}-${new Date().toISOString().slice(0, 10)}.jpg`);
+      if (!result?.canceled) toast('JPG 已保存');
+      return;
+    }
+    const a = document.createElement('a');
+    a.href = dataUrl;
+    a.download = `米游档案-${GAME_META[state.game]?.label || '分享'}-${new Date().toISOString().slice(0, 10)}.jpg`;
+    a.click();
+  } catch (err) { toast(`保存失败：${err.message}`, 'err', 5000); }
 }
 
 // boot

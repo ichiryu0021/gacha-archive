@@ -567,3 +567,8 @@ select option:checked { background-color: #24324a; color: #ffffff; }
 .manual-table-head { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); }
 
 .manual-note { margin-top: 12px; font-size: 11px; color: var(--muted-2); }
+
+.share-preview { margin-top: 16px; border-radius: 16px; overflow: hidden; background: #090d16; border: 1px solid var(--line); }
+.share-preview img { display: block; width: 100%; height: auto; }
+
+.auto-hint { margin-top: 10px; font-size: 11px; color: var(--muted-2); }

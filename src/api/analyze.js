@@ -37,7 +37,7 @@ function inferUp(gameId, record) {
   if (record.rank !== 5) return null;
   const pool = String(record.uigfType || record.gachaType);
   const norm = (v) => String(v || '').replace(/[「」『』“”"]/g, '').trim();
-  const standard = new Set((game.standard5 || []).map(norm));
+  const standard = new Set([...(game.standard5 || []), ...(game.nonUp5 || [])].map(norm));
   if (CHARACTER_POOLS[gameId]?.has(pool) || WEAPON_POOLS[gameId]?.has(pool)) {
     return standard.has(norm(record.name)) ? 'loss' : 'win';
   }
@@ -73,7 +73,8 @@ export function analyzeGame({ gameId, account, catalog }) {
   const currentPityStored = totals.currentPity || {};
 
   for (const r of fiveExact) {
-    if (r.up !== 'win' && r.up !== 'loss') r.up = inferUp(gameId, r);
+    const inferred = inferUp(gameId, r);
+    if (inferred) r.up = inferred;
     r.version = r.version || versionFor(gameId, r.time);
   }
 

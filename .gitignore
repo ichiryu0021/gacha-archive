@@ -21,3 +21,5 @@ __pycache__/
 data/imports/
 
 data/electron/
+
+scripts/.keep-awake.pid
