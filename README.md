@@ -1,8 +1,8 @@
 # 米游档案
 
-[GitHub](https://github.com/ichiryu0021/miyou-archive) · [MIT License](https://github.com/ichiryu0021/miyou-archive/blob/main/LICENSE) · v1.08 · 开源项目
+[GitHub](https://github.com/ichiryu0021/miyou-archive) · [MIT License](https://github.com/ichiryu0021/miyou-archive/blob/main/LICENSE) · v1.09 · 开源项目
 
-本地桌面版米哈游五星抽卡档案：原神 / 崩坏：星穹铁道 / 绝区零，另含崩坏3 / 未定事件簿手动档案。自动读取本机游戏缓存、后台半自动同步、截图 OCR 补录，只保存五星记录。
+本地桌面版米哈游五星抽卡档案：原神 / 崩坏：星穹铁道 / 绝区零，另含崩坏3 / 未定事件簿手动档案。自动读取本机游戏缓存、后台半自动同步、截图 OCR 录入，只保存五星记录。
 
 ## 启动
 
@@ -21,10 +21,18 @@
 - 设置里可调整游戏顺序、隐藏游戏卡片。
 - 手动添加支持按版本、属性、命途/地区筛选角色。
 - 非 UP 五星名单在 `data/up-pools.json`，可随卡池更新调整。
-- 截图补录支持点击图标本地匹配。
+- 截图录入支持点击图标本地匹配。
 - 数据与备份保存在软件目录下的 `data`，不写入 AppData。
 - 米游社登录状态保存到 `data/miyoushe-session.dat`，使用 Windows DPAPI 加密；重启后自动恢复并显示昵称。
 - 支持 UIGF v4 / v3 / SRGF v1 导入，及 UIGF/CSV/整库备份导出。
+
+## 开发文档
+
+- [架构说明](docs/ARCHITECTURE.md)
+- [发布与更新规则](docs/RELEASE.md)
+- [数据与规则](docs/DATA.md)
+- [游戏功能矩阵](docs/FEATURE_MATRIX.md)
+- [多 AI 协作黑板](BLACKBOARD.md)
 
 ## 目录
 

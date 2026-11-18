@@ -3,7 +3,7 @@ import path from 'node:path';
 import { DATA_DIR } from '../config.js';
 
 const TABLES = {};
-for (const game of ['zzz', 'genshin', 'hsr']) {
+for (const game of ['zzz', 'genshin', 'hsr', 'hi3', 'tot']) {
   try {
     const file = path.join(DATA_DIR, `versions-${game}.json`);
     TABLES[game] = JSON.parse(fs.readFileSync(file, 'utf8'))

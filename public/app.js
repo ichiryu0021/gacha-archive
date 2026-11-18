@@ -351,7 +351,7 @@ function renderDashboard() {
     <div class="stat-row">
       ${statCard('五星档案', fmt(d.counts.lifetimeFive), '张', `${d.counts.exactFive} 张有逐条明细`)}
       ${statCard('平均出金', avgValue, '', avgNote, '')}
-      ${statCard('非常驻命中', fmt(d.counts.limitedFive || 0), '张', `命中 ${d.rates.upWins} / 五星 ${d.counts.exactFive}`)}
+      ${statCard('UP命中', fmt(d.counts.limitedFive || 0), '张', `命中 ${d.rates.upWins} / 五星 ${d.counts.exactFive}`)}
       ${statCard('数据覆盖', `${d.coverage.percent}%`, '', `自 ${d.coverage.launchDate} 起`)}
     </div>
         <div class="card coverage-card">
@@ -443,7 +443,7 @@ function renderPoolTable(d) {
   const totalStandard = d.counts.standardFive || 0;
   return `<div class="card" style="margin-bottom:15px">
     <div class="card-head"><div class="card-title"><span class="mark"></span><h3>卡池命中统计</h3><span>POOL PERFORMANCE</span></div></div>
-    <div class="table-wrap" style="border:0"><table><thead><tr><th>卡池</th><th>抽数</th><th>五星</th><th>五星率</th><th>非常驻</th><th>常驻</th><th>命中率</th><th>当前垫抽</th></tr></thead><tbody>
+    <div class="table-wrap" style="border:0"><table><thead><tr><th>卡池</th><th>抽数</th><th>五星</th><th>五星率</th><th>UP</th><th>常驻</th><th>命中率</th><th>当前垫抽</th></tr></thead><tbody>
       ${list.map((p) => `<tr><td><b style="color:var(--text);font-weight:550">${esc(p.label)}</b></td><td>${p.count ? fmt(p.count) : '—'}</td><td>${p.five}</td><td>${p.rate == null ? '—' : pct(p.rate)}</td><td>${p.hitApplicable ? `<span class="badge accent">${p.limited}</span>` : '<span class="muted">—</span>'}</td><td>${p.hitApplicable ? `<span class="badge">${p.standard}</span>` : '<span class="muted">—</span>'}</td><td>${p.hitRate == null ? '—' : pct(p.hitRate)}</td><td>${p.currentPity || '—'}</td></tr>`).join('')}
     </tbody></table></div>
   </div>`;

@@ -15,8 +15,8 @@ export const ASSET_DIR = path.join(DATA_DIR, 'assets');
 export const DB_FILE = path.join(DATA_DIR, 'app.json');
 export const PORT = Number(process.env.PORT || 8787);
 export const HOST = '127.0.0.1';
-export const APP_VERSION = '1.8.0';
-export const APP_DISPLAY_VERSION = '1.08';
+export const APP_VERSION = '1.9.0';
+export const APP_DISPLAY_VERSION = '1.09';
 
 export const GAMES = {
   genshin: {
@@ -50,6 +50,11 @@ export const GAMES = {
       '天空之刃', '天空之傲', '天空之卷', '天空之翼', '天空之脊', '狼的末路',
       '四风原典', '阿莫斯之弓', '和璞鸢', '风鹰剑',
     ]),
+    standardWeapons: UP_POOL_DATA.genshin?.standardWeapons?.length ? UP_POOL_DATA.genshin.standardWeapons : [
+      '天空之刃', '天空之傲', '天空之卷', '天空之翼', '天空之脊', '狼的末路', '四风原典', '阿莫斯之弓', '和璞鸢', '风鹰剑',
+    ],
+    standardAdded: UP_POOL_DATA.genshin?.standardAdded || {},
+    standardAddedVersion: UP_POOL_DATA.genshin?.standardAddedVersion || {},
     expectedFive: { '301': 62.5, '302': 53.5, '200': 62.5, '100': 34.6, '500': 62.5 },
     launchDate: '2020-09-28',
     officialWindow: '约 1 年',
@@ -86,6 +91,11 @@ export const GAMES = {
       '银河铁道之夜', '无可取代的东西', '但战斗还未结束', '制胜的瞬间',
       '时节不居', '以世界之名', '如泥酣眠',
     ]),
+    standardWeapons: UP_POOL_DATA.hsr?.standardWeapons?.length ? UP_POOL_DATA.hsr.standardWeapons : [
+      '银河铁道之夜', '无可取代的东西', '但战斗还未结束', '制胜的瞬间', '时节不居', '以世界之名', '如泥酣眠',
+    ],
+    standardAdded: UP_POOL_DATA.hsr?.standardAdded || {},
+    standardAddedVersion: UP_POOL_DATA.hsr?.standardAddedVersion || {},
     expectedFive: { '11': 62.5, '12': 53.5, '1': 62.5, '2': 34.6, '21': 62.5, '22': 53.5 },
     launchDate: '2023-04-26',
     officialWindow: '约 6 个月 / 联动池 24 个月',
@@ -160,6 +170,11 @@ export const GAMES = {
       '猫又', '丽娜', '格莉丝', '莱卡恩', '11号', '珂蕾妲',
       '「钢铁肉垫」', '「燃狱齿轮」', '「啜泣摇篮」', '「硫磺石」', '「嵌合编译器」', '「拘缚者」',
     ]),
+    standardWeapons: UP_POOL_DATA.zzz?.standardWeapons?.length ? UP_POOL_DATA.zzz.standardWeapons : [
+      '「钢铁肉垫」', '「燃狱齿轮」', '「啜泣摇篮」', '「硫磺石」', '「嵌合编译器」', '「拘缚者」',
+    ],
+    standardAdded: UP_POOL_DATA.zzz?.standardAdded || {},
+    standardAddedVersion: UP_POOL_DATA.zzz?.standardAddedVersion || {},
     expectedFive: { '2': 62.5, '3': 53.5, '1': 62.5, '5': 50, '102': 62.5, '103': 53.5 },
     launchDate: '2024-07-04',
     officialWindow: '以接口实际返回为准；官方统计工具含全量汇总',

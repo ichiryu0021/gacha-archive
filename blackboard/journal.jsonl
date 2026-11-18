@@ -1,0 +1,7 @@
+{"ts":"2026-11-19T03:24:17+08:00","agent":"lead","kind":"bootstrap","text":"小黑板协议 v2 启用：Blackboard 与 journal 只由 Lead 写，子代理只读并通过消息汇报。","refs":["BLACKBOARD.md"]}
+{"ts":"2026-11-19T03:24:17+08:00","agent":"lead","kind":"status","text":"v1.08 已发布；架构、发布、数据文档完成；等待后续多 AI 任务。","refs":["docs/ARCHITECTURE.md","docs/RELEASE.md","docs/DATA.md"]}
+{"ts":"2026-11-19T03:24:17+08:00","agent":"lead","kind":"decision","text":"v1.06 作为母版；1.xx 发布最小热更新；整数版本强制完整包。","refs":["docs/RELEASE.md"],"tags":["release"]}
+{"ts":"2026-11-19T03:24:17+08:00","agent":"lead","kind":"decision","text":"更新只替换程序文件，不覆盖顶层 data；用户记录与登录态保留。","refs":["docs/RELEASE.md","docs/DATA.md"],"tags":["data"]}
+{"ts":"2026-11-19T03:24:17+08:00","agent":"lead","kind":"report","text":"文档与小黑板初始化完成：BLACKBOARD.md、journal、docs/ 三份说明。","refs":["BLACKBOARD.md","blackboard/journal.jsonl","docs/"]}
+{"ts":"2026-11-19T03:31:32+08:00","agent":"lead","kind":"decision","text":"常驻/非UP判定：优先日期，无日期时按版本；早于加入版本按UP。","refs":["data/up-pools.json","src/api/analyze.js"]}
+{"ts":"2026-11-19T03:36:00+08:00","agent":"lead","kind":"decision","text":"所有新功能必须同步适配原神/星铁/绝区零/崩坏3/未定；无接口游戏提供手动兜底，并先更新功能矩阵。","refs":["docs/FEATURE_MATRIX.md"]}

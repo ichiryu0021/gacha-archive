@@ -37,9 +37,27 @@ function inferUp(gameId, record) {
   if (record.rank !== 5) return null;
   const pool = String(record.uigfType || record.gachaType);
   const norm = (v) => String(v || '').replace(/[「」『』“”"]/g, '').trim();
-  const standard = new Set([...(game.standard5 || []), ...(game.nonUp5 || [])].map(norm));
+  const standard = new Set([...(game.standard5 || []), ...(game.standardWeapons || []), ...(game.nonUp5 || [])].map(norm));
+  const addedMap = new Map(Object.entries(game.standardAdded || {}).map(([name, date]) => [norm(name), date]));
+  const addedVersionMap = new Map(Object.entries(game.standardAddedVersion || {}).map(([name, version]) => [norm(name), version]));
+  const versionCmp = (a, b) => {
+    const pa = String(a || '').split('.').map(Number);
+    const pb = String(b || '').split('.').map(Number);
+    for (let i = 0; i < Math.max(pa.length, pb.length); i++) if ((pa[i] || 0) !== (pb[i] || 0)) return (pa[i] || 0) - (pb[i] || 0);
+    return 0;
+  };
   if (CHARACTER_POOLS[gameId]?.has(pool) || WEAPON_POOLS[gameId]?.has(pool)) {
-    return standard.has(norm(record.name)) ? 'loss' : 'win';
+    const key = norm(record.name);
+    if (standard.has(key)) {
+      const added = addedMap.get(key);
+      if (added && record.time && String(record.time).slice(0, 10) < added) return 'win';
+      if (addedVersionMap.has(key)) {
+        const recordVersion = record.version || versionFor(gameId, record.time);
+        if (recordVersion && versionCmp(recordVersion, addedVersionMap.get(key)) < 0) return 'win';
+      }
+      return 'loss';
+    }
+    return 'win';
   }
   return null;
 }
@@ -73,9 +91,9 @@ export function analyzeGame({ gameId, account, catalog }) {
   const currentPityStored = totals.currentPity || {};
 
   for (const r of fiveExact) {
+    r.version = r.version || versionFor(gameId, r.time);
     const inferred = inferUp(gameId, r);
     if (inferred) r.up = inferred;
-    r.version = r.version || versionFor(gameId, r.time);
   }
 
   const limitedPoolSet = new Set([...(CHARACTER_POOLS[gameId] || []), ...(WEAPON_POOLS[gameId] || [])]);

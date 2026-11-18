@@ -402,6 +402,14 @@ export async function fetchZzzFullHistory(sessionId, role) {
   }
 
   records.sort((a, b) => String(a.time).localeCompare(String(b.time)));
+  for (const [type, stats] of Object.entries(perType)) {
+    if (!currentPity[type]) {
+      const counted = records
+        .filter((r) => String(r.gachaType) === String(type))
+        .reduce((sum, r) => sum + (Number(r.pity) || 0), 0);
+      currentPity[type] = Math.max(0, (Number(stats.total) || 0) - counted);
+    }
+  }
   const totals = {
     exact: Number(index.total_gacha_count) || records.length,
     perType,
