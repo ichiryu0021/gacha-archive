@@ -1,6 +1,6 @@
 {
   "name": "miyou-archive",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": true,
   "description": "米哈游五星抽卡本地档案：自动读链、官方同步、截图补录、图鉴与自动更新",
   "type": "module",
