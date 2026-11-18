@@ -15,8 +15,8 @@ export const ASSET_DIR = path.join(DATA_DIR, 'assets');
 export const DB_FILE = path.join(DATA_DIR, 'app.json');
 export const PORT = Number(process.env.PORT || 8787);
 export const HOST = '127.0.0.1';
-export const APP_VERSION = '1.9.0';
-export const APP_DISPLAY_VERSION = '1.09';
+export const APP_VERSION = '1.10.0';
+export const APP_DISPLAY_VERSION = '1.10';
 
 export const GAMES = {
   genshin: {

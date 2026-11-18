@@ -187,6 +187,17 @@ export function analyzeGame({ gameId, account, catalog }) {
     const key = game.uigfMap[pool] || pool;
     if (currentPity[key] === undefined) currentPity[key] = Number(currentPityStored[key]) || 0;
   }
+  const pitySums = {};
+  for (const r of fiveExact) {
+    const type = String(r.gachaType || '0');
+    pitySums[type] = (pitySums[type] || 0) + (Number(r.pity) || 0);
+  }
+  for (const [type, stats] of Object.entries(perType)) {
+    const key = game.uigfMap[type] || type;
+    if (currentPityStored[key] === undefined) {
+      currentPity[key] = Math.max(0, (Number(stats?.total) || 0) - (pitySums[type] || 0));
+    }
+  }
 
   const poolsMap = new Map();
   for (const type of game.types) {
@@ -343,7 +354,7 @@ export function analyzeGame({ gameId, account, catalog }) {
       max: Math.max(0, ...Object.values(currentPity)),
       buckets,
       cap: game.pityCap,
-      hasCurrent: Object.keys(currentPityStored).length > 0,
+      hasCurrent: Object.keys(currentPityStored).length > 0 || Object.keys(pitySums).length > 0,
     },
     pools,
     monthly,
