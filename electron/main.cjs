@@ -34,7 +34,7 @@ async function prepareDataDir() {
   await fsp.mkdir(path.join(target, 'uploads'), { recursive: true });
   await fsp.mkdir(path.join(target, 'assets'), { recursive: true });
   const bundled = path.join(app.getAppPath(), 'data');
-  for (const name of ['catalog-genshin.json', 'catalog-hsr.json', 'catalog-zzz.json', 'catalog-hi3.json', 'catalog-tot.json', 'versions-zzz.json']) {
+  for (const name of ['catalog-genshin.json', 'catalog-hsr.json', 'catalog-zzz.json', 'catalog-hi3.json', 'catalog-tot.json', 'versions-zzz.json', 'versions-hsr.json']) {
     const dest = path.join(target, name);
     if (!fs.existsSync(dest) && fs.existsSync(path.join(bundled, name))) {
       await fsp.copyFile(path.join(bundled, name), dest);
