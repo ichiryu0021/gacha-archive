@@ -14,8 +14,8 @@
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
     "test": "node --test tests/core.test.mjs",
-    "pack": "electron-packager . \"二游档案\" --platform=win32 --arch=x64 --out=dist --overwrite --asar=false --icon=public/icon.ico --ignore=dist --ignore=docs --ignore=tests --ignore=data/app.json --ignore=data/app.json.bak --ignore=data/backups --ignore=data/imports --ignore=data/nte-captures --ignore=data/uploads --ignore=data/assets --ignore=data/electron --ignore=scripts/pooltable.snippet.txt",
-    "pack:release": "electron-packager . \"二游档案\" --platform=win32 --arch=x64 --out=dist/release-2.00 --overwrite --asar=false --icon=public/icon.ico --ignore=dist --ignore=docs --ignore=tests --ignore=data/app.json --ignore=data/app.json.bak --ignore=data/backups --ignore=data/imports --ignore=data/nte-captures --ignore=data/uploads --ignore=data/assets --ignore=data/electron --ignore=scripts/pooltable.snippet.txt"
+    "pack": "node scripts/pack.cjs dist",
+    "pack:release": "node scripts/pack.cjs dist/release-2.00"
   },
   "devDependencies": {
     "@electron/packager": "^20.3.0",
