@@ -31,7 +31,7 @@
 ## 更新
 
 - `electron/updater.cjs` 从 GitHub Release 读取资产。
-- 小版本优先使用 `miyou-hotfix.zip`；整数大版本强制使用完整包。
+- 小版本优先使用 `gacha-hotfix-<version>.zip`；整数大版本强制使用完整包。
 - 更新只替换 `resources/app`，不触碰顶层 `data/`。
 - 更新器带版本/关键文件自检；热更新失败时前端提示是否转完整版。
 - 详细发布规则见 `docs/RELEASE.md`。

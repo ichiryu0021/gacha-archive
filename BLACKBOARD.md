@@ -56,7 +56,7 @@
 | task-21 | 分享总结修复 | lead | 已完成 | `public/app.js` | 生成中预览 + 图片超时 |
 | task-22 | 第三方游戏主题色 | lead | 已完成 | `public/styles.css` | 方舟/终末地/异环独立配色 |
 | task-23 | v2.00 双仓库发布 | lead | 已完成 | `electron/updater.cjs` `docs/RELEASE.md` | 老仓库 2.00 + 新仓库迁移 |
-| task-24 | 新仓库英文名 | lead | 进行中 | `package.json` `electron/updater.cjs` | Gacha Archive / gacha-archive |
+| task-24 | 新仓库英文名 | lead | 已完成 | `package.json` `electron/updater.cjs` | Gacha Archive / gacha-archive |
 
 ## 4. 关键决策
 
@@ -92,6 +92,7 @@
 | D29 | 2026-11-19 | 第三方游戏独立主题：方舟金/钢灰，终末地青绿/米色，异环橙/紫蓝 | 用户反馈非米哈游主题相同 |
 | D30 | 2026-11-19 | 发布 v2.00：老仓库与新仓库同步 2.00；更新器指向新仓库；2.00 后旧仓库封存 | 用户要求拆分仓库 |
 | D31 | 2026-11-19 | 新仓库改名 `gacha-archive`，英文品牌 Gacha Archive；旧拼音仓库 GitHub 自动重定向 | 用户要求不用拼音 |
+| D32 | 2026-11-19 | v2.00 最终资产：`gacha-v2.00-full.zip` / `gacha-hotfix-v2.00.zip`；老仓库已归档；完整包验证可启动 | 发布与打包修复 |
 | D24 | 2026-11-19 | 小黑盒实验版：隔离窗口手动登录，内存捕获页面 JSON，适配所有游戏；不保存密码/Cookie | 用户要求方案 A，先做实验性只读导入 |
 
 ## 5. 待确认问题
@@ -121,6 +122,8 @@
 - 2026-11-19：账号入口改为游戏账号 / 账号登录双页卡；森空岛绑定改用 web token 修复 0 绑定。
 - 2026-11-19：取消独立第三方同步页，官方同步/截图/链接/小黑盒导入收进数据录入。
 - 2026-11-19：新增当前卡池表和第三方图鉴，UP/歪按本地数据库判定；小黑盒改为导入。
+- 2026-11-19：v2.00 发布到 `miyou-archive` 和 `gacha-archive`；旧仓库封存，新仓库改英文名 Gacha Archive。
+- 2026-11-19：修复发布包 `xlsx/dist` 被忽略导致无法启动的问题，完整包与热更新包均已实测。
 
 ## 8. 规则速查
 
