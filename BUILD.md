@@ -1,4 +1,4 @@
-﻿# 开发版构建与 dist 目录规则
+# 开发版构建与 dist 目录规则
 
 > 生效日期：2026-11-19
 > 适用范围：Windows 便携版（Electron + `scripts/pack.cjs`）
@@ -77,7 +77,7 @@ Test-Path 'dist\二游档案\resources\app\public\theme-mecha.css'
 Select-String -Path 'dist\二游档案\resources\app\public\index.html' -Pattern 'mechaEmbedded'
 ```
 
-期望 `name` 为 `gacha-archive`、`version` 为 `2.0.2`、`displayVersion` 为 `2.02`（随版本更新变化），`app.json` 存在，`index.html` 含主题注入标记。
+期望 `name` 为 `gacha-archive`、`version` 为 `2.02`、`displayVersion` 为 `2.02`（随版本更新变化），`app.json` 存在，`index.html` 含主题注入标记。
 
 ## 4. 为什么不能直接打包到 `dist\二游档案`
 

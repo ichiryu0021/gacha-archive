@@ -17,8 +17,8 @@ let latestVersion = '';
 
 function versionParts(value) {
   const text = String(value || '0').trim().replace(/^v/i, '');
-  // 界面版本是 x.xx（2.02），包版本是 semver（2.0.2）；
-  // 两者必须映射到同一组数字，否则 2.01 会被拆成 [2,1] 而不是 [2,0,1]。
+  // 版本统一使用 x.xx。这里保留对旧包 x.y.z 的兼容，
+  // 并把 2.02 映射成 [2,0,2]，避免被拆成 [2,2]。
   const display = /^(\d+)\.(\d{2})$/.exec(text);
   if (display) return [Number(display[1]), Number(display[2][0]), Number(display[2][1])];
   return text.split('.').map((x) => Number(x) || 0);

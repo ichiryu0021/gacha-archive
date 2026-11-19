@@ -4,7 +4,7 @@
   "id": "classic",
   "name": "经典",
   "en": "CLASSIC",
-  "version": "2.0.0",
+  "version": "2.02",
   "description": "原版界面；不加载主题视觉覆盖，只保留设置页主题卡。",
   "mode": "builtin",
   "variant": "classic",
