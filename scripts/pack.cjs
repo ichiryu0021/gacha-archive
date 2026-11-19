@@ -23,6 +23,11 @@ function ignore(file) {
     ? raw.replace(/^\/+/, '')
     : path.relative(root, path.resolve(file)).replace(/\\/g, '/');
   if (!rel) return false;
+  if (rel === '.git' || rel.startsWith('.git/')) return true;
+  if (rel === 'demo-data' || rel.startsWith('demo-data/')) return true;
+  if (rel === 'node_modules/.bin' || rel.startsWith('node_modules/.bin/')) return true;
+  if (rel === 'node_modules/electron' || rel.startsWith('node_modules/electron/')) return true;
+  if (rel === 'node_modules/@electron' || rel.startsWith('node_modules/@electron/')) return true;
   return ignoredRoots.has(rel.split('/')[0])
     || ignoredData.has(rel)
     || [...ignoredDataDirs].some((dir) => rel === dir || rel.startsWith(`${dir}/`))
