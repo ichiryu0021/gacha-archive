@@ -1,0 +1,19 @@
+{
+  "$schema": "./schema/registry.schema.json",
+  "interfaceVersion": "1.0",
+  "defaultTheme": "mecha",
+  "themes": [
+    {
+      "id": "mecha",
+      "directory": "mecha"
+    },
+    {
+      "id": "light",
+      "directory": "light"
+    },
+    {
+      "id": "classic",
+      "directory": "classic"
+    }
+  ]
+}

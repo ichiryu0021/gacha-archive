@@ -1,9 +1,17 @@
+const crypto = require('node:crypto');
+const fs = require('node:fs');
+const fsp = require('node:fs/promises');
+const os = require('node:os');
 const path = require('node:path');
 const { packager } = require('@electron/packager');
 
-const out = path.resolve(process.argv[2] || 'dist');
 const root = path.resolve(__dirname, '..');
-const ignoredRoots = new Set(['dist', 'docs', 'tests']);
+const dist = path.join(root, 'dist');
+const finalDir = path.join(dist, '二游档案');
+const stagingDir = path.join(dist, '.pack-staging');
+const preserveDir = path.join(dist, `.data-preserve-${process.pid}`);
+
+const ignoredRoots = new Set(['dist', 'docs', 'tests', 'themes']);
 const ignoredData = new Set([
   'data/app.json',
   'data/app.json.bak',
@@ -30,26 +38,190 @@ function ignore(file) {
   if (rel === 'node_modules/.bin' || rel.startsWith('node_modules/.bin/')) return true;
   if (rel === 'node_modules/electron' || rel.startsWith('node_modules/electron/')) return true;
   if (rel === 'node_modules/@electron' || rel.startsWith('node_modules/@electron/')) return true;
+  if (rel === 'scripts/pooltable.snippet.txt') return true;
+  // 不把本机登录态、日志和开发数据打进程序目录。
+  if (/^data\/[^/]+\.(dat|log)$/i.test(rel)) return true;
+  if (/^data\/app\.json/i.test(rel)) return true;
   return ignoredRoots.has(rel.split('/')[0])
     || ignoredData.has(rel)
-    || [...ignoredDataDirs].some((dir) => rel === dir || rel.startsWith(`${dir}/`))
-    || rel === 'scripts/pooltable.snippet.txt';
+    || [...ignoredDataDirs].some((dir) => rel === dir || rel.startsWith(`${dir}/`));
 }
 
-packager({
-  dir: root,
-  name: '二游档案',
-  platform: 'win32',
-  arch: 'x64',
-  out,
-  overwrite: true,
-  asar: false,
-  icon: path.join(root, 'public', 'icon.ico'),
-  prune: true,
-  ignore,
-}).then(([folder]) => {
-  console.log(`Packaged: ${folder}`);
-}).catch((error) => {
-  console.error(error);
+async function exists(target) {
+  try {
+    await fsp.access(target);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * 把独立主题包注入开发版的 public/：
+ *   - 复制 theme.css / theme.js
+ *   - 在 index.html 中注入首屏主题 Cookie 引导 + 样式 + 脚本
+ * 不修改原项目 public/index.html。
+ */
+async function injectTheme(stageApp) {
+  const themeDir = path.join(root, 'themes', 'mecha', 'public');
+  const cssSource = path.join(themeDir, 'theme.css');
+  const jsSource = path.join(themeDir, 'theme.js');
+  if (!fs.existsSync(cssSource) || !fs.existsSync(jsSource)) {
+    console.warn('  主题：未找到 themes/mecha/public/theme.css|theme.js，开发版保持原版界面。');
+    return false;
+  }
+
+  const publicDir = path.join(stageApp, 'resources', 'app', 'public');
+  const cssTarget = path.join(publicDir, 'theme-mecha.css');
+  const jsTarget = path.join(publicDir, 'theme-mecha.js');
+  await fsp.copyFile(cssSource, cssTarget);
+  await fsp.copyFile(jsSource, jsTarget);
+
+  const hash = crypto.createHash('sha256')
+    .update(fs.readFileSync(cssSource))
+    .update(fs.readFileSync(jsSource))
+    .digest('hex')
+    .slice(0, 10);
+
+  const indexFile = path.join(publicDir, 'index.html');
+  let html = await fsp.readFile(indexFile, 'utf8');
+  if (html.includes('theme-mecha.css')) {
+    console.warn('  主题：index.html 已包含主题注入，跳过。');
+    return true;
+  }
+  if (!html.includes('</head>') || !html.includes('</body>')) {
+    throw new Error('index.html 缺少 </head> 或 </body>，无法注入主题');
+  }
+
+  // 首屏先根据 Cookie 决定主题，避免刷新/重启时先闪一下经典界面。
+  const boot = `<script>(function(){try{var m=document.cookie.match(/(?:^|;\\s*)ga_theme=(classic|mecha|light)(?:;|$)/);var t=m?m[1]:'mecha';var h=document.documentElement;h.dataset.theme=t==='classic'?'classic':'mecha';if(t==='light')h.dataset.mechaVariant='light';else if(t==='mecha')h.dataset.mechaVariant='dark';h.dataset.mechaEmbedded='1';}catch(e){var h=document.documentElement;h.dataset.theme='mecha';h.dataset.mechaVariant='dark';h.dataset.mechaEmbedded='1';}})();</script>`;
+  const headInjection = `${boot}\n<link rel="stylesheet" href="/theme-mecha.css?h=${hash}">`;
+  const bodyInjection = `<script src="/theme-mecha.js?h=${hash}"></script>`;
+
+  html = html.replace('</head>', `${headInjection}</head>`);
+  html = html.replace('</body>', `${bodyInjection}</body>`);
+  await fsp.writeFile(indexFile, html, 'utf8');
+  console.log(`  主题：已内置机能 · 黑（默认）/ 机能 · 白 / 经典（资源 ${hash.slice(0, 8)}）`);
+  return true;
+}
+
+function electronVersion() {
+  const pkg = JSON.parse(fs.readFileSync(path.join(root, 'node_modules', 'electron', 'package.json'), 'utf8'));
+  return pkg.version;
+}
+
+/**
+ * Electron 二进制优先复用本机 @electron/get 缓存，避免每次构建都访问
+ * GitHub 下载；在线失败时也能继续构建。找不到缓存时才让 packager 自行下载。
+ */
+function cachedElectronZip(version) {
+  const zipName = `electron-v${version}-win32-x64.zip`;
+  const roots = [
+    process.env.ELECTRON_ZIP_DIR,
+    path.join(process.env.LOCALAPPDATA || '', 'electron', 'Cache'),
+    path.join(os.homedir(), '.cache', 'electron'),
+    path.join(os.homedir(), 'AppData', 'Local', 'electron', 'Cache'),
+  ].filter(Boolean);
+
+  for (const cacheRoot of roots) {
+    if (!fs.existsSync(cacheRoot)) continue;
+    const direct = path.join(cacheRoot, zipName);
+    if (fs.existsSync(direct)) return direct;
+    let entries = [];
+    try {
+      entries = fs.readdirSync(cacheRoot, { withFileTypes: true });
+    } catch {
+      continue;
+    }
+    for (const entry of entries) {
+      if (!entry.isDirectory()) continue;
+      const candidate = path.join(cacheRoot, entry.name, zipName);
+      if (fs.existsSync(candidate)) return candidate;
+    }
+  }
+  return null;
+}
+
+async function main() {
+  await fsp.mkdir(dist, { recursive: true });
+  await fsp.rm(stagingDir, { recursive: true, force: true });
+  await fsp.rm(preserveDir, { recursive: true, force: true });
+
+  console.log('正在构建开发版…');
+  console.log(`  源目录：${root}`);
+  console.log(`  输出：  ${finalDir}`);
+
+  const version = electronVersion();
+  const localZip = cachedElectronZip(version);
+  const electronOptions = { electronVersion: version };
+  if (localZip) {
+    electronOptions.electronZipDir = path.dirname(localZip);
+    console.log(`  Electron：本地缓存 ${localZip}`);
+  } else {
+    console.log(`  Electron：v${version}（缓存未命中，将访问 GitHub 下载）`);
+  }
+
+  const [stageApp] = await packager({
+    dir: root,
+    name: '二游档案',
+    platform: 'win32',
+    arch: 'x64',
+    out: stagingDir,
+    overwrite: true,
+    asar: false,
+    icon: path.join(root, 'public', 'icon.ico'),
+    prune: true,
+    ignore,
+    ...electronOptions,
+  });
+
+  await injectTheme(stageApp);
+
+  // 开发版目录里只有程序文件；data/ 是用户数据，单独保留。
+  await fsp.rm(path.join(stageApp, 'data'), { recursive: true, force: true });
+
+  const finalData = path.join(finalDir, 'data');
+  const hadData = await exists(finalData);
+  let movedData = false;
+
+  try {
+    if (hadData) {
+      try {
+        await fsp.rename(finalData, preserveDir);
+        movedData = true;
+      } catch (error) {
+        throw new Error(
+          `无法移开数据目录（${error.code || error.message}）。请先关闭正在运行的二游档案，再重新执行 npm.cmd run pack。`,
+        );
+      }
+    }
+
+    await fsp.rm(finalDir, { recursive: true, force: true });
+    await fsp.rename(stageApp, finalDir);
+
+    if (movedData) {
+      await fsp.rename(preserveDir, finalData);
+      movedData = false;
+    }
+
+    await fsp.rm(stagingDir, { recursive: true, force: true });
+    console.log(`\n开发版已更新：${finalDir}`);
+    console.log(hadData
+      ? '用户数据已保留：dist\\二游档案\\data'
+      : '未发现旧 data 目录，首次运行时会自动创建。');
+    console.log('发布 zip 直接放 dist\\，不要再建 dist\\release-x.xx。\n');
+  } catch (error) {
+    // 构建中途失败时，把用户数据放回去，避免丢失。
+    if (movedData && await exists(preserveDir)) {
+      await fsp.mkdir(finalDir, { recursive: true }).catch(() => {});
+      await fsp.rename(preserveDir, finalData).catch(() => {});
+    }
+    await fsp.rm(stagingDir, { recursive: true, force: true }).catch(() => {});
+    throw error;
+  }
+}
+
+main().catch((error) => {
+  console.error(`\n构建失败：${error.message}`);
   process.exit(1);
 });

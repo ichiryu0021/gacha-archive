@@ -1,0 +1,24 @@
+{
+  "$schema": "../schema/theme.schema.json",
+  "interfaceVersion": "1.0",
+  "id": "mecha",
+  "name": "机能 · 黑",
+  "en": "MECHANICAL / DARK",
+  "version": "2.0.0",
+  "description": "工业仪表 / 全直角 / 黄色主字 / 游戏机体色小装饰。",
+  "mode": "package",
+  "variant": "dark",
+  "assets": {
+    "css": "public/theme.css",
+    "js": "public/theme.js"
+  },
+  "preview": "mecha/screenshots/dashboard.png",
+  "capabilities": {
+    "settingsCard": true,
+    "cookie": true,
+    "standaloneApi": true,
+    "animations": true,
+    "reducedMotion": true,
+    "embeddedBuild": true
+  }
+}

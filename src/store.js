@@ -265,9 +265,13 @@ export class Store {
       this.touch();
       return acc.totals;
     }
-    const mergedDaily = { ...(prev.daily || {}) };
-    for (const [key, count] of Object.entries(totals.daily || {})) {
-      mergedDaily[key] = Math.max(Number(mergedDaily[key]) || 0, Number(count) || 0);
+    // replaceFull：完整导出重新导入时按新数据替换，而不是和旧的全量日表取 max，
+    // 否则旧版本被道具数量放大的 daily 会永远压住修正后的数据。
+    const mergedDaily = totals.replaceFull ? { ...(totals.daily || {}) } : { ...(prev.daily || {}) };
+    if (!totals.replaceFull) {
+      for (const [key, count] of Object.entries(totals.daily || {})) {
+        mergedDaily[key] = Math.max(Number(mergedDaily[key]) || 0, Number(count) || 0);
+      }
     }
     const perType = {};
     let exact = 0;

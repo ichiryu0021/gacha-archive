@@ -14,8 +14,7 @@
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
     "test": "node --test tests/core.test.mjs",
-    "pack": "node scripts/pack.cjs dist",
-    "pack:release": "node scripts/pack.cjs dist/release-2.00"
+    "pack": "node scripts/pack.cjs"
   },
   "devDependencies": {
     "@electron/packager": "^20.3.0",

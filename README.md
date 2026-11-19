@@ -57,7 +57,10 @@
 npm install
 npm start
 npm test
+npm.cmd run pack
 ```
+
+`npm.cmd run pack` 会把开发版固定构建到 `dist\二游档案`，保留该目录下的 `data\` 用户数据，并内置「机能」主题（默认「机能 · 黑」，可切「机能 · 白」或「经典」）。构建目录与发布包规则见 [BUILD.md](BUILD.md)，主题归类与接口标准见 [themes/README.md](themes/README.md) 和 [themes/THEME-INTERFACE.md](themes/THEME-INTERFACE.md)。
 
 ## 开源与致谢
 

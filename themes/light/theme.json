@@ -1,0 +1,21 @@
+{
+  "$schema": "../schema/theme.schema.json",
+  "interfaceVersion": "1.0",
+  "id": "light",
+  "name": "机能 · 白",
+  "en": "MECHANICAL / PAPER",
+  "version": "2.0.0",
+  "description": "纸白底 / 深灰字纸面阴影 / 游戏机体色小装饰。",
+  "mode": "variant",
+  "extends": "mecha",
+  "variant": "light",
+  "preview": "mecha/screenshots/dashboard-light.png",
+  "capabilities": {
+    "settingsCard": true,
+    "cookie": true,
+    "standaloneApi": true,
+    "animations": true,
+    "reducedMotion": true,
+    "embeddedBuild": true
+  }
+}

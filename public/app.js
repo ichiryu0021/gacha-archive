@@ -253,6 +253,9 @@ async function setGame(game) {
   state.catalog = null;
   state.scan = null;
   state.pendingLink = null;
+  // 记录页的搜索/卡池筛选是游戏内状态；切游戏时必须回到初始值，
+  // 否则上一个游戏的 pool id 会让新游戏看起来没有记录。
+  state.recordFilter = { search: '', pool: 'all', source: 'all', page: 1 };
   document.body.dataset.game = game;
   renderShell();
   renderView();
@@ -804,38 +807,90 @@ function renderNteExportImport() {
   </div>`;
 }
 
+function renderMiyousheSyncCard() {
+  const game = state.game;
+  if (!['genshin', 'hsr', 'zzz'].includes(game)) return '';
+  const meta = GAME_META[game];
+  const a = state.auth;
+  const logged = a.status === 'Confirmed';
+  const roles = (a.rolesByGame?.[game] || []).filter((r) => r && r.uid);
+  const error = a.errors?.[game] || '';
+  const currentUid = String(state.dashboard?.meta?.uid || '');
+  const isCurrent = (role) => Boolean(currentUid) && String(role.uid) === currentUid;
+  const orderedRoles = [...roles].sort((x, y) => (isCurrent(x) === isCurrent(y) ? 0 : isCurrent(x) ? -1 : 1));
+  const accountName = a.user?.nickname || (a.user?.aid ? `账号 ${a.user.aid}` : '');
+  let body = '';
+  if (!logged) {
+    body = `<div class="role-list">
+      <div class="role-item">
+        <div class="role-main"><strong>米游社未登录</strong><span>登录后可读取${esc(meta.label)}角色并同步抽卡记录</span></div>
+        <button class="primary-btn compact" data-action="open-login" data-tab="miyoushe">登录米游社</button>
+      </div>
+    </div>`;
+  } else if (orderedRoles.length) {
+    body = `<div class="role-list">${orderedRoles.map((role) => {
+      const current = isCurrent(role);
+      const region = role.regionName || role.region || '区服未知';
+      return `<div class="role-item">
+        <div class="role-main">
+          <strong>${esc(role.nickname || '未命名角色')}${current ? '<span class="badge accent" style="display:inline-flex;margin:0 0 0 6px;vertical-align:1px">当前</span>' : ''}</strong>
+          <span>UID ${esc(role.uid)} · ${esc(region)}${role.level ? ` · Lv.${esc(role.level)}` : ''}</span>
+        </div>
+        <button class="primary-btn compact" data-action="auth-sync" data-game="${game}" data-uid="${attr(role.uid)}">同步到本机</button>
+      </div>`;
+    }).join('')}</div>
+    <div style="display:flex;justify-content:flex-end;margin-top:10px"><button class="ghost-btn" data-action="auth-refresh-roles">${ICONS.refresh} 刷新角色</button></div>`;
+  } else {
+    body = `<div class="auth-empty" style="margin-top:10px">${error ? esc(error) : `没有读取到${esc(meta.label)}角色`}</div>
+      <div class="auto-hint" style="margin-top:6px">${error ? '可以刷新角色重试。' : `确认这个米游社账号已绑定${esc(meta.label)}角色，或刷新角色重新读取。`}刷新只读取米游社角色列表，不会写入本地档案。</div>
+      <div style="display:flex;justify-content:flex-end;margin-top:10px"><button class="ghost-btn" data-action="auth-refresh-roles">${ICONS.refresh} 刷新角色</button></div>`;
+  }
+  return `<div class="card" style="margin-bottom:15px;border-color:rgba(var(--accent-rgb),.22)">
+    <div class="card-head" style="margin-bottom:8px">
+      <div class="card-title"><span class="mark"></span><h3>米游社同步</h3><span>MIYOUSHE SYNC</span></div>
+      <span class="badge ${logged ? 'accent' : ''}">${logged ? '已登录' : '未登录'}</span>
+    </div>
+    ${logged
+      ? `<div class="auto-hint" style="margin-top:0">当前米游社：${esc(accountName || '已登录')}${currentUid ? ` · 当前档案 UID ${esc(currentUid)}` : ''}</div>`
+      : '<div class="auto-hint" style="margin-top:0">通过米游社登录态获取抽卡记录，无需打开游戏；登录态只保存在本机，不会修改米游社账号数据。</div>'}
+    ${body}
+  </div>`;
+}
+
 function renderAutoImport() {
   const scan = state.scan;
   const col = state.collector;
   const colOn = col ? col.enabled : true;
   const events = col?.events || [];
+  const game = state.game;
+  const meta = GAME_META[game];
+  const cacheSupported = ['genshin', 'hsr', 'zzz'].includes(game);
+  const found = scan?.found?.[game];
+  const diagnostics = (scan?.diagnostics || []).filter((item) => item.game === game);
   const collectorCard = `<div class="card" style="margin-bottom:15px;border-color:rgba(var(--accent-rgb),.16)">
     <div class="card-head" style="margin-bottom:10px"><div class="card-title"><span class="mark"></span><h3>后台半自动采集</h3><span>AUTO COLLECTOR</span></div><span class="badge ${colOn ? 'accent' : ''}">${colOn ? '运行中' : '已暂停'}</span></div>
     <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px">
       <button class="primary-btn" data-action="collector-toggle" data-enabled="${colOn ? 'false' : 'true'}">${colOn ? '暂停后台采集' : '开启后台采集'}</button>
       <span style="font-size:11px;color:var(--muted-2)">${col?.lastRun ? `上次扫描 ${timeAgo(col.lastRun)}` : '等待游戏启动'} · 间隔 ${Math.round((col?.intervalMs || 30000) / 1000)} 秒</span>
     </div>
-    ${(col?.runningGames || []).length ? `<div style="margin-top:12px;border-top:1px solid var(--line);padding-top:8px">${(col.runningGames || []).map((game) => {
-      const e = events.find((item) => item.game === game);
-      return `<div class="kv"><span>${esc(GAME_META[game]?.name || game)} · ${esc(e ? (e.ok ? '已同步' : '未同步') : '等待同步')}</span><b>${esc(e?.message || '游戏已启动')}${e?.added ? ` · +${e.added} 金` : ''}${e?.upgraded ? ` · 提升 ${e.upgraded}` : ''}</b></div>`;
+    ${(col?.runningGames || []).length ? `<div style="margin-top:12px;border-top:1px solid var(--line);padding-top:8px">${(col.runningGames || []).map((running) => {
+      const e = events.find((item) => item.game === running);
+      return `<div class="kv"><span>${esc(GAME_META[running]?.name || running)} · ${esc(e ? (e.ok ? '已同步' : '未同步') : '等待同步')}</span><b>${esc(e?.message || '游戏已启动')}${e?.added ? ` · +${e.added} 金` : ''}${e?.upgraded ? ` · 提升 ${e.upgraded}` : ''}</b></div>`;
     }).join('')}</div>` : ''}
   </div>`;
-  return `${collectorCard}<div class="card">
+  const cacheCard = cacheSupported ? `<div class="card">
     <div class="card-head"><div class="card-title"><span class="mark"></span><h3>读取本机游戏缓存</h3><span>WEBCACHE</span></div></div>
-    <div class="auto-hint">需要打开游戏内抽卡历史</div>
-    <div class="scan-grid" style="margin-top:16px">
-      ${state.gameOrder.filter((id) => !state.hiddenGames.includes(id)).map((id) => {
-        const meta = GAME_META[id];
-        const found = scan?.found?.[id];
-        return `<div class="scan-card"><div class="scan-head"><div class="scan-name"><span class="game-dot" style="color:${meta.color};background:${meta.color}"></span>${meta.name}</div><span class="scan-state ${found ? 'found' : ''}">${found ? '已找到链接' : scan ? '未找到' : '等待扫描'}</span></div>
-          <div class="scan-meta">${found ? `${esc(found.region || found.gameBiz || '区服未知')}<br>${esc(found.preview || 'authkey 已隐藏')}` : '未找到'}</div>
-          ${found ? `<button class="ghost-btn" data-action="copy-scan-link" data-link="${attr(found.linkId)}">复制链接</button><button class="primary-btn compact" data-action="sync-link" data-game="${id}" data-link="${attr(found.linkId)}">读取并同步</button>` : `<button class="ghost-btn" data-action="scan-links">扫描</button>`}
-        </div>`;
-      }).join('')}
+    <div class="auto-hint">需要打开${esc(meta.label)}的抽卡历史 · 当前只读取${esc(meta.label)}的缓存</div>
+    <div class="scan-grid" style="margin-top:16px;grid-template-columns:1fr">
+      <div class="scan-card"><div class="scan-head"><div class="scan-name"><span class="game-dot" style="color:${meta.color};background:${meta.color}"></span>${esc(meta.name)}</div><span class="scan-state ${found ? 'found' : ''}">${found ? '已找到链接' : scan ? '未找到' : '等待扫描'}</span></div>
+        <div class="scan-meta">${found ? `${esc(found.region || found.gameBiz || '区服未知')}<br>${esc(found.preview || 'authkey 已隐藏')}` : '未找到'}</div>
+        ${found ? `<button class="ghost-btn" data-action="copy-scan-link" data-link="${attr(found.linkId)}">复制链接</button><button class="primary-btn compact" data-action="sync-link" data-game="${game}" data-link="${attr(found.linkId)}">读取并同步</button>` : `<button class="ghost-btn" data-action="scan-links">扫描</button>`}
+      </div>
     </div>
     <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap"><button class="primary-btn" data-action="scan-links">${ICONS.refresh} 扫描本机链接</button><button class="ghost-btn" data-action="switch-import-tab" data-tab="paste">没有找到？粘贴链接</button></div>
-    ${scan ? `<details style="margin-top:16px"><summary style="cursor:pointer;color:var(--muted);font-size:12px">查看扫描诊断（${scan.diagnostics?.length || 0} 项）</summary><div style="margin-top:10px;max-height:220px;overflow:auto;font-family:var(--mono);font-size:10.5px;color:var(--muted-2);line-height:1.8">${(scan.diagnostics || []).map((x) => `${esc(x.type)} · ${esc(x.game)} · ${esc(x.path || x.file || x.installDir || '')}${x.exists === false ? ' · 不存在' : ''}${x.error ? ' · ' + esc(x.error) : ''}`).join('<br>')}</div></details>` : ''}
-  </div>`;
+    ${diagnostics.length ? `<details style="margin-top:16px"><summary style="cursor:pointer;color:var(--muted);font-size:12px">查看扫描诊断（${diagnostics.length} 项）</summary><div style="margin-top:10px;max-height:220px;overflow:auto;font-family:var(--mono);font-size:10.5px;color:var(--muted-2);line-height:1.8">${diagnostics.map((x) => `${esc(x.type)} · ${esc(x.path || x.file || x.installDir || '')}${x.exists === false ? ' · 不存在' : ''}${x.error ? ' · ' + esc(x.error) : ''}`).join('<br>')}</div></details>` : ''}
+  </div>` : '';
+  return `${renderMiyousheSyncCard()}${collectorCard}${cacheCard}`;
 }
 
 function renderPasteImport() {
@@ -1102,6 +1157,7 @@ async function loadAllAuthRoles() {
     state.auth.errors = data.errors || {};
     renderShell();
     refreshAuthModal(true);
+    if (state.view === 'import' && state.importTab === 'auto') renderView();
   } catch (e) {
     toast(e.message, 'err', 5000);
   }
@@ -1168,6 +1224,7 @@ async function logoutAuth() {
   clearQrTimer();
   $('#modal-root').innerHTML = '';
   renderShell();
+  if (state.view === 'import' && state.importTab === 'auto') renderView();
   toast('已退出米游社');
 }
 
@@ -1884,8 +1941,8 @@ document.addEventListener('click', async (e) => {
       state.scan = await api('/api/links/scan', { method: 'POST', body: '{}' });
       setBusy(el, false);
       renderView();
-      const found = Object.keys(state.scan.found || {}).length;
-      toast(found ? `找到 ${found} 个可用的抽卡链接` : '没有找到链接，请先打开游戏内记录页');
+      const found = state.scan.found?.[state.game];
+      toast(found ? `已找到${gameName()}的抽卡链接` : `没有找到${gameName()}的链接，请先打开游戏内记录页`, found ? 'ok' : 'err', 4200);
       return;
     }
     if (action === 'copy-scan-link') {
@@ -2127,6 +2184,12 @@ document.addEventListener('click', async (e) => {
     }
     if (action === 'auth-start') { await startAuthQr(); return; }
     if (action === 'auth-sync') { await syncAuthRole(el.dataset.game, el.dataset.uid); return; }
+    if (action === 'auth-refresh-roles') {
+      setBusy(el, true, '刷新中');
+      await loadAllAuthRoles();
+      setBusy(el, false);
+      return;
+    }
     if (action === 'auth-sync-all') { setBusy(el, true, '同步中'); await syncAllAuthGames(); setBusy(el, false); return; }
     if (action === 'auth-zzz') { await authZzzStats(); return; }
     if (action === 'auth-logout') { await logoutAuth(); return; }

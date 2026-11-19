@@ -52,7 +52,10 @@ export function parseNteExport(payload) {
   let exact = 0;
   let uid = '';
   for (const raw of records) {
-    const count = Math.max(1, Number(raw.count) || 1);
+    // NTE Gacha Exporter 每行就是一条抽取结果；count 是道具堆叠数量，
+    // 不是抽数（例如「道具·失纬棋子」count=16 表示一次结果给了 16 个）。
+    // 旧逻辑把 count 当抽数累加，导致垫抽/总抽被放大到数百。
+    const count = 1;
     const pool = poolKey(game, raw);
     const kind = itemKind(raw);
     const time = cleanTime(raw.time);
@@ -184,17 +187,38 @@ export async function importNteExport(store, payload) {
   const parsed = parseNteExport(payload);
   const account = store.account('nte');
   repairNteAccount(store);
-  const existing = new Set((account?.records || []).map(recordKey));
-  const records = parsed.records
-    .filter((r) => !existing.has(recordKey(r)))
-    .map((r) => ({ ...r, uid: r.uid || account?.uid || '' }));
-  const merged = store.mergeRecords('nte', records, { source: 'nte-export' });
+  const existing = new Map((account?.records || []).map((record) => [recordKey(record), record]));
+  const additions = [];
+  let updated = 0;
+
+  // 同一份导出重新导入时，旧记录可能已经存在；旧的 count 当抽数逻辑
+  // 会把已存在的 5 星垫抽算错，所以这里按 key 回写 exporter 记录的 pity。
+  for (const record of parsed.records) {
+    const old = existing.get(recordKey(record));
+    if (!old) {
+      additions.push({ ...record, uid: record.uid || account?.uid || '' });
+      continue;
+    }
+    if (old.source !== 'nte-export') continue;
+    if (old.pity !== record.pity || old.poolName !== record.poolName || old.gachaType !== record.gachaType) {
+      old.pity = record.pity;
+      old.poolName = record.poolName;
+      old.gachaType = record.gachaType;
+      old.uigfType = record.uigfType;
+      old.poolType = record.poolType;
+      updated++;
+    }
+  }
+
+  const merged = store.mergeRecords('nte', additions, { source: 'nte-export' });
+  if (updated) store.touch();
   store.setTotals('nte', { ...parsed.totals, replaceFull: true });
   repairNteAccount(store);
   await store.flush(true);
   return {
     game: 'nte',
     imported: merged.added,
+    updated,
     totalPulls: parsed.totalPulls,
     topCount: parsed.topCount,
     source: 'NTE Gacha Exporter',

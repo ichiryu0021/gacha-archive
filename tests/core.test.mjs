@@ -327,6 +327,44 @@ test('NTEUID archive import maps S records and preserves stable ids', () => {
   assert.match(parsed.records[0].id, /^nteuid_123456789012_/);
 });
 
+test('NTE exporter counts result rows, not item stack quantity', () => {
+  const payload = {
+    nte: {
+      list: [
+        { time: '2026-01-01 00:00:00', pool_id: 'CardPool_NewRole', lottery_id: 'Lottery_Permanent', pool_name: '常驻', item_id: '1001', item_name: '角色·角色A', rarity: 5, count: 1 },
+        { time: '2026-01-01 00:00:01', pool_id: 'CardPool_NewRole', lottery_id: 'Lottery_Permanent', pool_name: '常驻', item_id: 'Dice_ticket_01', item_name: '道具·失纬棋子', rarity: 5, count: 16 },
+        { time: '2026-01-01 00:00:02', pool_id: 'CardPool_NewRole', lottery_id: 'Lottery_Permanent', pool_name: '常驻', item_id: '1002', item_name: '角色·角色B', rarity: 5, count: 1 },
+      ],
+    },
+  };
+  const parsed = parseNteExport(payload);
+  assert.equal(parsed.totalPulls, 3);
+  assert.equal(parsed.totals.exact, 3);
+  assert.equal(parsed.totals.perType.permanent.total, 3);
+  assert.equal(parsed.records.find((r) => r.name === '角色A').pity, 1);
+  // 5 星道具也按一条结果计算并重置当前池垫抽；关键是 count=16 不能当 16 抽。
+  assert.equal(parsed.records.find((r) => r.name === '角色B').pity, 1);
+});
+
+test('full NTE re-import replaces old inflated daily totals', () => {
+  const store = new Store();
+  store.touch = () => {};
+  store.state.accounts.nte = {
+    records: [],
+    totals: { exact: 3553, perType: { permanent: { total: 1098, five: 3 } }, currentPity: { permanent: 2 }, daily: { '2026-06-01|permanent': 1098 }, full: true },
+  };
+  const totals = store.setTotals('nte', {
+    exact: 3,
+    perType: { permanent: { total: 3, five: 1 } },
+    currentPity: { permanent: 2 },
+    daily: { '2026-06-01|permanent': 3 },
+    full: true,
+    replaceFull: true,
+  });
+  assert.equal(totals.exact, 3);
+  assert.equal(totals.daily['2026-06-01|permanent'], 3);
+});
+
 test('third-party timestamps normalize ms, ISO UTC and local strings to +08', () => {
   assert.equal(tp.cnTime(1704067200000), '2024-01-01 08:00:00');
   assert.equal(tp.cnTime('2026-01-01T00:00:00Z'), '2026-01-01 08:00:00');

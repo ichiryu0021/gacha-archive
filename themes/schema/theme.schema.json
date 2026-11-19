@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gacha-archive.local/theme.schema.json",
+  "title": "二游档案主题清单",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "interfaceVersion",
+    "id",
+    "name",
+    "en",
+    "version",
+    "mode",
+    "variant",
+    "capabilities"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "interfaceVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "en": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "description": {
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "package",
+        "variant",
+        "builtin"
+      ]
+    },
+    "extends": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "variant": {
+      "enum": [
+        "dark",
+        "light",
+        "classic"
+      ]
+    },
+    "assets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "css",
+        "js"
+      ],
+      "properties": {
+        "css": {
+          "type": "string",
+          "minLength": 1
+        },
+        "js": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "preview": {
+      "type": "string",
+      "minLength": 1
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "settingsCard",
+        "cookie",
+        "standaloneApi",
+        "animations",
+        "reducedMotion",
+        "embeddedBuild"
+      ],
+      "properties": {
+        "settingsCard": {
+          "type": "boolean"
+        },
+        "cookie": {
+          "type": "boolean"
+        },
+        "standaloneApi": {
+          "type": "boolean"
+        },
+        "animations": {
+          "type": "boolean"
+        },
+        "reducedMotion": {
+          "type": "boolean"
+        },
+        "embeddedBuild": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "mode": {
+            "const": "package"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "assets"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "mode": {
+            "const": "variant"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "extends"
+        ]
+      }
+    }
+  ]
+}
