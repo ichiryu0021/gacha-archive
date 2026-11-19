@@ -5,6 +5,12 @@ import { parseUigfPayload, buildUigf, snapshotFromZzz } from '../src/api/uigf.js
 import { analyzeGame } from '../src/api/analyze.js';
 import { loadCatalog, matchItem } from '../src/api/catalog.js';
 import { Store } from '../src/store.js';
+import { __test as tp } from '../src/api/thirdparty.js';
+import { parseNteuidPayload } from '../src/api/nteuid.js';
+import { buildArknightsHeybox, buildHeybox, parseHeyboxArknights } from '../src/api/heybox.js';
+import { inferBannerUp } from '../src/api/banners.js';
+import { extractHeyboxLive } from '../src/api/heybox-live.js';
+import { parseNteExport } from '../src/api/nte-export.js';
 
 const KEY = 'A'.repeat(120) + 'xyz';
 
@@ -175,6 +181,20 @@ test('daily totals accumulate across official windows without double counting', 
   assert.equal(totals.end, '2025-02-01 23:59:59');
 });
 
+test('standard pools are not treated as limited UP pools', () => {
+  const account = {
+    uid: '1', records: [
+      { id: '1', time: '2025-01-01 00:00:00', name: '姬子', rank: 5, gachaType: '1', uigfType: '1', itemId: '1', itemType: '角色' },
+    ],
+    totals: { exact: 10, perType: { '1': { total: 10, five: 1 } }, currentPity: { '1': 0 }, start: '2025-01-01 00:00:00', end: '2025-01-01 00:00:01' },
+    snapshots: [],
+  };
+  const result = analyzeGame({ gameId: 'hsr', account, catalog: { items: [] } });
+  assert.equal(result.records[0].up, null);
+  assert.equal(result.pools.find((p) => p.type === '1').hitApplicable, false);
+  assert.equal(result.counts.limitedExact, 0);
+});
+
 test('overall hit rate uses limited five-stars over all five-stars', () => {
   const account = {
     uid: '1', records: [
@@ -192,6 +212,135 @@ test('overall hit rate uses limited five-stars over all five-stars', () => {
   assert.equal(Math.round(result.rates.upRate * 1000) / 1000, 0.5);
 });
 
+test('Arknights official history maps six-stars with pity and per-category totals', () => {
+  const rows = [
+    { gachaTs: '1704067200000', pos: 1, charId: 'a', charName: '甲', rarity: 3, poolName: '标准寻访', poolId: '1' },
+    { gachaTs: '1704067201000', pos: 2, charId: 'b', charName: '乙', rarity: 4, poolName: '标准寻访', poolId: '1' },
+    { gachaTs: '1704067202000', pos: 3, charId: 'c', charName: '六星甲', rarity: 5, poolName: '标准寻访', poolId: '1' },
+    { gachaTs: '1704067203000', pos: 4, charId: 'd', charName: '丙', rarity: 3, poolName: '标准寻访', poolId: '1' },
+  ];
+  const mapped = tp.mapArknights(rows, { uid: '123', nickname: '刀客塔' });
+  assert.equal(mapped.records.length, 1);
+  assert.equal(mapped.records[0].name, '六星甲');
+  assert.equal(mapped.records[0].rank, 5);
+  assert.equal(mapped.records[0].pity, 3);
+  assert.equal(mapped.records[0].gachaType, 'standard');
+  assert.equal(mapped.totals.exact, 4);
+  assert.equal(mapped.totals.perType.standard.total, 4);
+  assert.equal(mapped.totals.perType.standard.five, 1);
+  assert.equal(mapped.totals.currentPity.standard, 1);
+  const analysis = analyzeGame({ gameId: 'arknights', account: { uid: '123', records: mapped.records, totals: mapped.totals, poolNames: mapped.poolNames }, catalog: { items: [] } });
+  assert.equal(analysis.rarityLabel, '六星');
+  assert.equal(analysis.counts.exact, 4);
+  assert.equal(analysis.counts.exactFive, 1);
+  assert.equal(analysis.pity.current.standard, 1);
+});
+
+test('third-party mapped records persist as top-rarity records with full totals', () => {
+  const store = new Store();
+  store.touch = () => {};
+  store.state.accounts.arknights = null;
+  const rows = [
+    { gachaTs: '1704067200000', pos: 1, charId: 'c', charName: '六星甲', rarity: 5, poolName: '限定寻访', poolId: '1' },
+  ];
+  const mapped = tp.mapArknights(rows, { uid: '123', nickname: '刀客塔' });
+  const merged = store.mergeRecords('arknights', mapped.records, { source: 'official', meta: { uid: '123' } });
+  store.setFullTotals('arknights', mapped.totals);
+  store.setPoolNames('arknights', mapped.poolNames);
+  assert.equal(merged.added, 1);
+  assert.equal(store.state.accounts.arknights.records[0].rank, 5);
+  assert.equal(store.state.accounts.arknights.totals.exact, 1);
+  assert.equal(store.state.accounts.arknights.poolNames.limited, '限定寻访');
+});
+
+test('Endfield official records map character and weapon pools with free pulls excluded from pity', () => {
+  const chars = [
+    { seqId: '1', charId: 'c1', charName: 'A', rarity: 4, gachaTs: '2026-01-22 10:00:00', __poolType: 'E_CharacterGachaPoolType_Special', isFree: false, poolId: 'p1', poolName: '特许寻访' },
+    { seqId: '2', charId: 'c2', charName: 'B', rarity: 6, gachaTs: '2026-01-22 10:00:01', __poolType: 'E_CharacterGachaPoolType_Special', isFree: false, poolId: 'p1', poolName: '特许寻访' },
+    { seqId: '3', charId: 'c3', charName: 'C', rarity: 6, gachaTs: '2026-01-22 10:00:02', __poolType: 'E_CharacterGachaPoolType_Special', isFree: true, poolId: 'p1', poolName: '特许寻访' },
+  ];
+  const weapons = [
+    { seqId: 'w1', weaponId: 'w1', weaponName: 'W', rarity: 6, gachaTs: '2026-01-22 10:01:00', __poolId: 'weaponbox_constant_1', poolType: 'constant', poolName: '常驻申领' },
+  ];
+  const mapped = tp.mapEndfield(chars, weapons, 'hypergryph');
+  assert.equal(mapped.records.length, 3);
+  assert.equal(mapped.records.find((r) => r.name === 'B').pity, 2);
+  assert.equal(mapped.records.find((r) => r.name === 'C').pity, 0);
+  assert.equal(mapped.records.find((r) => r.name === 'W').gachaType, 'weapon_constant');
+  assert.equal(mapped.totals.exact, 4);
+  assert.equal(mapped.totals.perType.char_special.total, 3);
+  assert.equal(mapped.totals.perType.weapon_constant.total, 1);
+  assert.equal(mapped.totals.currentPity.char_special, 0);
+  const analysis = analyzeGame({ gameId: 'endfield', account: { uid: '1', records: mapped.records, totals: mapped.totals, poolNames: mapped.poolNames }, catalog: { items: [] } });
+  assert.equal(analysis.rarityLabel, '六星');
+  assert.equal(analysis.counts.exact, 4);
+  assert.equal(analysis.pools.find((p) => p.type === 'char_special').five, 2);
+});
+
+test('NTE gacha summary maps S ranks and current pity per pool', () => {
+  const summary = {
+    roleid: '123', rolename: '鉴定师',
+    gachaDetails: [
+      { tab: '限定卡池', drawCount: 100, details: [
+        { charid: '1001', rareCount: 70, timeStamp: 1704067200000 },
+        { charid: '1002', rareCount: 20, timeStamp: 1704067300000 },
+      ] },
+      { tab: '常驻卡池', drawCount: 10, details: [] },
+      { tab: '弧盘池', drawCount: 40, details: [
+        { charid: 'fork_x', rareCount: 40, timeStamp: 1704067400000 },
+      ] },
+    ],
+  };
+  const names = new Map([['1001', '角色A'], ['1002', '角色B']]);
+  const mapped = tp.mapNte(summary, names, { roleId: '123', roleName: '鉴定师' });
+  assert.equal(mapped.records.length, 3);
+  assert.equal(mapped.records.find((r) => r.name === '角色A').pity, 70);
+  assert.equal(mapped.records.find((r) => r.name === '角色A').up, null);
+  assert.equal(mapped.records.find((r) => r.itemId === 'fork_x').name, '弧盘 fork_x');
+  assert.equal(mapped.totals.exact, 150);
+  assert.equal(mapped.totals.perType.limited.total, 100);
+  assert.equal(mapped.totals.currentPityUnknown, true);
+  assert.deepEqual(mapped.totals.currentPity, {});
+  const analysis = analyzeGame({ gameId: 'nte', account: { uid: '123', records: mapped.records, totals: mapped.totals, poolNames: mapped.poolNames }, catalog: { items: [] } });
+  assert.equal(analysis.rarityLabel, 'S级');
+  assert.equal(analysis.counts.exact, 150);
+  assert.equal(analysis.counts.exactFive, 3);
+});
+
+test('NTEUID archive import maps S records and preserves stable ids', () => {
+  const payload = {
+    format: 'nteuid-gacha', version: 1, uid: '123456789012',
+    pools: {
+      limited: { records: [{ item_id: '1001', time_ms: 1704067200000, pity: 70 }] },
+      permanent: { records: [{ item_id: '1002', time_ms: 1704070800000, pity: 20 }] },
+      weapon: { records: [{ item_id: 'fork_x', time_ms: 1704074400000, pity: 40 }] },
+    },
+  };
+  const names = new Map([['1001', '角色A'], ['1002', '角色B']]);
+  const parsed = parseNteuidPayload(payload, names);
+  assert.equal(parsed.records.length, 3);
+  assert.equal(parsed.records.find((r) => r.itemId === '1001').name, '角色A');
+  assert.equal(parsed.records.find((r) => r.itemId === 'fork_x').name, '弧盘 fork_x');
+  assert.equal(parsed.totals.exact, 130);
+  assert.equal(parsed.totals.perType.limited.total, 70);
+  assert.equal(parsed.totals.currentPityUnknown, true);
+  assert.match(parsed.records[0].id, /^nteuid_123456789012_/);
+});
+
+test('third-party timestamps normalize ms, ISO UTC and local strings to +08', () => {
+  assert.equal(tp.cnTime(1704067200000), '2024-01-01 08:00:00');
+  assert.equal(tp.cnTime('2026-01-01T00:00:00Z'), '2026-01-01 08:00:00');
+  assert.equal(tp.cnTime('2026-01-01 12:34:56'), '2026-01-01 12:34:56');
+});
+
+test('Endfield gacha URL parser validates host and keeps server id', () => {
+  const parsed = tp.parseEndfieldUrl('https://ef-webview.hypergryph.com/page/gacha_123?u8_token=abc&server_id=1&lang=zh-cn');
+  assert.equal(parsed.provider, 'hypergryph');
+  assert.equal(parsed.serverId, '1');
+  assert.equal(parsed.token, 'abc');
+  assert.throws(() => tp.parseEndfieldUrl('https://example.com/page/gacha_123?u8_token=abc'));
+});
+
 test('matches screenshot rows without timestamps and upgrades them later', () => {
   const store = new Store();
   store.touch = () => {};
@@ -204,4 +353,114 @@ test('matches screenshot rows without timestamps and upgrades them later', () =>
   assert.equal(result.upgraded, 1);
   assert.equal(store.state.accounts.genshin.records.length, 1);
   assert.equal(store.state.accounts.genshin.records[0].synthetic, false);
+});
+
+test('builds 小黑盒 Arknights JSON from local top records', () => {
+  const payload = buildArknightsHeybox({ records: [
+    { name: '能天使', rank: 5, time: '2026-11-19 12:00:00', gachaType: 'normal', poolName: '标准寻访', up: 'win', pity: 50 },
+    { name: '四星', rank: 4, time: '2026-11-19 12:01:00', gachaType: 'normal' },
+  ] });
+  const keys = Object.keys(payload);
+  assert.equal(keys.length, 1);
+  assert.deepEqual(payload[keys[0]].c, [['能天使', 6, false]]);
+  assert.equal(payload[keys[0]].p, '标准寻访');
+  assert.equal(payload[keys[0]].up, 'win');
+  assert.equal(payload[keys[0]].pity, 50);
+  assert.throws(() => buildHeybox('endfield', { records: [] }));
+});
+
+test('parses 小黑盒 Arknights JSON with full pull sequence for pity', () => {
+  const parsed = parseHeyboxArknights({
+    1795060800: { c: [['四星', 4, false]], p: '标准寻访' },
+    1795060860: { c: [['能天使', 6, false]], p: '标准寻访' },
+  });
+  assert.equal(parsed.records.length, 1);
+  assert.equal(parsed.records[0].name, '能天使');
+  assert.equal(parsed.records[0].rank, 5);
+  assert.equal(parsed.records[0].pity, 2);
+  assert.equal(parsed.records[0].gachaType, 'standard');
+  assert.equal(parsed.totals.exact, 2);
+  assert.equal(parsed.totals.perType.standard.five, 1);
+});
+
+test('NTE standard S characters are marked loss in limited pools', () => {
+  const account = {
+    uid: '1',
+    records: [
+      { id: '1', time: '2026-11-10 12:00:00', name: '曳尔沐', rank: 5, gachaType: 'limited', uigfType: 'limited', pity: 10 },
+      { id: '2', time: '2026-11-11 12:00:00', name: '早雾', rank: 5, gachaType: 'limited', uigfType: 'limited', pity: 20 },
+      { id: '3', time: '2026-11-12 12:00:00', name: '早雾', rank: 5, gachaType: 'permanent', uigfType: 'permanent', pity: 30 },
+    ],
+    totals: { exact: 60, perType: { limited: { total: 30, five: 2 }, permanent: { total: 30, five: 1 } }, currentPity: {} },
+  };
+  const result = analyzeGame({ gameId: 'nte', account, catalog: { items: [] } });
+  assert.equal(result.records.find((r) => r.gachaType === 'limited' && r.name === '早雾').up, 'loss');
+  assert.equal(result.rates.upWins, 1);
+  assert.equal(result.rates.upLosses, 1);
+  assert.equal(result.rates.upRate, 0.5);
+});
+
+test('NTE Gacha Exporter import keeps full totals and S pity', () => {
+  const parsed = parseNteExport({
+    nte: { list: [
+      { time: '2026-01-01 00:00:00', rarity: 3, item_name: '道具·迷迭棋子', pool_name: '常驻卡池', pool_id: 'CardPool_NewRole' },
+      { time: '2026-01-01 00:01:00', rarity: 5, item_name: '角色·早雾', pool_name: '常驻卡池', pool_id: 'CardPool_NewRole' },
+    ] },
+  });
+  assert.equal(parsed.totalPulls, 2);
+  assert.equal(parsed.totals.exactUnknown, false);
+  assert.equal(parsed.totals.currentPityUnknown, false);
+  assert.equal(parsed.records.length, 1);
+  assert.equal(parsed.records[0].name, '早雾');
+  assert.equal(parsed.records[0].pity, 2);
+  assert.equal(parsed.records[0].gachaType, 'permanent');
+});
+
+test('NTE arc discs in a character pool are stored as weapons, not characters', () => {
+  const parsed = parseNteExport({
+    nte: { list: [
+      { time: '2026-01-01 00:00:00', rarity: 3, item_name: '角色·薄荷', pool_name: '限定卡池', pool_id: 'CardPool_Character' },
+      { time: '2026-01-01 00:00:01', rarity: 5, item_name: '弧盘·危险游戏', item_id: 'fork_dustbin', pool_name: '限定卡池', pool_id: 'CardPool_Character' },
+      { time: '2026-01-01 00:00:02', rarity: 5, item_name: '角色·曳尔沐', item_id: '1090', pool_name: '限定卡池', pool_id: 'CardPool_Character' },
+    ] },
+  });
+  assert.equal(parsed.totalPulls, 3);
+  assert.equal(parsed.records.length, 2);
+  assert.equal(parsed.records.find((r) => r.name === '危险游戏').gachaType, 'weapon');
+  assert.equal(parsed.records.find((r) => r.name === '曳尔沐').gachaType, 'limited');
+  assert.equal(parsed.totals.currentPity.limited, 0);
+});
+
+test('bundled third-party catalogs include images and weapon types', () => {
+  const ak = loadCatalog('arknights');
+  const ef = loadCatalog('endfield');
+  const nte = loadCatalog('nte');
+  assert.ok(ak.items.length > 300);
+  assert.ok(ak.items.every((i) => i.iconUrl));
+  assert.ok(ef.items.some((i) => i.type === '武器'));
+  assert.ok(ef.items.every((i) => i.iconUrl));
+  assert.ok(nte.items.some((i) => i.type === '弧盘'));
+  assert.ok(nte.items.some((i) => i.type === '角色'));
+  assert.ok(nte.items.every((i) => i.iconUrl));
+});
+
+test('extracts top records from captured Heybox payloads across games', () => {
+  const time = '2026-11-10 12:00:00';
+  const cases = [
+    ['endfield', { data: { list: [{ name: '明河', rarity: 6, time, poolName: '烟火邀星河', pity: 10 }] } }],
+    ['genshin', { list: [{ name: '胡桃', rank_type: 5, time, gacha_type: '301', pity: 20 }] }],
+    ['nte', { list: [{ name: '曳尔沐', rarity: 'S', time, poolName: '电子人之梦', pity: 5 }] }],
+  ];
+  for (const [game, payload] of cases) {
+    const result = extractHeyboxLive(game, [{ url: 'https://api.xiaoheihe.cn/test', body: JSON.stringify(payload) }]);
+    assert.equal(result.records.length, 1);
+    assert.equal(result.records[0].rank, 5);
+  }
+});
+
+test('infers UP/loss from current banner data', () => {
+  assert.equal(inferBannerUp('endfield', { name: '明河', rank: 5, time: '2026-11-10 12:00:00', gachaType: 'char_special' }), 'win');
+  assert.equal(inferBannerUp('endfield', { name: '祀', rank: 5, time: '2026-11-10 12:00:00', gachaType: 'char_special' }), 'loss');
+  assert.equal(inferBannerUp('nte', { name: '曳尔沐', rank: 5, time: '2026-11-10 12:00:00', gachaType: 'limited' }), 'win');
+  assert.equal(inferBannerUp('arknights', { name: '塔露拉', rank: 5, time: '2026-11-10 12:00:00', gachaType: 'limited' }), 'win');
 });

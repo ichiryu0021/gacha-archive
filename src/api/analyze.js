@@ -2,9 +2,15 @@ import { getGame } from '../config.js';
 import { datePart, monthPart, withinPeriod } from '../utils.js';
 import { loadCatalog } from './catalog.js';
 import { versionFor, versionOrder } from './versions.js';
+import { inferBannerUp } from './banners.js';
 
-const CHARACTER_POOLS = { genshin: new Set(['301']), hsr: new Set(['11', '21']), zzz: new Set(['2', '102']) };
-const WEAPON_POOLS = { genshin: new Set(['302']), hsr: new Set(['12', '22']), zzz: new Set(['3', '103']) };
+function characterPools(gameId) {
+  return new Set(getGame(gameId).characterPools || []);
+}
+
+function weaponPools(gameId) {
+  return new Set(getGame(gameId).weaponPools || []);
+}
 
 function daysBetween(a, b) {
   if (!a || !b) return 0;
@@ -34,18 +40,34 @@ function rangesOverlap(a, b) {
 
 function inferUp(gameId, record) {
   const game = getGame(gameId);
-  if (record.rank !== 5) return null;
+  if (record.rank !== 5 || game.inferUp === false) return null;
   const pool = String(record.uigfType || record.gachaType);
+  if (!(game.limitedPools || []).includes(pool)) return null;
   const norm = (v) => String(v || '').replace(/[「」『』“”"]/g, '').trim();
-  const standard = new Set((game.standard5 || []).map(norm));
-  if (CHARACTER_POOLS[gameId]?.has(pool) || WEAPON_POOLS[gameId]?.has(pool)) {
-    return standard.has(norm(record.name)) ? 'loss' : 'win';
+  const standard = new Set([...(game.standard5 || []), ...(game.standardWeapons || []), ...(game.nonUp5 || [])].map(norm));
+  const addedMap = new Map(Object.entries(game.standardAdded || {}).map(([name, date]) => [norm(name), date]));
+  const addedVersionMap = new Map(Object.entries(game.standardAddedVersion || {}).map(([name, version]) => [norm(name), version]));
+  const versionCmp = (a, b) => {
+    const pa = String(a || '').split('.').map(Number);
+    const pb = String(b || '').split('.').map(Number);
+    for (let i = 0; i < Math.max(pa.length, pb.length); i++) if ((pa[i] || 0) !== (pb[i] || 0)) return (pa[i] || 0) - (pb[i] || 0);
+    return 0;
+  };
+  const key = norm(record.name);
+  if (standard.has(key)) {
+    const added = addedMap.get(key);
+    if (added && record.time && String(record.time).slice(0, 10) < added) return 'win';
+    if (addedVersionMap.has(key)) {
+      const recordVersion = record.version || versionFor(gameId, record.time);
+      if (recordVersion && versionCmp(recordVersion, addedVersionMap.get(key)) < 0) return 'win';
+    }
+    return 'loss';
   }
-  return null;
+  return 'win';
 }
 
-function poolLabel(game, type) {
-  return game.pools[type] || `卡池 ${type}`;
+function poolLabel(game, type, account) {
+  return account?.poolNames?.[type] || game.pools[type] || `卡池 ${type}`;
 }
 
 function slimRecord(r) {
@@ -53,7 +75,7 @@ function slimRecord(r) {
     id: r.id, time: r.time, name: r.name, itemId: r.itemId, itemType: r.itemType,
     rank: r.rank, gachaType: r.gachaType, uigfType: r.uigfType,
     poolName: r.poolName, pity: r.pity, up: r.up, version: r.version || null,
-    source: r.source, synthetic: r.synthetic,
+    source: r.source, synthetic: r.synthetic, order: r.order ?? null,
   };
 }
 
@@ -66,16 +88,24 @@ export function analyzeGame({ gameId, account, catalog }) {
   const snapshots = [...(account?.snapshots || [])].sort((a, b) => String(a.periodStart || '').localeCompare(String(b.periodStart || '')));
 
   const totals = account?.totals || {};
-  const exactTotal = Math.max(0, Number(totals.exact) || 0);
+  const allExactTotal = Math.max(0, Number(totals.exact) || 0);
+  const exactTotal = allExactTotal;
   const hasExactTotals = exactTotal > 0;
   const perType = totals.perType || {};
   const currentPityStored = totals.currentPity || {};
 
   for (const r of fiveExact) {
-    if (r.up !== 'win' && r.up !== 'loss') r.up = inferUp(gameId, r);
     r.version = r.version || versionFor(gameId, r.time);
+    if (r.up) continue;
+    r.up = inferBannerUp(gameId, r) ?? inferUp(gameId, r) ?? null;
   }
 
+  const limitedPoolSet = new Set(game.limitedPools || []);
+  const careerFive = fiveExact.filter((r) => limitedPoolSet.has(String(r.uigfType || r.gachaType)));
+  const limitedEntries = Object.entries(perType).filter(([key]) => limitedPoolSet.has(String(key)));
+  const careerPulls = limitedEntries.length
+    ? limitedEntries.reduce((sum, [, n]) => sum + (Number(n?.total ?? n) || 0), 0)
+    : (Object.keys(perType).length ? 0 : exactTotal);
   const exactFive = fiveExact.length;
   const fiveUp = fiveExact.filter((r) => r.up === 'win').length;
   const fiveLoss = fiveExact.filter((r) => r.up === 'loss').length;
@@ -99,8 +129,8 @@ export function analyzeGame({ gameId, account, catalog }) {
     }
     return { avg: samples.length ? samples.reduce((a, b) => a + b, 0) / samples.length : null, count: samples.length };
   };
-  const charCost = limitedCost(CHARACTER_POOLS[gameId] || new Set());
-  const weaponCost = limitedCost(WEAPON_POOLS[gameId] || new Set());
+  const charCost = limitedCost(characterPools(gameId));
+  const weaponCost = limitedCost(weaponPools(gameId));
 
   const officialFull = snapshots
     .filter((s) => s.fullHistory && s.totalPulls > 0)
@@ -118,8 +148,10 @@ export function analyzeGame({ gameId, account, catalog }) {
     });
   }
 
-  const firstExact = totals.start || fiveExact[0]?.time || account?.lastSync || null;
-  const lastExact = totals.end || fiveExact[fiveExact.length - 1]?.time || account?.lastSync || null;
+  const firstCareer = careerFive[0]?.time || totals.start || account?.lastSync || null;
+  const lastCareer = careerFive[careerFive.length - 1]?.time || totals.end || account?.lastSync || null;
+  const firstExact = firstCareer;
+  const lastExact = lastCareer;
   const exactRange = { start: datePart(firstExact || ''), end: datePart(lastExact || '') };
   const intervals = selectedSnapshots.map((s) => ({
     start: datePart(s.periodStart || game.launchDate),
@@ -155,10 +187,25 @@ export function analyzeGame({ gameId, account, catalog }) {
   const fiveOverlap = fiveExact.filter((r) => inAnyInterval(r.time)).length;
   const overlapPulls = overlaps ? Math.min(snapPulls || exactTotal, exactTotal) : 0;
 
+  const currentPityUnknown = Boolean(totals.currentPityUnknown);
   const currentPity = {};
   for (const pool of game.types) {
     const key = game.uigfMap[pool] || pool;
     if (currentPity[key] === undefined) currentPity[key] = Number(currentPityStored[key]) || 0;
+  }
+  const pitySums = {};
+  for (const r of fiveExact) {
+    const type = String(r.gachaType || '0');
+    pitySums[type] = (pitySums[type] || 0) + (Number(r.pity) || 0);
+  }
+  for (const [type, stats] of Object.entries(perType)) {
+    const key = game.uigfMap[type] || type;
+    if (currentPityStored[key] === undefined) {
+      currentPity[key] = Math.max(0, (Number(stats?.total) || 0) - (pitySums[type] || 0));
+    }
+  }
+  for (const [key, value] of Object.entries(currentPityStored)) {
+    if (currentPity[key] === undefined) currentPity[key] = Number(value) || 0;
   }
 
   const poolsMap = new Map();
@@ -167,7 +214,7 @@ export function analyzeGame({ gameId, account, catalog }) {
     if (!poolsMap.has(uigf)) {
       poolsMap.set(uigf, {
         type: uigf,
-        label: poolLabel(game, type),
+        label: poolLabel(game, type, account),
         count: 0,
         five: 0,
         limited: 0,
@@ -180,15 +227,15 @@ export function analyzeGame({ gameId, account, catalog }) {
   }
   for (const [type, n] of Object.entries(perType)) {
     const uigf = game.uigfMap[type] || type;
-    if (!poolsMap.has(uigf)) poolsMap.set(uigf, { type: uigf, label: poolLabel(game, type), count: 0, five: 0, limited: 0, standard: 0, hitApplicable: false, lastFive: null, currentPity: 0 });
+    if (!poolsMap.has(uigf)) poolsMap.set(uigf, { type: uigf, label: poolLabel(game, type, account), count: 0, five: 0, limited: 0, standard: 0, hitApplicable: false, lastFive: null, currentPity: 0 });
     poolsMap.get(uigf).count += Number(n?.total ?? n) || 0;
   }
   for (const r of fiveExact) {
     const uigf = r.uigfType || r.gachaType;
-    if (!poolsMap.has(uigf)) poolsMap.set(uigf, { type: uigf, label: poolLabel(game, r.gachaType), count: 0, five: 0, limited: 0, standard: 0, hitApplicable: false, lastFive: null, currentPity: 0 });
+    if (!poolsMap.has(uigf)) poolsMap.set(uigf, { type: uigf, label: poolLabel(game, r.gachaType, account), count: 0, five: 0, limited: 0, standard: 0, hitApplicable: false, lastFive: null, currentPity: 0 });
     const p = poolsMap.get(uigf);
     p.five++;
-    p.hitApplicable = CHARACTER_POOLS[gameId]?.has(uigf) || WEAPON_POOLS[gameId]?.has(uigf) || false;
+    p.hitApplicable = (game.limitedPools || []).includes(uigf);
     if (r.up === 'win') p.limited++;
     if (r.up === 'loss') p.standard++;
     p.lastFive = r;
@@ -202,7 +249,7 @@ export function analyzeGame({ gameId, account, catalog }) {
   }));
 
   const itemMap = new Map();
-  for (const r of fiveExact) {
+  for (const r of careerFive) {
     const entry = itemMap.get(r.name) || { name: r.name, rank: 5, count: 0, lastTime: r.time, itemId: r.itemId, type: r.itemType };
     entry.count++;
     if (r.time > entry.lastTime) entry.lastTime = r.time;
@@ -211,14 +258,14 @@ export function analyzeGame({ gameId, account, catalog }) {
   const fiveItems = [...itemMap.values()].sort((a, b) => b.count - a.count || b.lastTime.localeCompare(a.lastTime));
 
   const monthlyMap = new Map();
-  for (const r of fiveExact) {
+  for (const r of careerFive) {
     const m = monthPart(r.time);
     if (!m) continue;
     monthlyMap.set(m, (monthlyMap.get(m) || 0) + 1);
   }
   const monthly = [...monthlyMap.entries()].sort((a, b) => a[0].localeCompare(b[0])).map(([month, five]) => ({ month, five }));
   const versionMap = new Map();
-  for (const r of fiveExact) {
+  for (const r of careerFive) {
     if (!r.version) continue;
     versionMap.set(r.version, (versionMap.get(r.version) || 0) + 1);
   }
@@ -226,6 +273,11 @@ export function analyzeGame({ gameId, account, catalog }) {
   const versions = [...versionMap.entries()]
     .sort((a, b) => (order.indexOf(a[0]) - order.indexOf(b[0])) || a[0].localeCompare(b[0]))
     .map(([label, five]) => ({ label, five }));
+  const versionLabels = [...new Set([...order, ...versions.map((v) => v.label)])]
+    .sort((a, b) => {
+      const pa = a.split('.').map(Number); const pb = b.split('.').map(Number);
+      return (pa[0] - pb[0]) || (pa[1] || 0) - (pb[1] || 0);
+    });
 
   const buckets = [
     { label: '1–40', min: 1, max: 40, count: 0 },
@@ -234,7 +286,7 @@ export function analyzeGame({ gameId, account, catalog }) {
     { label: '71–80', min: 71, max: 80, count: 0 },
     { label: '81+', min: 81, max: 999, count: 0 },
   ];
-  for (const r of fiveExact) {
+  for (const r of careerFive) {
     if (!r.pity) continue;
     const b = buckets.find((x) => r.pity >= x.min && r.pity <= x.max);
     if (b) b.count++;
@@ -266,16 +318,22 @@ export function analyzeGame({ gameId, account, catalog }) {
   }
   if (overlapPulls) warnings.push(`官方近期数据与历史汇总的时间段重叠，重叠约 ${overlapPulls} 抽；总抽数按较大值合并，避免重复计数。`);
   if (officialFull) warnings.push('绝区零官方全量统计提供总抽数与 S 级数量；逐条五星时间仍以近 6 个月接口为准。');
+  if (totals.partial) warnings.push(totals.partialMessage || '官方接口只返回窗口内数据，总抽数不包含窗口外记录。');
+  if (currentPityUnknown) warnings.push('当前数据源没有提供当前垫抽；垫抽显示为未知。');
   if (selectedSnapshots.some((s) => s.source === 'screenshot')) warnings.push('截图补录只保留五星行，非五星记录不会写入。');
 
   return {
     game: gameId,
     gameName: game.name,
+    rarityLabel: game.rarityLabel || '五星',
+    topRank: game.topRank || 5,
     mode: 'five-star-only',
     meta: account ? { uid: account.uid, nickname: account.nickname, region: account.region, lastSync: account.lastSync } : null,
     counts: {
-      exact: exactTotal,
+      exact: allExactTotal,
       exactFive,
+      limitedExact: careerPulls,
+      limitedFiveAll: careerFive.length,
       lifetime: lifetimePulls,
       lifetimeFive,
       snapshotOnly: Math.max(0, lifetimePulls - exactTotal),
@@ -283,6 +341,7 @@ export function analyzeGame({ gameId, account, catalog }) {
       overlapFive: fiveOverlap,
       snapshotTotal: snapPulls,
       hasExactTotals,
+      exactUnknown: Boolean(totals.exactUnknown),
       limitedFive,
       standardFive,
       fiveOnly: true,
@@ -298,7 +357,9 @@ export function analyzeGame({ gameId, account, catalog }) {
       weaponSamples: weaponCost.count,
       upPityCount: charCost.count,
       expectedFive: game.expectedFive?.['301'] || game.expectedFive?.['11'] || game.expectedFive?.['2'] || 62.5,
-      upRate: fiveExact.length ? fiveUp / fiveExact.length : null,
+      upRate: gameId === 'nte'
+        ? (decided ? fiveUp / decided : null)
+        : (fiveExact.length ? fiveUp / fiveExact.length : null),
       hitRateAll: fiveExact.length ? fiveUp / fiveExact.length : null,
       upWins: fiveUp, upLosses: fiveLoss, upDecided: decided,
       limitedFive, standardFive,
@@ -309,13 +370,15 @@ export function analyzeGame({ gameId, account, catalog }) {
       max: Math.max(0, ...Object.values(currentPity)),
       buckets,
       cap: game.pityCap,
-      hasCurrent: Object.keys(currentPityStored).length > 0,
+      hasCurrent: !currentPityUnknown && (Object.keys(currentPityStored).length > 0 || Object.keys(pitySums).length > 0),
+      unknown: currentPityUnknown,
     },
     pools,
     monthly,
     versions,
+    versionLabels,
     fiveItems,
-    recentFive: [...fiveExact].sort((a, b) => b.time.localeCompare(a.time)).slice(0, 12).map(slimRecord),
+    recentFive: [...careerFive].sort((a, b) => b.time.localeCompare(a.time)).slice(0, 12).map(slimRecord),
     records: [...fiveExact].sort((a, b) => b.time.localeCompare(a.time)).map(slimRecord),
     snapshots: snapshotDetails,
     coverage: {

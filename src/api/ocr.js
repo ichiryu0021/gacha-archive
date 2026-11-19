@@ -90,7 +90,7 @@ function cleanNameFragment(text) {
   return String(text)
     .replace(/第\s*\d+\s*抽/g, '')
     .replace(/\d{1,2}\s*抽/g, '')
-    .replace(/(五星|四星|三星|5星|4星|3星|S级|A级|B级|全新|NEW|UP|限定|常驻)/gi, '')
+    .replace(/(六星|五星|四星|三星|6星|5星|4星|3星|S级|A级|B级|全新|NEW|UP|限定|常驻)/gi, '')
     .replace(/[|｜·•\-—–_=]+/g, ' ')
     .trim();
 }
@@ -128,7 +128,7 @@ function matchNameFromRow(row, game, dateWord) {
 
 function detectRank(row, item) {
   if (item?.rarity) return item.rarity;
-  if (/五星|5星|S级/.test(row.text)) return 5;
+  if (/六星|6星|五星|5星|S级/.test(row.text)) return 5;
   if (/四星|4星|A级/.test(row.text)) return 4;
   if (/三星|3星|B级/.test(row.text)) return 3;
   return 0;
@@ -144,7 +144,7 @@ function summaryFromText(text, game) {
     ?? grab(/(?:总抽数|总抽|调频次数|抽卡次数|总计|共计|累计)[^\d]{0,16}(\d{1,6})/i)
     ?? null;
   const fiveStars = cgrab(/(\d{1,5})个金/i)
-    ?? cgrab(/(?:五星|5星|S级)(\d{1,5})个?/i)
+    ?? cgrab(/(?:六星|6星|五星|5星|S级)(\d{1,5})个?/i)
     ?? grab(/(\d{1,5})\s*个金/i)
     ?? null;
   const fourStars = cgrab(/(\d{1,5})个四星/i) ?? grab(/(?:四星|4星|A级|A 级)[^\d]{0,14}(\d{1,5})/i);

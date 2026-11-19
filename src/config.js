@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -5,14 +6,17 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export const ROOT = path.resolve(__dirname, '..');
 export const PUBLIC_DIR = path.join(ROOT, 'public');
 export const DATA_DIR = process.env.GACHA_DATA_DIR ? path.resolve(process.env.GACHA_DATA_DIR) : path.join(ROOT, 'data');
+const UP_POOL_DATA = (() => {
+  try { return JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'up-pools.json'), 'utf8')); } catch { return {}; }
+})();
 export const BUNDLED_DATA_DIR = path.join(ROOT, 'data');
 export const UPLOAD_DIR = path.join(DATA_DIR, 'uploads');
 export const ASSET_DIR = path.join(DATA_DIR, 'assets');
 export const DB_FILE = path.join(DATA_DIR, 'app.json');
 export const PORT = Number(process.env.PORT || 8787);
 export const HOST = '127.0.0.1';
-export const APP_VERSION = '1.6.0';
-export const APP_DISPLAY_VERSION = '1.06';
+export const APP_VERSION = '2.0.0';
+export const APP_DISPLAY_VERSION = '2.00';
 
 export const GAMES = {
   genshin: {
@@ -39,12 +43,24 @@ export const GAMES = {
       '500': '集录祈愿',
     },
     uigfMap: { '100': '100', '200': '200', '301': '301', '400': '301', '302': '302', '500': '500' },
+    characterPools: ['301', '400', '200', '100', '500'],
+    weaponPools: ['302'],
+    limitedPools: ['301', '400', '302', '500'],
     pityCap: { '100': 90, '200': 90, '301': 90, '302': 80, '500': 90 },
-    standard5: [
-      '迪卢克', '琴', '莫娜', '七七', '刻晴', '提纳里', '迪希雅',
+    topRank: 5,
+    rarityLabel: '五星',
+    inferUp: true,
+    nonUp5: UP_POOL_DATA.genshin?.nonUp5 || [],
+    standard5: (UP_POOL_DATA.genshin?.standard5?.length ? UP_POOL_DATA.genshin.standard5 : [
+      '迪卢克', '琴', '莫娜', '七七', '刻晴', '提纳里', '迪希雅', '梦见月瑞希',
       '天空之刃', '天空之傲', '天空之卷', '天空之翼', '天空之脊', '狼的末路',
       '四风原典', '阿莫斯之弓', '和璞鸢', '风鹰剑',
+    ]),
+    standardWeapons: UP_POOL_DATA.genshin?.standardWeapons?.length ? UP_POOL_DATA.genshin.standardWeapons : [
+      '天空之刃', '天空之傲', '天空之卷', '天空之翼', '天空之脊', '狼的末路', '四风原典', '阿莫斯之弓', '和璞鸢', '风鹰剑',
     ],
+    standardAdded: UP_POOL_DATA.genshin?.standardAdded || {},
+    standardAddedVersion: UP_POOL_DATA.genshin?.standardAddedVersion || {},
     expectedFive: { '301': 62.5, '302': 53.5, '200': 62.5, '100': 34.6, '500': 62.5 },
     launchDate: '2020-09-28',
     officialWindow: '约 1 年',
@@ -74,12 +90,24 @@ export const GAMES = {
       '22': '光锥联动跃迁',
     },
     uigfMap: { '1': '1', '2': '2', '11': '11', '12': '12', '21': '21', '22': '22' },
+    characterPools: ['11', '21', '1', '2'],
+    weaponPools: ['12', '22'],
+    limitedPools: ['11', '21', '12', '22'],
     pityCap: { '1': 90, '2': 50, '11': 90, '12': 80, '21': 90, '22': 80 },
-    standard5: [
+    topRank: 5,
+    rarityLabel: '五星',
+    inferUp: true,
+    nonUp5: UP_POOL_DATA.hsr?.nonUp5 || [],
+    standard5: (UP_POOL_DATA.hsr?.standard5?.length ? UP_POOL_DATA.hsr.standard5 : [
       '姬子', '瓦尔特', '布洛妮娅', '杰帕德', '克拉拉', '彦卿', '白露',
       '银河铁道之夜', '无可取代的东西', '但战斗还未结束', '制胜的瞬间',
       '时节不居', '以世界之名', '如泥酣眠',
+    ]),
+    standardWeapons: UP_POOL_DATA.hsr?.standardWeapons?.length ? UP_POOL_DATA.hsr.standardWeapons : [
+      '银河铁道之夜', '无可取代的东西', '但战斗还未结束', '制胜的瞬间', '时节不居', '以世界之名', '如泥酣眠',
     ],
+    standardAdded: UP_POOL_DATA.hsr?.standardAdded || {},
+    standardAddedVersion: UP_POOL_DATA.hsr?.standardAddedVersion || {},
     expectedFive: { '11': 62.5, '12': 53.5, '1': 62.5, '2': 34.6, '21': 62.5, '22': 53.5 },
     launchDate: '2023-04-26',
     officialWindow: '约 6 个月 / 联动池 24 个月',
@@ -97,9 +125,14 @@ export const GAMES = {
     types: ['1', '2', '3'],
     pools: { '1': '家园补给', '2': '精准补给', '3': '扩充补给' },
     uigfMap: { '1': '1', '2': '2', '3': '3' },
+    characterPools: ['1', '2', '3'],
+    weaponPools: [],
     pityCap: { '1': 100, '2': 100, '3': 100 },
     standard5: [],
     expectedFive: { '1': 100, '2': 100, '3': 100 },
+    topRank: 5,
+    rarityLabel: '五星',
+    inferUp: false,
     launchDate: '2016-10-14',
     officialWindow: '本地',
     manualOnly: true,
@@ -117,12 +150,117 @@ export const GAMES = {
     types: ['1', '2', '3'],
     pools: { '1': '常驻启示', '2': '限定启示', '3': '生日启示' },
     uigfMap: { '1': '1', '2': '2', '3': '3' },
+    characterPools: ['1', '2', '3'],
+    weaponPools: [],
     pityCap: { '1': 100, '2': 100, '3': 100 },
     standard5: [],
     expectedFive: { '1': 100, '2': 100, '3': 100 },
+    topRank: 5,
+    rarityLabel: '五星',
+    inferUp: false,
     launchDate: '2020-07-29',
     officialWindow: '本地',
     manualOnly: true,
+  },
+  arknights: {
+    id: 'arknights',
+    name: '明日方舟',
+    en: 'Arknights',
+    short: 'AK',
+    accent: '#d9b96e',
+    accent2: '#8d6b3d',
+    api: { cn: 'https://ak.hypergryph.com', os: '', path: '' },
+    gameBiz: { cn: 'arknights', os: '' },
+    typeParam: 'category',
+    types: ['limited', 'standard', 'kernel', 'collab', 'other'],
+    pools: {
+      limited: '限定寻访',
+      standard: '标准寻访',
+      kernel: '中坚寻访',
+      collab: '联动寻访',
+      other: '其他寻访',
+    },
+    uigfMap: { limited: 'limited', standard: 'standard', kernel: 'kernel', collab: 'collab', other: 'other' },
+    pityCap: { limited: 99, standard: 99, kernel: 99, collab: 99, other: 99 },
+    characterPools: ['limited', 'standard', 'kernel', 'collab', 'other'],
+    weaponPools: [],
+    limitedPools: ['limited', 'standard', 'kernel', 'collab', 'other'],
+    standard5: [],
+    expectedFive: { limited: 50, standard: 50, kernel: 50, collab: 50, other: 50 },
+    launchDate: '2019-05-01',
+    officialWindow: '约 90 天',
+    topRank: 6,
+    rarityLabel: '六星',
+    inferUp: false,
+    syncProvider: 'hypergryph',
+  },
+  endfield: {
+    id: 'endfield',
+    name: '明日方舟：终末地',
+    en: 'Arknights: Endfield',
+    short: 'EF',
+    accent: '#7fd0c9',
+    accent2: '#d7d0a2',
+    api: { cn: 'https://ef-webview.hypergryph.com', os: 'https://ef-webview.gryphline.com', path: '' },
+    gameBiz: { cn: 'endfield', os: 'endfield_global' },
+    typeParam: 'pool_type',
+    types: ['char_special', 'char_rerun', 'char_joint', 'char_standard', 'char_beginner', 'weapon_special', 'weapon_constant', 'weapon_rerun'],
+    pools: {
+      char_special: '特许寻访',
+      char_rerun: '重构寻访',
+      char_joint: '辉光庆典',
+      char_standard: '基础寻访',
+      char_beginner: '启程寻访',
+      weapon_special: '限定申领',
+      weapon_constant: '常驻申领',
+      weapon_rerun: '重构申领',
+    },
+    uigfMap: {
+      char_special: 'char_special', char_rerun: 'char_rerun', char_joint: 'char_joint',
+      char_standard: 'char_standard', char_beginner: 'char_beginner',
+      weapon_special: 'weapon_special', weapon_constant: 'weapon_constant', weapon_rerun: 'weapon_rerun',
+    },
+    pityCap: {
+      char_special: 80, char_rerun: 80, char_joint: 80, char_standard: 80, char_beginner: 80,
+      weapon_special: 40, weapon_constant: 40, weapon_rerun: 40,
+    },
+    characterPools: ['char_special', 'char_rerun', 'char_joint', 'char_standard', 'char_beginner'],
+    weaponPools: ['weapon_special', 'weapon_constant', 'weapon_rerun'],
+    limitedPools: ['char_special', 'char_rerun', 'char_joint', 'weapon_special', 'weapon_rerun'],
+    standard5: [],
+    expectedFive: { char_special: 62.5, char_rerun: 62.5, char_joint: 62.5, char_standard: 62.5, char_beginner: 34.6 },
+    launchDate: '2026-01-22',
+    officialWindow: '约 90 天',
+    topRank: 6,
+    rarityLabel: '六星',
+    inferUp: false,
+    syncProvider: 'hypergryph',
+  },
+  nte: {
+    id: 'nte',
+    name: '异环',
+    en: 'Neverness to Everness',
+    short: 'NTE',
+    accent: '#e2a15c',
+    accent2: '#7f8cff',
+    api: { cn: 'https://bbs-api.tajiduo.com', os: '', path: '' },
+    gameBiz: { cn: 'yihuan', os: '' },
+    typeParam: 'tab',
+    types: ['limited', 'permanent', 'weapon'],
+    pools: { limited: '限定卡池', permanent: '常驻卡池', weapon: '弧盘池' },
+    uigfMap: { limited: 'limited', permanent: 'permanent', weapon: 'weapon' },
+    pityCap: { limited: 90, permanent: 90, weapon: 80 },
+    characterPools: ['limited', 'permanent'],
+    weaponPools: ['weapon'],
+    limitedPools: ['limited'],
+    standard5: ['九原', '早雾', '白藏', '达芙蒂尔', '法帝娅', '哈索尔'],
+    expectedFive: { limited: 62.5, permanent: 62.5, weapon: 53.5 },
+    launchDate: '2026-04-23',
+    officialWindow: '约 180 天',
+    topRank: 5,
+    rarityLabel: 'S级',
+    inferUp: true,
+    syncProvider: 'tajiduo',
   },
   zzz: {
     id: 'zzz',
@@ -148,11 +286,23 @@ export const GAMES = {
       '103': '音擎回响',
     },
     uigfMap: { '1': '1', '2': '2', '3': '3', '5': '5', '102': '2', '103': '3' },
+    characterPools: ['2', '102', '1'],
+    weaponPools: ['3', '103'],
+    limitedPools: ['2', '102', '3', '103'],
     pityCap: { '1': 90, '2': 90, '3': 80, '5': 80, '102': 90, '103': 80 },
-    standard5: [
+    topRank: 5,
+    rarityLabel: '五星',
+    inferUp: true,
+    nonUp5: UP_POOL_DATA.zzz?.nonUp5 || [],
+    standard5: (UP_POOL_DATA.zzz?.standard5?.length ? UP_POOL_DATA.zzz.standard5 : [
       '猫又', '丽娜', '格莉丝', '莱卡恩', '11号', '珂蕾妲',
       '「钢铁肉垫」', '「燃狱齿轮」', '「啜泣摇篮」', '「硫磺石」', '「嵌合编译器」', '「拘缚者」',
+    ]),
+    standardWeapons: UP_POOL_DATA.zzz?.standardWeapons?.length ? UP_POOL_DATA.zzz.standardWeapons : [
+      '「钢铁肉垫」', '「燃狱齿轮」', '「啜泣摇篮」', '「硫磺石」', '「嵌合编译器」', '「拘缚者」',
     ],
+    standardAdded: UP_POOL_DATA.zzz?.standardAdded || {},
+    standardAddedVersion: UP_POOL_DATA.zzz?.standardAddedVersion || {},
     expectedFive: { '2': 62.5, '3': 53.5, '1': 62.5, '5': 50, '102': 62.5, '103': 53.5 },
     launchDate: '2024-07-04',
     officialWindow: '以接口实际返回为准；官方统计工具含全量汇总',
@@ -172,5 +322,5 @@ export function isKnownHost(hostname) {
 }
 
 export function isAllowedAssetHost(hostname) {
-  return /(^|\.)(mihoyo\.com|hoyoverse\.com|hoyolab\.com|miyoushe\.com|githubusercontent\.com|jsdelivr\.net|enka\.network)$/i.test(hostname);
+  return /(^|\.)(mihoyo\.com|hoyoverse\.com|hoyolab\.com|miyoushe\.com|githubusercontent\.com|jsdelivr\.net|enka\.network|patchwiki\.biligame\.com|static\.nanoka\.cc)$/i.test(hostname);
 }

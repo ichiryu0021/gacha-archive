@@ -1,0 +1,1328 @@
+{
+  "game": "endfield",
+  "version": "2026-11-19",
+  "source": "endfield-py game data · Enka Network assets",
+  "updatedAt": "2026-11-19T07:14:11.842Z",
+  "items": [
+    {
+      "id": "chr_0024_deepfin",
+      "name": "阿列什",
+      "aliases": [
+        "Alesh"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0024_deepfin.png",
+      "path": "先锋",
+      "element": "Cryst",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "chr_0021_whiten",
+      "name": "埃特拉",
+      "aliases": [
+        "Estella"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0021_whiten.png",
+      "path": "近卫",
+      "element": "Cryst",
+      "weaponType": "Lance"
+    },
+    {
+      "id": "chr_0025_ardelia",
+      "name": "艾尔黛拉",
+      "aliases": [
+        "Ardelia"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0025_ardelia.png",
+      "path": "辅助",
+      "element": "Natural",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "chr_0012_avywen",
+      "name": "艾维文娜",
+      "aliases": [
+        "Avywenna"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0012_avywen.png",
+      "path": "突击",
+      "element": "脉冲",
+      "weaponType": "Lance"
+    },
+    {
+      "id": "chr_0023_antal",
+      "name": "安塔尔",
+      "aliases": [
+        "Antal"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0023_antal.png",
+      "path": "辅助",
+      "element": "脉冲",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "chr_0026_lastrite",
+      "name": "别礼",
+      "aliases": [
+        "Last Rite"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0026_lastrite.png",
+      "path": "突击",
+      "element": "Cryst",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "chr_0005_chen",
+      "name": "陈千语",
+      "aliases": [
+        "Chen Qianyu"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0005_chen.png",
+      "path": "近卫",
+      "element": "物理",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "chr_0018_dapan",
+      "name": "大潘",
+      "aliases": [
+        "Da Pan"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0018_dapan.png",
+      "path": "突击",
+      "element": "物理",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "chr_0002_endminm",
+      "name": "管理员",
+      "aliases": [
+        "Endministrator"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0002_endminm.png",
+      "path": "近卫",
+      "element": "物理",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "chr_0007_ikut",
+      "name": "弧光",
+      "aliases": [
+        "Arclight"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0007_ikut.png",
+      "path": "先锋",
+      "element": "脉冲",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "chr_0013_aglina",
+      "name": "洁尔佩塔",
+      "aliases": [
+        "Gilberta"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0013_aglina.png",
+      "path": "辅助",
+      "element": "Natural",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "chr_0032_lizhiyan",
+      "name": "诀",
+      "aliases": [
+        "Arcane"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0032_lizhiyan.png",
+      "path": "术师",
+      "element": "Natural",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "chr_0029_pograni",
+      "name": "骏卫",
+      "aliases": [
+        "Pogranichnik"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0029_pograni.png",
+      "path": "先锋",
+      "element": "物理",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "chr_0033_camille",
+      "name": "卡缪",
+      "aliases": [
+        "Camille"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0033_camille.png",
+      "path": "先锋",
+      "element": "Fire",
+      "weaponType": "Lance"
+    },
+    {
+      "id": "chr_0020_meurs",
+      "name": "卡契尔",
+      "aliases": [
+        "Catcher"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0020_meurs.png",
+      "path": "重装",
+      "element": "物理",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "chr_0016_laevat",
+      "name": "莱万汀",
+      "aliases": [
+        "Laevatain"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0016_laevat.png",
+      "path": "突击",
+      "element": "Fire",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "chr_0006_wolfgd",
+      "name": "狼卫",
+      "aliases": [
+        "Wulfgard"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0006_wolfgd.png",
+      "path": "术师",
+      "element": "Fire",
+      "weaponType": "手铳"
+    },
+    {
+      "id": "chr_0035_liino",
+      "name": "梨诺",
+      "aliases": [
+        "Liino"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0035_liino.png",
+      "path": "辅助",
+      "element": "脉冲",
+      "weaponType": "Lance"
+    },
+    {
+      "id": "chr_0015_lifeng",
+      "name": "黎风",
+      "aliases": [
+        "Lifeng"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0015_lifeng.png",
+      "path": "近卫",
+      "element": "物理",
+      "weaponType": "Lance"
+    },
+    {
+      "id": "chr_0028_wulfa",
+      "name": "洛茜",
+      "aliases": [
+        "Rossi"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0028_wulfa.png",
+      "path": "近卫",
+      "element": "物理",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "chr_0031_mifu",
+      "name": "弭弗",
+      "aliases": [
+        "Mi Fu"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0031_mifu.png",
+      "path": "近卫",
+      "element": "物理",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "chr_0004_pelica",
+      "name": "佩丽卡",
+      "aliases": [
+        "Perlica"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0004_pelica.png",
+      "path": "术师",
+      "element": "脉冲",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "chr_0038_purrche",
+      "name": "噗切娜",
+      "aliases": [
+        "Purrchena"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0038_purrche.png",
+      "path": "重装",
+      "element": "物理",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "chr_0019_karin",
+      "name": "秋栗",
+      "aliases": [
+        "Akekuri"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0019_karin.png",
+      "path": "先锋",
+      "element": "Fire",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "chr_0011_seraph",
+      "name": "赛希",
+      "aliases": [
+        "Xaihi"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0011_seraph.png",
+      "path": "辅助",
+      "element": "Cryst",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "chr_0036_jsspsi",
+      "name": "祀",
+      "aliases": [
+        "Si"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0036_jsspsi.png",
+      "path": "辅助",
+      "element": "Cryst",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "chr_0027_tangtang",
+      "name": "汤汤",
+      "aliases": [
+        "Tangtang"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0027_tangtang.png",
+      "path": "术师",
+      "element": "Cryst",
+      "weaponType": "手铳"
+    },
+    {
+      "id": "chr_0034_typhoea",
+      "name": "提弗洛斯",
+      "aliases": [
+        "Typhoeus"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0034_typhoea.png",
+      "path": "突击",
+      "element": "Natural",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "chr_0017_yvonne",
+      "name": "伊冯",
+      "aliases": [
+        "Yvonne"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0017_yvonne.png",
+      "path": "突击",
+      "element": "Cryst",
+      "weaponType": "手铳"
+    },
+    {
+      "id": "chr_0022_bounda",
+      "name": "萤石",
+      "aliases": [
+        "Fluorite"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0022_bounda.png",
+      "path": "术师",
+      "element": "Natural",
+      "weaponType": "手铳"
+    },
+    {
+      "id": "chr_0009_azrila",
+      "name": "余烬",
+      "aliases": [
+        "Ember"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0009_azrila.png",
+      "path": "重装",
+      "element": "Fire",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "chr_0014_aurora",
+      "name": "昼雪",
+      "aliases": [
+        "Snowshine"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0014_aurora.png",
+      "path": "重装",
+      "element": "Cryst",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "chr_0030_zhuangfy",
+      "name": "庄方宜",
+      "aliases": [
+        "Zhuang Fangyi"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0030_zhuangfy.png",
+      "path": "突击",
+      "element": "脉冲",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "chr_0037_minghe",
+      "name": "Argent Flow",
+      "aliases": [],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/charroundicon/icon_round_chr_0037_minghe.png",
+      "path": "近卫",
+      "element": "脉冲",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_8822408314463642803",
+      "name": "Aggeloslayer",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 3,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_lance_0008.png",
+      "path": "Lance",
+      "element": "",
+      "weaponType": "Lance"
+    },
+    {
+      "id": "weapon_-6952910894413212860",
+      "name": "Amaranthine Tassel",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_claym_0017.png",
+      "path": "双手剑",
+      "element": "",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "weapon_642574601603060940",
+      "name": "Ancient Canal",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_claym_0014.png",
+      "path": "双手剑",
+      "element": "",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "weapon_8266882546363894424",
+      "name": "Artzy Tyrannical",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_pistol_0010.png",
+      "path": "手铳",
+      "element": "",
+      "weaponType": "手铳"
+    },
+    {
+      "id": "weapon_8145093674632378709",
+      "name": "Aspirant",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0015.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_-7463985990780935363",
+      "name": "Beacon of Duty",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_lance_0007.png",
+      "path": "Lance",
+      "element": "",
+      "weaponType": "Lance"
+    },
+    {
+      "id": "weapon_1888163072515909538",
+      "name": "Bedazzling Night Debut",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_lance_0014.png",
+      "path": "Lance",
+      "element": "",
+      "weaponType": "Lance"
+    },
+    {
+      "id": "weapon_-7231185351000722799",
+      "name": "Blessing of Lustrous Carmine",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_lance_0015.png",
+      "path": "Lance",
+      "element": "",
+      "weaponType": "Lance"
+    },
+    {
+      "id": "weapon_67896441498939713",
+      "name": "Brigand's Calling",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_pistol_0011.png",
+      "path": "手铳",
+      "element": "",
+      "weaponType": "手铳"
+    },
+    {
+      "id": "weapon_1260800784666033234",
+      "name": "Chimeric Justice",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_lance_0004.png",
+      "path": "Lance",
+      "element": "",
+      "weaponType": "Lance"
+    },
+    {
+      "id": "weapon_5227351883257320024",
+      "name": "Chivalric Virtues",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_funnel_0008.png",
+      "path": "施术单元",
+      "element": "",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "weapon_237536856779192000",
+      "name": "Clannibal",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_pistol_0009.png",
+      "path": "手铳",
+      "element": "",
+      "weaponType": "手铳"
+    },
+    {
+      "id": "weapon_3791256304442110299",
+      "name": "Cohesive Traction",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_lance_0006.png",
+      "path": "Lance",
+      "element": "",
+      "weaponType": "Lance"
+    },
+    {
+      "id": "weapon_7529118870712621804",
+      "name": "Complexed Industry",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0024.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_-8469995341331243725",
+      "name": "Delivery Guaranteed",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_funnel_0011.png",
+      "path": "施术单元",
+      "element": "",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "weapon_-4455467673772245076",
+      "name": "Dessert Moment",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0023.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_-7407708142202564701",
+      "name": "Detonation Unit",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_funnel_0010.png",
+      "path": "施术单元",
+      "element": "",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "weapon_-1537494103470220508",
+      "name": "Dreams of the Starry Beach",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_funnel_0013.png",
+      "path": "施术单元",
+      "element": "",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "weapon_-5040565645012012350",
+      "name": "Eminent Repute",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0013.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_-3001687498852588460",
+      "name": "Exemplar",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_claym_0004.png",
+      "path": "双手剑",
+      "element": "",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "weapon_-813093858070235161",
+      "name": "Farsight",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0026.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_-5682583205340247027",
+      "name": "Finchaser 3.0",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0020.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_-7724333490536579654",
+      "name": "Finishing Call",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_claym_0012.png",
+      "path": "双手剑",
+      "element": "",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "weapon_7157814624270376536",
+      "name": "Flickers in the Mist",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_funnel_0017.png",
+      "path": "施术单元",
+      "element": "",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "weapon_6678494521303129225",
+      "name": "Fluorescent Roc",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 3,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_funnel_0003.png",
+      "path": "施术单元",
+      "element": "",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "weapon_-1109747167756492602",
+      "name": "Forgeborn Scathe",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0006.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_7771444582359825028",
+      "name": "Former Finery",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_claym_0006.png",
+      "path": "双手剑",
+      "element": "",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "weapon_-1170822565033827697",
+      "name": "Fortmaker",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0007.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_-7362843078327416024",
+      "name": "Freedom to Proselytize",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_funnel_0012.png",
+      "path": "施术单元",
+      "element": "",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "weapon_-5072318978327197490",
+      "name": "Glorious Memory",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0017.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_-8377369896996769567",
+      "name": "Golden Age",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_lance_0016.png",
+      "path": "Lance",
+      "element": "",
+      "weaponType": "Lance"
+    },
+    {
+      "id": "weapon_-7554233460720679627",
+      "name": "Grand Vision",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0021.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_1432424795361770997",
+      "name": "Grand Vision",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0021.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_-2984635888785852228",
+      "name": "Home Longing",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_pistol_0007.png",
+      "path": "手铳",
+      "element": "",
+      "weaponType": "手铳"
+    },
+    {
+      "id": "weapon_44802552962745243",
+      "name": "Howling Guard",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 3,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_pistol_0002.png",
+      "path": "手铳",
+      "element": "",
+      "weaponType": "手铳"
+    },
+    {
+      "id": "weapon_-2019552733507290551",
+      "name": "Hypernova Auto",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 3,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_funnel_0001.png",
+      "path": "施术单元",
+      "element": "",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "weapon_-5195668008198752422",
+      "name": "Industry 0.1",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 3,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_claym_0003.png",
+      "path": "双手剑",
+      "element": "",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "weapon_8751703399389816813",
+      "name": "Jade Vessel",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_claym_0018.png",
+      "path": "双手剑",
+      "element": "",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "weapon_-8678598177954940370",
+      "name": "JET",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_lance_0011.png",
+      "path": "Lance",
+      "element": "",
+      "weaponType": "Lance"
+    },
+    {
+      "id": "weapon_-4479707996615038325",
+      "name": "Junction Point",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_funnel_0018.png",
+      "path": "施术单元",
+      "element": "",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "weapon_5032726464451891463",
+      "name": "Khravengger",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_claym_0013.png",
+      "path": "双手剑",
+      "element": "",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "weapon_-8484487047566132148",
+      "name": "Lone Barge",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_funnel_0015.png",
+      "path": "施术单元",
+      "element": "",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "weapon_7060921648168075851",
+      "name": "Long Heritage",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_claym_0019.png",
+      "path": "双手剑",
+      "element": "",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "weapon_783077045341572465",
+      "name": "Long Road",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 3,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_pistol_0003.png",
+      "path": "手铳",
+      "element": "",
+      "weaponType": "手铳"
+    },
+    {
+      "id": "weapon_-1134563427427444703",
+      "name": "Lunar Calling",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0025.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_180869350560216944",
+      "name": "Lupine Scarlet",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0022.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_-7538706656137713848",
+      "name": "Monaihe",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_funnel_0007.png",
+      "path": "施术单元",
+      "element": "",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "weapon_-8631404038748537017",
+      "name": "Mountain Bearer",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_lance_0012.png",
+      "path": "Lance",
+      "element": "",
+      "weaponType": "Lance"
+    },
+    {
+      "id": "weapon_-4688376393957009563",
+      "name": "Navigator",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_pistol_0005.png",
+      "path": "手铳",
+      "element": "",
+      "weaponType": "手铳"
+    },
+    {
+      "id": "weapon_8384767218372355757",
+      "name": "Never Rest",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0016.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_-7091197217007239969",
+      "name": "OBJ Arts Identifier",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_funnel_0014.png",
+      "path": "施术单元",
+      "element": "",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "weapon_-1329975551577260521",
+      "name": "OBJ Edge of Lightness",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0019.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_-4096224548721604136",
+      "name": "OBJ Heavy Burden",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_claym_0015.png",
+      "path": "双手剑",
+      "element": "",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "weapon_-7517728112529886151",
+      "name": "OBJ Razorhorn",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_lance_0013.png",
+      "path": "Lance",
+      "element": "",
+      "weaponType": "Lance"
+    },
+    {
+      "id": "weapon_3039561516477140105",
+      "name": "OBJ Velocitous",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_pistol_0012.png",
+      "path": "手铳",
+      "element": "",
+      "weaponType": "手铳"
+    },
+    {
+      "id": "weapon_5958661335505510863",
+      "name": "Oblivion",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_funnel_0009.png",
+      "path": "施术单元",
+      "element": "",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "weapon_1551839587735379560",
+      "name": "Opus: Etch Figure",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_funnel_0006.png",
+      "path": "施术单元",
+      "element": "",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "weapon_2184740646294663472",
+      "name": "Opus: The Living",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_pistol_0006.png",
+      "path": "手铳",
+      "element": "",
+      "weaponType": "手铳"
+    },
+    {
+      "id": "weapon_-6068143146164217015",
+      "name": "Pathfinder's Beacon",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 3,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_lance_0003.png",
+      "path": "Lance",
+      "element": "",
+      "weaponType": "Lance"
+    },
+    {
+      "id": "weapon_-5791977492452726594",
+      "name": "Phantom Pain",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_claym_0016.png",
+      "path": "双手剑",
+      "element": "",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "weapon_-5056931015556203329",
+      "name": "Prominent Edge",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 3,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0008.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_-4609112903594886248",
+      "name": "Quencher",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 3,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_claym_0009.png",
+      "path": "双手剑",
+      "element": "",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "weapon_1973066223536924127",
+      "name": "Rapid Ascent",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0011.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_-1726384258128348482",
+      "name": "Rational Farewell",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_pistol_0004.png",
+      "path": "手铳",
+      "element": "",
+      "weaponType": "手铳"
+    },
+    {
+      "id": "weapon_-507430032526329009",
+      "name": "Seeker of Dark Lung",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_claym_0011.png",
+      "path": "双手剑",
+      "element": "",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "weapon_-6927181514487965292",
+      "name": "Stanza of Memorials",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_funnel_0005.png",
+      "path": "施术单元",
+      "element": "",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "weapon_-998404879659056169",
+      "name": "Suffering's End",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_funnel_0020.png",
+      "path": "施术单元",
+      "element": "",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "weapon_-8252975117473196252",
+      "name": "Sundered Prince",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_claym_0008.png",
+      "path": "双手剑",
+      "element": "",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "weapon_4071437936762064420",
+      "name": "Sundering Steel",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0005.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_504161328765825530",
+      "name": "Thermite Cutter",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0012.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_-6946349366864208445",
+      "name": "Thunderberge",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_claym_0007.png",
+      "path": "双手剑",
+      "element": "",
+      "weaponType": "双手剑"
+    },
+    {
+      "id": "weapon_-5095478813001721221",
+      "name": "Twelve Questions",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0018.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_-2735870224020104334",
+      "name": "Type 42: Solemn Phalanx",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_funnel_0016.png",
+      "path": "施术单元",
+      "element": "",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "weapon_-3579117236009053031",
+      "name": "Umbra of Frigid Eventide",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_funnel_0019.png",
+      "path": "施术单元",
+      "element": "",
+      "weaponType": "施术单元"
+    },
+    {
+      "id": "weapon_2231982712360458780",
+      "name": "Umbral Torch",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0010.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_-4436135919595349462",
+      "name": "Valiant",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_lance_0010.png",
+      "path": "Lance",
+      "element": "",
+      "weaponType": "Lance"
+    },
+    {
+      "id": "weapon_-8961014337499272877",
+      "name": "Wave Tide",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 3,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0009.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_-5318664704038443001",
+      "name": "Wedge",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_pistol_0008.png",
+      "path": "手铳",
+      "element": "",
+      "weaponType": "手铳"
+    },
+    {
+      "id": "weapon_-5486601487616328263",
+      "name": "White Night Nova",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 5,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_sword_0014.png",
+      "path": "单手剑",
+      "element": "",
+      "weaponType": "单手剑"
+    },
+    {
+      "id": "weapon_-5407485926004336253",
+      "name": "Wild Wanderer",
+      "aliases": [],
+      "type": "武器",
+      "rarity": 4,
+      "iconUrl": "https://enka.network/ui/ef/itemicon/wpn_funnel_0004.png",
+      "path": "施术单元",
+      "element": "",
+      "weaponType": "施术单元"
+    }
+  ]
+}

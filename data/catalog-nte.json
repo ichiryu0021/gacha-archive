@@ -1,0 +1,1114 @@
+{
+  "game": "nte",
+  "version": "1.5.4",
+  "source": "nanoka.cc NTE 数据站 · 1.5.4",
+  "updatedAt": "2026-11-19T08:50:35.717Z",
+  "items": [
+    {
+      "id": "nte_char_1003",
+      "name": "早雾",
+      "aliases": [
+        "Sakiri",
+        "早霧"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_003_256.webp",
+      "path": "咒",
+      "element": "咒",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1004",
+      "name": "安魂曲",
+      "aliases": [
+        "Lacrimosa",
+        "レクイエム"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_004_256.webp",
+      "path": "混沌",
+      "element": "混沌",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1008",
+      "name": "翳",
+      "aliases": [
+        "Skia",
+        "翳"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_008_256.webp",
+      "path": "相",
+      "element": "相",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1010",
+      "name": "娜娜莉",
+      "aliases": [
+        "Nanally",
+        "ナナリ"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_010_256.webp",
+      "path": "灵",
+      "element": "灵",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1019",
+      "name": "薄荷",
+      "aliases": [
+        "Mint",
+        "ミント"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_019_256.webp",
+      "path": "灵",
+      "element": "灵",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1020",
+      "name": "哈尼娅",
+      "aliases": [
+        "Haniel",
+        "ハニア"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_020_256.webp",
+      "path": "心灵",
+      "element": "心灵",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1021",
+      "name": "埃德嘉",
+      "aliases": [
+        "Edgar",
+        "エドガー"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_021_256.webp",
+      "path": "宇宙",
+      "element": "宇宙",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1023",
+      "name": "白藏",
+      "aliases": [
+        "Baicang",
+        "白蔵"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_028_256.webp",
+      "path": "咒",
+      "element": "咒",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1025",
+      "name": "哈索尔",
+      "aliases": [
+        "Hathor",
+        "ハソール"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_012_256.webp",
+      "path": "相",
+      "element": "相",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1033",
+      "name": "阿德勒",
+      "aliases": [
+        "Adler",
+        "アドレー"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_015_256.webp",
+      "path": "咒",
+      "element": "咒",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1036",
+      "name": "残虹",
+      "aliases": [
+        "Zankou",
+        "残虹"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_canhong_256.webp",
+      "path": "咒",
+      "element": "咒",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1039",
+      "name": "法帝娅",
+      "aliases": [
+        "Fadia",
+        "ファルディーヤ"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_027_256.webp",
+      "path": "心灵",
+      "element": "心灵",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1042",
+      "name": "黑羽",
+      "aliases": [
+        "Blackbird",
+        "クロバネ"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_heiyu_256.webp",
+      "path": "心灵",
+      "element": "心灵",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1046",
+      "name": "「零」",
+      "aliases": [
+        "Zero",
+        "「零」"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_046_256.webp",
+      "path": "宇宙",
+      "element": "宇宙",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1052",
+      "name": "浔",
+      "aliases": [
+        "Hotori",
+        "潯"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_013_256.webp",
+      "path": "宇宙",
+      "element": "宇宙",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1054",
+      "name": "达芙蒂尔",
+      "aliases": [
+        "Daffodill",
+        "ダフォディール"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_005_256.webp",
+      "path": "混沌",
+      "element": "混沌",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1055",
+      "name": "九原",
+      "aliases": [
+        "Jiuyuan",
+        "九原"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_104_256.webp",
+      "path": "灵",
+      "element": "灵",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1057",
+      "name": "明音凛",
+      "aliases": [
+        "Akane Rin",
+        "明音凛"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_mingyin_256.webp",
+      "path": "相",
+      "element": "相",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1070",
+      "name": "海月",
+      "aliases": [
+        "Aurelia",
+        "海月"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_haiyue_256.webp",
+      "path": "心灵",
+      "element": "心灵",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1071",
+      "name": "卡厄斯",
+      "aliases": [
+        "Chaos",
+        "カオス"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_kaesi1_256.webp",
+      "path": "相",
+      "element": "相",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1072",
+      "name": "灵可",
+      "aliases": [
+        "Linko",
+        "リンコ"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_lingke_256.webp",
+      "path": "灵",
+      "element": "灵",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1073",
+      "name": "小吱",
+      "aliases": [
+        "Chiz",
+        "ちぃちゃん"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_073_256.webp",
+      "path": "宇宙",
+      "element": "宇宙",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1074",
+      "name": "Exe",
+      "aliases": [
+        "Exe",
+        "Exe"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Appearance/1074/Fashion_1074_0/256_Fashion_1074_0.webp",
+      "path": "混沌",
+      "element": "混沌",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1075",
+      "name": "伊洛伊",
+      "aliases": [
+        "Iroi",
+        "イロヒ"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_yiluoyi_256.webp",
+      "path": "灵",
+      "element": "灵",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1076",
+      "name": "真红",
+      "aliases": [
+        "Shinku",
+        "真紅"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/AvatarImage/256/player_zhenhong_256.webp",
+      "path": "宇宙",
+      "element": "宇宙",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_char_1090",
+      "name": "曳尔沐",
+      "aliases": [
+        "Elyms",
+        "イェルム"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Appearance/1090/Fashion_1090_0/256_Fashion_1090_0.webp",
+      "path": "宇宙",
+      "element": "宇宙",
+      "weaponType": ""
+    },
+    {
+      "id": "nte_fork_Arachne",
+      "name": "永恒圆舞曲",
+      "aliases": [
+        "Eternal Waltz",
+        "永遠のワルツ"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_Arachne_256.webp",
+      "path": "聚合",
+      "element": "",
+      "weaponType": "聚合"
+    },
+    {
+      "id": "nte_fork_BitGame",
+      "name": "引爆全场",
+      "aliases": [
+        "Blow up the Crowd",
+        "熱狂の渦"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_BitGame_256.webp",
+      "path": "固态",
+      "element": "",
+      "weaponType": "固态"
+    },
+    {
+      "id": "nte_fork_BitterCake",
+      "name": "良药苦口",
+      "aliases": [
+        "The Good, The Bad, The Bitter",
+        "良薬は口に苦し"
+      ],
+      "type": "弧盘",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_BitterCake_256.webp",
+      "path": "聚合",
+      "element": "",
+      "weaponType": "聚合"
+    },
+    {
+      "id": "nte_fork_BlackBook",
+      "name": "漆黑青春妄想",
+      "aliases": [
+        "Youthful Fantasy",
+        "漆黒の青春妄想"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_BlackBook_256.webp",
+      "path": "液态",
+      "element": "",
+      "weaponType": "液态"
+    },
+    {
+      "id": "nte_fork_BlastCandy",
+      "name": "无畏之绵",
+      "aliases": [
+        "Fluff of Fearlessness",
+        "不敵な綿"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_BlastCandy_256.webp",
+      "path": "固态",
+      "element": "",
+      "weaponType": "固态"
+    },
+    {
+      "id": "nte_fork_BoxingCandy",
+      "name": "不屈之绵",
+      "aliases": [
+        "Fluff of Fortitude",
+        "不屈の綿"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_BoxingCandy_256.webp",
+      "path": "等离子",
+      "element": "",
+      "weaponType": "等离子"
+    },
+    {
+      "id": "nte_fork_Butterfly",
+      "name": "现实避难所",
+      "aliases": [
+        "Reality Refuge",
+        "現実の避難所"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_Butterfly_256.webp",
+      "path": "固态",
+      "element": "",
+      "weaponType": "固态"
+    },
+    {
+      "id": "nte_fork_Castle",
+      "name": "扭曲之城的呼唤",
+      "aliases": [
+        "Call of the Twisted City",
+        "歪んだ城の呼び声"
+      ],
+      "type": "弧盘",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_Castle_256.webp",
+      "path": "液态",
+      "element": "",
+      "weaponType": "液态"
+    },
+    {
+      "id": "nte_fork_Crowbar",
+      "name": "时间大盗",
+      "aliases": [
+        "Time Bandit",
+        "時間泥棒"
+      ],
+      "type": "弧盘",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_Qiaoqiao_256.webp",
+      "path": "固态",
+      "element": "",
+      "weaponType": "固态"
+    },
+    {
+      "id": "nte_fork_DemonBlade",
+      "name": "噬心诡刃",
+      "aliases": [
+        "Ravenous Blade",
+        "喰心刃"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_DemonBlade_256.webp",
+      "path": "气态",
+      "element": "",
+      "weaponType": "气态"
+    },
+    {
+      "id": "nte_fork_Door",
+      "name": "错误的门",
+      "aliases": [
+        "The Wrong Gate",
+        "偽りの門"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_Door_256.webp",
+      "path": "液态",
+      "element": "",
+      "weaponType": "液态"
+    },
+    {
+      "id": "nte_fork_GoldRecord",
+      "name": "远行者之声",
+      "aliases": [
+        "Voice of the Voyager",
+        "アストロ・コーラー"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_GoldRecord_256.webp",
+      "path": "等离子",
+      "element": "",
+      "weaponType": "等离子"
+    },
+    {
+      "id": "nte_fork_GoldWool",
+      "name": "众人追寻之物",
+      "aliases": [
+        "What's Desired",
+        "オムニ・デザイア"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_GoldWool_256.webp",
+      "path": "聚合",
+      "element": "",
+      "weaponType": "聚合"
+    },
+    {
+      "id": "nte_fork_Kite",
+      "name": "当心头顶",
+      "aliases": [
+        "Watch Your Heads!",
+        "頭上に注意！"
+      ],
+      "type": "弧盘",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_Kite_256.webp",
+      "path": "气态",
+      "element": "",
+      "weaponType": "气态"
+    },
+    {
+      "id": "nte_fork_KnightCandy",
+      "name": "凶猛之绵",
+      "aliases": [
+        "Fluff of Ferocity",
+        "凶暴な綿"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_KnightCandy_256.webp",
+      "path": "聚合",
+      "element": "",
+      "weaponType": "聚合"
+    },
+    {
+      "id": "nte_fork_LunarPhase",
+      "name": "穿过胭红蜃景",
+      "aliases": [
+        "Blushing Mirage",
+        "紅き蜃気楼"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_LunarPhase_256.webp",
+      "path": "聚合",
+      "element": "",
+      "weaponType": "聚合"
+    },
+    {
+      "id": "nte_fork_MotorCandy",
+      "name": "极速之绵",
+      "aliases": [
+        "Fluff of Fleetness",
+        "神速の綿"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_MotorCandy_256.webp",
+      "path": "液态",
+      "element": "",
+      "weaponType": "液态"
+    },
+    {
+      "id": "nte_fork_Nakupeda",
+      "name": "千金难买你开心",
+      "aliases": [
+        "Your Happiness is Priceless",
+        "コインより笑顔"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_Nakupeda_256.webp",
+      "path": "固态",
+      "element": "",
+      "weaponType": "固态"
+    },
+    {
+      "id": "nte_fork_NestBird",
+      "name": "面具下的泪",
+      "aliases": [
+        "Tears Beneath the Mask",
+        "仮面の下の涙"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_NestBird_256.webp",
+      "path": "气态",
+      "element": "",
+      "weaponType": "气态"
+    },
+    {
+      "id": "nte_fork_PaperPlane",
+      "name": "开始净空",
+      "aliases": [
+        "Clear Skies",
+        "空域確保開始"
+      ],
+      "type": "弧盘",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_PaperPlane_256.webp",
+      "path": "液态",
+      "element": "",
+      "weaponType": "液态"
+    },
+    {
+      "id": "nte_fork_PoliceRat",
+      "name": "海特洛的安宁",
+      "aliases": [
+        "Hethereau's Keeper",
+        "ヘテロシティの平穏"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_PoliceRat_256.webp",
+      "path": "固态",
+      "element": "",
+      "weaponType": "固态"
+    },
+    {
+      "id": "nte_fork_Prokaryon",
+      "name": "「我们。」",
+      "aliases": [
+        "Us.",
+        "「私たち」"
+      ],
+      "type": "弧盘",
+      "rarity": 3,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_yuanheti_256.webp",
+      "path": "等离子",
+      "element": "",
+      "weaponType": "等离子"
+    },
+    {
+      "id": "nte_fork_Rose",
+      "name": "「最后一朵玫瑰」",
+      "aliases": [
+        "The Last Rose",
+        "「ラスト・ローズ」"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_Rose_256.webp",
+      "path": "液态",
+      "element": "",
+      "weaponType": "液态"
+    },
+    {
+      "id": "nte_fork_ThiefCandy",
+      "name": "灵敏之绵",
+      "aliases": [
+        "Fluff of Finesse",
+        "鋭敏な綿"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_ThiefCandy_256.webp",
+      "path": "气态",
+      "element": "",
+      "weaponType": "气态"
+    },
+    {
+      "id": "nte_fork_TigerTally",
+      "name": "预备备",
+      "aliases": [
+        "Ready-Ready",
+        "プリペア"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_TigerTally_256.webp",
+      "path": "等离子",
+      "element": "",
+      "weaponType": "等离子"
+    },
+    {
+      "id": "nte_fork_Time",
+      "name": "行进于时间之外",
+      "aliases": [
+        "Marching Beyond Time",
+        "時間外を行く"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_Time_256.webp",
+      "path": "固态",
+      "element": "",
+      "weaponType": "固态"
+    },
+    {
+      "id": "nte_fork_Whale",
+      "name": "鲸之歌",
+      "aliases": [
+        "Song of the Whale",
+        "鯨の歌"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_Whale_256.webp",
+      "path": "等离子",
+      "element": "",
+      "weaponType": "等离子"
+    },
+    {
+      "id": "nte_fork_appliance",
+      "name": "「电音」狂欢",
+      "aliases": [
+        "\"Real Music\"",
+        "「電音」カーニバル"
+      ],
+      "type": "弧盘",
+      "rarity": 3,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_fudianling_256.webp",
+      "path": "液态",
+      "element": "",
+      "weaponType": "液态"
+    },
+    {
+      "id": "nte_fork_bopu",
+      "name": "光波眩晕，迷走狂欢",
+      "aliases": [
+        "Cosmos Daze, Wild Reverie",
+        "光のカーニバル"
+      ],
+      "type": "弧盘",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_bopu_256.webp",
+      "path": "气态",
+      "element": "",
+      "weaponType": "气态"
+    },
+    {
+      "id": "nte_fork_dustbin",
+      "name": "危险游戏",
+      "aliases": [
+        "Dangerous Game",
+        "危険なゲーム"
+      ],
+      "type": "弧盘",
+      "rarity": 3,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_dustbin_256.webp",
+      "path": "聚合",
+      "element": "",
+      "weaponType": "聚合"
+    },
+    {
+      "id": "nte_fork_elyms",
+      "name": "静候彩铃",
+      "aliases": [
+        "Echoes on Hold",
+        "あなたを待ってる"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_elyms_256.webp",
+      "path": "固态",
+      "element": "",
+      "weaponType": "固态"
+    },
+    {
+      "id": "nte_fork_exe",
+      "name": "虚线彼方",
+      "aliases": [
+        "Dotted Horizon",
+        "虚線の彼方"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_exe_256.webp",
+      "path": "等离子",
+      "element": "",
+      "weaponType": "等离子"
+    },
+    {
+      "id": "nte_fork_jiaojuan",
+      "name": "闪耀的每一天",
+      "aliases": [
+        "Shiny Days",
+        "輝かしい日々"
+      ],
+      "type": "弧盘",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_jiaojuan_256.webp",
+      "path": "液态",
+      "element": "",
+      "weaponType": "液态"
+    },
+    {
+      "id": "nte_fork_jingmotingyuan",
+      "name": "茶花会",
+      "aliases": [
+        "Camellia Society",
+        "椿会"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_jingmotingyuan_256.webp",
+      "path": "聚合",
+      "element": "",
+      "weaponType": "聚合"
+    },
+    {
+      "id": "nte_fork_koinobori",
+      "name": "终有时",
+      "aliases": [
+        "A Time Will Come",
+        "いつかは終わる"
+      ],
+      "type": "弧盘",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_koinobori_256.webp",
+      "path": "聚合",
+      "element": "",
+      "weaponType": "聚合"
+    },
+    {
+      "id": "nte_fork_lingganzhongjiezhe",
+      "name": "灵感大逃杀",
+      "aliases": [
+        "Mind Royale",
+        "ひらめきデスゲーム"
+      ],
+      "type": "弧盘",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_lingganzhongjiezhe_256.webp",
+      "path": "液态",
+      "element": "",
+      "weaponType": "液态"
+    },
+    {
+      "id": "nte_fork_mamen",
+      "name": "思考喵",
+      "aliases": [
+        "Contemplative Cat",
+        "思考ニャン"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_mamen_256.webp",
+      "path": "气态",
+      "element": "",
+      "weaponType": "气态"
+    },
+    {
+      "id": "nte_fork_mofeikesi",
+      "name": "好狗狗走四方",
+      "aliases": [
+        "Good Boy's Grand Adventure",
+        "お散歩ワンワン"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_mofeikesi_256.webp",
+      "path": "气态",
+      "element": "",
+      "weaponType": "气态"
+    },
+    {
+      "id": "nte_fork_moon",
+      "name": "「银河暂留」",
+      "aliases": [
+        "Stellar Veil",
+        "「銀河の残像」"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_moon_256.webp",
+      "path": "等离子",
+      "element": "",
+      "weaponType": "等离子"
+    },
+    {
+      "id": "nte_fork_nonos",
+      "name": "成功的第一步",
+      "aliases": [
+        "First Step to Success",
+        "成功への第一歩"
+      ],
+      "type": "弧盘",
+      "rarity": 3,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_nonos_256.webp",
+      "path": "固态",
+      "element": "",
+      "weaponType": "固态"
+    },
+    {
+      "id": "nte_fork_oulaquantao",
+      "name": "欧拉欧拉！",
+      "aliases": [
+        "Oraora!",
+        "オラオラ！"
+      ],
+      "type": "弧盘",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_oulaquantao_256.webp",
+      "path": "等离子",
+      "element": "",
+      "weaponType": "等离子"
+    },
+    {
+      "id": "nte_fork_prism",
+      "name": "月的对跖点",
+      "aliases": [
+        "Far Side of the Moon",
+        "月のB面"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_prism_256.webp",
+      "path": "液态",
+      "element": "",
+      "weaponType": "液态"
+    },
+    {
+      "id": "nte_fork_rishi",
+      "name": "休息日",
+      "aliases": [
+        "Day Off",
+        "休息日"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_rishi_256.webp",
+      "path": "固态",
+      "element": "",
+      "weaponType": "固态"
+    },
+    {
+      "id": "nte_fork_snowman",
+      "name": "愚者种春",
+      "aliases": [
+        "The Fools' Spring",
+        "愚者が春を蒔く"
+      ],
+      "type": "弧盘",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_snowman_256.webp",
+      "path": "聚合",
+      "element": "",
+      "weaponType": "聚合"
+    },
+    {
+      "id": "nte_fork_spider",
+      "name": "挂你在心口难开",
+      "aliases": [
+        "Failing You, Heavy in My Heart",
+        "言葉にできない"
+      ],
+      "type": "弧盘",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_spider_256.webp",
+      "path": "气态",
+      "element": "",
+      "weaponType": "气态"
+    },
+    {
+      "id": "nte_fork_tuansanlang",
+      "name": "该死的邂逅",
+      "aliases": [
+        "The Great Thief",
+        "呪われた出会い"
+      ],
+      "type": "弧盘",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_tuansanlang_256.webp",
+      "path": "聚合",
+      "element": "",
+      "weaponType": "聚合"
+    },
+    {
+      "id": "nte_fork_twinbirds",
+      "name": "罪与罚",
+      "aliases": [
+        "Crime and Punishment",
+        "罪と罰"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_twinbirds_256.webp",
+      "path": "气态",
+      "element": "",
+      "weaponType": "气态"
+    },
+    {
+      "id": "nte_fork_vine",
+      "name": "笑口常开",
+      "aliases": [
+        "Be Happy",
+        "いつも笑顔で"
+      ],
+      "type": "弧盘",
+      "rarity": 3,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_HugVine_256.webp",
+      "path": "气态",
+      "element": "",
+      "weaponType": "气态"
+    },
+    {
+      "id": "nte_fork_worldrain",
+      "name": "「倾世之雨」",
+      "aliases": [
+        "The Rain That Shook the World",
+        "「傾世の雨」"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_worldrain_256.webp",
+      "path": "固态",
+      "element": "",
+      "weaponType": "固态"
+    },
+    {
+      "id": "nte_fork_wuhuakuang",
+      "name": "被遗忘者",
+      "aliases": [
+        "The Forgotten",
+        "忘れられし者"
+      ],
+      "type": "弧盘",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_wuhuakuang_256.webp",
+      "path": "固态",
+      "element": "",
+      "weaponType": "固态"
+    },
+    {
+      "id": "nte_fork_wushoutieyu",
+      "name": "焰魂狂飙",
+      "aliases": [
+        "Raging Flames",
+        "炎魂ハリケーン"
+      ],
+      "type": "弧盘",
+      "rarity": 5,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_wushoutieyu_256.webp",
+      "path": "等离子",
+      "element": "",
+      "weaponType": "等离子"
+    },
+    {
+      "id": "nte_fork_yaodao",
+      "name": "拔刀",
+      "aliases": [
+        "Drawn Blade",
+        "抜刀"
+      ],
+      "type": "弧盘",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_yaodao_256.webp",
+      "path": "等离子",
+      "element": "",
+      "weaponType": "等离子"
+    },
+    {
+      "id": "nte_fork_yuren",
+      "name": "勿忘伞",
+      "aliases": [
+        "Umbrella",
+        "忘れな傘"
+      ],
+      "type": "弧盘",
+      "rarity": 4,
+      "iconUrl": "https://static.nanoka.cc/assets/nte/Game/UI/UI_Icon/Fork/fork_yuren_256.webp",
+      "path": "聚合",
+      "element": "",
+      "weaponType": "聚合"
+    }
+  ]
+}

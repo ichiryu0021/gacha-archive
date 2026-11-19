@@ -8,6 +8,8 @@ data/assets/*
 *.log
 .DS_Store
 data/miyoushe-session.dat
+data/hypergryph-session.dat
+data/tajiduo-session.dat
 data/app.json.bak
 data/backups/
 dist/
@@ -17,3 +19,12 @@ electron-out.log
 pack-*.log
 __pycache__/
 *.pyc
+
+data/imports/
+data/nte-captures/
+
+data/electron/
+
+scripts/.keep-awake.pid
+
+demo-data/

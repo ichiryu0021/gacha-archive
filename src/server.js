@@ -19,14 +19,76 @@ import {
 import { scanLocalLinks } from './api/cache.js';
 import { createQrSession, fetchZzzFullHistory, generateAuthkey, getAllRoles, getRolesForGame, getSavedSessionInfo, logoutSession, pollQrSession, restoreMiyousheSession } from './api/auth.js';
 import { buildCsv, buildUigf, importUigf } from './api/uigf.js';
+import { HEYBOX_GAMES, buildHeybox, importHeybox } from './api/heybox.js';
+import { importHeyboxLive } from './api/heybox-live.js';
+import { importNteExport, repairNteAccount } from './api/nte-export.js';
+import { bannersAsOf, bannersFor, currentBanners } from './api/banners.js';
 import { parseScreenshot, saveReviewedRecords } from './api/ocr.js';
 import { Collector } from './api/collector.js';
+import { importNteuid } from './api/nteuid.js';
+import {
+  createHypergryphQr, findEndfieldLogUrls, hypergryphLogout, hypergryphRefreshBindings,
+  loginTajiduo, parseEndfieldUrl, pollHypergryphQr, restoreThirdPartySessions,
+  sendTajiduoCaptcha, syncArknights, syncEndfield, syncEndfieldFromUrl, syncNte,
+  tajiduoLogout, thirdPartyStatus,
+} from './api/thirdparty.js';
+import * as XLSX from 'xlsx';
+
+
+const MANUAL_HEADERS = ['名称', '卡池', '版本', '抽数', '时间'];
+const MANUAL_DEFAULT_POOL = { genshin: '301', hsr: '11', zzz: '2', hi3: '1', tot: '1' };
+
+function manualCell(row, keys) {
+  for (const key of keys) {
+    const value = row[key];
+    if (value !== undefined && value !== null && String(value).trim() !== '') return String(value).trim();
+  }
+  return '';
+}
+
+function manualPool(game, value) {
+  const text = String(value || '').trim();
+  if (!text) return MANUAL_DEFAULT_POOL[game.id] || game.types[0];
+  for (const [type, label] of Object.entries(game.pools || {})) {
+    if (text === type || text === label) return type;
+  }
+  return MANUAL_DEFAULT_POOL[game.id] || game.types[0];
+}
+
+function manualTime(value) {
+  if (!value) return '';
+  let text = String(value).trim().replace(/^(\d{4})\/(\d{1,2})\/(\d{1,2})/, (_, y, m, d) => `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`);
+  text = text.replace('T', ' ').slice(0, 19);
+  if (/^\d{4}-\d{2}-\d{2}$/.test(text)) text += ' 00:00:00';
+  if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/.test(text)) text += ':00';
+  if (!/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(text)) throw new Error(`时间格式不正确：${text}`);
+  return text;
+}
+
+function manualRecord(game, row, order = 0) {
+  const g = getGame(game);
+  const name = manualCell(row, ['名称', '角色', 'name', 'Name']);
+  if (!name) return null;
+  const gachaType = manualPool(g, manualCell(row, ['卡池', 'pool', 'gacha_type', 'gachaType']));
+  const version = manualCell(row, ['版本', 'version']);
+  const pityText = manualCell(row, ['抽数', 'pity']);
+  const pity = Number(pityText);
+  const time = manualTime(manualCell(row, ['时间', 'time']));
+  return {
+    id: '', uid: '', gachaType, uigfType: g.uigfMap[gachaType] || gachaType,
+    itemId: '', count: 1, time, name, itemType: '', rank: 5, lang: 'zh-cn',
+    poolName: g.pools[gachaType] || '手动', source: 'manual', synthetic: true,
+    pity: Number.isFinite(pity) && pity > 0 ? pity : null,
+    version: version || undefined,
+    order,
+  };
+}
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 await fsp.mkdir(DATA_DIR, { recursive: true });
 await fsp.mkdir(UPLOAD_DIR, { recursive: true });
 await fsp.mkdir(ASSET_DIR, { recursive: true });
-for (const name of ['catalog-genshin.json', 'catalog-hsr.json', 'catalog-zzz.json', 'catalog-hi3.json', 'catalog-tot.json', 'versions-zzz.json', 'versions-hsr.json']) {
+for (const name of ['catalog-genshin.json', 'catalog-hsr.json', 'catalog-zzz.json', 'catalog-hi3.json', 'catalog-tot.json', 'versions-zzz.json', 'versions-hsr.json', 'versions-genshin.json', 'versions-hi3.json', 'versions-tot.json', 'up-pools.json']) {
   const target = path.join(DATA_DIR, name);
   const source = path.join(BUNDLED_DATA_DIR, name);
   if (!fs.existsSync(target) && fs.existsSync(source)) await fsp.copyFile(source, target);
@@ -35,7 +97,10 @@ if (!fs.existsSync(path.join(DATA_DIR, 'app.json')) && fs.existsSync(path.join(B
   await fsp.copyFile(path.join(BUNDLED_DATA_DIR, 'app.json'), path.join(DATA_DIR, 'app.json'));
 }
 const store = await new Store().init();
+const nteRepair = repairNteAccount(store);
+if (nteRepair.changed) await store.flush(true);
 await restoreMiyousheSession();
+await restoreThirdPartySessions().catch((e) => console.error('[thirdparty] restore failed', e.message));
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -185,9 +250,165 @@ async function resync(source, options = {}) {
   };
 }
 
+function applyThirdPartySync(result) {
+  const game = result.game;
+  const meta = {
+    uid: result.uid || result.binding?.uid || '',
+    nickname: result.nickname || result.binding?.nickname || '',
+    region: result.binding?.channelName || result.role?.serverName || '',
+    gameBiz: GAMES[game]?.gameBiz?.cn || '',
+    lang: 'zh-cn',
+    timezone: 8,
+  };
+  const incoming = result.records || [];
+  if (!incoming.length && !Number(result.totals?.exact)) {
+    throw new Error('没有读取到记录；已保留本地旧数据，请确认账号和接口窗口');
+  }
+  const merged = store.mergeRecords(game, incoming, {
+    source: 'official',
+    meta,
+    lastSource: 'official',
+  });
+  const hasDaily = result.totals?.daily && Object.keys(result.totals.daily).length > 0;
+  if (hasDaily) {
+    store.setTotals(game, result.totals);
+  } else {
+    const prev = store.account(game)?.totals || {};
+    const perType = { ...(prev.perType || {}) };
+    for (const [type, value] of Object.entries(result.totals?.perType || {})) {
+      perType[type] = {
+        total: Math.max(Number(prev.perType?.[type]?.total) || 0, Number(value?.total) || 0),
+        five: Math.max(Number(prev.perType?.[type]?.five) || 0, Number(value?.five) || 0),
+      };
+    }
+    store.setWindowTotals(game, {
+      ...result.totals,
+      exact: Math.max(Number(prev.exact) || 0, Number(result.totals?.exact) || 0),
+      perType,
+    });
+  }
+  if (result.poolNames) store.setPoolNames(game, result.poolNames);
+  return {
+    game,
+    gameName: getGame(game).name,
+    addedFive: merged.added,
+    upgradedFive: merged.upgraded || 0,
+    totalFetched: result.totalFetched || result.totals?.exact || 0,
+    fiveStars: (result.records || []).length,
+    dashboard: summaryResponse(game),
+    totals: result.totals,
+  };
+}
+
+async function syncZzzMiyoushe() {
+  const saved = getSavedSessionInfo();
+  if (!saved) throw new Error('米游社未登录');
+  const full = await fetchZzzFullHistory(saved.sessionId);
+  const merged = store.mergeRecords('zzz', full.records, {
+    source: 'official-full',
+    meta: { uid: full.role.uid, region: full.role.region, gameBiz: 'nap_cn', lang: 'zh-cn' },
+    lastSource: 'zzz-official',
+  });
+  store.setFullTotals('zzz', full.totals);
+  await store.flush(true);
+  return {
+    totalFetched: full.totals.exact,
+    addedFive: merged.added,
+    upgradedFive: merged.upgraded || 0,
+    fiveStars: full.records.length,
+  };
+}
+
 async function routeApi(req, res, url) {
   const pathname = url.pathname;
+  if (req.method !== 'GET' && !pathname.startsWith('/api/asset')) {
+    const contentType = String(req.headers['content-type'] || '');
+    if (!contentType.includes('application/json')) {
+      return fail(res, '请求必须使用 application/json', 415);
+    }
+    const origin = String(req.headers.origin || '');
+    if (origin) {
+      try {
+        if (new URL(origin).host !== req.headers.host) return fail(res, '请求来源不匹配', 403);
+      } catch {
+        return fail(res, '请求来源不匹配', 403);
+      }
+    }
+  }
   if (req.method === 'GET' && pathname === '/api/health') return ok(res, { version: APP_VERSION, time: new Date().toISOString() });
+  if (req.method === 'GET' && pathname === '/api/thirdparty/status') {
+    return ok(res, { thirdparty: await thirdPartyStatus() });
+  }
+  if (req.method === 'POST' && pathname === '/api/thirdparty/skland/qr') {
+    return ok(res, await createHypergryphQr());
+  }
+  if (req.method === 'GET' && pathname.startsWith('/api/thirdparty/skland/qr/')) {
+    const id = decodeURIComponent(pathname.split('/').pop());
+    return ok(res, { session: await pollHypergryphQr(id) });
+  }
+  if (req.method === 'GET' && pathname === '/api/thirdparty/skland/bindings') {
+    const bindings = await hypergryphRefreshBindings();
+    return ok(res, { bindings });
+  }
+  if (req.method === 'POST' && pathname === '/api/thirdparty/skland/logout') {
+    return ok(res, { result: await hypergryphLogout() });
+  }
+  if (req.method === 'POST' && pathname === '/api/thirdparty/sync') {
+    const body = await readJsonBody(req);
+    const game = sanitizeGame(body.game);
+    let result;
+    if (game === 'arknights') result = await syncArknights();
+    else if (game === 'endfield') result = await syncEndfield();
+    else if (game === 'nte') result = await syncNte();
+    else throw new Error('这个游戏暂不支持第三方接口同步');
+    const synced = applyThirdPartySync(result);
+    await store.flush(true);
+    return ok(res, synced);
+  }
+  if (req.method === 'POST' && pathname === '/api/thirdparty/endfield/scan') {
+    const found = findEndfieldLogUrls();
+    const links = found.urls.map((url) => {
+      try {
+        const parsed = parseEndfieldUrl(url);
+        return { provider: parsed.provider, serverId: parsed.serverId, preview: `u8_token=${parsed.token.slice(0, 4)}***${parsed.token.slice(-3)}` };
+      } catch {
+        return { provider: '', serverId: '', preview: '无效链接' };
+      }
+    });
+    return ok(res, { links, diagnostics: found.diagnostics });
+  }
+  if (req.method === 'POST' && pathname === '/api/thirdparty/endfield/parse') {
+    const body = await readJsonBody(req);
+    const parsed = parseEndfieldUrl(body.url);
+    return ok(res, { link: { provider: parsed.provider, serverId: parsed.serverId, preview: `u8_token=${parsed.token.slice(0, 4)}***${parsed.token.slice(-3)}` } });
+  }
+  if (req.method === 'POST' && pathname === '/api/thirdparty/endfield/sync') {
+    const body = await readJsonBody(req);
+    let url = String(body.url || '').trim();
+    if (!url && body.useLog) {
+      const found = findEndfieldLogUrls();
+      url = found.urls[found.urls.length - 1] || '';
+      if (!url) throw new Error('本机日志里还没有抽卡链接，请先在游戏内打开一次寻访记录');
+    }
+    if (!url) throw new Error('缺少终末地抽卡链接');
+    const result = await syncEndfieldFromUrl(url);
+    const synced = applyThirdPartySync(result);
+    await store.flush(true);
+    return ok(res, synced);
+  }
+  if (req.method === 'POST' && pathname === '/api/thirdparty/tajiduo/captcha') {
+    const body = await readJsonBody(req);
+    const result = await sendTajiduoCaptcha(body.phone, body.deviceId);
+    return ok(res, result);
+  }
+  if (req.method === 'POST' && pathname === '/api/thirdparty/tajiduo/login') {
+    const body = await readJsonBody(req);
+    const result = await loginTajiduo(body.phone, body.code, body.deviceId);
+    return ok(res, { user: result });
+  }
+  if (req.method === 'POST' && pathname === '/api/thirdparty/tajiduo/logout') {
+    return ok(res, { result: await tajiduoLogout() });
+  }
   if (req.method === 'GET' && pathname === '/api/collector') {
     return ok(res, { collector: collector.status(), settings: store.state.settings });
   }
@@ -254,21 +475,74 @@ async function routeApi(req, res, url) {
       pools: analysis.pools, generatedAt: analysis.generatedAt,
     });
   }
+  if (req.method === 'GET' && pathname === '/api/manual/template') {
+    const game = sanitizeGame(url.searchParams.get('game'));
+    const g = getGame(game);
+    const first = MANUAL_DEFAULT_POOL[game] || g.types[0];
+    const ws = XLSX.utils.aoa_to_sheet([MANUAL_HEADERS]);
+    ws['!cols'] = [{ wch: 18 }, { wch: 20 }, { wch: 10 }, { wch: 10 }, { wch: 20 }];
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, '手动记录');
+    const help = XLSX.utils.aoa_to_sheet([
+      ['填写说明'],
+      ['第一行填写最新记录，向下按从新到旧顺序填写。'],
+      ['卡池填写卡池名称；版本和时间可以留空。'],
+      ['结果（UP/歪）由软件自动判断，不需要填写。'],
+      ['请勿修改表头，不需要的行请整行删除。'],
+    ]);
+    help['!cols'] = [{ wch: 64 }];
+    XLSX.utils.book_append_sheet(wb, help, '说明');
+    const buffer = XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' });
+    res.writeHead(200, {
+      'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      'Content-Disposition': 'attachment; filename="miyou-manual-template.xlsx"',
+      'Content-Length': buffer.length,
+    });
+    res.end(buffer);
+    return;
+  }
+  if (req.method === 'POST' && pathname === '/api/manual/import') {
+    const body = await readJsonBody(req, 30 * 1024 * 1024);
+    const game = sanitizeGame(body.game);
+    const base64 = String(body.data || '').replace(/^data:.*?base64,/, '');
+    if (!base64) throw new Error('没有收到表格文件');
+    let workbook;
+    try { workbook = XLSX.read(Buffer.from(base64, 'base64'), { type: 'buffer', cellDates: true }); }
+    catch { throw new Error('无法读取这个表格，请使用导出的模板'); }
+    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+    const rows = XLSX.utils.sheet_to_json(sheet, { defval: '', raw: false });
+    const records = [];
+    const errors = [];
+    for (const [index, row] of rows.entries()) {
+      try {
+        const rec = manualRecord(game, row, index);
+        if (rec) records.push(rec);
+      } catch (e) {
+        errors.push(`第 ${index + 2} 行：${e.message}`);
+      }
+    }
+    if (!records.length) throw new Error(errors[0] || '表格里没有可导入的记录');
+    const result = store.mergeRecords(game, records, { source: 'manual' });
+    await store.flush(true);
+    return ok(res, { result, count: records.length, skipped: rows.length - records.length, errors: errors.slice(0, 5) });
+  }
   if (req.method === 'POST' && pathname === '/api/records/manual') {
     const body = await readJsonBody(req);
     const game = sanitizeGame(body.game);
     const name = String(body.name || '').trim();
     const time = String(body.time || '').replace('T', ' ').slice(0, 19);
     if (!name) throw new Error('缺少名称');
-    if (!/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}(:\d{2})?$/.test(time)) throw new Error('时间格式不正确');
+    if (time && !/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}(:\d{2})?$/.test(time)) throw new Error('时间格式不正确');
     const gachaType = String(body.gachaType || '1');
+    const version = String(body.version || '').trim();
+    const up = body.up === 'win' || body.up === 'loss' ? body.up : '';
     const g = getGame(game);
     const rec = {
       id: '', uid: '', gachaType, uigfType: g.uigfMap[gachaType] || gachaType,
-      itemId: '', count: 1, time: time.length === 16 ? time + ':00' : time,
-      name, itemType: '', rank: 5, lang: 'zh-cn',
+      itemId: '', count: 1, time: time ? (time.length === 16 ? time + ':00' : time) : '',
+      name, itemType: String(body.itemType || ''), rank: 5, lang: 'zh-cn',
       poolName: g.pools[gachaType] || '手动', source: 'manual', synthetic: true,
-      pity: Number(body.pity) || null,
+      pity: Number(body.pity) || null, version: version || undefined, up: up || undefined,
     };
     const result = store.mergeRecords(game, [rec], { source: 'manual' });
     await store.flush(true);
@@ -277,6 +551,12 @@ async function routeApi(req, res, url) {
   if (req.method === 'POST' && pathname === '/api/links/scan') {
     const result = await scanLocalLinks();
     return ok(res, result);
+  }
+  if (req.method === 'GET' && pathname === '/api/links/url') {
+    const linkId = new URL(req.url, 'http://127.0.0.1').searchParams.get('linkId') || '';
+    const source = getRememberedSource(linkId);
+    if (!source) throw new Error('链接已过期，请重新扫描');
+    return ok(res, { url: source.rawUrl || source.displayUrl || '' });
   }
   if (req.method === 'POST' && pathname === '/api/links/parse') {
     const body = await readJsonBody(req);
@@ -301,6 +581,30 @@ async function routeApi(req, res, url) {
     const result = await resync(source);
     return ok(res, result);
   }
+  if (req.method === 'POST' && pathname === '/api/import/heybox') {
+    const body = await readJsonBody(req);
+    if (body.game && body.game !== 'arknights') return fail(res, '小黑盒 JSON 导入目前只支持明日方舟', 400);
+    const result = await importHeybox(store, body.data || body);
+    return ok(res, result);
+  }
+  if (req.method === 'POST' && pathname === '/api/import/heybox-live') {
+    const body = await readJsonBody(req, 48 * 1024 * 1024);
+    const game = sanitizeGame(body.game);
+    if (!Array.isArray(body.responses) || !body.responses.length) return fail(res, '没有捕获到小黑盒页面数据', 400);
+    const result = await importHeyboxLive(store, game, body.responses);
+    return ok(res, result);
+  }
+  if (req.method === 'POST' && pathname === '/api/import/nte-export') {
+    const body = await readJsonBody(req, 48 * 1024 * 1024);
+    const result = await importNteExport(store, body.data || body);
+    return ok(res, result);
+  }
+  if (req.method === 'POST' && pathname === '/api/import/nteuid') {
+    const body = await readJsonBody(req);
+    const result = await importNteuid(store, body.data || body);
+    await store.flush(true);
+    return ok(res, { result, dashboard: summaryResponse('nte') });
+  }
   if (req.method === 'POST' && pathname === '/api/import/uigf') {
     const body = await readJsonBody(req);
     const data = body.data || body;
@@ -312,6 +616,21 @@ async function routeApi(req, res, url) {
     const account = store.account(game);
     const payload = buildUigf(game, account);
     const name = `UIGF-${game}-${account?.uid || 'local'}-${new Date().toISOString().slice(0, 10)}.json`;
+    return send(res, 200, JSON.stringify(payload, null, 2), {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Content-Disposition': `attachment; filename="${encodeURIComponent(name)}"`,
+    });
+  }
+  if (req.method === 'GET' && pathname === '/api/banners') {
+    const game = sanitizeGame(url.searchParams.get('game'));
+    return ok(res, { game, asOf: bannersAsOf(), current: currentBanners(game), all: bannersFor(game) });
+  }
+  if (req.method === 'GET' && pathname === '/api/export/heybox') {
+    const game = sanitizeGame(url.searchParams.get('game'));
+    if (!HEYBOX_GAMES.includes(game)) return fail(res, '小黑盒目前没有公开的该游戏导入格式', 400);
+    const account = store.account(game);
+    const payload = buildHeybox(game, account);
+    const name = `小黑盒-${GAMES[game].name}-${account?.uid || 'local'}-${new Date().toISOString().slice(0, 10)}.json`;
     return send(res, 200, JSON.stringify(payload, null, 2), {
       'Content-Type': 'application/json; charset=utf-8',
       'Content-Disposition': `attachment; filename="${encodeURIComponent(name)}"`,
@@ -476,12 +795,12 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-collector = new Collector({ store, syncFn: resync });
+collector = new Collector({ store, syncFn: resync, zzzSyncFn: syncZzzMiyoushe });
 await collector.start();
 setTimeout(() => { autoCheckCatalogs().catch(() => {}); }, 6000).unref?.();
 
 server.listen(PORT, HOST, () => {
-  console.log(`\n  米游档案 · Gacha Archive v${APP_VERSION}`);
+  console.log(`\n  二游档案 · Gacha Archive v${APP_VERSION}`);
   console.log(`  http://${HOST}:${PORT}`);
   console.log(`  数据目录：${DATA_DIR}`);
   console.log('  仅绑定本机，抽卡凭据不会写入磁盘或发往第三方。\n');

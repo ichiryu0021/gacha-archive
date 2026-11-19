@@ -17,7 +17,7 @@ const QR_HEADERS = {
 };
 const CN_UA = 'Mozilla/5.0 (Linux; Android 13; M2101K9C Build/TKQ1.220829.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/108.0.5359.128 Mobile Safari/537.36 miHoYoBBS/2.109.0';
 
-function dpapi(mode, input) {
+export function dpapi(mode, input) {
   return new Promise((resolve, reject) => {
     const child = spawn('powershell.exe', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', path.join(ROOT, 'scripts', 'dpapi.ps1'), '-Mode', mode], { windowsHide: true });
     let out = '', err = '';
@@ -59,6 +59,12 @@ export async function restoreMiyousheSession() {
     };
     if (!session.cookies.size) return null;
     sessions.set(session.id, session);
+    try {
+      const profile = await fetchProfile(session);
+      if (profile.nickname) session.user.nickname = profile.nickname;
+      if (profile.avatar) session.user.avatar = profile.avatar;
+      if (profile.nickname || profile.avatar) await persistSession(session);
+    } catch {}
     return { sessionId: session.id, status: 'Confirmed', user: session.user };
   } catch (e) {
     console.error('[auth] restore failed', e.message);
@@ -113,9 +119,9 @@ async function postJson(url, body, headers, session) {
   return { res, data };
 }
 
-async function fetchNickname(session) {
+async function fetchProfile(session) {
   const uid = session.user?.aid || session.cookies.get('account_id_v2') || session.cookies.get('ltuid_v2') || session.cookies.get('account_id') || '';
-  if (!uid) return '';
+  if (!uid) return { nickname: '', avatar: '' };
   const q = `gids=2&uid=${encodeURIComponent(uid)}`;
   const res = await fetch(`https://bbs-api.mihoyo.com/user/wapi/getUserFullInfo?${q}`, {
     headers: {
@@ -130,7 +136,11 @@ async function fetchNickname(session) {
     signal: AbortSignal.timeout(12000),
   });
   const data = await res.json().catch(() => ({}));
-  return data?.data?.user_info?.nickname || data?.data?.userInfo?.nickname || '';
+  const info = data?.data?.user_info || data?.data?.userInfo || {};
+  return {
+    nickname: info.nickname || info.nick_name || info.account_name || '',
+    avatar: info.avatar_url || info.avatar || info.avatar_hd || info.head_icon || info.head_url || '',
+  };
 }
 
 export async function createQrSession() {
@@ -168,8 +178,9 @@ export async function pollQrSession(id) {
       nickname: info.nickname || info.account_name || '',
     };
     try {
-      const nickname = await fetchNickname(session);
-      if (nickname) session.user.nickname = nickname;
+      const profile = await fetchProfile(session);
+      if (profile.nickname) session.user.nickname = profile.nickname;
+      if (profile.avatar) session.user.avatar = profile.avatar;
     } catch {}
     await persistSession(session);
     // Some deployments only set the final cookie jar on a follow-up status request.
@@ -391,6 +402,14 @@ export async function fetchZzzFullHistory(sessionId, role) {
   }
 
   records.sort((a, b) => String(a.time).localeCompare(String(b.time)));
+  for (const [type, stats] of Object.entries(perType)) {
+    if (!currentPity[type]) {
+      const counted = records
+        .filter((r) => String(r.gachaType) === String(type))
+        .reduce((sum, r) => sum + (Number(r.pity) || 0), 0);
+      currentPity[type] = Math.max(0, (Number(stats.total) || 0) - counted);
+    }
+  }
   const totals = {
     exact: Number(index.total_gacha_count) || records.length,
     perType,

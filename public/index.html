@@ -1,12 +1,12 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <title>米游档案 · 米哈游五星抽卡记录</title>
+  <title>二游档案 · 抽卡记录</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles.css?v=20261119-28">
 </head>
 <body data-game="genshin">
   <div class="ambient ambient-a"></div>
@@ -14,9 +14,9 @@
   <div class="grain"></div>
   <div class="app-shell">
     <aside class="sidebar">
-      <a class="brand" href="#" data-action="go" data-view="dashboard" aria-label="米游档案首页">
+      <a class="brand" href="#" data-action="go" data-view="dashboard" aria-label="二游档案首页">
         <span class="brand-mark"><i></i><i></i><i></i></span>
-        <span class="brand-text"><strong>米游档案</strong><small>GACHA ARCHIVE</small></span>
+        <span class="brand-text"><strong>二游档案</strong><small>GACHA ARCHIVE</small></span>
       </a>
       <nav class="side-nav" id="side-nav"></nav>
       <div class="sidebar-foot">
@@ -30,10 +30,7 @@
           <button class="icon-btn" data-action="refresh" title="刷新数据" aria-label="刷新数据">
             <svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.34 5.66M20 4v7h-7"/></svg>
           </button>
-          <button class="primary-btn compact" data-action="go" data-view="import">
-            <svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 19h14"/></svg>
-            同步记录
-          </button>
+          <div id="update-slot" class="update-slot"></div>
           <div class="account-chip" id="account-chip"></div>
         </div>
       </header>
@@ -42,7 +39,7 @@
   </div>
   <div id="toast-root" class="toast-root" aria-live="polite"></div>
   <div id="modal-root"></div>
-  <script src="/vendor/qrcode.js"></script>
-  <script type="module" src="/app.js"></script>
+  <script src="/vendor/qrcode.js?v=20261119-28"></script>
+  <script type="module" src="/app.js?v=20261119-28"></script>
 </body>
 </html>

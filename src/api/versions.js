@@ -3,7 +3,11 @@ import path from 'node:path';
 import { DATA_DIR } from '../config.js';
 
 const TABLES = {};
-for (const game of ['zzz', 'genshin', 'hsr']) {
+const LOADED = new Set();
+
+function table(game) {
+  if (LOADED.has(game)) return TABLES[game] || [];
+  LOADED.add(game);
   try {
     const file = path.join(DATA_DIR, `versions-${game}.json`);
     TABLES[game] = JSON.parse(fs.readFileSync(file, 'utf8'))
@@ -12,13 +16,14 @@ for (const game of ['zzz', 'genshin', 'hsr']) {
   } catch {
     TABLES[game] = [];
   }
+  return TABLES[game];
 }
 
 export function versionFor(game, time) {
   const day = String(time || '').slice(0, 10);
   if (!day) return null;
   let found = null;
-  for (const row of TABLES[game] || []) {
+  for (const row of table(game)) {
     if (row.start <= day) found = row.version;
     else break;
   }
@@ -26,5 +31,5 @@ export function versionFor(game, time) {
 }
 
 export function versionOrder(game) {
-  return (TABLES[game] || []).map((row) => row.version);
+  return table(game).map((row) => row.version);
 }

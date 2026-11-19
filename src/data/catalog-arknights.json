@@ -1,0 +1,5254 @@
+{
+  "game": "arknights",
+  "version": "2026-11-19",
+  "source": "Kengxxiao/ArknightsGameData · Aceship/Arknight-Images",
+  "updatedAt": "2026-11-19T07:18:37.684Z",
+  "items": [
+    {
+      "id": "char_225_haak",
+      "name": "阿",
+      "aliases": [
+        "Aak"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_225_haak.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4178_alanna",
+      "name": "阿兰娜",
+      "aliases": [
+        "Alanna"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4178_alanna.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_446_aroma",
+      "name": "阿罗玛",
+      "aliases": [
+        "Aroma"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_446_aroma.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_002_amiya",
+      "name": "阿米娅",
+      "aliases": [
+        "Amiya"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_002_amiya.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4132_ascln",
+      "name": "阿斯卡纶",
+      "aliases": [
+        "Ascalon"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4132_ascln.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_277_sqrrel",
+      "name": "阿消",
+      "aliases": [
+        "Shaw"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_277_sqrrel.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4218_aigis",
+      "name": "埃癸斯",
+      "aliases": [
+        "Aegis"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4218_aigis.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4043_erato",
+      "name": "埃拉托",
+      "aliases": [
+        "Erato"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4043_erato.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4123_ela",
+      "name": "艾拉",
+      "aliases": [
+        "Ela"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4123_ela.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4009_irene",
+      "name": "艾丽妮",
+      "aliases": [
+        "Irene"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4009_irene.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_127_estell",
+      "name": "艾丝黛尔",
+      "aliases": [
+        "Estelle"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_127_estell.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_180_amgoat",
+      "name": "艾雅法拉",
+      "aliases": [
+        "Eyjafjalla"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_180_amgoat.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_338_iris",
+      "name": "爱丽丝",
+      "aliases": [
+        "Iris"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_338_iris.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_302_glaze",
+      "name": "安比尔",
+      "aliases": [
+        "Ambriel"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_302_glaze.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_291_aglina",
+      "name": "安洁莉娜",
+      "aliases": [
+        "Angelina"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_291_aglina.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_218_cuttle",
+      "name": "安哲拉",
+      "aliases": [
+        "Andreana"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_218_cuttle.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_236_rope",
+      "name": "暗索",
+      "aliases": [
+        "Rope"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_236_rope.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4131_odda",
+      "name": "奥达",
+      "aliases": [
+        "Odda"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4131_odda.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4245_alga",
+      "name": "奥尔佳",
+      "aliases": [
+        "Ольга"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4245_alga.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_346_aosta",
+      "name": "奥斯塔",
+      "aliases": [
+        "Aosta"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_346_aosta.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4186_tmoris",
+      "name": "八幡海铃",
+      "aliases": [
+        "Yahata Umiri"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4186_tmoris.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_204_platnm",
+      "name": "白金",
+      "aliases": [
+        "Platinum"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_204_platnm.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_128_plosis",
+      "name": "白面鸮",
+      "aliases": [
+        "Ptilopsis"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_128_plosis.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4072_ironmn",
+      "name": "白铁",
+      "aliases": [
+        "Stainless"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4072_ironmn.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_118_yuki",
+      "name": "白雪",
+      "aliases": [
+        "ShiraYuki"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_118_yuki.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1026_gvial2",
+      "name": "百炼嘉维尔",
+      "aliases": [
+        "Gavial the Invincible"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1026_gvial2.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_252_bibeak",
+      "name": "柏喙",
+      "aliases": [
+        "Bibeak"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_252_bibeak.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4166_varkis",
+      "name": "摆渡人",
+      "aliases": [
+        "Varkáris"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4166_varkis.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_325_bison",
+      "name": "拜松",
+      "aliases": [
+        "Bison"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_325_bison.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_388_mint",
+      "name": "薄绿",
+      "aliases": [
+        "Mint"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_388_mint.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_230_savage",
+      "name": "暴行",
+      "aliases": [
+        "Savage"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_230_savage.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_304_zebra",
+      "name": "暴雨",
+      "aliases": [
+        "Heavyrain"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_304_zebra.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4037_demetr",
+      "name": "贝洛内",
+      "aliases": [
+        "Bellone"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4037_demetr.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_369_bena",
+      "name": "贝娜",
+      "aliases": [
+        "Bena"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_369_bena.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_265_sophia",
+      "name": "鞭刃",
+      "aliases": [
+        "Whislash"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_265_sophia.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4104_coldst",
+      "name": "冰酿",
+      "aliases": [
+        "Coldshot"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4104_coldst.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_487_bobb",
+      "name": "波卜",
+      "aliases": [
+        "Bobbing"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_487_bobb.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_258_podego",
+      "name": "波登可",
+      "aliases": [
+        "Podenco"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_258_podego.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4223_botany",
+      "name": "伯塔尼",
+      "aliases": [
+        "Ботани"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4223_botany.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4004_pudd",
+      "name": "布丁",
+      "aliases": [
+        "Pudding"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4004_pudd.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_356_broca",
+      "name": "布洛卡",
+      "aliases": [
+        "Broca"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_356_broca.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4155_talr",
+      "name": "裁度",
+      "aliases": [
+        "Figurino"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4155_talr.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4106_bryota",
+      "name": "苍苔",
+      "aliases": [
+        "Bryophyta"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4106_bryota.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_289_gyuki",
+      "name": "缠丸",
+      "aliases": [
+        "Matoimaru"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_289_gyuki.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4047_pianst",
+      "name": "车尔尼",
+      "aliases": [
+        "Czerny"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4047_pianst.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_010_chen",
+      "name": "陈",
+      "aliases": [
+        "Ch'en"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_010_chen.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1027_greyy2",
+      "name": "承曦格雷伊",
+      "aliases": [
+        "Greyy the Lightningbearer"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1027_greyy2.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_377_gdglow",
+      "name": "澄闪",
+      "aliases": [
+        "Goldenglow"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_377_gdglow.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_445_wscoot",
+      "name": "骋风",
+      "aliases": [
+        "Windscoot"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_445_wscoot.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4065_judge",
+      "name": "斥罪",
+      "aliases": [
+        "Penance"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4065_judge.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_475_akafyu",
+      "name": "赤冬",
+      "aliases": [
+        "Akafuyu"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_475_akafyu.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1050_chen3",
+      "name": "赤刃明霄陈",
+      "aliases": [
+        "Ch'en the Dawnstreak"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1050_chen3.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4082_qiubai",
+      "name": "仇白",
+      "aliases": [
+        "Qiubai"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4082_qiubai.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_174_slbell",
+      "name": "初雪",
+      "aliases": [
+        "Pramanix"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_174_slbell.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1016_agoat2",
+      "name": "纯烬艾雅法拉",
+      "aliases": [
+        "Eyjafjalla the Hvít Aska"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1016_agoat2.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_427_vigil",
+      "name": "伺夜",
+      "aliases": [
+        "Vigil"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_427_vigil.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_494_vendla",
+      "name": "刺玫",
+      "aliases": [
+        "Vendela"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_494_vendla.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1031_slent2",
+      "name": "淬羽赫默",
+      "aliases": [
+        "Silence the Paradigmatic"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1031_slent2.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_362_saga",
+      "name": "嵯峨",
+      "aliases": [
+        "Saga"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_362_saga.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_157_dagda",
+      "name": "达格达",
+      "aliases": [
+        "Dagda"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_157_dagda.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4110_delphn",
+      "name": "戴菲恩",
+      "aliases": [
+        "Delphine"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4110_delphn.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4032_provs",
+      "name": "但书",
+      "aliases": [
+        "Proviso"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4032_provs.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4126_fuze",
+      "name": "导火索",
+      "aliases": [
+        "Fuze"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4126_fuze.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_393_toledo",
+      "name": "德·托莱多",
+      "aliases": [
+        "de Toledo"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_393_toledo.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_102_texas",
+      "name": "德克萨斯",
+      "aliases": [
+        "Texas"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_102_texas.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_183_skgoat",
+      "name": "地灵",
+      "aliases": [
+        "Earthspirit"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_183_skgoat.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1034_jesca2",
+      "name": "涤火杰西卡",
+      "aliases": [
+        "Jessica the Liberated"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1034_jesca2.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4191_tippi",
+      "name": "蒂比",
+      "aliases": [
+        "Tippi"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4191_tippi.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4195_radian",
+      "name": "电弧",
+      "aliases": [
+        "Raidian"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4195_radian.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_181_flower",
+      "name": "调香师",
+      "aliases": [
+        "Perfumer"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_181_flower.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4208_wintim",
+      "name": "冬时",
+      "aliases": [
+        "Снегурочка"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4208_wintim.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4244_tocka",
+      "name": "冻河",
+      "aliases": [
+        "Тоска"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4244_tocka.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_452_bstalk",
+      "name": "豆苗",
+      "aliases": [
+        "Beanstalk"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_452_bstalk.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_130_doberm",
+      "name": "杜宾",
+      "aliases": [
+        "Dobermann"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_130_doberm.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4147_mitm",
+      "name": "渡桥",
+      "aliases": [
+        "Mitm"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4147_mitm.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_294_ayer",
+      "name": "断崖",
+      "aliases": [
+        "Ayerscarpe"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_294_ayer.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_159_peacok",
+      "name": "断罪者",
+      "aliases": [
+        "Conviction"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_159_peacok.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4048_doroth",
+      "name": "多萝西",
+      "aliases": [
+        "Dorothy"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4048_doroth.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4083_chimes",
+      "name": "铎铃",
+      "aliases": [
+        "Wind Chimes"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4083_chimes.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_271_spikes",
+      "name": "芳汀",
+      "aliases": [
+        "Arene"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_271_spikes.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4148_philae",
+      "name": "菲莱",
+      "aliases": [
+        "Philae"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4148_philae.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_300_phenxi",
+      "name": "菲亚梅塔",
+      "aliases": [
+        "Fiammetta"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_300_phenxi.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4182_oblvns",
+      "name": "丰川祥子",
+      "aliases": [
+        "Togawa Sakiko"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4182_oblvns.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_222_bpipe",
+      "name": "风笛",
+      "aliases": [
+        "Bagpipe"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_222_bpipe.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4016_kazema",
+      "name": "风丸",
+      "aliases": [
+        "Kazemaru"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4016_kazema.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4222_taraxa",
+      "name": "风絮",
+      "aliases": [
+        "Taraxacum"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4222_taraxa.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_106_franka",
+      "name": "芙兰卡",
+      "aliases": [
+        "Franka"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_106_franka.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4031_liesel",
+      "name": "复奏",
+      "aliases": [
+        "Ripresa"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4031_liesel.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_474_glady",
+      "name": "歌蕾蒂娅",
+      "aliases": [
+        "Gladiia"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_474_glady.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_220_grani",
+      "name": "格拉尼",
+      "aliases": [
+        "Grani"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_220_grani.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_326_glacus",
+      "name": "格劳克斯",
+      "aliases": [
+        "Glaucus"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_326_glacus.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_253_greyy",
+      "name": "格雷伊",
+      "aliases": [
+        "Greyy"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_253_greyy.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_196_sunbr",
+      "name": "古米",
+      "aliases": [
+        "Гум"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_196_sunbr.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1023_ghost2",
+      "name": "归溟幽灵鲨",
+      "aliases": [
+        "Specter the Unchained"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1023_ghost2.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4163_rosesa",
+      "name": "瑰盐",
+      "aliases": [
+        "Rose Salt"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4163_rosesa.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4246_dminon",
+      "name": "国度",
+      "aliases": [
+        "Территория"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4246_dminon.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_394_hadiya",
+      "name": "哈蒂娅",
+      "aliases": [
+        "Hadiya"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_394_hadiya.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4114_harold",
+      "name": "哈洛德",
+      "aliases": [
+        "Harold"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4114_harold.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4045_heidi",
+      "name": "海蒂",
+      "aliases": [
+        "Heidi"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4045_heidi.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4066_highmo",
+      "name": "海沫",
+      "aliases": [
+        "Highmore"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4066_highmo.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4079_haini",
+      "name": "海霓",
+      "aliases": [
+        "Lucilla"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4079_haini.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1021_kroos2",
+      "name": "寒芒克洛丝",
+      "aliases": [
+        "Kroos the Keen Glint"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1021_kroos2.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_341_sntlla",
+      "name": "寒檀",
+      "aliases": [
+        "Santalla"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_341_sntlla.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4039_horn",
+      "name": "号角",
+      "aliases": [
+        "Horn"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4039_horn.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_297_hamoni",
+      "name": "和弦",
+      "aliases": [
+        "Harmonie"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_297_hamoni.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4041_chnut",
+      "name": "褐果",
+      "aliases": [
+        "Chestnut"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4041_chnut.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4088_hodrer",
+      "name": "赫德雷",
+      "aliases": [
+        "Hoederer"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4088_hodrer.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_188_helage",
+      "name": "赫拉格",
+      "aliases": [
+        "Hellagur"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_188_helage.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_108_silent",
+      "name": "赫默",
+      "aliases": [
+        "Silence"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_108_silent.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_340_shwaz",
+      "name": "黑",
+      "aliases": [
+        "Schwarz"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_340_shwaz.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4046_ebnhlz",
+      "name": "黑键",
+      "aliases": [
+        "Ebenholz"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4046_ebnhlz.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4140_lasher",
+      "name": "衡沙",
+      "aliases": [
+        "Sand Reckoner"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4140_lasher.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_226_hmau",
+      "name": "吽",
+      "aliases": [
+        "Hung"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_226_hmau.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_144_red",
+      "name": "红",
+      "aliases": [
+        "Projekt Red"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_144_red.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_290_vigna",
+      "name": "红豆",
+      "aliases": [
+        "Vigna"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_290_vigna.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4023_rfalcn",
+      "name": "红隼",
+      "aliases": [
+        "Kestrel"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4023_rfalcn.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_190_clour",
+      "name": "红云",
+      "aliases": [
+        "Vermeil"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_190_clour.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4055_bgsnow",
+      "name": "鸿雪",
+      "aliases": [
+        "Позёмка"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4055_bgsnow.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_171_bldsk",
+      "name": "华法琳",
+      "aliases": [
+        "Warfarin"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_171_bldsk.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_243_waaifu",
+      "name": "槐琥",
+      "aliases": [
+        "Waai Fu"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_243_waaifu.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1038_whitw2",
+      "name": "荒芜拉普兰德",
+      "aliases": [
+        "Lappland the Decadenza"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1038_whitw2.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_017_huang",
+      "name": "煌",
+      "aliases": [
+        "Blaze"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_017_huang.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_431_ashlok",
+      "name": "灰毫",
+      "aliases": [
+        "Ashlock"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_431_ashlok.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_367_swllow",
+      "name": "灰喉",
+      "aliases": [
+        "GreyThroat"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_367_swllow.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_456_ash",
+      "name": "灰烬",
+      "aliases": [
+        "Ash"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_456_ash.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1030_noirc2",
+      "name": "火龙S黑角",
+      "aliases": [
+        "Rathalos S Noir Corne"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1030_noirc2.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_493_firwhl",
+      "name": "火哨",
+      "aliases": [
+        "Firewhistle"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_493_firwhl.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_163_hpsts",
+      "name": "火神",
+      "aliases": [
+        "Vulcan"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_163_hpsts.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4027_heyak",
+      "name": "霍尔海雅",
+      "aliases": [
+        "Ho'olheyak"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4027_heyak.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4230_mcnist",
+      "name": "机械师",
+      "aliases": [
+        "Mechanist"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4230_mcnist.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4203_kichi",
+      "name": "吉星",
+      "aliases": [
+        "Kichisei"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4203_kichi.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_422_aurora",
+      "name": "极光",
+      "aliases": [
+        "Aurora"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_422_aurora.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_401_elysm",
+      "name": "极境",
+      "aliases": [
+        "Elysium"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_401_elysm.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_293_thorns",
+      "name": "棘刺",
+      "aliases": [
+        "Thorns"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_293_thorns.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_187_ccheal",
+      "name": "嘉维尔",
+      "aliases": [
+        "Gavial"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_187_ccheal.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4237_jcinta",
+      "name": "嘉辛塔",
+      "aliases": [
+        "Jacinta"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4237_jcinta.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_349_chiave",
+      "name": "贾维",
+      "aliases": [
+        "Chiave"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_349_chiave.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1013_chen2",
+      "name": "假日威龙陈",
+      "aliases": [
+        "Ch'en the Holungday"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1013_chen2.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_260_durnar",
+      "name": "坚雷",
+      "aliases": [
+        "Dur-nar"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_260_durnar.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1028_texas2",
+      "name": "缄默德克萨斯",
+      "aliases": [
+        "Texas the Omertosa"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1028_texas2.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4116_blkkgt",
+      "name": "锏",
+      "aliases": [
+        "Degenbrecher"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4116_blkkgt.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4036_forcer",
+      "name": "见行者",
+      "aliases": [
+        "Enforcer"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4036_forcer.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_199_yak",
+      "name": "角峰",
+      "aliases": [
+        "Matterhorn"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_199_yak.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_272_strong",
+      "name": "孑",
+      "aliases": [
+        "Jaye"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_272_strong.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_347_jaksel",
+      "name": "杰克",
+      "aliases": [
+        "Jackie"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_347_jaksel.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_235_jesica",
+      "name": "杰西卡",
+      "aliases": [
+        "Jessica"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_235_jesica.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4217_makoto",
+      "name": "结城理",
+      "aliases": [
+        "Makoto Yuki"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4217_makoto.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4078_bdhkgt",
+      "name": "截云",
+      "aliases": [
+        "Jieyun"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4078_bdhkgt.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_306_leizi",
+      "name": "惊蛰",
+      "aliases": [
+        "Leizi"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_306_leizi.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4169_caledo",
+      "name": "镜匠",
+      "aliases": [
+        "Caleido"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4169_caledo.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4019_ncdeer",
+      "name": "九色鹿",
+      "aliases": [
+        "Nine-Colored Deer"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4019_ncdeer.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1042_phatm2",
+      "name": "酒神",
+      "aliases": [
+        "Tragodia"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1042_phatm2.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4221_ju",
+      "name": "矩",
+      "aliases": [
+        "Ju"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4221_ju.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_328_cammou",
+      "name": "卡达",
+      "aliases": [
+        "Click"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_328_cammou.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_214_kafka",
+      "name": "卡夫卡",
+      "aliases": [
+        "Kafka"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_214_kafka.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_426_billro",
+      "name": "卡涅利安",
+      "aliases": [
+        "Carnelian"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_426_billro.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_003_kalts",
+      "name": "凯尔希",
+      "aliases": [
+        "Kal'tsit"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_003_kalts.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1052_kalts2",
+      "name": "凯尔希·思衡托",
+      "aliases": [
+        "Kal'tsit·Esperanta"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1052_kalts2.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4162_cathy",
+      "name": "凯瑟琳",
+      "aliases": [
+        "Catherine"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4162_cathy.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4228_closur",
+      "name": "可露希尔",
+      "aliases": [
+        "Closure"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4228_closur.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_201_moeshd",
+      "name": "可颂",
+      "aliases": [
+        "Croissant"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_201_moeshd.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4231_clemnt",
+      "name": "克莱门莎",
+      "aliases": [
+        "Clementia"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4231_clemnt.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_301_cutter",
+      "name": "刻刀",
+      "aliases": [
+        "Cutter"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_301_cutter.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_2013_cerber",
+      "name": "刻俄柏",
+      "aliases": [
+        "Ceobe"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_2013_cerber.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_101_sora",
+      "name": "空",
+      "aliases": [
+        "Sora"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_101_sora.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4015_spuria",
+      "name": "空构",
+      "aliases": [
+        "Spuria"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4015_spuria.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_332_archet",
+      "name": "空弦",
+      "aliases": [
+        "Archetto"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_332_archet.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_405_absin",
+      "name": "苦艾",
+      "aliases": [
+        "Absinthe"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_405_absin.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_250_phatom",
+      "name": "傀影",
+      "aliases": [
+        "Phantom"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_250_phatom.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_140_whitew",
+      "name": "拉普兰德",
+      "aliases": [
+        "Lappland"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_140_whitew.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_373_lionhd",
+      "name": "莱恩哈特",
+      "aliases": [
+        "Leonhardt"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_373_lionhd.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4142_laios",
+      "name": "莱欧斯",
+      "aliases": [
+        "Laios"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4142_laios.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4117_ray",
+      "name": "莱伊",
+      "aliases": [
+        "Ray"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4117_ray.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_129_bluep",
+      "name": "蓝毒",
+      "aliases": [
+        "Blue Poison"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_129_bluep.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_322_lmlee",
+      "name": "老鲤",
+      "aliases": [
+        "Lee"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_322_lmlee.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1049_catap2",
+      "name": "雷狼龙S空爆",
+      "aliases": [
+        "Zinogre S Catapult"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1049_catap2.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_107_liskam",
+      "name": "雷蛇",
+      "aliases": [
+        "Liskarm"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_107_liskam.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4193_lemuen",
+      "name": "蕾缪安",
+      "aliases": [
+        "Lemuen"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4193_lemuen.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1036_fang2",
+      "name": "历阵锐枪芬",
+      "aliases": [
+        "Fang the Fire-sharpened"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1036_fang2.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_237_gravel",
+      "name": "砾",
+      "aliases": [
+        "Gravel"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_237_gravel.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_194_leto",
+      "name": "烈夏",
+      "aliases": [
+        "Лето"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_194_leto.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_137_brownb",
+      "name": "猎蜂",
+      "aliases": [
+        "Beehunter"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_137_brownb.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4225_tanya",
+      "name": "裂响",
+      "aliases": [
+        "Crackborne"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4225_tanya.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4080_lin",
+      "name": "林",
+      "aliases": [
+        "Lin"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4080_lin.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_148_nearl",
+      "name": "临光",
+      "aliases": [
+        "Nearl"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_148_nearl.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1033_swire2",
+      "name": "琳琅诗怀雅",
+      "aliases": [
+        "Swire the Elegant Wit"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1033_swire2.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_115_headbr",
+      "name": "凛冬",
+      "aliases": [
+        "Зима"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_115_headbr.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4102_threye",
+      "name": "凛视",
+      "aliases": [
+        "Valarqvin"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4102_threye.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1045_svash2",
+      "name": "凛御银灰",
+      "aliases": [
+        "SilverAsh the Reignfrost"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1045_svash2.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_206_gnosis",
+      "name": "灵知",
+      "aliases": [
+        "Gnosis"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_206_gnosis.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_358_lisa",
+      "name": "铃兰",
+      "aliases": [
+        "Suzuran"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_358_lisa.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4187_graceb",
+      "name": "聆音",
+      "aliases": [
+        "Gracebearer"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4187_graceb.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_2023_ling",
+      "name": "令",
+      "aliases": [
+        "Ling"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_2023_ling.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4042_lumen",
+      "name": "流明",
+      "aliases": [
+        "Lumen"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4042_lumen.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_126_shotst",
+      "name": "流星",
+      "aliases": [
+        "Meteor"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_126_shotst.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_486_takila",
+      "name": "龙舌兰",
+      "aliases": [
+        "Tequila"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_486_takila.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4196_reckpr",
+      "name": "录武官",
+      "aliases": [
+        "Record Keeper"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4196_reckpr.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4130_luton",
+      "name": "露托",
+      "aliases": [
+        "Lutonada"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4130_luton.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4232_hbound",
+      "name": "旅骨",
+      "aliases": [
+        "Homebound"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4232_hbound.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_433_windft",
+      "name": "掠风",
+      "aliases": [
+        "Windflit"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_433_windft.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_484_robrta",
+      "name": "罗比菈塔",
+      "aliases": [
+        "Roberta"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_484_robrta.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_451_robin",
+      "name": "罗宾",
+      "aliases": [
+        "Robin"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_451_robin.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4067_lolxh",
+      "name": "罗小黑",
+      "aliases": [
+        "Luo Xiaohei"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4067_lolxh.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4133_logos",
+      "name": "逻各斯",
+      "aliases": [
+        "Logos"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4133_logos.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4040_rockr",
+      "name": "洛洛",
+      "aliases": [
+        "Rockrock"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4040_rockr.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4064_mlynar",
+      "name": "玛恩纳",
+      "aliases": [
+        "Młynar"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4064_mlynar.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4141_marcil",
+      "name": "玛露西尔",
+      "aliases": [
+        "Marcille"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4141_marcil.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_248_mgllan",
+      "name": "麦哲伦",
+      "aliases": [
+        "Magallan"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_248_mgllan.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4006_melnte",
+      "name": "玫拉",
+      "aliases": [
+        "Melanite"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4006_melnte.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_133_mm",
+      "name": "梅",
+      "aliases": [
+        "May"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_133_mm.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_242_otter",
+      "name": "梅尔",
+      "aliases": [
+        "Mayer"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_242_otter.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_391_rosmon",
+      "name": "迷迭香",
+      "aliases": [
+        "Rosmontis"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_391_rosmon.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4017_puzzle",
+      "name": "谜图",
+      "aliases": [
+        "Puzzle"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4017_puzzle.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_344_beewax",
+      "name": "蜜蜡",
+      "aliases": [
+        "Beeswax"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_344_beewax.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_449_glider",
+      "name": "蜜莓",
+      "aliases": [
+        "Honeyberry"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_449_glider.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4071_peper",
+      "name": "明椒",
+      "aliases": [
+        "Paprika"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4071_peper.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4229_aphris",
+      "name": "谬因",
+      "aliases": [
+        "Aphrissa"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4229_aphris.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_154_morgan",
+      "name": "摩根",
+      "aliases": [
+        "Morgan"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_154_morgan.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4134_cetsyr",
+      "name": "魔王",
+      "aliases": [
+        "Civilight Eterna"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4134_cetsyr.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_117_myrrh",
+      "name": "末药",
+      "aliases": [
+        "Myrrh"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_117_myrrh.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_213_mostma",
+      "name": "莫斯提马",
+      "aliases": [
+        "Mostima"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_213_mostma.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_249_mlyss",
+      "name": "缪尔赛思",
+      "aliases": [
+        "Muelsyse"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_249_mlyss.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4171_wulfen",
+      "name": "钼铅",
+      "aliases": [
+        "Wulfenite"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4171_wulfen.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_185_frncat",
+      "name": "慕斯",
+      "aliases": [
+        "Mousse"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_185_frncat.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4025_aprot2",
+      "name": "暮落",
+      "aliases": [
+        "Shalem"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4025_aprot2.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4138_narant",
+      "name": "娜仁图亚",
+      "aliases": [
+        "Narantuya"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4138_narant.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4212_nasti",
+      "name": "娜斯提",
+      "aliases": [
+        "Nasti"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4212_nasti.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_103_angel",
+      "name": "能天使",
+      "aliases": [
+        "Exusiai"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_103_angel.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4146_nymph",
+      "name": "妮芙",
+      "aliases": [
+        "Nymph"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4146_nymph.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_311_mudrok",
+      "name": "泥岩",
+      "aliases": [
+        "Mudrock"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_311_mudrok.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_2014_nian",
+      "name": "年",
+      "aliases": [
+        "Nian"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_2014_nian.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1051_headb2",
+      "name": "怒潮凛冬",
+      "aliases": [
+        "Zima the Raging Tide"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1051_headb2.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4173_nowell",
+      "name": "诺威尔",
+      "aliases": [
+        "Nowell"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4173_nowell.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_485_pallas",
+      "name": "帕拉斯",
+      "aliases": [
+        "Pallas"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_485_pallas.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_381_bubble",
+      "name": "泡泡",
+      "aliases": [
+        "Bubble"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_381_bubble.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4234_pedro",
+      "name": "佩德洛",
+      "aliases": [
+        "Pedro"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4234_pedro.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4058_pepe",
+      "name": "佩佩",
+      "aliases": [
+        "Pepe"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4058_pepe.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_145_prove",
+      "name": "普罗旺斯",
+      "aliases": [
+        "Provence"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_145_prove.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4144_chilc",
+      "name": "齐尔查克",
+      "aliases": [
+        "Chilchuck"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4144_chilc.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1029_yato2",
+      "name": "麒麟R夜刀",
+      "aliases": [
+        "Kirin R Yato"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1029_yato2.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_478_kirara",
+      "name": "绮良",
+      "aliases": [
+        "Kirara"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_478_kirara.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4062_totter",
+      "name": "铅踝",
+      "aliases": [
+        "Totter"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4062_totter.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_479_sleach",
+      "name": "琴柳",
+      "aliases": [
+        "Saileach"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_479_sleach.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_488_buildr",
+      "name": "青枳",
+      "aliases": [
+        "Poncirus"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_488_buildr.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_149_scave",
+      "name": "清道夫",
+      "aliases": [
+        "Scavenger"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_149_scave.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_385_finlpp",
+      "name": "清流",
+      "aliases": [
+        "Purestream"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_385_finlpp.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4026_vulpis",
+      "name": "忍冬",
+      "aliases": [
+        "Vulpisfoglia"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4026_vulpis.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_363_toddi",
+      "name": "熔泉",
+      "aliases": [
+        "Toddifons"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_363_toddi.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4183_mortis",
+      "name": "若叶睦",
+      "aliases": [
+        "Wakaba Mutsumi"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4183_mortis.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_202_demkni",
+      "name": "塞雷娅",
+      "aliases": [
+        "Saria"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_202_demkni.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4184_dolris",
+      "name": "三角初华",
+      "aliases": [
+        "Misumi Uika"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4184_dolris.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_473_mberry",
+      "name": "桑葚",
+      "aliases": [
+        "Mulberry"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_473_mberry.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_416_zumama",
+      "name": "森蚺",
+      "aliases": [
+        "Eunectes"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_416_zumama.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4143_sensi",
+      "name": "森西",
+      "aliases": [
+        "Senshi"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4143_sensi.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4139_papyrs",
+      "name": "莎草",
+      "aliases": [
+        "Papyrus"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4139_papyrs.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_264_f12yin",
+      "name": "山",
+      "aliases": [
+        "Mountain"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_264_f12yin.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4235_thumpy",
+      "name": "珊比",
+      "aliases": [
+        "Thumpy"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4235_thumpy.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_457_blitz",
+      "name": "闪击",
+      "aliases": [
+        "Blitz"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_457_blitz.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_147_shining",
+      "name": "闪灵",
+      "aliases": [
+        "Shining"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_147_shining.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_150_snakek",
+      "name": "蛇屠箱",
+      "aliases": [
+        "Cuora"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_150_snakek.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_379_sesa",
+      "name": "慑砂",
+      "aliases": [
+        "Sesa"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_379_sesa.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_469_indigo",
+      "name": "深靛",
+      "aliases": [
+        "Indigo"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_469_indigo.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_110_deepcl",
+      "name": "深海色",
+      "aliases": [
+        "Deepcolor"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_110_deepcl.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4109_baslin",
+      "name": "深律",
+      "aliases": [
+        "Bassline"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4109_baslin.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4137_udflow",
+      "name": "深巡",
+      "aliases": [
+        "Underflow"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4137_udflow.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1046_sbell2",
+      "name": "圣聆初雪",
+      "aliases": [
+        "Pramanix the Prerita"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1046_sbell2.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1032_excu2",
+      "name": "圣约送葬人",
+      "aliases": [
+        "Executor the Ex Foedere"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1032_excu2.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_308_swire",
+      "name": "诗怀雅",
+      "aliases": [
+        "Swire"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_308_swire.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_215_mantic",
+      "name": "狮蝎",
+      "aliases": [
+        "Manticore"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_215_mantic.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_378_asbest",
+      "name": "石棉",
+      "aliases": [
+        "Asbestos"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_378_asbest.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4063_quartz",
+      "name": "石英",
+      "aliases": [
+        "Quartz"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4063_quartz.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4236_tmslot",
+      "name": "时隙",
+      "aliases": [
+        "Timeslot"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4236_tmslot.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_489_serum",
+      "name": "蚀清",
+      "aliases": [
+        "Corroserum"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_489_serum.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_241_panda",
+      "name": "食铁兽",
+      "aliases": [
+        "FEater"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_241_panda.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_350_surtr",
+      "name": "史尔特尔",
+      "aliases": [
+        "Surtr"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_350_surtr.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1502_crosly",
+      "name": "弑君者",
+      "aliases": [
+        "Crownslayer"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1502_crosly.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_158_milu",
+      "name": "守林人",
+      "aliases": [
+        "Firewatch"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_158_milu.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_2025_shu",
+      "name": "黍",
+      "aliases": [
+        "Shu"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_2025_shu.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4124_iana",
+      "name": "双月",
+      "aliases": [
+        "Iana"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4124_iana.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_458_rfrost",
+      "name": "霜华",
+      "aliases": [
+        "Frost"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_458_rfrost.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_193_frostl",
+      "name": "霜叶",
+      "aliases": [
+        "Frostleaf"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_193_frostl.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4177_brigid",
+      "name": "水灯心",
+      "aliases": [
+        "Brigid"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4177_brigid.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_437_mizuki",
+      "name": "水月",
+      "aliases": [
+        "Mizuki"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_437_mizuki.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1043_leizi2",
+      "name": "司霆惊蛰",
+      "aliases": [
+        "Leizi the Thunderbringer"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1043_leizi2.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_263_skadi",
+      "name": "斯卡蒂",
+      "aliases": [
+        "Skadi"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_263_skadi.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_450_necras",
+      "name": "死芒",
+      "aliases": [
+        "Necrass"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_450_necras.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_365_aprl",
+      "name": "四月",
+      "aliases": [
+        "April"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_365_aprl.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_440_pinecn",
+      "name": "松果",
+      "aliases": [
+        "Pinecone"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_440_pinecn.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4199_makiri",
+      "name": "松桐",
+      "aliases": [
+        "Matsukiri"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4199_makiri.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_279_excu",
+      "name": "送葬人",
+      "aliases": [
+        "Executor"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_279_excu.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_298_susuro",
+      "name": "苏苏洛",
+      "aliases": [
+        "Sussurro"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_298_susuro.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_245_cello",
+      "name": "塑心",
+      "aliases": [
+        "Virtuosa"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_245_cello.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1047_halo2",
+      "name": "溯光星源",
+      "aliases": [
+        "Astgenne the Lightchaser"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1047_halo2.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_366_acdrop",
+      "name": "酸糖",
+      "aliases": [
+        "Aciddrop"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_366_acdrop.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_415_flint",
+      "name": "燧石",
+      "aliases": [
+        "Flint"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_415_flint.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4247_oxi",
+      "name": "塔露拉",
+      "aliases": [
+        "Talulah"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4247_oxi.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_151_myrtle",
+      "name": "桃金娘",
+      "aliases": [
+        "Myrtle"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_151_myrtle.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4164_tecno",
+      "name": "特克诺",
+      "aliases": [
+        "Tecno"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4164_tecno.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_411_tomimi",
+      "name": "特米米",
+      "aliases": [
+        "Tomimi"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_411_tomimi.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_2012_typhon",
+      "name": "提丰",
+      "aliases": [
+        "Typhon"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_2012_typhon.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4056_titi",
+      "name": "缇缇",
+      "aliases": [
+        "Titi"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4056_titi.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_166_skfire",
+      "name": "天火",
+      "aliases": [
+        "Skyfire"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_166_skfire.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4213_skybx",
+      "name": "天空盒",
+      "aliases": [
+        "Skybox"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4213_skybx.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_402_tuye",
+      "name": "图耶",
+      "aliases": [
+        "Tuye"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_402_tuye.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_112_siege",
+      "name": "推进之王",
+      "aliases": [
+        "Siege"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_112_siege.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4119_wanqin",
+      "name": "万顷",
+      "aliases": [
+        "Wanqing"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4119_wanqin.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_2027_wang",
+      "name": "望",
+      "aliases": [
+        "Wang"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_2027_wang.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_275_breeze",
+      "name": "微风",
+      "aliases": [
+        "Breeze"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_275_breeze.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4098_vvana",
+      "name": "薇薇安娜",
+      "aliases": [
+        "Viviana"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4098_vvana.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4107_vrdant",
+      "name": "维荻",
+      "aliases": [
+        "Verdant"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4107_vrdant.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1019_siege2",
+      "name": "维娜·维多利亚",
+      "aliases": [
+        "Vina Victoria"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1019_siege2.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1035_wisdel",
+      "name": "维什戴尔",
+      "aliases": [
+        "Wiš'adel"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1035_wisdel.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4226_veen",
+      "name": "维伊",
+      "aliases": [
+        "Вий"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4226_veen.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_261_sddrag",
+      "name": "苇草",
+      "aliases": [
+        "Reed"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_261_sddrag.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_400_weedy",
+      "name": "温蒂",
+      "aliases": [
+        "Weedy"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_400_weedy.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4081_warmy",
+      "name": "温米",
+      "aliases": [
+        "Warmy"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4081_warmy.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4145_ulpia",
+      "name": "乌尔比安",
+      "aliases": [
+        "Ulpianus"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4145_ulpia.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4224_turdus",
+      "name": "乌啾",
+      "aliases": [
+        "Укусик"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4224_turdus.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_455_nothin",
+      "name": "乌有",
+      "aliases": [
+        "Mr.Nothing"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_455_nothin.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_254_vodfox",
+      "name": "巫恋",
+      "aliases": [
+        "Shamare"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_254_vodfox.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_2015_dusk",
+      "name": "夕",
+      "aliases": [
+        "Dusk"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_2015_dusk.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_336_folivo",
+      "name": "稀音",
+      "aliases": [
+        "Scene"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_336_folivo.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_348_ceylon",
+      "name": "锡兰",
+      "aliases": [
+        "Ceylon"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_348_ceylon.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4151_tinman",
+      "name": "锡人",
+      "aliases": [
+        "Tin Man"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4151_tinman.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_423_blemsh",
+      "name": "瑕光",
+      "aliases": [
+        "Blemishine"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_423_blemsh.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_492_quercu",
+      "name": "夏栎",
+      "aliases": [
+        "Quercus"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_492_quercu.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4214_cairn",
+      "name": "响石",
+      "aliases": [
+        "Cairn"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4214_cairn.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4122_grabds",
+      "name": "小满",
+      "aliases": [
+        "Grain Buds"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4122_grabds.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_497_ctable",
+      "name": "晓歌",
+      "aliases": [
+        "Cantabile"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_497_ctable.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4051_akkord",
+      "name": "协律",
+      "aliases": [
+        "Akkord"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4051_akkord.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1022_flwr2",
+      "name": "撷英调香师",
+      "aliases": [
+        "Perfumer the Distilled"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1022_flwr2.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1041_angel2",
+      "name": "新约能天使",
+      "aliases": [
+        "Exusiai the New Covenant"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1041_angel2.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4194_rmixer",
+      "name": "信仰搅拌机",
+      "aliases": [
+        "Sankta Miksaparato"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4194_rmixer.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_274_astesi",
+      "name": "星极",
+      "aliases": [
+        "Astesia"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_274_astesi.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_136_hsguma",
+      "name": "星熊",
+      "aliases": [
+        "Hoshiguma"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_136_hsguma.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_135_halo",
+      "name": "星源",
+      "aliases": [
+        "Astgenne"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_135_halo.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4170_hdbell",
+      "name": "行铃",
+      "aliases": [
+        "Herdbells"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4170_hdbell.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4172_xingzh",
+      "name": "行箸",
+      "aliases": [
+        "Xingzhu"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4172_xingzh.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4105_almond",
+      "name": "杏仁",
+      "aliases": [
+        "Almond"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4105_almond.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_491_humus",
+      "name": "休谟斯",
+      "aliases": [
+        "Humus"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_491_humus.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_436_whispr",
+      "name": "絮雨",
+      "aliases": [
+        "Whisperain"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_436_whispr.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4211_snhunt",
+      "name": "雪猎",
+      "aliases": [
+        "Snow Hunter"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4211_snhunt.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_466_qanik",
+      "name": "雪绒",
+      "aliases": [
+        "Qanipalaat"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_466_qanik.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_383_snsant",
+      "name": "雪雉",
+      "aliases": [
+        "Snowsant"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_383_snsant.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4052_surfer",
+      "name": "寻澜",
+      "aliases": [
+        "Surfer"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4052_surfer.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_198_blackd",
+      "name": "讯使",
+      "aliases": [
+        "Courier"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_198_blackd.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_173_slchan",
+      "name": "崖心",
+      "aliases": [
+        "Cliffheart"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_173_slchan.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_345_folnic",
+      "name": "亚叶",
+      "aliases": [
+        "Folinic"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_345_folnic.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_131_flameb",
+      "name": "炎客",
+      "aliases": [
+        "Flamebringer"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_131_flameb.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1011_lava2",
+      "name": "炎狱炎熔",
+      "aliases": [
+        "Lava the Purgatory"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1011_lava2.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_337_utage",
+      "name": "宴",
+      "aliases": [
+        "Utage"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_337_utage.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1048_orchd2",
+      "name": "焰狐龙梓兰",
+      "aliases": [
+        "Violet Mizutsune Orchid"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1048_orchd2.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_420_flamtl",
+      "name": "焰尾",
+      "aliases": [
+        "Flametail"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_420_flamtl.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1020_reed2",
+      "name": "焰影苇草",
+      "aliases": [
+        "Reed The Flame Shadow"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1020_reed2.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_464_cement",
+      "name": "洋灰",
+      "aliases": [
+        "Cement"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_464_cement.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4202_haruka",
+      "name": "遥",
+      "aliases": [
+        "Haruka"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4202_haruka.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1014_nearl2",
+      "name": "耀骑士临光",
+      "aliases": [
+        "Nearl the Radiant Knight"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1014_nearl2.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4013_kjera",
+      "name": "耶拉",
+      "aliases": [
+        "Kjera"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4013_kjera.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_496_wildmn",
+      "name": "野鬃",
+      "aliases": [
+        "Wild Mane"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_496_wildmn.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_476_blkngt",
+      "name": "夜半",
+      "aliases": [
+        "Blacknight"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_476_blkngt.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_164_nightm",
+      "name": "夜魔",
+      "aliases": [
+        "Nightmare"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_164_nightm.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_141_nights",
+      "name": "夜烟",
+      "aliases": [
+        "Haze"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_141_nights.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_179_cgbird",
+      "name": "夜莺",
+      "aliases": [
+        "Nightingale"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_179_cgbird.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_134_ifrit",
+      "name": "伊芙利特",
+      "aliases": [
+        "Ifrit"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_134_ifrit.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4087_ines",
+      "name": "伊内丝",
+      "aliases": [
+        "Ines"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4087_ines.png",
+      "path": "先锋",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_355_ethan",
+      "name": "伊桑",
+      "aliases": [
+        "Ethan"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_355_ethan.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4125_rdoc",
+      "name": "医生",
+      "aliases": [
+        "Doc"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4125_rdoc.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_472_pasngr",
+      "name": "异客",
+      "aliases": [
+        "Passenger"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_472_pasngr.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_155_tiger",
+      "name": "因陀罗",
+      "aliases": [
+        "Indra"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_155_tiger.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_172_svrash",
+      "name": "银灰",
+      "aliases": [
+        "SilverAsh"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_172_svrash.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1039_thorn2",
+      "name": "引星棘刺",
+      "aliases": [
+        "Thorns the Lodestar"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1039_thorn2.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4010_etlchi",
+      "name": "隐德来希",
+      "aliases": [
+        "Entelechia"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4010_etlchi.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_498_inside",
+      "name": "隐现",
+      "aliases": [
+        "Insider"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_498_inside.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_143_ghost",
+      "name": "幽灵鲨",
+      "aliases": [
+        "Specter"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_143_ghost.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4185_amoris",
+      "name": "祐天寺若麦",
+      "aliases": [
+        "Yūtenji Nyamu"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4185_amoris.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_2026_yu",
+      "name": "余",
+      "aliases": [
+        "Yu"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_2026_yu.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1015_aglna2",
+      "name": "予愿安洁莉娜",
+      "aliases": [
+        "Angelina the Mellow Wish"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1015_aglna2.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_421_crow",
+      "name": "羽毛笔",
+      "aliases": [
+        "La Pluma"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_421_crow.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_109_fmout",
+      "name": "远山",
+      "aliases": [
+        "Gitano"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_109_fmout.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_430_fartth",
+      "name": "远牙",
+      "aliases": [
+        "Fartooth"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_430_fartth.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_343_tknogi",
+      "name": "月禾",
+      "aliases": [
+        "Tsukinogi"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_343_tknogi.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4219_yukari",
+      "name": "岳羽由加莉",
+      "aliases": [
+        "Yukari Takeba"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4219_yukari.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4100_caper",
+      "name": "跃跃",
+      "aliases": [
+        "Caper"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4100_caper.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4165_ctrail",
+      "name": "云迹",
+      "aliases": [
+        "Contrail"
+      ],
+      "type": "角色",
+      "rarity": 3,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4165_ctrail.png",
+      "path": "特种",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_219_meteo",
+      "name": "陨星",
+      "aliases": [
+        "Meteorite"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_219_meteo.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_197_poca",
+      "name": "早露",
+      "aliases": [
+        "Роса"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_197_poca.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1044_hsgma2",
+      "name": "斩业星熊",
+      "aliases": [
+        "Hoshiguma the Breacher"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1044_hsgma2.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_459_tachak",
+      "name": "战车",
+      "aliases": [
+        "Tachanka"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_459_tachak.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_499_kaitou",
+      "name": "折光",
+      "aliases": [
+        "Diamante"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_499_kaitou.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4207_branch",
+      "name": "折桠",
+      "aliases": [
+        "Веточки"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4207_branch.png",
+      "path": "重装",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_195_glassb",
+      "name": "真理",
+      "aliases": [
+        "Истина"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_195_glassb.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4204_mantra",
+      "name": "真言",
+      "aliases": [
+        "Mantra"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4204_mantra.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4011_lessng",
+      "name": "止颂",
+      "aliases": [
+        "Lessing"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4011_lessng.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4054_malist",
+      "name": "至简",
+      "aliases": [
+        "Minimalist"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4054_malist.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_2024_chyue",
+      "name": "重岳",
+      "aliases": [
+        "Chongyue"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_2024_chyue.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1040_blaze2",
+      "name": "烛煌",
+      "aliases": [
+        "Blaze the Igniting Spark"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1040_blaze2.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_333_sidero",
+      "name": "铸铁",
+      "aliases": [
+        "Sideroca"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_333_sidero.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1012_skadi2",
+      "name": "浊心斯卡蒂",
+      "aliases": [
+        "Skadi the Corrupting Heart"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1012_skadi2.png",
+      "path": "辅助",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_1024_hbisc2",
+      "name": "濯尘芙蓉",
+      "aliases": [
+        "Hibiscus the Purifier"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_1024_hbisc2.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4014_lunacu",
+      "name": "子月",
+      "aliases": [
+        "Lunacub"
+      ],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4014_lunacu.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4121_zuole",
+      "name": "左乐",
+      "aliases": [
+        "Zuo Le"
+      ],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4121_zuole.png",
+      "path": "近卫",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4198_christ",
+      "name": "Miss.Christine",
+      "aliases": [],
+      "type": "角色",
+      "rarity": 4,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4198_christ.png",
+      "path": "术师",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_4179_monstr",
+      "name": "Mon3tr",
+      "aliases": [],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_4179_monstr.png",
+      "path": "医疗",
+      "element": "",
+      "weaponType": ""
+    },
+    {
+      "id": "char_113_cqbw",
+      "name": "W",
+      "aliases": [],
+      "type": "角色",
+      "rarity": 5,
+      "iconUrl": "https://cdn.jsdelivr.net/gh/Aceship/Arknight-Images@main/avatars/char_113_cqbw.png",
+      "path": "狙击",
+      "element": "",
+      "weaponType": ""
+    }
+  ]
+}

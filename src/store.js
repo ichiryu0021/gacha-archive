@@ -15,7 +15,7 @@ function defaultState() {
       showEstimated: true,
       collectorEnabled: true,
       collectorInterval: 30000,
-      gameOrder: ['genshin', 'hsr', 'zzz', 'hi3', 'tot'],
+      gameOrder: ['genshin', 'hsr', 'zzz', 'arknights', 'endfield', 'nte', 'hi3', 'tot'],
       hiddenGames: [],
     },
     collector: { lastRun: null, lastEvent: null, events: [] },
@@ -68,6 +68,7 @@ export class Store {
         timezone: Number(meta.timezone ?? 8),
         records: [],
         totals: { exact: 0, perType: {}, currentPity: {}, fetchedAt: null },
+        poolNames: {},
         snapshots: [],
         createdAt: new Date().toISOString(),
         lastSync: null,
@@ -78,6 +79,7 @@ export class Store {
       for (const key of ['uid', 'nickname', 'region', 'gameBiz', 'lang', 'timezone']) {
         if (meta[key] !== undefined && meta[key] !== null && meta[key] !== '') acc[key] = meta[key];
       }
+      if (!acc.poolNames) acc.poolNames = {};
     }
     return acc;
   }
@@ -145,13 +147,17 @@ export class Store {
       r.uigfType = String(r.uigfType || r.uigf_gacha_type || r.gachaType);
       r.rank = Number(r.rank || r.rank_type || 0) || 0;
       r.source = r.source || options.source || 'official';
+      r.order = Number.isFinite(Number(r.order)) ? Number(r.order) : null;
       r.synthetic = Boolean(r.synthetic || !r.id);
       if (!r.name && !r.time) { skipped++; continue; }
       if (r.id && byId.has(r.id)) {
         const existing = byId.get(r.id);
-        for (const key of ['pity', 'up', 'name', 'rank', 'itemId', 'itemType', 'poolName', 'time', 'source']) {
-          if (r[key] !== undefined && r[key] !== null) existing[key] = r[key];
+        for (const key of ['pity', 'up', 'name', 'rank', 'itemId', 'itemType', 'poolName', 'time', 'source', 'order']) {
+          if (r[key] === undefined || r[key] === null) continue;
+          if (key === 'name' && r.nameIsFallback && existing.name && !existing.nameIsFallback) continue;
+          existing[key] = r[key];
         }
+        if (r.nameIsFallback === false) existing.nameIsFallback = false;
         existing.synthetic = false;
         skipped++;
         continue;
@@ -175,9 +181,12 @@ export class Store {
       if (match) {
         const existing = match.r;
         match.used = true;
-        for (const key of ['pity', 'up', 'version', 'name', 'rank', 'itemId', 'itemType', 'poolName', 'time', 'source']) {
-          if (r[key] !== undefined && r[key] !== null && r[key] !== '') existing[key] = r[key];
+        for (const key of ['pity', 'up', 'version', 'name', 'rank', 'itemId', 'itemType', 'poolName', 'time', 'source', 'order']) {
+          if (r[key] === undefined || r[key] === null || r[key] === '') continue;
+          if (key === 'name' && r.nameIsFallback && existing.name && !existing.nameIsFallback) continue;
+          existing[key] = r[key];
         }
+        if (r.nameIsFallback === false) existing.nameIsFallback = false;
         if (!r.id) {
           skipped++;
           continue;
@@ -207,7 +216,11 @@ export class Store {
       identities.get(identity).push({ r, used: false });
       added++;
     }
-    acc.records.sort((a, b) => (a.time || '').localeCompare(b.time || '') || String(a.id).localeCompare(String(b.id)));
+    acc.records.sort((a, b) => {
+      if (a.time && b.time) return a.time.localeCompare(b.time) || String(a.id).localeCompare(String(b.id));
+      if (!a.time && !b.time) return (Number(a.order) || 0) - (Number(b.order) || 0) || String(a.id).localeCompare(String(b.id));
+      return a.time ? -1 : 1;
+    });
     if (incoming[0]?.uid && !acc.uid) acc.uid = String(incoming[0].uid);
     if (options.meta) {
       for (const key of ['uid', 'nickname', 'region', 'gameBiz', 'lang', 'timezone']) {
@@ -220,9 +233,26 @@ export class Store {
     return { added, skipped, upgraded, total: acc.records.length };
   }
 
+  setPoolNames(game, names = {}) {
+    const acc = this.ensureAccount(game);
+    acc.poolNames = { ...(acc.poolNames || {}) };
+    for (const [type, label] of Object.entries(names)) {
+      if (type && label) acc.poolNames[String(type)] = String(label);
+    }
+    this.touch();
+    return acc.poolNames;
+  }
+
   setFullTotals(game, totals) {
     const acc = this.ensureAccount(game);
     acc.totals = { ...totals, full: true, daily: {}, updatedAt: new Date().toISOString() };
+    this.touch();
+    return acc.totals;
+  }
+
+  setWindowTotals(game, totals) {
+    const acc = this.ensureAccount(game);
+    acc.totals = { ...totals, full: false, window: true, daily: {}, updatedAt: new Date().toISOString() };
     this.touch();
     return acc.totals;
   }
@@ -243,7 +273,10 @@ export class Store {
     let exact = 0;
     for (const [key, count] of Object.entries(mergedDaily)) {
       const type = key.split('|')[1] || key;
-      perType[type] = perType[type] || { total: 0, five: 0 };
+      perType[type] = perType[type] || {
+        total: 0,
+        five: Number(totals.perType?.[type]?.five ?? prev.perType?.[type]?.five) || 0,
+      };
       perType[type].total += Number(count) || 0;
       exact += Number(count) || 0;
     }

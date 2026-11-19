@@ -1,7 +1,8 @@
 import fs from 'node:fs';
 import fsp from 'node:fs/promises';
 import path from 'node:path';
-import { ASSET_DIR, DATA_DIR, GAME_IDS, isAllowedAssetHost } from '../config.js';
+import { ASSET_DIR, DATA_DIR, GAME_IDS, ROOT, isAllowedAssetHost } from '../config.js';
+import { buildArknightsCatalog, buildEndfieldCatalog, buildNteCatalog } from './catalog-thirdparty.js';
 import { hash, normalizeName, similarity, writeJsonAtomic } from '../utils.js';
 
 const CATALOG_FILES = Object.fromEntries(GAME_IDS.map((g) => [g, path.join(DATA_DIR, `catalog-${g}.json`)]));
@@ -33,7 +34,9 @@ export function loadCatalog(game) {
   if (cache.has(game)) return cache.get(game);
   const fallback = { game, items: [], updatedAt: null, source: 'bundled', version: '0' };
   let raw = fallback;
-  try { raw = JSON.parse(fs.readFileSync(CATALOG_FILES[game], 'utf8')); } catch {}
+  try { raw = JSON.parse(fs.readFileSync(CATALOG_FILES[game], 'utf8')); } catch {
+    try { raw = JSON.parse(fs.readFileSync(path.join(ROOT, 'src', 'data', `catalog-${game}.json`), 'utf8')); } catch {}
+  }
   const catalog = buildIndex(raw);
   cache.set(game, catalog);
   return catalog;
@@ -159,19 +162,27 @@ export async function syncCatalog(game) {
     const catalog = loadCatalog('genshin');
     return { ok: true, mode: 'bundled', count: catalog.items.length, message: '原神图鉴已内置 7.2 数据；图标走米哈游官方 CDN。版本更新后运行 scripts/build-catalogs.mjs 可刷新。' };
   }
-  const data = game === 'hsr' ? await syncHsr() : game === 'zzz' ? await syncZzz() : null;
+  const thirdPartyBuilder = {
+    arknights: buildArknightsCatalog,
+    endfield: buildEndfieldCatalog,
+    nte: buildNteCatalog,
+  }[game];
+  const data = thirdPartyBuilder
+    ? await thirdPartyBuilder()
+    : game === 'hsr' ? await syncHsr() : game === 'zzz' ? await syncZzz() : null;
   if (!data) throw new Error('不支持的游戏');
   if (!data.items.length) throw new Error('数据源返回为空');
   const current = loadCatalog(game);
   const same = current.items.length === data.items.length && JSON.stringify(current.items) === JSON.stringify(data.items);
   if (same) {
-    prefetchAssets(game).catch(() => {});
+    if (!fs.existsSync(CATALOG_FILES[game])) await writeJsonAtomic(CATALOG_FILES[game], data);
+    if (!['arknights', 'endfield', 'nte'].includes(game)) prefetchAssets(game).catch(() => {});
     return { ok: true, mode: 'cached', count: current.items.length, updatedAt: current.updatedAt, source: current.source };
   }
   await writeJsonAtomic(CATALOG_FILES[game], data);
   cache.delete(game);
   loadCatalog(game);
-  prefetchAssets(game).catch(() => {});
+  if (!['arknights', 'endfield', 'nte'].includes(game)) prefetchAssets(game).catch(() => {});
   return { ok: true, mode: 'live', count: data.items.length, updatedAt: data.updatedAt, source: data.source };
 }
 
@@ -206,9 +217,30 @@ export async function prefetchAssets(game) {
   prefetching.delete(game);
 }
 
+async function catalogStale(game, days = 7) {
+  try {
+    const stat = await fsp.stat(CATALOG_FILES[game]);
+    return Date.now() - stat.mtimeMs > days * 86400000;
+  } catch {
+    return true;
+  }
+}
+
 export async function autoCheckCatalogs() {
   const results = [];
   for (const game of ['hsr', 'zzz']) {
+    try {
+      const result = await syncCatalog(game);
+      results.push({ game, ...result });
+    } catch (e) {
+      results.push({ game, ok: false, error: e.message });
+    }
+  }
+  for (const game of ['arknights', 'endfield', 'nte']) {
+    if (!(await catalogStale(game))) {
+      results.push({ game, ok: true, mode: 'cached', message: '图鉴 7 天内已更新' });
+      continue;
+    }
     try {
       const result = await syncCatalog(game);
       results.push({ game, ...result });
@@ -222,6 +254,7 @@ export async function autoCheckCatalogs() {
 
 export function catalogPublic(game) {
   const catalog = loadCatalog(game);
+  const directAssets = ['arknights', 'endfield', 'nte'].includes(game);
   return {
     game,
     updatedAt: catalog.updatedAt,
@@ -229,7 +262,10 @@ export function catalogPublic(game) {
     version: catalog.version,
     items: catalog.items.map((i) => ({
       id: i.id, name: i.name, type: i.type, rarity: i.rarity,
-      iconUrl: i.iconUrl ? `/api/asset?game=${encodeURIComponent(game)}&u=${encodeURIComponent(i.iconUrl)}` : '',
+      // 第三方图鉴的图片源支持跨域直连，直连可以让浏览器并行加载，避免代理串行等待。
+      iconUrl: i.iconUrl
+        ? (directAssets ? i.iconUrl : `/api/asset?game=${encodeURIComponent(game)}&u=${encodeURIComponent(i.iconUrl)}`)
+        : '',
       weaponType: i.weaponType || '', path: i.path || '', element: i.element || '', aliases: i.aliases || [],
     })),
   };

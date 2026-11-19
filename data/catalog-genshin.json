@@ -56,7 +56,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Albedo.png",
-      "icon": "UI_AvatarIcon_Albedo"
+      "icon": "UI_AvatarIcon_Albedo",
+      "element": "岩",
+      "region": "蒙德"
     },
     {
       "id": "10000096",
@@ -65,7 +67,9 @@
       "rarity": 5,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Arlecchino.png",
-      "icon": "UI_AvatarIcon_Arlecchino"
+      "icon": "UI_AvatarIcon_Arlecchino",
+      "element": "火",
+      "region": "至冬"
     },
     {
       "id": "10000148",
@@ -74,7 +78,9 @@
       "rarity": 4,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Alyosha.png",
-      "icon": "UI_AvatarIcon_Alyosha"
+      "icon": "UI_AvatarIcon_Alyosha",
+      "element": "雷",
+      "region": "至冬"
     },
     {
       "id": "15502",
@@ -92,7 +98,9 @@
       "rarity": 5,
       "weaponType": "弓",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Aloy.png",
-      "icon": "UI_AvatarIcon_Aloy"
+      "icon": "UI_AvatarIcon_Aloy",
+      "element": "冰",
+      "region": "游侠"
     },
     {
       "id": "10000078",
@@ -101,7 +109,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Alhatham.png",
-      "icon": "UI_AvatarIcon_Alhatham"
+      "icon": "UI_AvatarIcon_Alhatham",
+      "element": "草",
+      "region": "须弥"
     },
     {
       "id": "10000099",
@@ -110,7 +120,9 @@
       "rarity": 5,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Emilie.png",
-      "icon": "UI_AvatarIcon_Emilie"
+      "icon": "UI_AvatarIcon_Emilie",
+      "element": "草",
+      "region": "枫丹"
     },
     {
       "id": "10000112",
@@ -119,7 +131,9 @@
       "rarity": 5,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Escoffier.png",
-      "icon": "UI_AvatarIcon_Escoffier"
+      "icon": "UI_AvatarIcon_Escoffier",
+      "element": "冰",
+      "region": "枫丹"
     },
     {
       "id": "10000121",
@@ -128,7 +142,9 @@
       "rarity": 4,
       "weaponType": "双手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Aino.png",
-      "icon": "UI_AvatarIcon_Aino"
+      "icon": "UI_AvatarIcon_Aino",
+      "element": "水",
+      "region": "挪德卡莱"
     },
     {
       "id": "10000021",
@@ -137,7 +153,9 @@
       "rarity": 4,
       "weaponType": "弓",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Ambor.png",
-      "icon": "UI_AvatarIcon_Ambor"
+      "icon": "UI_AvatarIcon_Ambor",
+      "element": "火",
+      "region": "蒙德"
     },
     {
       "id": "11304",
@@ -182,7 +200,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Odette.png",
-      "icon": "UI_AvatarIcon_Odette"
+      "icon": "UI_AvatarIcon_Odette",
+      "element": "冰",
+      "region": "至冬"
     },
     {
       "id": "10000058",
@@ -191,7 +211,9 @@
       "rarity": 5,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Yae.png",
-      "icon": "UI_AvatarIcon_Yae"
+      "icon": "UI_AvatarIcon_Yae",
+      "element": "雷",
+      "region": "稻妻"
     },
     {
       "id": "10000014",
@@ -200,7 +222,9 @@
       "rarity": 4,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Barbara.png",
-      "icon": "UI_AvatarIcon_Barbara"
+      "icon": "UI_AvatarIcon_Barbara",
+      "element": "水",
+      "region": "蒙德"
     },
     {
       "id": "14414",
@@ -227,7 +251,9 @@
       "rarity": 5,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Baizhuer.png",
-      "icon": "UI_AvatarIcon_Baizhuer"
+      "icon": "UI_AvatarIcon_Baizhuer",
+      "element": "草",
+      "region": "璃月"
     },
     {
       "id": "12303",
@@ -272,7 +298,9 @@
       "rarity": 4,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Bennett.png",
-      "icon": "UI_AvatarIcon_Bennett"
+      "icon": "UI_AvatarIcon_Bennett",
+      "element": "火",
+      "region": "蒙德"
     },
     {
       "id": "10000024",
@@ -281,7 +309,9 @@
       "rarity": 4,
       "weaponType": "双手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Beidou.png",
-      "icon": "UI_AvatarIcon_Beidou"
+      "icon": "UI_AvatarIcon_Beidou",
+      "element": "雷",
+      "region": "璃月"
     },
     {
       "id": "14505",
@@ -326,7 +356,9 @@
       "rarity": 4,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Prune.png",
-      "icon": "UI_AvatarIcon_Prune"
+      "icon": "UI_AvatarIcon_Prune",
+      "element": "风",
+      "region": "蒙德"
     },
     {
       "id": "12512",
@@ -524,7 +556,9 @@
       "rarity": 5,
       "weaponType": "弓",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Tartaglia.png",
-      "icon": "UI_AvatarIcon_Tartaglia"
+      "icon": "UI_AvatarIcon_Tartaglia",
+      "element": "水",
+      "region": "至冬"
     },
     {
       "id": "15304",
@@ -542,7 +576,9 @@
       "rarity": 4,
       "weaponType": "弓",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Diona.png",
-      "icon": "UI_AvatarIcon_Diona"
+      "icon": "UI_AvatarIcon_Diona",
+      "element": "冰",
+      "region": "蒙德"
     },
     {
       "id": "10000016",
@@ -551,7 +587,9 @@
       "rarity": 5,
       "weaponType": "双手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Diluc.png",
-      "icon": "UI_AvatarIcon_Diluc"
+      "icon": "UI_AvatarIcon_Diluc",
+      "element": "火",
+      "region": "蒙德"
     },
     {
       "id": "10000079",
@@ -560,7 +598,9 @@
       "rarity": 5,
       "weaponType": "双手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Dehya.png",
-      "icon": "UI_AvatarIcon_Dehya"
+      "icon": "UI_AvatarIcon_Dehya",
+      "element": "火",
+      "region": "须弥"
     },
     {
       "id": "11402",
@@ -614,7 +654,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Durin.png",
-      "icon": "UI_AvatarIcon_Durin"
+      "icon": "UI_AvatarIcon_Durin",
+      "element": "火",
+      "region": "蒙德"
     },
     {
       "id": "13416",
@@ -632,7 +674,9 @@
       "rarity": 4,
       "weaponType": "双手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Dori.png",
-      "icon": "UI_AvatarIcon_Dori"
+      "icon": "UI_AvatarIcon_Dori",
+      "element": "雷",
+      "region": "须弥"
     },
     {
       "id": "11432",
@@ -659,7 +703,9 @@
       "rarity": 5,
       "weaponType": "双手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Varka.png",
-      "icon": "UI_AvatarIcon_Varka"
+      "icon": "UI_AvatarIcon_Varka",
+      "element": "风",
+      "region": "蒙德"
     },
     {
       "id": "10000076",
@@ -668,7 +714,9 @@
       "rarity": 4,
       "weaponType": "弓",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Faruzan.png",
-      "icon": "UI_AvatarIcon_Faruzan"
+      "icon": "UI_AvatarIcon_Faruzan",
+      "element": "风",
+      "region": "须弥"
     },
     {
       "id": "15303",
@@ -722,7 +770,9 @@
       "rarity": 5,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Flins.png",
-      "icon": "UI_AvatarIcon_Flins"
+      "icon": "UI_AvatarIcon_Flins",
+      "element": "雷",
+      "region": "挪德卡莱"
     },
     {
       "id": "10000085",
@@ -731,7 +781,9 @@
       "rarity": 4,
       "weaponType": "双手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Freminet.png",
-      "icon": "UI_AvatarIcon_Freminet"
+      "icon": "UI_AvatarIcon_Freminet",
+      "element": "冰",
+      "region": "枫丹"
     },
     {
       "id": "10000031",
@@ -740,7 +792,9 @@
       "rarity": 4,
       "weaponType": "弓",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Fischl.png",
-      "icon": "UI_AvatarIcon_Fischl"
+      "icon": "UI_AvatarIcon_Fischl",
+      "element": "雷",
+      "region": "蒙德"
     },
     {
       "id": "11519",
@@ -803,7 +857,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Kazuha.png",
-      "icon": "UI_AvatarIcon_Kazuha"
+      "icon": "UI_AvatarIcon_Kazuha",
+      "element": "风",
+      "region": "稻妻"
     },
     {
       "id": "10000089",
@@ -812,7 +868,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Furina.png",
-      "icon": "UI_AvatarIcon_Furina"
+      "icon": "UI_AvatarIcon_Furina",
+      "element": "水",
+      "region": "枫丹"
     },
     {
       "id": "11413",
@@ -830,7 +888,9 @@
       "rarity": 5,
       "weaponType": "弓",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Ganyu.png",
-      "icon": "UI_AvatarIcon_Ganyu"
+      "icon": "UI_AvatarIcon_Ganyu",
+      "element": "冰",
+      "region": "璃月"
     },
     {
       "id": "15407",
@@ -848,7 +908,9 @@
       "rarity": 5,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Columbina.png",
-      "icon": "UI_AvatarIcon_Columbina"
+      "icon": "UI_AvatarIcon_Columbina",
+      "element": "水",
+      "region": "挪德卡莱"
     },
     {
       "id": "15405",
@@ -1037,7 +1099,9 @@
       "rarity": 5,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Hutao.png",
-      "icon": "UI_AvatarIcon_Hutao"
+      "icon": "UI_AvatarIcon_Hutao",
+      "element": "火",
+      "region": "璃月"
     },
     {
       "id": "13501",
@@ -1064,7 +1128,9 @@
       "rarity": 5,
       "weaponType": "双手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Itto.png",
-      "icon": "UI_AvatarIcon_Itto"
+      "icon": "UI_AvatarIcon_Itto",
+      "element": "岩",
+      "region": "稻妻"
     },
     {
       "id": "11426",
@@ -1082,7 +1148,9 @@
       "rarity": 5,
       "weaponType": "双手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Kinich.png",
-      "icon": "UI_AvatarIcon_Kinich"
+      "icon": "UI_AvatarIcon_Kinich",
+      "element": "草",
+      "region": "纳塔"
     },
     {
       "id": "14403",
@@ -1136,7 +1204,9 @@
       "rarity": 4,
       "weaponType": "双手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Gaming.png",
-      "icon": "UI_AvatarIcon_Gaming"
+      "icon": "UI_AvatarIcon_Gaming",
+      "element": "火",
+      "region": "璃月"
     },
     {
       "id": "14305",
@@ -1208,7 +1278,9 @@
       "rarity": 4,
       "weaponType": "弓",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Sara.png",
-      "icon": "UI_AvatarIcon_Sara"
+      "icon": "UI_AvatarIcon_Sara",
+      "element": "雷",
+      "region": "稻妻"
     },
     {
       "id": "10000065",
@@ -1217,7 +1289,9 @@
       "rarity": 4,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Shinobu.png",
-      "icon": "UI_AvatarIcon_Shinobu"
+      "icon": "UI_AvatarIcon_Shinobu",
+      "element": "雷",
+      "region": "稻妻"
     },
     {
       "id": "12436",
@@ -1262,7 +1336,9 @@
       "rarity": 4,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Kachina.png",
-      "icon": "UI_AvatarIcon_Kachina"
+      "icon": "UI_AvatarIcon_Kachina",
+      "element": "岩",
+      "region": "纳塔"
     },
     {
       "id": "10000081",
@@ -1271,7 +1347,9 @@
       "rarity": 4,
       "weaponType": "双手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Kaveh.png",
-      "icon": "UI_AvatarIcon_Kaveh"
+      "icon": "UI_AvatarIcon_Kaveh",
+      "element": "草",
+      "region": "须弥"
     },
     {
       "id": "10000015",
@@ -1280,7 +1358,9 @@
       "rarity": 4,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Kaeya.png",
-      "icon": "UI_AvatarIcon_Kaeya"
+      "icon": "UI_AvatarIcon_Kaeya",
+      "element": "冰",
+      "region": "蒙德"
     },
     {
       "id": "13427",
@@ -1298,7 +1378,9 @@
       "rarity": 4,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Candace.png",
-      "icon": "UI_AvatarIcon_Candace"
+      "icon": "UI_AvatarIcon_Candace",
+      "element": "水",
+      "region": "须弥"
     },
     {
       "id": "10000067",
@@ -1307,7 +1389,9 @@
       "rarity": 4,
       "weaponType": "弓",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Collei.png",
-      "icon": "UI_AvatarIcon_Collei"
+      "icon": "UI_AvatarIcon_Collei",
+      "element": "草",
+      "region": "须弥"
     },
     {
       "id": "10000029",
@@ -1316,7 +1400,9 @@
       "rarity": 5,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Klee.png",
-      "icon": "UI_AvatarIcon_Klee"
+      "icon": "UI_AvatarIcon_Klee",
+      "element": "火",
+      "region": "蒙德"
     },
     {
       "id": "10000098",
@@ -1325,7 +1411,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Clorinde.png",
-      "icon": "UI_AvatarIcon_Clorinde"
+      "icon": "UI_AvatarIcon_Clorinde",
+      "element": "雷",
+      "region": "枫丹"
     },
     {
       "id": "10000042",
@@ -1334,7 +1422,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Keqing.png",
-      "icon": "UI_AvatarIcon_Keqing"
+      "icon": "UI_AvatarIcon_Keqing",
+      "element": "雷",
+      "region": "璃月"
     },
     {
       "id": "10000005",
@@ -1343,7 +1433,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_PlayerBoy.png",
-      "icon": "UI_AvatarIcon_PlayerBoy"
+      "icon": "UI_AvatarIcon_PlayerBoy",
+      "element": "无",
+      "region": ""
     },
     {
       "id": "14201",
@@ -1361,7 +1453,9 @@
       "rarity": 5,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Lauma.png",
-      "icon": "UI_AvatarIcon_Lauma"
+      "icon": "UI_AvatarIcon_Lauma",
+      "element": "草",
+      "region": "挪德卡莱"
     },
     {
       "id": "10000086",
@@ -1370,7 +1464,9 @@
       "rarity": 5,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Wriothesley.png",
-      "icon": "UI_AvatarIcon_Wriothesley"
+      "icon": "UI_AvatarIcon_Wriothesley",
+      "element": "冰",
+      "region": "枫丹"
     },
     {
       "id": "10000074",
@@ -1379,7 +1475,9 @@
       "rarity": 4,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Layla.png",
-      "icon": "UI_AvatarIcon_Layla"
+      "icon": "UI_AvatarIcon_Layla",
+      "element": "冰",
+      "region": "须弥"
     },
     {
       "id": "10000108",
@@ -1388,7 +1486,9 @@
       "rarity": 4,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Lanyan.png",
-      "icon": "UI_AvatarIcon_Lanyan"
+      "icon": "UI_AvatarIcon_Lanyan",
+      "element": "风",
+      "region": "璃月"
     },
     {
       "id": "12502",
@@ -1433,7 +1533,9 @@
       "rarity": 5,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Shougun.png",
-      "icon": "UI_AvatarIcon_Shougun"
+      "icon": "UI_AvatarIcon_Shougun",
+      "element": "雷",
+      "region": "稻妻"
     },
     {
       "id": "10000020",
@@ -1442,7 +1544,9 @@
       "rarity": 4,
       "weaponType": "双手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Razor.png",
-      "icon": "UI_AvatarIcon_Razor"
+      "icon": "UI_AvatarIcon_Razor",
+      "element": "雷",
+      "region": "蒙德"
     },
     {
       "id": "15432",
@@ -1496,7 +1600,9 @@
       "rarity": 4,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Lisa.png",
-      "icon": "UI_AvatarIcon_Lisa"
+      "icon": "UI_AvatarIcon_Lisa",
+      "element": "雷",
+      "region": "蒙德"
     },
     {
       "id": "10000130",
@@ -1505,7 +1611,9 @@
       "rarity": 5,
       "weaponType": "弓",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Linnea.png",
-      "icon": "UI_AvatarIcon_Linnea"
+      "icon": "UI_AvatarIcon_Linnea",
+      "element": "岩",
+      "region": "挪德卡莱"
     },
     {
       "id": "12424",
@@ -1550,7 +1658,9 @@
       "rarity": 5,
       "weaponType": "弓",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Liney.png",
-      "icon": "UI_AvatarIcon_Liney"
+      "icon": "UI_AvatarIcon_Liney",
+      "element": "火",
+      "region": "枫丹"
     },
     {
       "id": "10000083",
@@ -1559,7 +1669,9 @@
       "rarity": 4,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Linette.png",
-      "icon": "UI_AvatarIcon_Linette"
+      "icon": "UI_AvatarIcon_Linette",
+      "element": "风",
+      "region": "枫丹"
     },
     {
       "id": "14416",
@@ -1586,7 +1698,9 @@
       "rarity": 5,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Wanderer.png",
-      "icon": "UI_AvatarIcon_Wanderer"
+      "icon": "UI_AvatarIcon_Wanderer",
+      "element": "风",
+      "region": "须弥"
     },
     {
       "id": "13403",
@@ -1622,7 +1736,9 @@
       "rarity": 4,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Heizo.png",
-      "icon": "UI_AvatarIcon_Heizo"
+      "icon": "UI_AvatarIcon_Heizo",
+      "element": "风",
+      "region": "稻妻"
     },
     {
       "id": "11303",
@@ -1649,7 +1765,9 @@
       "rarity": 4,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Rosaria.png",
-      "icon": "UI_AvatarIcon_Rosaria"
+      "icon": "UI_AvatarIcon_Rosaria",
+      "element": "冰",
+      "region": "蒙德"
     },
     {
       "id": "15433",
@@ -1667,7 +1785,9 @@
       "rarity": 5,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Lohen.png",
-      "icon": "UI_AvatarIcon_Lohen"
+      "icon": "UI_AvatarIcon_Lohen",
+      "element": "冰",
+      "region": "蒙德"
     },
     {
       "id": "15411",
@@ -1694,7 +1814,9 @@
       "rarity": 5,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Mualani.png",
-      "icon": "UI_AvatarIcon_Mualani"
+      "icon": "UI_AvatarIcon_Mualani",
+      "element": "水",
+      "region": "纳塔"
     },
     {
       "id": "10000106",
@@ -1703,7 +1825,9 @@
       "rarity": 5,
       "weaponType": "双手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Mavuika.png",
-      "icon": "UI_AvatarIcon_Mavuika"
+      "icon": "UI_AvatarIcon_Mavuika",
+      "element": "火",
+      "region": "纳塔"
     },
     {
       "id": "15416",
@@ -1721,7 +1845,9 @@
       "rarity": 5,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Mizuki.png",
-      "icon": "UI_AvatarIcon_Mizuki"
+      "icon": "UI_AvatarIcon_Mizuki",
+      "element": "风",
+      "region": "稻妻"
     },
     {
       "id": "11430",
@@ -1739,7 +1865,9 @@
       "rarity": 4,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Mika.png",
-      "icon": "UI_AvatarIcon_Mika"
+      "icon": "UI_AvatarIcon_Mika",
+      "element": "冰",
+      "region": "蒙德"
     },
     {
       "id": "10000136",
@@ -1748,7 +1876,9 @@
       "rarity": 5,
       "weaponType": "法器",
       "iconUrl": "",
-      "icon": ""
+      "icon": "",
+      "element": "雷",
+      "region": "至冬"
     },
     {
       "id": "14525",
@@ -1784,7 +1914,9 @@
       "rarity": 5,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Mona.png",
-      "icon": "UI_AvatarIcon_Mona"
+      "icon": "UI_AvatarIcon_Mona",
+      "element": "水",
+      "region": "蒙德"
     },
     {
       "id": "14431",
@@ -1811,7 +1943,9 @@
       "rarity": 5,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Neuvillette.png",
-      "icon": "UI_AvatarIcon_Neuvillette"
+      "icon": "UI_AvatarIcon_Neuvillette",
+      "element": "水",
+      "region": "枫丹"
     },
     {
       "id": "10000073",
@@ -1820,7 +1954,9 @@
       "rarity": 5,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Nahida.png",
-      "icon": "UI_AvatarIcon_Nahida"
+      "icon": "UI_AvatarIcon_Nahida",
+      "element": "草",
+      "region": "须弥"
     },
     {
       "id": "10000091",
@@ -1829,7 +1965,9 @@
       "rarity": 5,
       "weaponType": "双手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Navia.png",
-      "icon": "UI_AvatarIcon_Navia"
+      "icon": "UI_AvatarIcon_Navia",
+      "element": "岩",
+      "region": "枫丹"
     },
     {
       "id": "10000122",
@@ -1838,7 +1976,9 @@
       "rarity": 5,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Nefer.png",
-      "icon": "UI_AvatarIcon_Nefer"
+      "icon": "UI_AvatarIcon_Nefer",
+      "element": "草",
+      "region": "挪德卡莱"
     },
     {
       "id": "10000070",
@@ -1847,7 +1987,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Nilou.png",
-      "icon": "UI_AvatarIcon_Nilou"
+      "icon": "UI_AvatarIcon_Nilou",
+      "element": "水",
+      "region": "须弥"
     },
     {
       "id": "10000131",
@@ -1856,7 +1998,9 @@
       "rarity": 5,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Nicole.png",
-      "icon": "UI_AvatarIcon_Nicole"
+      "icon": "UI_AvatarIcon_Nicole",
+      "element": "火",
+      "region": "魔女会"
     },
     {
       "id": "10000027",
@@ -1865,7 +2009,9 @@
       "rarity": 4,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Ningguang.png",
-      "icon": "UI_AvatarIcon_Ningguang"
+      "icon": "UI_AvatarIcon_Ningguang",
+      "element": "岩",
+      "region": "璃月"
     },
     {
       "id": "14437",
@@ -1883,7 +2029,9 @@
       "rarity": 4,
       "weaponType": "双手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Noel.png",
-      "icon": "UI_AvatarIcon_Noel"
+      "icon": "UI_AvatarIcon_Noel",
+      "element": "岩",
+      "region": "蒙德"
     },
     {
       "id": "10000105",
@@ -1892,7 +2040,9 @@
       "rarity": 4,
       "weaponType": "弓",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Olorun.png",
-      "icon": "UI_AvatarIcon_Olorun"
+      "icon": "UI_AvatarIcon_Olorun",
+      "element": "雷",
+      "region": "纳塔"
     },
     {
       "id": "11505",
@@ -1919,7 +2069,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Qiqi.png",
-      "icon": "UI_AvatarIcon_Qiqi"
+      "icon": "UI_AvatarIcon_Qiqi",
+      "element": "冰",
+      "region": "璃月"
     },
     {
       "id": "10000117",
@@ -1928,7 +2080,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_MannequinBoy.png",
-      "icon": "UI_AvatarIcon_MannequinBoy"
+      "icon": "UI_AvatarIcon_MannequinBoy",
+      "element": "无",
+      "region": "——"
     },
     {
       "id": "10000118",
@@ -1937,7 +2091,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_MannequinGirl.png",
-      "icon": "UI_AvatarIcon_MannequinGirl"
+      "icon": "UI_AvatarIcon_MannequinGirl",
+      "element": "无",
+      "region": "——"
     },
     {
       "id": "10000061",
@@ -1946,7 +2102,9 @@
       "rarity": 4,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Momoka.png",
-      "icon": "UI_AvatarIcon_Momoka"
+      "icon": "UI_AvatarIcon_Momoka",
+      "element": "草",
+      "region": "稻妻"
     },
     {
       "id": "10000104",
@@ -1955,7 +2113,9 @@
       "rarity": 5,
       "weaponType": "弓",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Chasca.png",
-      "icon": "UI_AvatarIcon_Chasca"
+      "icon": "UI_AvatarIcon_Chasca",
+      "element": "风",
+      "region": "纳塔"
     },
     {
       "id": "12410",
@@ -1991,7 +2151,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Chiori.png",
-      "icon": "UI_AvatarIcon_Chiori"
+      "icon": "UI_AvatarIcon_Chiori",
+      "element": "岩",
+      "region": "稻妻"
     },
     {
       "id": "10000107",
@@ -2000,7 +2162,9 @@
       "rarity": 5,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Citlali.png",
-      "icon": "UI_AvatarIcon_Citlali"
+      "icon": "UI_AvatarIcon_Citlali",
+      "element": "冰",
+      "region": "纳塔"
     },
     {
       "id": "13432",
@@ -2018,7 +2182,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Qin.png",
-      "icon": "UI_AvatarIcon_Qin"
+      "icon": "UI_AvatarIcon_Qin",
+      "element": "风",
+      "region": "蒙德"
     },
     {
       "id": "14518",
@@ -2090,7 +2256,9 @@
       "rarity": 5,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Cyno.png",
-      "icon": "UI_AvatarIcon_Cyno"
+      "icon": "UI_AvatarIcon_Cyno",
+      "element": "雷",
+      "region": "须弥"
     },
     {
       "id": "10000097",
@@ -2099,7 +2267,9 @@
       "rarity": 4,
       "weaponType": "弓",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Sethos.png",
-      "icon": "UI_AvatarIcon_Sethos"
+      "icon": "UI_AvatarIcon_Sethos",
+      "element": "雷",
+      "region": "须弥"
     },
     {
       "id": "10000133",
@@ -2108,7 +2278,9 @@
       "rarity": 5,
       "weaponType": "双手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_MarionetteNew.png",
-      "icon": "UI_AvatarIcon_MarionetteNew"
+      "icon": "UI_AvatarIcon_MarionetteNew",
+      "element": "冰",
+      "region": "至冬"
     },
     {
       "id": "12417",
@@ -2135,7 +2307,9 @@
       "rarity": 4,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Sucrose.png",
-      "icon": "UI_AvatarIcon_Sucrose"
+      "icon": "UI_AvatarIcon_Sucrose",
+      "element": "风",
+      "region": "蒙德"
     },
     {
       "id": "12513",
@@ -2153,7 +2327,9 @@
       "rarity": 5,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Kokomi.png",
-      "icon": "UI_AvatarIcon_Kokomi"
+      "icon": "UI_AvatarIcon_Kokomi",
+      "element": "水",
+      "region": "稻妻"
     },
     {
       "id": "11515",
@@ -2171,7 +2347,9 @@
       "rarity": 5,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Shenhe.png",
-      "icon": "UI_AvatarIcon_Shenhe"
+      "icon": "UI_AvatarIcon_Shenhe",
+      "element": "冰",
+      "region": "璃月"
     },
     {
       "id": "14509",
@@ -2189,7 +2367,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Ayaka.png",
-      "icon": "UI_AvatarIcon_Ayaka"
+      "icon": "UI_AvatarIcon_Ayaka",
+      "element": "冰",
+      "region": "稻妻"
     },
     {
       "id": "10000066",
@@ -2198,7 +2378,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Ayato.png",
-      "icon": "UI_AvatarIcon_Ayato"
+      "icon": "UI_AvatarIcon_Ayato",
+      "element": "水",
+      "region": "稻妻"
     },
     {
       "id": "15302",
@@ -2351,7 +2533,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_SkirkNew.png",
-      "icon": "UI_AvatarIcon_SkirkNew"
+      "icon": "UI_AvatarIcon_SkirkNew",
+      "element": "冰",
+      "region": "寰宇劫灭"
     },
     {
       "id": "14502",
@@ -2387,7 +2571,9 @@
       "rarity": 4,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Dahlia.png",
-      "icon": "UI_AvatarIcon_Dahlia"
+      "icon": "UI_AvatarIcon_Dahlia",
+      "element": "水",
+      "region": "蒙德"
     },
     {
       "id": "14302",
@@ -2405,7 +2591,9 @@
       "rarity": 5,
       "weaponType": "弓",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Tighnari.png",
-      "icon": "UI_AvatarIcon_Tighnari"
+      "icon": "UI_AvatarIcon_Tighnari",
+      "element": "草",
+      "region": "须弥"
     },
     {
       "id": "13509",
@@ -2522,7 +2710,9 @@
       "rarity": 4,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Tohma.png",
-      "icon": "UI_AvatarIcon_Tohma"
+      "icon": "UI_AvatarIcon_Tohma",
+      "element": "火",
+      "region": "稻妻"
     },
     {
       "id": "10000111",
@@ -2531,7 +2721,9 @@
       "rarity": 5,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Varesa.png",
-      "icon": "UI_AvatarIcon_Varesa"
+      "icon": "UI_AvatarIcon_Varesa",
+      "element": "雷",
+      "region": "纳塔"
     },
     {
       "id": "10000137",
@@ -2540,7 +2732,9 @@
       "rarity": 4,
       "weaponType": "单手剑",
       "iconUrl": "",
-      "icon": ""
+      "icon": "",
+      "element": "雷",
+      "region": "至冬"
     },
     {
       "id": "14407",
@@ -2585,7 +2779,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Vesna.png",
-      "icon": "UI_AvatarIcon_Vesna"
+      "icon": "UI_AvatarIcon_Vesna",
+      "element": "风",
+      "region": "至冬"
     },
     {
       "id": "14522",
@@ -2612,7 +2808,9 @@
       "rarity": 5,
       "weaponType": "弓",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Venti.png",
-      "icon": "UI_AvatarIcon_Venti"
+      "icon": "UI_AvatarIcon_Venti",
+      "element": "风",
+      "region": "蒙德"
     },
     {
       "id": "10000140",
@@ -2621,7 +2819,9 @@
       "rarity": 5,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Vodyanitsa.png",
-      "icon": "UI_AvatarIcon_Vodyanitsa"
+      "icon": "UI_AvatarIcon_Vodyanitsa",
+      "element": "水",
+      "region": "至冬"
     },
     {
       "id": "14433",
@@ -2666,7 +2866,9 @@
       "rarity": 4,
       "weaponType": "弓",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Gorou.png",
-      "icon": "UI_AvatarIcon_Gorou"
+      "icon": "UI_AvatarIcon_Gorou",
+      "element": "岩",
+      "region": "稻妻"
     },
     {
       "id": "11509",
@@ -2738,7 +2940,9 @@
       "rarity": 5,
       "weaponType": "弓",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Sigewinne.png",
-      "icon": "UI_AvatarIcon_Sigewinne"
+      "icon": "UI_AvatarIcon_Sigewinne",
+      "element": "水",
+      "region": "枫丹"
     },
     {
       "id": "10000103",
@@ -2747,7 +2951,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Xilonen.png",
-      "icon": "UI_AvatarIcon_Xilonen"
+      "icon": "UI_AvatarIcon_Xilonen",
+      "element": "岩",
+      "region": "纳塔"
     },
     {
       "id": "11431",
@@ -2819,7 +3025,9 @@
       "rarity": 4,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Charlotte.png",
-      "icon": "UI_AvatarIcon_Charlotte"
+      "icon": "UI_AvatarIcon_Charlotte",
+      "element": "冰",
+      "region": "枫丹"
     },
     {
       "id": "10000090",
@@ -2828,7 +3036,9 @@
       "rarity": 4,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Chevreuse.png",
-      "icon": "UI_AvatarIcon_Chevreuse"
+      "icon": "UI_AvatarIcon_Chevreuse",
+      "element": "火",
+      "region": "枫丹"
     },
     {
       "id": "10000093",
@@ -2837,7 +3047,9 @@
       "rarity": 5,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Liuyun.png",
-      "icon": "UI_AvatarIcon_Liuyun"
+      "icon": "UI_AvatarIcon_Liuyun",
+      "element": "风",
+      "region": "璃月"
     },
     {
       "id": "12412",
@@ -2855,7 +3067,9 @@
       "rarity": 4,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Xiangling.png",
-      "icon": "UI_AvatarIcon_Xiangling"
+      "icon": "UI_AvatarIcon_Xiangling",
+      "element": "火",
+      "region": "璃月"
     },
     {
       "id": "13514",
@@ -2873,7 +3087,9 @@
       "rarity": 5,
       "weaponType": "弓",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Yoimiya.png",
-      "icon": "UI_AvatarIcon_Yoimiya"
+      "icon": "UI_AvatarIcon_Yoimiya",
+      "element": "火",
+      "region": "稻妻"
     },
     {
       "id": "10000026",
@@ -2882,7 +3098,9 @@
       "rarity": 5,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Xiao.png",
-      "icon": "UI_AvatarIcon_Xiao"
+      "icon": "UI_AvatarIcon_Xiao",
+      "element": "风",
+      "region": "璃月"
     },
     {
       "id": "10000044",
@@ -2891,7 +3109,9 @@
       "rarity": 4,
       "weaponType": "双手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Xinyan.png",
-      "icon": "UI_AvatarIcon_Xinyan"
+      "icon": "UI_AvatarIcon_Xinyan",
+      "element": "火",
+      "region": "璃月"
     },
     {
       "id": "13101",
@@ -2945,7 +3165,9 @@
       "rarity": 4,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Xingqiu.png",
-      "icon": "UI_AvatarIcon_Xingqiu"
+      "icon": "UI_AvatarIcon_Xingqiu",
+      "element": "水",
+      "region": "璃月"
     },
     {
       "id": "15435",
@@ -3017,7 +3239,9 @@
       "rarity": 4,
       "weaponType": "弓",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Jahoda.png",
-      "icon": "UI_AvatarIcon_Jahoda"
+      "icon": "UI_AvatarIcon_Jahoda",
+      "element": "风",
+      "region": "挪德卡莱"
     },
     {
       "id": "10000048",
@@ -3026,7 +3250,9 @@
       "rarity": 4,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Feiyan.png",
-      "icon": "UI_AvatarIcon_Feiyan"
+      "icon": "UI_AvatarIcon_Feiyan",
+      "element": "火",
+      "region": "璃月"
     },
     {
       "id": "11516",
@@ -3044,7 +3270,9 @@
       "rarity": 4,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Yaoyao.png",
-      "icon": "UI_AvatarIcon_Yaoyao"
+      "icon": "UI_AvatarIcon_Yaoyao",
+      "element": "草",
+      "region": "璃月"
     },
     {
       "id": "10000127",
@@ -3053,7 +3281,9 @@
       "rarity": 4,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Illuga.png",
-      "icon": "UI_AvatarIcon_Illuga"
+      "icon": "UI_AvatarIcon_Illuga",
+      "element": "岩",
+      "region": "挪德卡莱"
     },
     {
       "id": "10000060",
@@ -3062,7 +3292,9 @@
       "rarity": 5,
       "weaponType": "弓",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Yelan.png",
-      "icon": "UI_AvatarIcon_Yelan"
+      "icon": "UI_AvatarIcon_Yelan",
+      "element": "水",
+      "region": "璃月"
     },
     {
       "id": "10000110",
@@ -3071,7 +3303,9 @@
       "rarity": 4,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Iansan.png",
-      "icon": "UI_AvatarIcon_Iansan"
+      "icon": "UI_AvatarIcon_Iansan",
+      "element": "雷",
+      "region": "纳塔"
     },
     {
       "id": "10000113",
@@ -3080,7 +3314,9 @@
       "rarity": 4,
       "weaponType": "法器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Ifa.png",
-      "icon": "UI_AvatarIcon_Ifa"
+      "icon": "UI_AvatarIcon_Ifa",
+      "element": "风",
+      "region": "纳塔"
     },
     {
       "id": "10000116",
@@ -3089,7 +3325,9 @@
       "rarity": 5,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Ineffa.png",
-      "icon": "UI_AvatarIcon_Ineffa"
+      "icon": "UI_AvatarIcon_Ineffa",
+      "element": "雷",
+      "region": "挪德卡莱"
     },
     {
       "id": "14424",
@@ -3170,7 +3408,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_PlayerGirl.png",
-      "icon": "UI_AvatarIcon_PlayerGirl"
+      "icon": "UI_AvatarIcon_PlayerGirl",
+      "element": "无",
+      "region": ""
     },
     {
       "id": "12201",
@@ -3188,7 +3428,9 @@
       "rarity": 5,
       "weaponType": "双手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Eula.png",
-      "icon": "UI_AvatarIcon_Eula"
+      "icon": "UI_AvatarIcon_Eula",
+      "element": "冰",
+      "region": "蒙德"
     },
     {
       "id": "15412",
@@ -3242,7 +3484,9 @@
       "rarity": 4,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Yunjin.png",
-      "icon": "UI_AvatarIcon_Yunjin"
+      "icon": "UI_AvatarIcon_Yunjin",
+      "element": "岩",
+      "region": "璃月"
     },
     {
       "id": "13517",
@@ -3260,7 +3504,9 @@
       "rarity": 4,
       "weaponType": "双手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Sayu.png",
-      "icon": "UI_AvatarIcon_Sayu"
+      "icon": "UI_AvatarIcon_Sayu",
+      "element": "风",
+      "region": "稻妻"
     },
     {
       "id": "14409",
@@ -3341,7 +3587,9 @@
       "rarity": 5,
       "weaponType": "长柄武器",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Zhongli.png",
-      "icon": "UI_AvatarIcon_Zhongli"
+      "icon": "UI_AvatarIcon_Zhongli",
+      "element": "岩",
+      "region": "璃月"
     },
     {
       "id": "10000036",
@@ -3350,7 +3598,9 @@
       "rarity": 4,
       "weaponType": "双手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Chongyun.png",
-      "icon": "UI_AvatarIcon_Chongyun"
+      "icon": "UI_AvatarIcon_Chongyun",
+      "element": "冰",
+      "region": "璃月"
     },
     {
       "id": "15426",
@@ -3386,7 +3636,9 @@
       "rarity": 5,
       "weaponType": "单手剑",
       "iconUrl": "https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Zibai.png",
-      "icon": "UI_AvatarIcon_Zibai"
+      "icon": "UI_AvatarIcon_Zibai",
+      "element": "岩",
+      "region": "璃月港"
     },
     {
       "id": "12404",

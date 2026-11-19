@@ -2,11 +2,11 @@
 chcp 65001 >nul
 setlocal
 cd /d "%~dp0"
-title 米游档案 - 本地抽卡档案
+title 二游档案 - 本地抽卡档案
 set "ELECTRON_RUN_AS_NODE="
 
-if exist "dist\米游档案-win32-x64\米游档案.exe" (
-  start "" "dist\米游档案-win32-x64\米游档案.exe"
+if exist "dist\二游档案\二游档案.exe" (
+  start "" "dist\二游档案\二游档案.exe"
   exit /b 0
 )
 

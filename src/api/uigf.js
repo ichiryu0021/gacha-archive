@@ -24,6 +24,7 @@ function normalizeImported(gameId, raw, uid, timezone = 8) {
     name: String(raw.name || ''),
     itemType: String(raw.item_type || ''),
     rank: Number(raw.rank_type) || 0,
+    pity: Number(raw.pity ?? raw._pity) || null,
     lang: raw.lang || 'zh-cn',
     poolName: game.pools[type] || game.pools[uigfType] || '导入记录',
     source: 'uigf',
@@ -97,7 +98,8 @@ export async function importUigf(store, payload) {
       meta: { uid: item.uid, timezone: item.timezone, lang: item.lang },
       lastSource: 'uigf',
     });
-    store.setTotals(item.game, item.totals);
+    if (payload.info?.fullHistory) store.setFullTotals(item.game, item.totals);
+    else store.setTotals(item.game, item.totals);
     summary.push({
       game: item.game,
       gameName: getGame(item.game).name,
