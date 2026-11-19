@@ -23,6 +23,11 @@ __pycache__/
 data/imports/
 data/nte-captures/
 
+# Local-only working notes
+docs/
+BLACKBOARD.md
+blackboard/
+
 data/electron/
 
 scripts/.keep-awake.pid

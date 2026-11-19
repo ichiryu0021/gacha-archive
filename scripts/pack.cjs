@@ -24,6 +24,7 @@ function ignore(file) {
     : path.relative(root, path.resolve(file)).replace(/\\/g, '/');
   if (!rel) return false;
   if (rel === '.git' || rel.startsWith('.git/')) return true;
+  if (rel === 'BLACKBOARD.md' || rel === 'blackboard' || rel.startsWith('blackboard/')) return true;
   if (rel === 'demo-data' || rel.startsWith('demo-data/')) return true;
   if (rel === 'node_modules/.bin' || rel.startsWith('node_modules/.bin/')) return true;
   if (rel === 'node_modules/electron' || rel.startsWith('node_modules/electron/')) return true;
