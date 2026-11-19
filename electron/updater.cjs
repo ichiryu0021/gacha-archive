@@ -31,7 +31,7 @@ async function checkUpdates() {
   const data = await res.json();
   const latest = String(data.tag_name || data.name || '').replace(/^v/i, '');
   const zips = (data.assets || []).filter((a) => /\.zip$/i.test(a.name));
-  const hotfix = zips.find((a) => /miyou|eryou|hotfix/i.test(a.name)) || null;
+  const hotfix = zips.find((a) => /miyou|hotfix/i.test(a.name)) || null;
   const full = zips.find((a) => a !== hotfix) || null;
   const asset = hotfix || full;
   if (!asset) throw new Error('release 没有 zip 资源');
