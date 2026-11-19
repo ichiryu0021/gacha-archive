@@ -33,3 +33,6 @@ data/electron/
 scripts/.keep-awake.pid
 
 demo-data/
+
+# Local-only working notes
+CHANGELOG.md
