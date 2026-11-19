@@ -102,6 +102,14 @@ button { cursor: pointer; }
 .icon-btn { width: 37px; height: 37px; display: grid; place-items: center; border-radius: 11px; border: 1px solid var(--line); background: rgba(255,255,255,.025); color: var(--muted); transition: .2s; }
 .icon-btn:hover { color: var(--text); border-color: var(--line-strong); background: rgba(255,255,255,.06); transform: translateY(-1px); }
 .icon-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.7; }
+.share-icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background: currentColor;
+  -webkit-mask: url('/share-summary.png') center / contain no-repeat;
+  mask: url('/share-summary.png') center / contain no-repeat;
+}
 .primary-btn {
   white-space: nowrap; flex-shrink: 0;
   border: 1px solid rgba(var(--accent-rgb),.32); background: linear-gradient(135deg, rgba(var(--accent-rgb),.22), rgba(var(--accent-rgb),.08));

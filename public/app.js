@@ -344,7 +344,7 @@ function renderDashboard() {
         <h1>生涯概览</h1>
       </div>
       <div class="page-head-actions">
-        <button class="icon-btn" data-action="share-summary" title="分享总结" aria-label="分享总结">${ICONS.spark}</button>
+        <button class="icon-btn share-summary-btn" data-action="share-summary" title="分享总结" aria-label="分享总结"><span class="share-icon" aria-hidden="true"></span></button>
       </div>
     </div>
     <div class="hero">
