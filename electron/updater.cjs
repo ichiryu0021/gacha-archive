@@ -15,9 +15,18 @@ let latestAsset = null;
 let latestFullAsset = null;
 let latestVersion = '';
 
+function versionParts(value) {
+  const text = String(value || '0').trim().replace(/^v/i, '');
+  // 界面版本是 x.xx（2.02），包版本是 semver（2.0.2）；
+  // 两者必须映射到同一组数字，否则 2.01 会被拆成 [2,1] 而不是 [2,0,1]。
+  const display = /^(\d+)\.(\d{2})$/.exec(text);
+  if (display) return [Number(display[1]), Number(display[2][0]), Number(display[2][1])];
+  return text.split('.').map((x) => Number(x) || 0);
+}
+
 function compareVersion(a, b) {
-  const pa = String(a || '0').replace(/^v/i, '').split('.').map((x) => Number(x) || 0);
-  const pb = String(b || '0').replace(/^v/i, '').split('.').map((x) => Number(x) || 0);
+  const pa = versionParts(a);
+  const pb = versionParts(b);
   for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
     if ((pa[i] || 0) !== (pb[i] || 0)) return (pa[i] || 0) - (pb[i] || 0);
   }
@@ -76,7 +85,11 @@ async function verifyAppDir(dir, version) {
     if (!fs.existsSync(file)) throw new Error(`更新包缺少 ${name}`);
   }
   const pkg = JSON.parse(await fsp.readFile(path.join(dir, 'package.json'), 'utf8'));
-  if (version && compareVersion(pkg.version, version) < 0) throw new Error('更新包版本不匹配');
+  if (version) {
+    const packageOk = compareVersion(pkg.version, version) >= 0;
+    const displayOk = pkg.displayVersion ? compareVersion(pkg.displayVersion, version) >= 0 : false;
+    if (!packageOk && !displayOk) throw new Error('更新包版本不匹配');
+  }
   return pkg.version;
 }
 

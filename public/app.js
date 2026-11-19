@@ -344,9 +344,7 @@ function renderDashboard() {
         <h1>生涯概览</h1>
       </div>
       <div class="page-head-actions">
-        <button class="ghost-btn" data-action="share-summary">${ICONS.spark} 分享总结</button><button class="ghost-btn" data-action="go" data-view="records">${ICONS.records} 查看${topLabel()}</button>
-        <button class="primary-btn" data-action="go" data-view="import">${ICONS.import} 录入历史</button>
-        <span class="pill ${state.collector?.enabled ? 'accent' : ''}"><span class="pulse" style="width:4px;height:4px"></span>后台采集${state.collector?.enabled ? '中' : '已暂停'}</span>
+        <button class="icon-btn" data-action="share-summary" title="分享总结" aria-label="分享总结">${ICONS.spark}</button>
       </div>
     </div>
     <div class="hero">
