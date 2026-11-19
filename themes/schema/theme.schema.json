@@ -63,8 +63,7 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "css",
-        "js"
+        "css"
       ],
       "properties": {
         "css": {

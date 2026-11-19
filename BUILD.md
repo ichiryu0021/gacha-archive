@@ -3,6 +3,21 @@
 > 生效日期：2026-11-19
 > 适用范围：Windows 便携版（Electron + `scripts/pack.cjs`）
 
+## 0. 发布授权规则（必须遵守）
+
+自 2026-11-19 起，发布动作必须由用户**明确授权**：
+
+- 用户没有明确说「打包上传 / push / 发布 / 创建 Release / 迭代版本」时：
+  - **不要 `git push`**
+  - **不要创建或移动 tag**
+  - **不要创建/修改 GitHub Release**
+  - **不要上传任何发布资产**
+  - **不要修改版本号**（`package.json`、`displayVersion`、`src/config.js`、tag、资产文件名）
+- 用户只说「检查 / 修复 / 改一下 / 优化」时，只做本地修改和本地验证，不自动发布。
+- 允许本地 `npm.cmd run pack` 生成 `dist\二游档案` 开发版；这不等于发布。
+- 需要 push、打 tag、上传 Release 或迭代版本时，必须在动手前得到用户对**具体动作**的明确指令。
+- 版本号一旦确定，未经用户明确要求不要自行递增。
+
 ## 1. 唯一规则
 
 1. **开发版唯一输出目录：`D:\Project\二游档案\dist\二游档案`**
@@ -14,7 +29,7 @@
 4. **`dist\二游档案\data` 是用户真实数据。**
    构建必须保留，禁止删除、覆盖或打包进程序目录。
 5. **开发版内置「机能」主题。**
-   构建时从 `themes/mecha/public` 复制主题资源并注入打包后的 `index.html`；默认「机能 · 黑」，可切「机能 · 白」/「经典」，选择用 Cookie 保存在 `data/electron/`，下次启动沿用。
+   构建时把 `themes/mecha/theme.css` 复制为 `theme-base.css`、`themes/runtime/theme-loader.js` 复制为 `theme-loader.js` 并注入 `index.html`；默认「机能 · 黑」，可切「机能 · 白」/「经典」，支持按游戏映射，选择用 Cookie 保存在 `data/electron/`。程序根目录同时放完整 `themes/`（排除 `.theme-state.json`）。
 6. **`dist/` 已被 `.gitignore` 忽略**，构建产物不提交。
 
 ## 2. 目录结构
@@ -57,7 +72,7 @@ node scripts\pack.cjs
 - Electron 二进制优先复用 `%LOCALAPPDATA%\electron\Cache` 中的 `electron-v<版本>-win32-x64.zip`，避免网络抖动导致构建失败；缓存未命中才会联网下载。也可用 `ELECTRON_ZIP_DIR` 显式指定包含该 zip 的目录。
 - 如果 `二游档案.exe` 正在运行，替换会失败并保持原样。先完全退出应用，再重新构建。
 - 第一次构建没有旧 `data` 时，会提示首次运行自动创建。
-- 构建只把 `themes/mecha/public/theme.css`、`theme.js` 复制到 `resources/app/public/`，并向打包后的 `index.html` 注入首屏主题引导；`themes/` 其余内容（截图、独立入口、文档）不进程序目录。
+- 构建把 `themes/mecha/theme.css` 复制为 `resources/app/public/theme-base.css`、`themes/runtime/theme-loader.js` 复制为 `theme-loader.js` 并注入首屏引导；主题清单/CSS 由加载器从根目录 `themes/` 动态读取。完整 `themes/` 复制到 `dist\二游档案\themes`（排除 `.theme-state.json`）。完整包会带上主题文件夹；热更新包只替换 `resources/app`，不覆盖根目录。
 - **开发版启动默认「机能 · 黑」**：设置页主题卡片可切「机能 · 白」/「经典」；选择写入 `ga_theme` Cookie，随 Electron 的 `data/electron/` 保留，下次启动沿用。
 - 主题注入只发生在打包产物中，原项目 `public/index.html`、`src/` 不改；本轮 `public/app.js` 另有「米游社同步」小功能改动，属于应用功能，随正常打包进入开发版。
 - 构建不会把 `data/`、`.dat` 登录态、`docs/`、`tests/`、`demo-data/` 打进程序目录。
@@ -73,11 +88,11 @@ node scripts\pack.cjs
 Test-Path 'dist\二游档案\data\app.json'
 
 # 主题已注入
-Test-Path 'dist\二游档案\resources\app\public\theme-mecha.css'
+Test-Path 'dist\二游档案\resources\app\public\theme-loader.js'
 Select-String -Path 'dist\二游档案\resources\app\public\index.html' -Pattern 'mechaEmbedded'
 ```
 
-期望 `name` 为 `gacha-archive`、`version` 为 `2.02`、`displayVersion` 为 `2.02`（随版本更新变化），`app.json` 存在，`index.html` 含主题注入标记。
+期望 `name` 为 `gacha-archive`、`version` 为 `2.03`、`displayVersion` 为 `2.03`（随版本更新变化），`app.json` 存在，`index.html` 含主题注入标记。
 
 ## 4. 为什么不能直接打包到 `dist\二游档案`
 
@@ -143,10 +158,10 @@ await fs.promises.rm(outDir, { recursive: true, force: true });
   - `二游档案-v2.00.zip`
 - `dist\二游档案` 已用当前源码重新构建，`data\` 保持原样（`app.json` 前后哈希一致）。
 - `package.json` 移除了 `pack:release`，只保留固定的 `pack`。
-- 开发版构建加入「机能」主题：复制 `themes/mecha/public/theme.css|theme.js`，注入打包后的 `index.html`，默认机能 · 黑，可切机能 · 白 / 经典，Cookie 持久化；含环旋转 / 呼吸、条 / 数字入场动画和 reduced-motion 降级。
+- 开发版构建加入「机能」主题：复制 `themes/mecha/theme.css` 和 `themes/runtime/theme-loader.js`，注入基础样式和动态加载器；默认机能 · 黑，可切机能 · 白 / 经典，支持按游戏映射和 Cookie 持久化。
 - 主题目录、清单、注册表和接口标准见 [`themes/README.md`](themes/README.md) 与 [`themes/THEME-INTERFACE.md`](themes/THEME-INTERFACE.md)；`node themes/validate.mjs` 可校验清单。
 - 字体/入口专项 **7/7**，内置构建功能 **17/17**，原项目测试 **31/31**。
-- `themes/` 其余内容不进入应用构建；独立主题入口 `themes/mecha/server.mjs` 保留。
+- `themes/` 会完整复制到程序根目录（排除运行状态文件）；独立主题入口 `themes/mecha/server.mjs` 也保留在主题目录中。
 - 构建脚本加入敏感文件忽略规则（`.dat`、`app.json*`）。
 
 ## 9. 检查清单
@@ -172,9 +187,11 @@ Get-ChildItem dist -Force | Where-Object { $_.Name -match 'release-|^\.pack-|^\.
 - [ ] `dist\` 下没有 `release-*` 目录
 - [ ] 没有 `.pack-staging` / `.data-preserve-*` 残留
 - [ ] `resources\app\data` 内没有 `.dat`、`app.json*`
-- [ ] `resources\app\public\theme-mecha.css|js` 存在，`index.html` 含 `mechaEmbedded`
+- [ ] `resources\app\public\theme-base.css|theme-loader.js` 存在，`index.html` 含主题加载器
 - [ ] 启动 `dist\二游档案\二游档案.exe` 默认是「机能 · 黑」；切「机能 · 白」/「经典」后重启仍为所选
 - [ ] 发布 zip 直接位于 `dist\`，文件名带版本
+
+
 
 
 

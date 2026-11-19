@@ -1,16 +1,7 @@
 #!/usr/bin/env node
 /**
- * 二游档案 · 「机能」主题独立入口
- *
- * 不修改原项目任何文件：
- *   1. 以随机内部端口启动原版 src/server.js；
- *   2. 在 8791 上提供一个主题入口，把原页面代理出去并在 HTML 中注入主题资源；
- *   3. 通过 /__theme/api/* 独立保存主题选择，下次启动沿用。
- *
- * 用法：
- *   node themes/mecha/server.mjs
- *   node themes/mecha/server.mjs --demo          # 使用 demo-data
- *   THEME_PORT=8791 node themes/mecha/server.mjs
+ * 二游档案 · 动态主题独立入口
+ * 扫描 themes/ 下的 theme.json，动态提供主题清单、CSS/JS 和状态 API。
  */
 import http from 'node:http';
 import fs from 'node:fs';
@@ -21,25 +12,31 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..', '..');
-const THEME_PUBLIC = path.join(__dirname, 'public');
+const catalogModule = [
+  path.resolve(__dirname, '..', '..', 'src', 'api', 'theme-catalog.js'),
+  path.resolve(ROOT, 'resources', 'app', 'src', 'api', 'theme-catalog.js'),
+  path.resolve(__dirname, '..', 'runtime', 'theme-catalog.mjs'),
+].find((file) => fs.existsSync(file));
+if (!catalogModule) throw new Error('找不到主题目录模块 theme-catalog.js');
+const { readThemeCatalog, resolveThemeFile } = await import(pathToFileURL(catalogModule).href);
+const THEME_DIR = path.resolve(__dirname, '..');
+const BASE_CSS = path.join(THEME_DIR, 'mecha', 'theme.css');
+const LOADER_JS = path.join(THEME_DIR, 'runtime', 'theme-loader.js');
 const STATE_FILE = path.join(__dirname, '.theme-state.json');
 const HOST = '127.0.0.1';
 const THEME_PORT = Number(process.env.THEME_PORT || 8791);
 const DEMO = process.argv.includes('--demo') || process.env.THEME_DEMO === '1';
-const DEFAULT_THEME = 'mecha';
 const backendArgIndex = process.argv.indexOf('--backend');
 const BACKEND_URL = backendArgIndex >= 0 ? process.argv[backendArgIndex + 1] : (process.env.THEME_BACKEND || '');
-const THEMES = [
-  { id: 'mecha', name: '机能 · 黑', en: 'MECHANICAL / DARK' },
-  { id: 'light', name: '机能 · 白', en: 'MECHANICAL / PAPER' },
-  { id: 'classic', name: '经典', en: 'CLASSIC' },
-];
 
 const MIME = {
   '.css': 'text/css; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
   '.svg': 'image/svg+xml',
   '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.webp': 'image/webp',
   '.ico': 'image/x-icon',
   '.woff2': 'font/woff2',
   '.json': 'application/json; charset=utf-8',
@@ -57,31 +54,51 @@ function freePort() {
   });
 }
 
-function normalizeTheme(value) {
-  return value === 'classic' || value === 'mecha' || value === 'light' ? value : null;
+function catalog() {
+  return readThemeCatalog(THEME_DIR);
 }
 
-function themeAttrs(theme) {
-  if (theme === 'classic') return { theme: 'classic', variant: '' };
-  return { theme: 'mecha', variant: theme === 'light' ? 'light' : 'dark' };
+function themeById(id) {
+  return catalog().themes.find((theme) => theme.id === id) || null;
 }
 
-function readTheme() {
-  try {
-    const raw = JSON.parse(fs.readFileSync(STATE_FILE, 'utf8'));
-    return normalizeTheme(raw.theme) || DEFAULT_THEME;
-  } catch {
-    return DEFAULT_THEME;
-  }
+function normalizeGames(raw, cat = catalog()) {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return {};
+  const valid = new Set(cat.themes.map((theme) => theme.id));
+  return Object.fromEntries(Object.entries(raw).filter(([game, theme]) => /^[a-z][a-z0-9-]*$/.test(game) && valid.has(theme)));
 }
 
-async function writeTheme(theme) {
-  const payload = JSON.stringify({ theme, updatedAt: new Date().toISOString() }, null, 2);
+function readState() {
+  const cat = catalog();
+  let raw = {};
+  try { raw = JSON.parse(fs.readFileSync(STATE_FILE, 'utf8')) || {}; } catch { raw = {}; }
+  const theme = cat.themes.some((item) => item.id === raw.theme) ? raw.theme : cat.defaultTheme;
+  return { theme, gameThemes: normalizeGames(raw.gameThemes, cat) };
+}
+
+async function writeState(state) {
+  const payload = JSON.stringify({
+    theme: state.theme,
+    gameThemes: state.gameThemes || {},
+    updatedAt: new Date().toISOString(),
+  }, null, 2);
   await fsp.mkdir(__dirname, { recursive: true });
   const temp = `${STATE_FILE}.${process.pid}.tmp`;
   await fsp.writeFile(temp, payload, 'utf8');
   await fsp.rename(temp, STATE_FILE);
-  return theme;
+  return state;
+}
+
+function themeAttrs(themeId, cat = catalog()) {
+  const theme = cat.themes.find((item) => item.id === themeId) || cat.themes.find((item) => item.id === cat.defaultTheme) || cat.themes[0];
+  if (!theme) return { theme: 'mecha', variant: 'dark' };
+  if (theme.mode === 'variant') {
+    const base = cat.themes.find((item) => item.id === theme.extends);
+    return { theme: base?.id || theme.extends || theme.id, variant: theme.variant || 'light' };
+  }
+  if (theme.mode === 'builtin') return { theme: theme.id, variant: '' };
+  if (theme.id === cat.baseTheme) return { theme: theme.id, variant: theme.variant === 'light' ? 'light' : 'dark' };
+  return { theme: theme.id, variant: '' };
 }
 
 function readBody(req, limit = 16384) {
@@ -112,30 +129,9 @@ function json(res, status, data) {
   res.end(body);
 }
 
-function htmlInjection(html, theme) {
-  const attrs = themeAttrs(theme);
-  let output = html.replace(/<html(\s[^>]*)?>/i, (_match, existing = '') => {
-    const cleaned = String(existing).replace(/\sdata-(?:theme|mecha-variant)="[^"]*"/gi, '');
-    const variant = attrs.variant ? ` data-mecha-variant="${attrs.variant}"` : '';
-    return `<html${cleaned} data-theme="${attrs.theme}"${variant}>`;
-  });
-  const payload = JSON.stringify(attrs);
-  const head = [
-    `<script>(function(){var d=${payload};var h=document.documentElement;h.dataset.theme=d.theme;if(d.variant)h.dataset.mechaVariant=d.variant;h.dataset.mechaTheme='1';})();</script>`,
-    '<link rel="stylesheet" href="/__theme/theme.css">',
-  ].join('');
-  const tail = '<script src="/__theme/theme.js"></script>';
-  if (!/<\/head>/i.test(output) || !/<\/body>/i.test(output)) return html;
-  output = output.replace(/<\/head>/i, `${head}</head>`);
-  output = output.replace(/<\/body>/i, `${tail}</body>`);
-  return output;
-}
-
-async function serveThemeFile(req, res, pathname) {
-  const rel = decodeURIComponent(pathname.slice('/__theme/'.length));
-  const file = path.resolve(THEME_PUBLIC, rel);
-  if (file !== THEME_PUBLIC && !file.startsWith(THEME_PUBLIC + path.sep)) return json(res, 403, { ok: false, message: '禁止访问' });
+async function serveFile(req, res, file) {
   try {
+    if (!file) throw new Error('not found');
     const stat = await fsp.stat(file);
     if (!stat.isFile()) throw new Error('not a file');
     const ext = path.extname(file).toLowerCase();
@@ -152,27 +148,68 @@ async function serveThemeFile(req, res, pathname) {
   }
 }
 
+function htmlInjection(html, state) {
+  const attrs = themeAttrs(state.theme);
+  let output = html.replace(/<html(\s[^>]*)?>/i, (_match, existing = '') => {
+    const cleaned = String(existing)
+      .replace(/\sdata-(?:theme|mecha-variant)="[^"]*"/gi, '')
+      .replace(/\sdata-mecha-theme="[^"]*"/gi, '');
+    const variant = attrs.variant ? ` data-mecha-variant="${attrs.variant}"` : '';
+    return `<html${cleaned} data-theme="${attrs.theme}"${variant} data-mecha-theme="1">`;
+  });
+  const payload = JSON.stringify(attrs);
+  const head = [
+    `<script>(function(){var d=${payload};var h=document.documentElement;h.dataset.theme=d.theme;if(d.variant)h.dataset.mechaVariant=d.variant;h.dataset.mechaTheme='1';})();</script>`,
+    '<link rel="stylesheet" href="/__theme/base.css">',
+  ].join('');
+  const tail = '<script src="/__theme/theme.js"></script>';
+  if (!/<\/head>/i.test(output) || !/<\/body>/i.test(output)) return html;
+  output = output.replace(/<\/head>/i, `${head}</head>`);
+  output = output.replace(/<\/body>/i, `${tail}</body>`);
+  return output;
+}
+
 async function handleThemeApi(req, res, pathname) {
   if (req.method === 'GET' && pathname === '/__theme/api/state') {
+    const cat = catalog();
+    const state = readState();
     return json(res, 200, {
       ok: true,
-      theme: readTheme(),
-      defaultTheme: DEFAULT_THEME,
-      themes: THEMES,
+      theme: state.theme,
+      gameThemes: state.gameThemes,
+      defaultTheme: cat.defaultTheme,
+      baseTheme: cat.baseTheme,
+      themes: cat.themes,
     });
   }
   if (req.method === 'POST' && pathname === '/__theme/api/theme') {
     try {
+      const cat = catalog();
       const body = JSON.parse(await readBody(req));
-      const theme = normalizeTheme(body.theme);
+      const theme = cat.themes.some((item) => item.id === body.theme) ? body.theme : null;
       if (!theme) return json(res, 400, { ok: false, message: '未知主题' });
-      await writeTheme(theme);
-      return json(res, 200, { ok: true, theme });
-    } catch (e) {
-      return json(res, 400, { ok: false, message: e.message || '请求无效' });
+      const gameThemes = normalizeGames(body.gameThemes, cat);
+      const state = await writeState({ theme, gameThemes });
+      return json(res, 200, { ok: true, ...state });
+    } catch (error) {
+      return json(res, 400, { ok: false, message: error.message || '请求无效' });
     }
   }
   return json(res, 404, { ok: false, message: '主题接口不存在' });
+}
+
+async function serveThemeRoute(req, res, pathname) {
+  if (pathname === '/__theme/themes.json') return json(res, 200, catalog());
+  if (pathname === '/__theme/base.css') return serveFile(req, res, BASE_CSS);
+  if (pathname === '/__theme/theme.css') return serveFile(req, res, BASE_CSS);
+  if (pathname === '/__theme/theme.js') return serveFile(req, res, LOADER_JS);
+  if (pathname.startsWith('/__theme/files/')) {
+    const parts = pathname.slice('/__theme/files/'.length).split('/');
+    const id = decodeURIComponent(parts.shift() || '');
+    const relative = parts.map((part) => decodeURIComponent(part)).join('/');
+    return serveFile(req, res, resolveThemeFile(THEME_DIR, id, relative));
+  }
+  return json(res, 404, { ok: false, message: '主题资源不存在' });
 }
 
 function proxy(req, res) {
@@ -196,7 +233,7 @@ function proxy(req, res) {
       });
       up.on('end', () => {
         const html = Buffer.concat(chunks).toString('utf8');
-        const injected = Buffer.from(htmlInjection(html, readTheme()), 'utf8');
+        const injected = Buffer.from(htmlInjection(html, readState()), 'utf8');
         const outHeaders = { ...up.headers };
         delete outHeaders['content-encoding'];
         delete outHeaders['transfer-encoding'];
@@ -255,7 +292,12 @@ if (BACKEND_URL) {
   if (!process.env.GACHA_DATA_DIR) {
     process.env.GACHA_DATA_DIR = path.join(ROOT, DEMO ? 'demo-data' : 'data');
   }
-  const backendEntry = pathToFileURL(path.join(ROOT, 'src', 'server.js')).href;
+  const backendFile = [
+    path.join(ROOT, 'src', 'server.js'),
+    path.join(ROOT, 'resources', 'app', 'src', 'server.js'),
+  ].find((file) => fs.existsSync(file));
+  if (!backendFile) throw new Error('找不到原数据服务 src/server.js');
+  const backendEntry = pathToFileURL(backendFile).href;
   await import(backendEntry);
   if (!(await waitForBackend(backendPort))) {
     console.error('\n原版数据服务启动超时，主题入口退出。');
@@ -270,7 +312,7 @@ const proxyServer = http.createServer((req, res) => {
     return;
   }
   if (url.pathname.startsWith('/__theme/')) {
-    serveThemeFile(req, res, url.pathname).catch((e) => json(res, 500, { ok: false, message: e.message }));
+    serveThemeRoute(req, res, url.pathname).catch((e) => json(res, 500, { ok: false, message: e.message }));
     return;
   }
   proxy(req, res);
@@ -289,9 +331,9 @@ proxyServer.listen(THEME_PORT, HOST, () => {
   console.log('\n  ── 二游档案 · 机能主题入口 ─────────────────────');
   console.log(`  主题入口：http://${HOST}:${THEME_PORT}`);
   console.log(`  数据服务：${backendMode} ${backendHost}:${backendPort}${backendMode === '内置' ? `（${process.env.GACHA_DATA_DIR}）` : ''}`);
-  const currentTheme = readTheme();
-  const themeLabels = { mecha: '机能 · 黑（MECHANICAL / DARK）', light: '机能 · 白（MECHANICAL / PAPER）', classic: '经典 CLASSIC' };
-  console.log(`  当前主题：${themeLabels[currentTheme] || themeLabels.mecha}（默认机能 · 黑）`);
+  const currentTheme = themeById(readState().theme);
+  console.log(`  当前主题：${currentTheme?.name || 'mecha'}（${currentTheme?.en || 'MECHANICAL'}）`);
+  console.log(`  主题目录：${THEME_DIR}`);
   console.log('  原项目文件零改动；Ctrl+C 退出。');
   console.log('  ───────────────────────────────────────────────\n');
 });

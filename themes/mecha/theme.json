@@ -4,13 +4,12 @@
   "id": "mecha",
   "name": "机能 · 黑",
   "en": "MECHANICAL / DARK",
-  "version": "2.02",
+  "version": "2.03",
   "description": "工业仪表 / 全直角 / 黄色主字 / 游戏机体色小装饰。",
   "mode": "package",
   "variant": "dark",
   "assets": {
-    "css": "public/theme.css",
-    "js": "public/theme.js"
+    "css": "theme.css"
   },
   "preview": "mecha/screenshots/dashboard.png",
   "capabilities": {
@@ -22,3 +21,4 @@
     "embeddedBuild": true
   }
 }
+

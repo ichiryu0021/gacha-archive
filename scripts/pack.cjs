@@ -62,18 +62,37 @@ async function exists(target) {
  *   - 在 index.html 中注入首屏主题 Cookie 引导 + 样式 + 脚本
  * 不修改原项目 public/index.html。
  */
+/**
+ * 把源主题目录放进打包后的应用根目录，供用户直接查看/取用。
+ * 状态文件（.theme-state.json）属于开发机，不进入发布目录。
+ */
+async function copyThemeFolder(stageApp) {
+  const source = path.join(root, 'themes');
+  if (!fs.existsSync(source)) return;
+  const targets = [
+    path.join(stageApp, 'themes'),
+    path.join(stageApp, 'resources', 'app', 'themes'),
+  ];
+  for (const target of targets) {
+    await fsp.cp(source, target, {
+      recursive: true,
+      filter: (src) => !/[\\/]\.theme-state\.json(\..*\.tmp)?$/.test(src),
+    });
+  }
+  console.log('  主题目录：程序根目录 + resources/app 各一份（更新器兼容）');
+}
+
 async function injectTheme(stageApp) {
-  const themeDir = path.join(root, 'themes', 'mecha', 'public');
-  const cssSource = path.join(themeDir, 'theme.css');
-  const jsSource = path.join(themeDir, 'theme.js');
+  const cssSource = path.join(root, 'themes', 'mecha', 'theme.css');
+  const jsSource = path.join(root, 'themes', 'runtime', 'theme-loader.js');
   if (!fs.existsSync(cssSource) || !fs.existsSync(jsSource)) {
-    console.warn('  主题：未找到 themes/mecha/public/theme.css|theme.js，开发版保持原版界面。');
+    console.warn('  主题：未找到 themes/mecha/theme.css 或 themes/runtime/theme-loader.js，开发版保持原版界面。');
     return false;
   }
 
   const publicDir = path.join(stageApp, 'resources', 'app', 'public');
-  const cssTarget = path.join(publicDir, 'theme-mecha.css');
-  const jsTarget = path.join(publicDir, 'theme-mecha.js');
+  const cssTarget = path.join(publicDir, 'theme-base.css');
+  const jsTarget = path.join(publicDir, 'theme-loader.js');
   await fsp.copyFile(cssSource, cssTarget);
   await fsp.copyFile(jsSource, jsTarget);
 
@@ -85,23 +104,23 @@ async function injectTheme(stageApp) {
 
   const indexFile = path.join(publicDir, 'index.html');
   let html = await fsp.readFile(indexFile, 'utf8');
-  if (html.includes('theme-mecha.css')) {
-    console.warn('  主题：index.html 已包含主题注入，跳过。');
+  if (html.includes('theme-loader.js')) {
+    console.warn('  主题：index.html 已包含主题加载器，跳过。');
     return true;
   }
   if (!html.includes('</head>') || !html.includes('</body>')) {
     throw new Error('index.html 缺少 </head> 或 </body>，无法注入主题');
   }
 
-  // 首屏先根据 Cookie 决定主题，避免刷新/重启时先闪一下经典界面。
-  const boot = `<script>(function(){try{var m=document.cookie.match(/(?:^|;\\s*)ga_theme=(classic|mecha|light)(?:;|$)/);var t=m?m[1]:'mecha';var h=document.documentElement;h.dataset.theme=t==='classic'?'classic':'mecha';if(t==='light')h.dataset.mechaVariant='light';else if(t==='mecha')h.dataset.mechaVariant='dark';h.dataset.mechaEmbedded='1';}catch(e){var h=document.documentElement;h.dataset.theme='mecha';h.dataset.mechaVariant='dark';h.dataset.mechaEmbedded='1';}})();</script>`;
-  const headInjection = `${boot}\n<link rel="stylesheet" href="/theme-mecha.css?h=${hash}">`;
-  const bodyInjection = `<script src="/theme-mecha.js?h=${hash}"></script>`;
+  // 只写初始主题属性；具体主题清单和 CSS 由 theme-loader 动态读取。
+  const boot = `<script>(function(){try{var m=document.cookie.match(/(?:^|;\\s*)ga_theme=([^;]+)/);var t=m?decodeURIComponent(m[1]):'mecha';if(!/^[a-z][a-z0-9-]*$/.test(t))t='mecha';var h=document.documentElement;if(t==='classic'){h.dataset.theme='classic';delete h.dataset.mechaVariant;}else if(t==='light'){h.dataset.theme='mecha';h.dataset.mechaVariant='light';}else if(t==='mecha'){h.dataset.theme='mecha';h.dataset.mechaVariant='dark';}else{h.dataset.theme=t;}h.dataset.mechaEmbedded='1';}catch(e){var h=document.documentElement;h.dataset.theme='mecha';h.dataset.mechaVariant='dark';h.dataset.mechaEmbedded='1';}})();</script>`;
+  const headInjection = `${boot}\n<link rel="stylesheet" href="/theme-base.css?h=${hash}">`;
+  const bodyInjection = `<script src="/theme-loader.js?h=${hash}"></script>`;
 
   html = html.replace('</head>', `${headInjection}</head>`);
   html = html.replace('</body>', `${bodyInjection}</body>`);
   await fsp.writeFile(indexFile, html, 'utf8');
-  console.log(`  主题：已内置机能 · 黑（默认）/ 机能 · 白 / 经典（资源 ${hash.slice(0, 8)}）`);
+  console.log(`  主题：动态加载器已内置（基础样式 ${hash.slice(0, 8)}）`);
   return true;
 }
 
@@ -176,6 +195,7 @@ async function main() {
   });
 
   await injectTheme(stageApp);
+  await copyThemeFolder(stageApp);
 
   // 开发版目录里只有程序文件；data/ 是用户数据，单独保留。
   await fsp.rm(path.join(stageApp, 'data'), { recursive: true, force: true });

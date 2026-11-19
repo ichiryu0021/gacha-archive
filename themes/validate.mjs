@@ -14,7 +14,7 @@ const fail = (message) => errors.push(message);
 
 function readJson(file) {
   try {
-    return JSON.parse(fs.readFileSync(file, 'utf8'));
+    return JSON.parse(fs.readFileSync(file, 'utf8').replace(/^\uFEFF/, ''));
   } catch (error) {
     fail(`${path.relative(themesRoot, file)} 无法读取或不是合法 JSON：${error.message}`);
     return null;
@@ -56,6 +56,27 @@ for (const entry of registry?.themes || []) {
   manifests.set(entry.id, { manifest, directory: entry.directory, manifestFile });
 }
 
+// 自动发现未登记目录：运行时也是按目录扫描，registry 只做默认/排序。
+for (const entry of fs.readdirSync(themesRoot, { withFileTypes: true })) {
+  if (!entry.isDirectory() || entry.name.startsWith('.') || ['runtime', 'schema', 'node_modules'].includes(entry.name)) continue;
+  if (directories.has(entry.name)) continue;
+  const manifestFile = path.join(themesRoot, entry.name, 'theme.json');
+  if (!fs.existsSync(manifestFile)) continue;
+  const manifest = readJson(manifestFile);
+  if (!manifest) {
+    fail(`${path.relative(themesRoot, manifestFile)} 不是合法 JSON`);
+    continue;
+  }
+  if (!isString(manifest.id)) {
+    fail(`${path.relative(themesRoot, manifestFile)} 缺少 id`);
+    continue;
+  }
+  if (ids.has(manifest.id)) fail(`主题 id 重复：${manifest.id}`);
+  ids.add(manifest.id);
+  directories.add(entry.name);
+  manifests.set(manifest.id, { manifest, directory: entry.name, manifestFile });
+}
+
 for (const [id, { manifest, directory, manifestFile }] of manifests) {
   const where = path.relative(themesRoot, manifestFile);
   if (manifest.id !== id) fail(`${where} 的 id "${manifest.id}" 与 registry 的 "${id}" 不一致`);
@@ -73,10 +94,11 @@ for (const [id, { manifest, directory, manifestFile }] of manifests) {
     }
   }
   if (manifest.mode === 'package') {
-    if (!manifest.assets || !isString(manifest.assets.css) || !isString(manifest.assets.js)) {
-      fail(`${where} 的 package 主题缺少 assets.css / assets.js`);
+    if (!manifest.assets || !isString(manifest.assets.css)) {
+      fail(`${where} 的 package 主题缺少 assets.css`);
     } else {
-      for (const asset of [manifest.assets.css, manifest.assets.js]) {
+      const assets = [manifest.assets.css, manifest.assets.js].filter(Boolean);
+      for (const asset of assets) {
         if (!fs.existsSync(path.join(themesRoot, directory, asset))) {
           fail(`${where} 引用的资源不存在：${asset}`);
         }

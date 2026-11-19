@@ -1,13 +1,14 @@
-﻿# 二游档案 · 「机能」主题
+# 二游档案 · 「机能」主题
 
 一套可独立运行、也可内置进打包开发版的机甲 / 机能风界面主题：工业仪表、全直角几何、钢灰纸墨与柠檬黄信号色。
 
 > 主题归类索引见 [../README.md](../README.md)，接口标准见 [../THEME-INTERFACE.md](../THEME-INTERFACE.md)，主题清单见 [`theme.json`](theme.json)。
 
 - **三个主题**：「机能 · 黑」（默认，黄字） / 「机能 · 白」（纸白，灰字阴影） / 「经典」（原版）。
-- **开发版内置**：`npm.cmd run pack` 会把主题注入 `dist\二游档案`，打开即「机能 · 黑」；可切「机能 · 白」/「经典」，选择随 Electron 用户数据保存。
+- **开发版内置**：`npm.cmd run pack` 会把动态主题加载器和完整 `themes/` 放进 `dist\二游档案`，打开即「机能 · 黑」；主题卡和按游戏映射随 Electron 用户数据保存。
 - **独立入口**：`node themes/mecha/server.mjs` 可用于浏览器预览和主题开发，状态由独立主题接口保存。
-- **主题接入零改源码**：主题接入本身不改 `public/index.html`、`public/app.js`、`src/`；内置是构建期注入，独立入口是运行时注入。本轮另外按需求给 `public/app.js` 加了米游社同步卡（与主题包无关）。
+- **主题自动发现**：`themes/<id>/theme.json` + `theme.css` 放入 `themes/`，刷新设置页即可识别；也可以按游戏指定主题。
+- **主题接入**：页面不写死主题列表；`src/server.js` 只增加只读主题目录/文件路由，`theme-loader.js` 负责动态 JSON、CSS、设置卡和持久化。
 - **动效**：Hero 瞄准环旋转 + 呼吸；命中率环缩放 + 弧线加载；卡池/垫抽/月度/时间轴条缩放；关键数字从 0 计数到终值；均支持 `prefers-reduced-motion`。
 - **小装饰跟机体色**：卡片标尺、页面编号、导航激活条、四角括号、Tabs、步骤编号等小块装饰使用当前游戏主题色；黄仍是系统信号色。
 - 删掉 `themes/mecha/` 后重新构建，开发版回到原版界面。
@@ -106,11 +107,12 @@ set THEME_PORT=8792 && node themes/mecha\server.mjs
 
 `scripts/pack.cjs` 在打包完成后、替换 `dist\二游档案` 之前：
 
-1. 把 `themes/mecha/public/theme.css`、`theme.js` 复制到 `resources/app/public/`；
-2. 向打包后的 `public/index.html` 注入首屏 Cookie 引导、主题样式和主题脚本；
-3. 主题脚本在 `data-mecha-embedded=1` 模式下切换为 Cookie 保存，不再请求主题 API。
+1. 把 `themes/mecha/theme.css` 复制为 `resources/app/public/theme-base.css`；
+2. 把 `themes/runtime/theme-loader.js` 复制为 `resources/app/public/theme-loader.js`；
+3. 向打包后的 `public/index.html` 注入首屏 Cookie 引导、基础样式和加载器；
+4. 把完整 `themes/` 复制到程序根目录（排除 `.theme-state.json`）。
 
-原项目 `public/index.html`、`public/app.js` 和 `src/` 都不改；主题只存在于构建产物中。
+页面不再写死主题 CSS 链接；加载器通过 `/__theme/themes.json` 读取目录，并按当前游戏加载主题。
 
 ### 2. 独立主题入口（运行时注入）
 
@@ -119,9 +121,10 @@ set THEME_PORT=8792 && node themes/mecha\server.mjs
 1. **启动或复用原服务**：页面、接口、图片、二维码、导出全部原样代理。
 2. **注入资源**：只向返回的 HTML 注入
    - `<html data-theme="...">`
-   - `<link rel="stylesheet" href="/__theme/theme.css">`
+   - `<link rel="stylesheet" href="/__theme/base.css">`
    - `<script src="/__theme/theme.js"></script>`
-3. **注入少量 UI**：只注入设置页主题卡片；原应用重渲染页面后，主题脚本会自动补回。
+3. **动态目录**：入口扫描 `themes/`，提供 `/__theme/themes.json`、`/__theme/files/*` 和状态 API。
+4. **注入少量 UI**：只注入设置页主题卡片和按游戏选择；原应用重渲染页面后，加载器会自动补回。
 
 两种方式共用同一套 `theme.css` / `theme.js`；所有视觉规则都限定在 `html[data-theme="mecha"]` 作用域内。切回「经典」时，原版页面视觉保持原样，仅额外保留设置页主题卡片。
 
@@ -175,10 +178,11 @@ themes/mecha/
 
 ## 验证
 
-- **字号 / 入口**：黑、白两版与经典逐项对比（h1 / Hero / 卡片标题 / 统计 / 导航 / 页签 / 表头），顶栏无主题选择器，设置页三张主题卡：**7/7 通过**。
-- **开发版内置**：默认机能 · 黑、设置页切机能 · 白/经典、Cookie 持久化、刷新沿用、动画、米游社同步卡、无运行期异常：**17/17 通过**。
-- **独立主题入口**：三主题切换、独立接口持久化、刷新沿用、设置页卡片、非法主题拒绝通过（入口调整后不再保留旧顶栏用例）。
-- 原项目测试：`node --test tests/core.test.mjs` **31/31 通过**（主题包接入不改原项目源码）。
+- **动态主题目录**：独立入口 3 主题、按游戏映射、刷新保留：**11/11 通过**。
+- **打包版动态加载**：默认黑、全局/按游戏映射、Cookie 持久化、重载恢复：**12/12 通过**。
+- **Drop-in 新主题**：只放 `themes/<id>/theme.json + theme.css`，刷新即出现在主题卡和游戏映射中：**8/8 通过**。
+- **字号**：黑、白两版与经典逐项对比，顶栏无主题选择器。
+- 原项目测试：`node --test tests/core.test.mjs` **31/31 通过**。
 - 视觉检查宽度：1440 / 1280 / 1024 / 390。
 - 主题入口测试：自带数据服务、`--backend` 复用、`--demo` 演示数据均可用。
 

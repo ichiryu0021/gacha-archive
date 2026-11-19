@@ -10,6 +10,7 @@ import {
 } from './config.js';
 import { Store } from './store.js';
 import { hash, sleep, uid } from './utils.js';
+import { readThemeCatalog, resolveThemeFile, resolveThemeRoot } from './api/theme-catalog.js';
 import { analyzeGame, filterRecords } from './api/analyze.js';
 import { autoCheckCatalogs, catalogPublic, loadCatalog, syncCatalog } from './api/catalog.js';
 import {
@@ -34,6 +35,8 @@ import {
 } from './api/thirdparty.js';
 import * as XLSX from 'xlsx';
 
+
+const THEME_ROOT = resolveThemeRoot(ROOT);
 
 const MANUAL_HEADERS = ['名称', '卡池', '版本', '抽数', '时间'];
 const MANUAL_DEFAULT_POOL = { genshin: '301', hsr: '11', zzz: '2', hi3: '1', tot: '1' };
@@ -785,6 +788,26 @@ let collector;
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, `http://${req.headers.host || `${HOST}:${PORT}`}`);
   try {
+    if (url.pathname === '/__theme/themes.json') {
+      const catalog = readThemeCatalog(THEME_ROOT);
+      const body = Buffer.from(JSON.stringify(catalog));
+      res.writeHead(200, { 'Content-Type': MIME['.json'], 'Content-Length': String(body.length), 'Cache-Control': 'no-store' });
+      return res.end(req.method === 'HEAD' ? undefined : body);
+    }
+    if (url.pathname.startsWith('/__theme/files/')) {
+      const parts = url.pathname.slice('/__theme/files/'.length).split('/');
+      const id = decodeURIComponent(parts.shift() || '');
+      const relative = parts.map((part) => decodeURIComponent(part)).join('/');
+      const file = resolveThemeFile(THEME_ROOT, id, relative);
+      if (!file) return fail(res, '主题资源不存在', 404);
+      const body = await fsp.readFile(file);
+      res.writeHead(200, {
+        'Content-Type': MIME[path.extname(file).toLowerCase()] || 'application/octet-stream',
+        'Content-Length': String(body.length),
+        'Cache-Control': 'no-store',
+      });
+      return res.end(req.method === 'HEAD' ? undefined : body);
+    }
     if (url.pathname.startsWith('/api/asset')) return proxyAsset(req, res, url);
     if (url.pathname.startsWith('/api/')) return await routeApi(req, res, url);
     return await serveStatic(req, res, url);

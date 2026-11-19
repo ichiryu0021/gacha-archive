@@ -15,8 +15,8 @@ export const ASSET_DIR = path.join(DATA_DIR, 'assets');
 export const DB_FILE = path.join(DATA_DIR, 'app.json');
 export const PORT = Number(process.env.PORT || 8787);
 export const HOST = '127.0.0.1';
-export const APP_VERSION = '2.02';
-export const APP_DISPLAY_VERSION = '2.02';
+export const APP_VERSION = '2.03';
+export const APP_DISPLAY_VERSION = '2.03';
 
 export const GAMES = {
   genshin: {
@@ -324,3 +324,4 @@ export function isKnownHost(hostname) {
 export function isAllowedAssetHost(hostname) {
   return /(^|\.)(mihoyo\.com|hoyoverse\.com|hoyolab\.com|miyoushe\.com|githubusercontent\.com|jsdelivr\.net|enka\.network|patchwiki\.biligame\.com|static\.nanoka\.cc)$/i.test(hostname);
 }
+

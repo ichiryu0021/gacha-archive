@@ -112,6 +112,13 @@ async function applyUpdate(full = false) {
     const stamp = new Date().toISOString().replace(/[:.]/g, '-');
     await fsp.cp(targetApp, path.join(backupDir, `app-before-${stamp}`), { recursive: true }).catch(() => {});
     await fsp.cp(sourceApp, targetApp, { recursive: true, force: true });
+    // 新版本把 themes/ 放在程序根目录；旧版更新器只复制 resources/app，
+    // 所以包内同时保留 resources/app/themes 作为回退。
+    const sourceThemes = path.join(path.dirname(sourceApp), 'themes');
+    const targetThemes = path.join(path.dirname(targetApp), 'themes');
+    if (fs.existsSync(sourceThemes)) {
+      await fsp.cp(sourceThemes, targetThemes, { recursive: true, force: true }).catch(() => {});
+    }
     await verifyAppDir(targetApp, latestVersion);
     return { ok: true, version: latestVersion, full };
   } finally {
