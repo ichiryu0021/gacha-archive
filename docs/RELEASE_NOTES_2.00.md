@@ -15,9 +15,9 @@
 
 ## 仓库迁移
 
-- v2.00 同时发布在旧仓库 `miyou-archive` 和新仓库 `eryou-archive`。
+- v2.00 同时发布在旧仓库 `miyou-archive` 和新仓库 `gacha-archive`。
 - 旧仓库只保留 v2.00 及以前内容，随后封存。
-- v2.00 以后只更新 `eryou-archive`。
+- v2.00 以后只更新 `gacha-archive`。
 - v2.00 安装包内的更新器已指向新仓库。
 
 ## 升级说明

@@ -8,9 +8,9 @@ const { promisify } = require('node:util');
 
 const execFileAsync = promisify(execFile);
 const OWNER = 'ichiryu0021';
-const REPO = 'eryou-archive';
+const REPO = 'gacha-archive';
 const API = `https://api.github.com/repos/${OWNER}/${REPO}/releases/latest`;
-const UA = 'EryouArchive-Updater';
+const UA = 'GachaArchive-Updater';
 let latestAsset = null;
 let latestFullAsset = null;
 let latestVersion = '';
@@ -83,7 +83,7 @@ async function verifyAppDir(dir, version) {
 async function applyUpdate(full = false) {
   const assetUrl = full ? latestFullAsset : latestAsset;
   if (!assetUrl) throw new Error(full ? '没有完整更新包' : '请先检查更新');
-  const work = await fsp.mkdtemp(path.join(os.tmpdir(), 'eryou-update-'));
+  const work = await fsp.mkdtemp(path.join(os.tmpdir(), 'gacha-update-'));
   const zip = path.join(work, 'update.zip');
   try {
     await download(assetUrl, zip);

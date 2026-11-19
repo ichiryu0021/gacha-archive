@@ -16,7 +16,7 @@
 | 仓库 | 用途 | 更新 |
 |---|---|---|
 | `ichiryu0021/miyou-archive` | 2.00 及以前备份 | 已封存 |
-| `ichiryu0021/eryou-archive` | 2.00 以后 | 唯一更新源 |
+| `ichiryu0021/gacha-archive` | 2.00 以后 | 唯一更新源 |
 
 - 2.00 同时上传到两个仓库。
 - 2.00 以后只更新新仓库。
@@ -32,8 +32,8 @@
 
 | 资产 | 用途 | 命名 |
 |---|---|---|
-| 最小更新包 | 旧版本升级，只含 `resources/app` | `eryou-hotfix-v2.00.zip` |
-| 完整包 | 新用户安装、大版本、热更新失败兜底 | `eryou-v2.00-full.zip` |
+| 最小更新包 | 旧版本升级，只含 `resources/app` | `gacha-hotfix-v2.00.zip` |
+| 完整包 | 新用户安装、大版本、热更新失败兜底 | `gacha-v2.00-full.zip` |
 
 - 热更新包不是差异补丁，包含当前版本完整的 `resources/app`，可从任意旧版本覆盖升级。
 - 热更新包内需要一个占位 `.exe` 和 `resources/app`，更新器只复制 app 目录。
@@ -43,7 +43,7 @@
 ## 更新流程
 
 1. 启动时由界面检查最新 Release，顶栏显示新版本提示。
-2. 点击更新：优先下载 `eryou-hotfix-v2.00.zip`。
+2. 点击更新：优先下载 `gacha-hotfix-v2.00.zip`。
 3. 校验包结构、`package.json` 版本、关键文件。
 4. 备份当前 `resources/app` 到 `data/backups/`。
 5. 替换 `resources/app`，再次自检，成功后自动重启。

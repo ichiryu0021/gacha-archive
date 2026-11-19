@@ -1464,7 +1464,7 @@ function renderSettings() {
       <div class="card-head"><div class="card-title"><span class="mark"></span><h3>运行信息</h3><span>ABOUT</span></div></div>
       <div class="kv"><span>版本</span><b>v${esc(state.shell?.displayVersion || state.shell?.version || '1.06')}</b></div>
       <div class="kv"><span>开源协议</span><b>MIT License</b></div>
-      <div class="kv"><span>项目地址</span><b><a href="https://github.com/ichiryu0021/eryou-archive" target="_blank" rel="noreferrer" style="color:var(--accent)">GitHub</a></b></div>
+      <div class="kv"><span>项目地址</span><b><a href="https://github.com/ichiryu0021/gacha-archive" target="_blank" rel="noreferrer" style="color:var(--accent)">GitHub</a></b></div>
       <div class="kv"><span>开源组件</span><b>Electron · QR Code · genshin-db</b></div>
       <div class="kv"><span>数据来源</span><b>HoYoWiki · genshin-db</b></div>
       <div class="kv"><span>数据目录</span><b>${esc(state.dataDir || './data')}</b></div>
@@ -2591,7 +2591,7 @@ async function drawShareCard() {
 
   ctx.fillStyle = accent; round(pad, 62, 8, 38, 4); ctx.fill();
   ctx.fillStyle = '#f5f2ff'; ctx.font = font(28, 600); ctx.fillText('二游档案', pad + 26, 92);
-  ctx.fillStyle = '#8e96ab'; ctx.font = font(16, 400); ctx.fillText('MIYOU ARCHIVE · SHARE', pad + 26, 120);
+  ctx.fillStyle = '#8e96ab'; ctx.font = font(16, 400); ctx.fillText('GACHA ARCHIVE · SHARE', pad + 26, 120);
 
   ctx.fillStyle = '#f7f5ff'; ctx.font = font(64, 700); ctx.fillText(gameName, pad, 238);
   ctx.fillStyle = '#8e96ab'; ctx.font = font(20, 400);
@@ -2692,7 +2692,7 @@ async function drawShareCard() {
   drawColumn(weaponRows, weaponImages, W / 2 + 24, '限定武器');
 
   ctx.strokeStyle = 'rgba(255,255,255,0.09)'; ctx.beginPath(); ctx.moveTo(pad, 1720); ctx.lineTo(W - pad, 1720); ctx.stroke();
-  ctx.fillStyle = '#6f7890'; ctx.font = font(14, 400); ctx.fillText('MIYOU ARCHIVE · 本地抽卡档案', pad, 1762);
+  ctx.fillStyle = '#6f7890'; ctx.font = font(14, 400); ctx.fillText('GACHA ARCHIVE · 本地抽卡档案', pad, 1762);
   ctx.textAlign = 'right'; ctx.fillText(new Date().toLocaleDateString('zh-CN'), W - pad, 1762); ctx.textAlign = 'left';
 
   return canvas.toDataURL('image/jpeg', 0.95);
