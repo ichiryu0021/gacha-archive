@@ -1,0 +1,55 @@
+name: release-full
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-upload:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Build app
+        run: npm.cmd run pack
+
+      - name: Build full zip
+        shell: pwsh
+        run: |
+          $root = (Get-Location).Path
+          $src = Join-Path $root 'dist\二游档案'
+          $zipPath = Join-Path $root 'dist\gacha-v2.03-full.zip'
+          Add-Type -AssemblyName System.IO.Compression
+          Add-Type -AssemblyName System.IO.Compression.FileSystem
+          $zip = [IO.Compression.ZipFile]::Open($zipPath, [IO.Compression.ZipArchiveMode]::Create)
+          try {
+            $rootFull = [IO.Path]::GetFullPath($src).TrimEnd('\') + '\'
+            Get-ChildItem $src -Recurse -File | Where-Object { $_.FullName -notlike "$src\data\*" } | ForEach-Object {
+              $rel = '二游档案/' + $_.FullName.Substring($rootFull.Length).Replace('\','/')
+              $entry = $zip.CreateEntry($rel, [IO.Compression.CompressionLevel]::Optimal)
+              $in = $_.OpenRead()
+              try {
+                $out = $entry.Open()
+                try { $in.CopyTo($out) } finally { $out.Dispose() }
+              } finally { $in.Dispose() }
+            }
+          } finally {
+            $zip.Dispose()
+          }
+
+      - name: Upload full asset to release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v2.03
+          name: v2.03 · 二游档案
+          files: dist/gacha-v2.03-full.zip
+          overwrite_files: true
