@@ -252,6 +252,13 @@ export async function autoCheckCatalogs() {
   return results;
 }
 
+function genshinIcon(i) {
+  if (!i.icon) return i.iconUrl || '';
+  // 官方 upload-bbs 对较新的角色/武器会返回 55633 字节的占位图；
+  // Enka 的 UI 目录仍在更新，作为主源，原官方地址作为代理回退。
+  return `https://enka.network/ui/${i.icon}.png`;
+}
+
 export function catalogPublic(game) {
   const catalog = loadCatalog(game);
   const directAssets = ['arknights', 'endfield', 'nte'].includes(game);
@@ -260,13 +267,21 @@ export function catalogPublic(game) {
     updatedAt: catalog.updatedAt,
     source: catalog.source,
     version: catalog.version,
-    items: catalog.items.map((i) => ({
-      id: i.id, name: i.name, type: i.type, rarity: i.rarity,
-      // 第三方图鉴的图片源支持跨域直连，直连可以让浏览器并行加载，避免代理串行等待。
-      iconUrl: i.iconUrl
-        ? (directAssets ? i.iconUrl : `/api/asset?game=${encodeURIComponent(game)}&u=${encodeURIComponent(i.iconUrl)}`)
-        : '',
-      weaponType: i.weaponType || '', path: i.path || '', element: i.element || '', aliases: i.aliases || [],
-    })),
+    items: catalog.items.map((i) => {
+      const primary = game === 'genshin' && (i.type === '角色' || i.type === '武器')
+        ? genshinIcon(i)
+        : i.iconUrl;
+      const fallback = game === 'genshin' && i.iconUrl && i.iconUrl !== primary ? i.iconUrl : '';
+      const proxy = primary
+        ? `/api/asset?game=${encodeURIComponent(game)}&u=${encodeURIComponent(primary)}${fallback ? `&fallback=${encodeURIComponent(fallback)}` : ''}`
+        : '';
+      return {
+        id: i.id, name: i.name, type: i.type, rarity: i.rarity,
+        // 第三方图鉴的图片源支持跨域直连，直连可以让浏览器并行加载，避免代理串行等待。
+        iconUrl: primary ? (directAssets ? primary : proxy) : '',
+        iconFallback: fallback,
+        weaponType: i.weaponType || '', path: i.path || '', element: i.element || '', aliases: i.aliases || [],
+      };
+    }),
   };
 }

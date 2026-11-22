@@ -11,6 +11,9 @@ contextBridge.exposeInMainWorld('desktop', {
     collect: () => ipcRenderer.invoke('heybox:collect'),
     close: () => ipcRenderer.invoke('heybox:close'),
   },
+  hoyolab: {
+    login: () => ipcRenderer.invoke('hoyolab:login'),
+  },
   nteCapture: {
     start: (options) => ipcRenderer.invoke('nte:capture-start', options),
     status: (file) => ipcRenderer.invoke('nte:capture-status', file),

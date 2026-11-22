@@ -23,7 +23,7 @@
 1. **开发版唯一输出目录：`D:\Project\二游档案\dist\二游档案`**
    每次构建都覆盖这里的程序文件；不新增版本化目录。
 2. **发布补丁 / 完整包直接放 `dist\`**
-   例如 `dist\gacha-hotfix-v2.02.zip`、`dist\gacha-v2.02-full.zip`。
+   例如 `dist\gacha-hotfix-v2.04.zip`、`dist\gacha-v2.04-full.zip`。
 3. **不再创建 `dist\release-x.xx`、`dist\<版本号>` 等子目录。**
    版本只写在 `package.json`、`displayVersion` 和 zip 文件名里，不写在文件夹名里。
 4. **`dist\二游档案\data` 是用户真实数据。**
@@ -41,8 +41,8 @@ D:\Project\二游档案\
    │  ├─ 二游档案.exe
    │  ├─ resources\app\         # 程序文件
    │  └─ data\                  # 用户数据（构建保留）
-   ├─ gacha-hotfix-v2.02.zip    # 发布资产，直接放 dist
-   ├─ gacha-v2.02-full.zip
+   ├─ gacha-hotfix-v2.04.zip    # 发布资产，直接放 dist
+   ├─ gacha-v2.04-full.zip
    ├─ 二游档案-v2.00.zip        # 历史命名的完整包
    ├─ miyou-hotfix.zip          # 历史资产
    ├─ 米游档案 V1.07.zip ...    # 历史版本
@@ -92,7 +92,7 @@ Test-Path 'dist\二游档案\resources\app\public\theme-loader.js'
 Select-String -Path 'dist\二游档案\resources\app\public\index.html' -Pattern 'mechaEmbedded'
 ```
 
-期望 `name` 为 `gacha-archive`、`version` 为 `2.03`、`displayVersion` 为 `2.03`（随版本更新变化），`app.json` 存在，`index.html` 含主题注入标记。
+期望 `name` 为 `gacha-archive`、`version` 为 `2.04`、`displayVersion` 为 `2.04`（随版本更新变化），`app.json` 存在，`index.html` 含动态主题加载器。
 
 ## 4. 为什么不能直接打包到 `dist\二游档案`
 
@@ -112,14 +112,14 @@ await fs.promises.rm(outDir, { recursive: true, force: true });
 
 - 发布用的热更新包、完整包统一放 `dist\` 根目录，不新建 release 文件夹。
 - 当前保留的资产：
-  - `dist\gacha-hotfix-v2.02.zip`
-  - `dist\gacha-v2.02-full.zip`
+  - `dist\gacha-hotfix-v2.04.zip`
+  - `dist\gacha-v2.04-full.zip`
   - `dist\二游档案-v2.00.zip`（历史命名）
   - `dist\miyou-hotfix.zip`（历史资产）
 - 资产命名必须带版本号；不要用 `release-2.00` 这样的目录来表达版本。
 - 热更新包结构、完整包结构和 GitHub Release 规则见 [docs/RELEASE.md](docs/RELEASE.md)。
 - 打包前确认 `dist\二游档案\resources\app` 是当前构建，再压缩；不要从旧目录复制。
-- v2.00 的 zip 是**集成主题前**的历史产物；当前发布包以 v2.02 为准，必须从当前 `dist\二游档案` 重新生成 zip。
+- v2.00 的 zip 是**集成主题前**的历史产物；当前发布包以 v2.04 为准，必须从当前 `dist\二游档案` 重新生成 zip。
 
 ## 6. 数据保护
 
@@ -160,7 +160,7 @@ await fs.promises.rm(outDir, { recursive: true, force: true });
 - `package.json` 移除了 `pack:release`，只保留固定的 `pack`。
 - 开发版构建加入「机能」主题：复制 `themes/mecha/theme.css` 和 `themes/runtime/theme-loader.js`，注入基础样式和动态加载器；默认机能 · 黑，可切机能 · 白 / 经典，支持按游戏映射和 Cookie 持久化。
 - 主题目录、清单、注册表和接口标准见 [`themes/README.md`](themes/README.md) 与 [`themes/THEME-INTERFACE.md`](themes/THEME-INTERFACE.md)；`node themes/validate.mjs` 可校验清单。
-- 字体/入口专项 **7/7**，内置构建功能 **17/17**，原项目测试 **31/31**。
+- 动态目录 / 按游戏映射 **11/11**（独立）+ **12/12**（打包）；drop-in **8/8**；分享图 **8/8**；原项目 **31/31**。
 - `themes/` 会完整复制到程序根目录（排除运行状态文件）；独立主题入口 `themes/mecha/server.mjs` 也保留在主题目录中。
 - 构建脚本加入敏感文件忽略规则（`.dat`、`app.json*`）。
 
@@ -190,8 +190,3 @@ Get-ChildItem dist -Force | Where-Object { $_.Name -match 'release-|^\.pack-|^\.
 - [ ] `resources\app\public\theme-base.css|theme-loader.js` 存在，`index.html` 含主题加载器
 - [ ] 启动 `dist\二游档案\二游档案.exe` 默认是「机能 · 黑」；切「机能 · 白」/「经典」后重启仍为所选
 - [ ] 发布 zip 直接位于 `dist\`，文件名带版本
-
-
-
-
-

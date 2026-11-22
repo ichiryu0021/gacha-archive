@@ -138,12 +138,92 @@ test('ZZZ official snapshot maps aggregate fields', () => {
   assert.equal(snap.perType['2'].five, 10);
 });
 
+test('avg pity resets on every 5-star, including a lost 50/50', () => {
+  const account = {
+    records: [
+      { id: '1', time: '2026-01-01 00:00:00', name: 'A', rank: 5, gachaType: '11', uigfType: '11', pity: 70, up: 'loss', source: 'official' },
+      { id: '2', time: '2026-02-01 00:00:00', name: 'B', rank: 5, gachaType: '11', uigfType: '11', pity: 80, up: 'win', source: 'official' },
+    ],
+    totals: {
+      exact: 150,
+      perType: { '11': { total: 150, five: 2 } },
+      currentPity: { '11': 15 },
+      start: '2026-01-01 00:00:00',
+      end: '2026-02-01 00:00:00',
+    },
+    snapshots: [],
+  };
+  const d = analyzeGame({ gameId: 'hsr', account, catalog: null });
+  assert.equal(d.rates.avgChar, 75);
+  assert.equal(d.rates.charSamples, 2);
+  assert.equal(d.rates.upDecided, 2);
+  assert.equal(d.counts.charPulls, 150);
+  assert.equal(d.counts.weaponPulls, 0);
+  assert.equal(d.pity.primary, '11');
+  assert.equal(d.pity.current['11'], 15);
+});
+
+test('character and weapon pools are counted and averaged separately', () => {
+  const account = {
+    records: [
+      { id: 'c1', time: '2026-01-01 00:00:00', name: 'C1', rank: 5, gachaType: '11', uigfType: '11', pity: 70, up: 'win', source: 'official' },
+      { id: 'c2', time: '2026-01-02 00:00:00', name: 'C2', rank: 5, gachaType: '11', uigfType: '11', pity: 80, up: 'loss', source: 'official' },
+      { id: 'w1', time: '2026-01-03 00:00:00', name: 'W1', rank: 5, gachaType: '12', uigfType: '12', pity: 60, up: 'win', source: 'official' },
+    ],
+    totals: {
+      exact: 230,
+      perType: { '11': { total: 150, five: 2 }, '12': { total: 80, five: 1 } },
+      currentPity: { '11': 10, '12': 20 },
+      start: '2026-01-01 00:00:00',
+      end: '2026-01-03 00:00:00',
+    },
+    snapshots: [],
+  };
+  const d = analyzeGame({ gameId: 'hsr', account, catalog: null });
+  assert.equal(d.counts.charPulls, 150);
+  assert.equal(d.counts.weaponPulls, 80);
+  assert.equal(d.counts.charFive, 2);
+  assert.equal(d.counts.weaponFive, 1);
+  assert.equal(d.rates.avgChar, 75);
+  assert.equal(d.rates.avgWeapon, 60);
+  assert.equal(d.rates.charSamples, 2);
+  assert.equal(d.rates.weaponSamples, 1);
+  assert.equal(d.rates.upDecided, 2);
+  assert.equal(d.rates.upWins, 1);
+  assert.equal(d.rates.limitedPerPull, 1 / 150);
+  assert.equal(d.pity.primary, '11');
+  assert.equal(d.pity.current['11'], 10);
+  assert.equal(d.pity.current['12'], 20);
+  assert.deepEqual(
+    { value: d.pity.kinds.character.value, cap: d.pity.kinds.character.cap },
+    { value: 10, cap: 90 },
+  );
+  assert.deepEqual(
+    { value: d.pity.kinds.weapon.value, cap: d.pity.kinds.weapon.cap },
+    { value: 20, cap: 80 },
+  );
+});
+
 test('sourceFromAuthkey produces a valid standard URL', () => {
   const source = sourceFromAuthkey('zzz', KEY, { region: 'prod_gf_cn', gameBiz: 'nap_cn' });
   const url = new URL(buildApiUrl(source, '2', '0'));
   assert.equal(url.hostname, 'public-operation-nap.mihoyo.com');
   assert.equal(url.searchParams.get('authkey'), KEY);
   assert.equal(url.searchParams.get('real_gacha_type'), '2');
+});
+
+test('sourceFromAuthkey routes overseas authkeys to hoyoverse hosts', () => {
+  const source = sourceFromAuthkey('hsr', KEY, {
+    region: 'prod_official_asia',
+    gameBiz: 'hkrpg_global',
+    isOversea: true,
+    lang: 'zh-cn',
+  });
+  const url = new URL(buildApiUrl(source, '11', '0'));
+  assert.equal(url.hostname, 'public-operation-hkrpg-sg.hoyoverse.com');
+  assert.equal(url.pathname, '/common/hkrpg_gacha_record/api/getGachaLog');
+  assert.equal(url.searchParams.get('game_biz'), 'hkrpg_global');
+  assert.equal(url.searchParams.get('gacha_type'), '11');
 });
 
 test('cross-source dedupe upgrades a screenshot record to the official record', () => {
@@ -195,7 +275,7 @@ test('standard pools are not treated as limited UP pools', () => {
   assert.equal(result.counts.limitedExact, 0);
 });
 
-test('overall hit rate uses limited five-stars over all five-stars', () => {
+test('character UP hit rate ignores standard and weapon five-stars', () => {
   const account = {
     uid: '1', records: [
       { id: '1', time: '2025-01-01 00:00:00', name: '胡桃', rank: 5, gachaType: '301', uigfType: '301', itemId: '1', itemType: '角色' },
@@ -208,8 +288,11 @@ test('overall hit rate uses limited five-stars over all five-stars', () => {
   };
   const result = analyzeGame({ gameId: 'genshin', account, catalog: loadCatalog('genshin') });
   assert.equal(result.counts.exactFive, 4);
+  assert.equal(result.counts.charFive, 3);
+  assert.equal(result.counts.charPulls, 80);
   assert.equal(result.rates.upWins, 2);
-  assert.equal(Math.round(result.rates.upRate * 1000) / 1000, 0.5);
+  assert.equal(result.rates.upDecided, 3);
+  assert.equal(Math.round(result.rates.upRate * 1000) / 1000, 0.667);
 });
 
 test('Arknights official history maps six-stars with pity and per-category totals', () => {

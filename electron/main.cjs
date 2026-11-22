@@ -253,6 +253,178 @@ ipcMain.handle('heybox:close', async () => {
   return { ok: true };
 });
 
+const HOYOLAB_COOKIE_NAMES = new Set([
+  'cookie_token_v2', 'cookie_token', 'account_id_v2', 'account_id', 'account_mid_v2',
+  'ltoken_v2', 'ltoken', 'ltuid_v2', 'ltuid', 'ltmid_v2', 'stoken_v2', 'stoken',
+]);
+
+// Official HoYoverse passport login form, loaded standalone. `ux_mode=redirect`
+// makes it navigate back to `st` (the account centre) after login, where the
+// passport exchange sets the cookies this window polls for.
+const HOYOLAB_LOGIN_URL = 'https://account.hoyoverse.com/login-platform/index.html'
+  + '?st=https%3A%2F%2Faccount.hoyoverse.com%2F%23%2Flogin'
+  + '&token_type=4&client_type=4&app_id=de8ohyzxreo0&game_biz=plat_os'
+  + '&lang=zh-cn&theme=light-default&hide_logo=0&ux_mode=redirect&iframe_level=0'
+  + '#/password-login';
+// Fallback: account-centre landing page, where we auto-open the login iframe.
+const HOYOLAB_FALLBACK_URL = 'https://account.hoyoverse.com/#/login';
+
+let hoyolabWindow = null;
+let hoyolabLogin = null;
+
+function openHoyolabLoginWindow() {
+  if (hoyolabLogin) return hoyolabLogin.promise;
+
+  let resolvePromise;
+  const promise = new Promise((resolve) => { resolvePromise = resolve; });
+  const partition = `hoyolab-login-${Date.now()}`;
+  const win = new BrowserWindow({
+    width: 480,
+    height: 700,
+    minWidth: 420,
+    minHeight: 600,
+    center: true,
+    maximizable: false,
+    fullscreenable: false,
+    parent: mainWindow || undefined,
+    backgroundColor: '#ffffff',
+    title: 'HoYoLAB 登录',
+    autoHideMenuBar: true,
+    webPreferences: {
+      partition,
+      contextIsolation: true,
+      nodeIntegration: false,
+      sandbox: true,
+      spellcheck: false,
+    },
+  });
+  win.setMenuBarVisibility(false);
+  const hoyolabSession = win.webContents.session;
+  win.webContents.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36');
+  win.webContents.setWindowOpenHandler(({ url }) => (/^https?:/i.test(url) ? { action: 'allow' } : { action: 'deny' }));
+
+  const state = { win, settled: false, timer: null, timeout: null, promise, resolve: resolvePromise, tokenSeenAt: 0, fallbackUsed: false };
+  hoyolabWindow = win;
+  hoyolabLogin = state;
+
+  const finish = async (result) => {
+    if (state.settled) return;
+    state.settled = true;
+    if (state.timer) clearInterval(state.timer);
+    if (state.timeout) clearTimeout(state.timeout);
+    try {
+      if (!win.isDestroyed()) await hoyolabSession.clearStorageData();
+    } catch { /* ignore */ }
+    try {
+      if (!win.isDestroyed()) win.close();
+    } catch { /* ignore */ }
+    if (hoyolabWindow === win) hoyolabWindow = null;
+    if (hoyolabLogin === state) hoyolabLogin = null;
+    state.resolve(result);
+  };
+
+  win.on('closed', () => {
+    if (state.settled) return;
+    state.settled = true;
+    if (state.timer) clearInterval(state.timer);
+    if (state.timeout) clearTimeout(state.timeout);
+    hoyolabSession.clearStorageData().catch(() => {});
+    if (hoyolabWindow === win) hoyolabWindow = null;
+    if (hoyolabLogin === state) hoyolabLogin = null;
+    state.resolve({ ok: false, message: '已关闭 HoYoLAB 登录窗口' });
+  });
+
+  win.webContents.on('did-fail-load', (_event, errorCode, errorDescription, _url, isMainFrame) => {
+    if (!isMainFrame || errorCode === -3) return;
+    if (!state.fallbackUsed) {
+      state.fallbackUsed = true;
+      win.loadURL(HOYOLAB_FALLBACK_URL).catch(() => {});
+      return;
+    }
+    finish({ ok: false, message: `HoYoLAB 登录页加载失败：${errorDescription}` });
+  });
+
+  win.webContents.on('did-finish-load', () => {
+    if (state.settled || state.tokenSeenAt || !state.fallbackUsed) return;
+    const url = win.webContents.getURL();
+    if (url.includes('/login-platform/')) return;
+    // Account centre: click its Log In button, then turn the embedded passport
+    // iframe into a full-window login form (hide the marketing page around it).
+    win.webContents.executeJavaScript(`(() => {
+      let clicked = false;
+      let tries = 0;
+      const timer = setInterval(() => {
+        tries += 1;
+        const frame = [...document.querySelectorAll('iframe')].find((f) => /login-platform/.test(f.src || ''));
+        if (frame) {
+          clearInterval(timer);
+          if (document.getElementById('hyv-login-minimal')) return;
+          const style = document.createElement('style');
+          style.id = 'hyv-login-minimal';
+          let css = 'body{background:#f5f7fb!important;margin:0!important;overflow:hidden!important}'
+            + '#hyv-account-frame{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;border:0!important;z-index:2147483647!important;background:#f5f7fb!important}';
+          const app = document.getElementById('app');
+          if (app && !app.contains(frame)) css += '#app{display:none!important}';
+          style.textContent = css;
+          document.head.appendChild(style);
+          return;
+        }
+        if (!clicked) {
+          const hit = [...document.querySelectorAll('button, a')].find((el) => {
+            const text = (el.textContent || '').trim();
+            return /^log\s*in(\s|$)/i.test(text) || text.startsWith('登录');
+          });
+          if (hit) { hit.click(); clicked = true; }
+        }
+        if (tries > 600) clearInterval(timer);
+      }, 400);
+    })();`).catch(() => {});
+  });
+
+  state.timer = setInterval(async () => {
+    if (state.settled || win.isDestroyed()) return;
+    try {
+      const cookies = await win.webContents.session.cookies.get({});
+      const hasToken = cookies.some((c) => c.name === 'cookie_token_v2')
+        || (cookies.some((c) => c.name === 'cookie_token') && cookies.some((c) => c.name === 'account_id'));
+      if (!hasToken) {
+        state.tokenSeenAt = 0;
+        return;
+      }
+      // Give the passport flow a moment to land companion cookies (account_mid_v2 etc.).
+      if (!state.tokenSeenAt) {
+        state.tokenSeenAt = Date.now();
+        return;
+      }
+      if (Date.now() - state.tokenSeenAt < 2000) return;
+      const payload = cookies
+        .filter((c) => HOYOLAB_COOKIE_NAMES.has(c.name))
+        .map((c) => ({ name: c.name, value: c.value, domain: c.domain }));
+      const res = await fetch(`${serverUrl}/api/auth/hoyolab/import`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cookies: payload }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || data.ok === false) {
+        await finish({ ok: false, message: data.message || 'HoYoLAB 登录态导入失败' });
+        return;
+      }
+      await finish({ ok: true, session: data.session });
+    } catch { /* keep polling */ }
+  }, 1500);
+
+  state.timeout = setTimeout(() => {
+    finish({ ok: false, message: 'HoYoLAB 登录超时，请重试' });
+  }, 10 * 60 * 1000);
+  if (state.timeout.unref) state.timeout.unref();
+
+  win.loadURL(HOYOLAB_LOGIN_URL).catch(() => {});
+  return promise;
+}
+
+ipcMain.handle('hoyolab:login', async () => openHoyolabLoginWindow());
+
 function nteCaptureDir() {
   return path.join(portableDataRoot, 'nte-captures');
 }

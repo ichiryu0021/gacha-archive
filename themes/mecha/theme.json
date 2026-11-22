@@ -19,6 +19,22 @@
     "animations": true,
     "reducedMotion": true,
     "embeddedBuild": true
+  },
+  "share": {
+    "preset": "custom",
+    "background": "#0b0d0c",
+    "background2": "#101411",
+    "surface": "#121714",
+    "surface2": "#171d19",
+    "text": "#ece9dd",
+    "muted": "#aaa58f",
+    "dim": "#767d73",
+    "line": "rgba(236,233,221,0.16)",
+    "signal": "#f2d35f",
+    "radius": 2,
+    "grid": true,
+    "kicker": "MECHANICAL / DARK",
+    "mode": "SYS // SHARE"
   }
 }
 

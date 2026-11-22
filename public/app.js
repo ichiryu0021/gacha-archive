@@ -58,6 +58,7 @@ const state = {
   manualFilters: {},
   manualMode: 'single',
   auth: { sessionId: '', status: '', url: '', user: null, rolesByGame: {}, errors: {}, startedAt: 0 },
+  hoyolab: { status: '', user: null, rolesByGame: {}, errors: {}, error: '' },
   authTab: 'miyoushe',
   accountTab: 'accounts',
   banners: null,
@@ -213,17 +214,19 @@ function renderShell() {
     return `<button class="game-tab ${state.game === id ? 'active' : ''}" data-action="switch-game" data-game="${id}" style="--tab-color:${meta.color}"><span class="dot"></span>${meta.label}</button>`;
   }).join('');
   const logged = state.auth.status === 'Confirmed';
+  const hoLogged = state.hoyolab.status === 'Confirmed';
   const avatar = state.auth.user?.avatar || '';
   const hg = state.thirdparty?.status?.hypergryph?.connected;
   const tjd = state.thirdparty?.status?.tajiduo?.connected;
-  const anyLogin = logged || hg || tjd;
+  const anyLogin = logged || hoLogged || hg || tjd;
   const loginLabel = logged
     ? (esc(state.auth.user?.nickname) || '米游社')
-    : hg && tjd ? '森空岛 / 塔吉多'
-      : hg ? '森空岛'
-        : tjd ? '塔吉多'
-          : '账号';
-  const loginIcon = logged ? (avatar ? `<img class="auth-avatar" src="${attr(avatar)}" alt="">` : '米') : hg ? '森' : tjd ? '塔' : ICONS.qr;
+    : hoLogged ? (esc(state.hoyolab.user?.nickname) || 'HoYoLAB')
+      : hg && tjd ? '森空岛 / 塔吉多'
+        : hg ? '森空岛'
+          : tjd ? '塔吉多'
+            : '账号';
+  const loginIcon = logged ? (avatar ? `<img class="auth-avatar" src="${attr(avatar)}" alt="">` : '米') : hoLogged ? 'H' : hg ? '森' : tjd ? '塔' : ICONS.qr;
   $('#account-chip').innerHTML = `<button class="auth-entry ${anyLogin ? 'on' : ''}" data-action="open-auth" title="账号"><span class="auth-entry-icon">${loginIcon}</span><span class="auth-entry-copy"><strong>${loginLabel}</strong></span></button>`;
   $('#side-version').textContent = `v${state.shell?.displayVersion || state.shell?.version || '1.05'}`;
   const updateSlot = $('#update-slot');
@@ -324,10 +327,9 @@ function renderDashboard() {
   const heroValue = hasTotals ? fmt(d.counts.lifetime) : '—';
   const rate = d.rates.upRate;
   const hitRate = d.rates.upDecided ? rate : null;
-  const currentPity = d.pity.hasCurrent ? d.pity.max : 0;
-  const currentPool = d.pity.hasCurrent ? d.pools.filter((p) => p.currentPity === currentPity).sort((a, b) => b.count - a.count)[0] : null;
-  const cap = currentPool ? (d.pity.cap[currentPool.type] || 90) : 90;
-  const progress = Math.min(100, cap ? (currentPity / cap) * 100 : 0);
+  const pityRows = ['character', 'weapon']
+    .map((kind) => ({ kind, ...(d.pity.kinds?.[kind] || {}) }))
+    .filter((row) => row.label);
   const recent = d.recentFive?.[0];
   const warnings = (d.warnings || []).slice(0, 2);
   const coverageOnly = state.game === 'nte' && d.counts.exactUnknown;
@@ -353,10 +355,11 @@ function renderDashboard() {
           <div>
             <div class="hero-kicker"><span class="dot"></span> TOTAL PULLS / ${coverageOnly ? '已覆盖抽数' : '总抽数'}</div>
             <div class="hero-number-row"><div class="hero-number">${heroValue}</div><div class="hero-unit">${hasTotals ? (coverageOnly ? '抽（覆盖）' : '抽') : '待录入'}</div></div>
-            <div class="hero-sub">限定池 <b>${fmt(d.counts.limitedExact)}</b> 抽 · <b>${fmt(d.counts.lifetimeFive)}</b> 张${topLabel()}${d.meta?.uid ? ` · UID ${esc(d.meta.uid)}` : ''}</div>
+            <div class="hero-sub">角色池 <b>${fmt(d.counts.charPulls)}</b> 抽 · 武器池 <b>${fmt(d.counts.weaponPulls)}</b> 抽 · <b>${fmt(d.counts.lifetimeFive)}</b> 张${topLabel()}${d.meta?.uid ? ` · UID ${esc(d.meta.uid)}` : ''}</div>
             <div class="hero-pills">
               <span class="pill accent"><b>${d.counts.lifetimeFive}</b> ${topLabel()}</span>
-              <span class="pill"><b>${d.counts.limitedFiveAll || 0}</b> 限定${topLabel()}</span>
+              <span class="pill"><b>${d.counts.charFive || 0}</b> 角色${topLabel()}</span>
+              <span class="pill"><b>${d.counts.weaponFive || 0}</b> 武器${topLabel()}</span>
               <span class="pill"><b>${d.counts.overlapFive ? fmt(d.counts.overlapFive) : '0'}</b> 重叠${topLabel()}</span>
             </div>
           </div>
@@ -371,25 +374,36 @@ function renderDashboard() {
         <div class="card rate-card">
           <div class="rate-copy">
             <div class="label">HIT RATE</div>
-            <div class="value">${hitRate == null ? '—' : pct(hitRate)}<small>命中率</small></div>
-            <div class="foot">${d.rates.upDecided ? `命中 ${d.rates.upWins} / 已判定 ${d.rates.upDecided}` : '接口未提供 UP 判定'}</div>
+            <div class="value">${hitRate == null ? '—' : pct(hitRate)}<small>角色UP命中</small></div>
+            <div class="foot">${d.rates.upDecided ? `角色池 命中 ${d.rates.upWins} / 已判定 ${d.rates.upDecided}` : '接口未提供角色 UP 判定'}</div>
           </div>
           <div class="rate-ring" style="--p:${Math.min(100, (hitRate || 0) * 100).toFixed(1)}%"><div><strong>${fmt(d.counts.lifetimeFive)}</strong><span>FIVE STARS</span></div></div>
         </div>
-        <div class="card" style="padding:16px 19px;min-height:105px">
+        <div class="card" style="padding:16px 19px">
           <div style="display:flex;justify-content:space-between;align-items:center">
-            <div class="stat-label">当前垫抽 <span class="mini">${currentPool ? esc(currentPool.label) : '暂无'}</span></div>
-            <div style="font-family:var(--mono);font-size:26px;font-weight:300;color:var(--accent)">${d.pity.hasCurrent ? currentPity : '—'}<small style="font-size:11px;color:var(--muted)">${d.pity.hasCurrent ? `/${cap}` : ''}</small></div>
+            <div class="stat-label">当前垫抽 <span class="mini">角色 / 武器分开</span></div>
           </div>
-          <div class="pool-bar" style="margin-top:11px"><i style="width:${progress}%"></i></div>
-          <div style="font-size:10.5px;color:var(--muted-2);margin-top:7px">${d.pity.hasCurrent ? `距离保底还有 ${Math.max(0, cap - currentPity)} 抽 · 当前垫抽为近似值` : '同步官方接口后显示当前垫抽'}</div>
+          <div style="display:grid;grid-template-columns:repeat(${Math.max(1, pityRows.length)},1fr);gap:14px;margin-top:12px">
+            ${pityRows.map((row) => {
+              const p = row.hasCurrent && row.cap ? Math.min(100, (row.value / row.cap) * 100) : 0;
+              return `<div title="${attr(row.label)}">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;gap:6px">
+                  <span style="font-size:12px;color:var(--muted);white-space:nowrap">${row.kind === 'character' ? '角色池' : '武器池'}</span>
+                  <span style="font-family:var(--mono);font-size:22px;font-weight:300;color:var(--accent)">${row.hasCurrent ? row.value : '—'}<small style="font-size:10px;color:var(--muted)">${row.hasCurrent ? `/${row.cap}` : ''}</small></span>
+                </div>
+                <div class="pool-bar" style="margin-top:7px"><i style="width:${p}%"></i></div>
+                <div style="font-size:10px;color:var(--muted-2);margin-top:5px">${row.hasCurrent ? `距离保底 ${Math.max(0, row.cap - row.value)} 抽` : '暂无数据'}</div>
+              </div>`;
+            }).join('')}
+          </div>
+          <div style="font-size:10.5px;color:var(--muted-2);margin-top:10px">角色池 / 武器池分开计算 · 当前垫抽为近似值</div>
         </div>
       </div>
     </div>
     <div class="stat-row">
       ${statCard(`${topLabel()}档案`, fmt(d.counts.lifetimeFive), '张', `${d.counts.exactFive} 张有逐条明细`)}
       ${statCard('平均出金', avgValue, '', avgNote, '')}
-      ${statCard('UP命中', d.rates.upDecided ? fmt(d.counts.limitedFive || 0) : '—', '张', d.rates.upDecided ? `命中 ${d.rates.upWins} / 已判定 ${d.rates.upDecided}` : '接口未提供 UP 判定')}
+      ${statCard('角色UP命中', d.rates.upDecided ? fmt(d.counts.limitedFive || 0) : '—', '张', d.rates.upDecided ? `角色池 命中 ${d.rates.upWins} / 已判定 ${d.rates.upDecided}` : '接口未提供角色 UP 判定')}
       ${statCard('数据覆盖', `${d.coverage.percent}%`, '', `自 ${d.coverage.launchDate} 起`)}
     </div>
         <div class="card coverage-card">
@@ -428,7 +442,7 @@ function renderCoverage(d) {
     segments.push(`<div class="timeline-seg snapshot" style="left:${pos(i.start)}%;width:${Math.max(0.4, pos(i.end) - pos(i.start))}%" title="历史汇总 ${i.start} → ${i.end}"></div>`);
   }
   if (d.coverage.exactRange?.start) {
-    segments.push(`<div class="timeline-seg exact" style="left:${pos(d.coverage.exactRange.start)}%;width:${Math.max(0.4, pos(d.coverage.exactRange.end) - pos(d.coverage.exactRange.start))}%" title="限定池 ${d.coverage.exactRange.start} → ${d.coverage.exactRange.end}"></div>`);
+    segments.push(`<div class="timeline-seg exact" style="left:${pos(d.coverage.exactRange.start)}%;width:${Math.max(0.4, pos(d.coverage.exactRange.end) - pos(d.coverage.exactRange.start))}%" title="官方窗口 ${d.coverage.exactRange.start} → ${d.coverage.exactRange.end}"></div>`);
   }
   if (d.counts.overlap > 0 && d.coverage.intervals.length && d.coverage.exactRange?.start) {
     const left = Math.max(pos(d.coverage.intervals[0].start), pos(d.coverage.exactRange.start));
@@ -443,7 +457,8 @@ function renderCoverage(d) {
   return `<div class="coverage-head">
     <div><div class="card-title"><span class="mark"></span><h3>生涯覆盖</h3><span>DATA COVERAGE</span></div></div>
     <div class="coverage-summary">
-      <span class="coverage-badge exact"><i class="swatch"></i>限定池 ${fmt(d.counts.limitedExact)} 抽</span>
+      <span class="coverage-badge exact"><i class="swatch"></i>角色池 ${fmt(d.counts.charPulls)} 抽</span>
+      <span class="coverage-badge exact"><i class="swatch"></i>武器池 ${fmt(d.counts.weaponPulls)} 抽</span>
       <span class="coverage-badge snapshot"><i class="swatch"></i>历史汇总 ${fmt(d.counts.snapshotOnly)} 抽</span>
       ${d.counts.overlap ? `<span class="coverage-badge overlap"><i class="swatch"></i>重叠 ${fmt(d.counts.overlap)} 抽</span>` : ''}
     </div>
@@ -466,23 +481,23 @@ function renderMonthly(monthly) {
 function renderPoolList(pools) {
   const list = (pools || []).filter((p) => p.count > 0 || p.five > 0).sort((a, b) => b.count - a.count);
   if (!list.length) return `<div class="empty-chart">还没有卡池数据</div>`;
+  const pityKnown = Boolean(state.dashboard?.pity?.hasCurrent);
   const max = Math.max(1, ...list.map((p) => p.count));
   return `<div class="pool-list">${list.slice(0, 6).map((p) => `<div class="pool-item">
     <div class="pool-top"><span class="pool-name">${esc(p.label)}</span><span class="pool-count"><b>${p.count ? fmt(p.count) : '—'}</b> 抽 · ${p.five} 金</span></div>
     <div class="pool-bar"><i style="width:${(p.count / max) * 100}%"></i></div>
-    <div class="pool-sub"><span>${p.currentPity ? `当前垫抽 ${p.currentPity}` : '垫抽未知'}</span><span>命中率 ${p.hitRate == null ? '—' : pct(p.hitRate)}</span></div>
+    <div class="pool-sub"><span>${pityKnown ? `当前垫抽 ${p.currentPity ?? 0}` : '垫抽未知'}</span><span>命中率 ${p.hitRate == null ? '—' : pct(p.hitRate)}</span></div>
   </div>`).join('')}</div>`;
 }
 
 function renderPoolTable(d) {
   const list = (d.pools || []).filter((p) => p.count > 0 || p.five > 0);
   if (!list.length) return '';
-  const totalLimited = d.counts.limitedFive || 0;
-  const totalStandard = d.counts.standardFive || 0;
+  const pityKnown = Boolean(d.pity?.hasCurrent);
   return `<div class="card" style="margin-bottom:15px">
     <div class="card-head"><div class="card-title"><span class="mark"></span><h3>卡池命中统计</h3><span>POOL PERFORMANCE</span></div></div>
     <div class="table-wrap" style="border:0"><table><thead><tr><th>卡池</th><th>抽数</th><th>${topLabel()}</th><th>${topLabel()}率</th><th>UP</th><th>常驻</th><th>命中率</th><th>当前垫抽</th></tr></thead><tbody>
-      ${list.map((p) => `<tr><td><b style="color:var(--text);font-weight:550">${esc(p.label)}</b></td><td>${p.count ? fmt(p.count) : '—'}</td><td>${p.five}</td><td>${p.rate == null ? '—' : pct(p.rate)}</td><td>${p.hitApplicable ? `<span class="badge accent">${p.limited}</span>` : '<span class="muted">—</span>'}</td><td>${p.hitApplicable ? `<span class="badge">${p.standard}</span>` : '<span class="muted">—</span>'}</td><td>${p.hitRate == null ? '—' : pct(p.hitRate)}</td><td>${p.currentPity || '—'}</td></tr>`).join('')}
+      ${list.map((p) => `<tr><td><b style="color:var(--text);font-weight:550">${esc(p.label)}</b></td><td>${p.count ? fmt(p.count) : '—'}</td><td>${p.five}</td><td>${p.rate == null ? '—' : pct(p.rate)}</td><td>${p.hitApplicable ? `<span class="badge accent">${p.limited}</span>` : '<span class="muted">—</span>'}</td><td>${p.hitApplicable ? `<span class="badge">${p.standard}</span>` : '<span class="muted">—</span>'}</td><td>${p.hitRate == null ? '—' : pct(p.hitRate)}</td><td>${pityKnown ? (p.currentPity ?? 0) : '—'}</td></tr>`).join('')}
     </tbody></table></div>
   </div>`;
 }
@@ -670,7 +685,7 @@ function renderThirdPartySyncCard() {
     </div>`;
   }
   if (game === 'nte') {
-    return `${error}<div class="card">
+    return `${error}${renderNteCaptureCard()}<div class="card">
       <div class="card-head"><div class="card-title"><span class="mark"></span><h3>异环官方记录</h3><span>TAJIDUO</span></div>${badge(tjd.connected, tjd.connected ? '已登录' : '未登录')}</div>
       <div class="role-list" style="margin-top:14px">${tjd.connected ? `<div class="role-item"><div class="role-main"><strong>${esc(tjd.user?.nickname || tjd.user?.roleId || '已登录')}</strong><span>UID ${esc(tjd.user?.uid || '')} · 官方抽卡记录约保留 180 天</span></div><button class="primary-btn" data-action="tp-tjd-sync">同步异环</button></div>` : loginPrompt('tajiduo', '塔吉多')}</div>
       <div class="auto-hint" style="margin-top:12px">官方接口只返回 S 级记录和 S 间隔，当前垫抽无法从接口还原；导入 NTEUID 可以补齐历史。塔吉多登录在右上角账号入口。</div>
@@ -807,7 +822,7 @@ function renderNteExportImport() {
 
 function renderMiyousheSyncCard() {
   const game = state.game;
-  if (!['genshin', 'hsr', 'zzz'].includes(game)) return '';
+  if (!['genshin', 'zzz'].includes(game)) return '';
   const meta = GAME_META[game];
   const a = state.auth;
   const logged = a.status === 'Confirmed';
@@ -865,6 +880,9 @@ function renderAutoImport() {
   const cacheSupported = ['genshin', 'hsr', 'zzz'].includes(game);
   const found = scan?.found?.[game];
   const diagnostics = (scan?.diagnostics || []).filter((item) => item.game === game);
+  const hsrNotice = game === 'hsr'
+    ? `<div class="notice blue" style="margin-bottom:15px">${ICONS.shield}<div>崩铁需要先在游戏内打开「跃迁 → 记录」刷新缓存 authkey；米游社登录不支持崩铁抽卡记录，所以这里不提供米游社同步。</div></div>`
+    : '';
   const collectorCard = `<div class="card" style="margin-bottom:15px;border-color:rgba(var(--accent-rgb),.16)">
     <div class="card-head" style="margin-bottom:10px"><div class="card-title"><span class="mark"></span><h3>后台半自动采集</h3><span>AUTO COLLECTOR</span></div><span class="badge ${colOn ? 'accent' : ''}">${colOn ? '运行中' : '已暂停'}</span></div>
     <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px">
@@ -888,7 +906,7 @@ function renderAutoImport() {
     <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap"><button class="primary-btn" data-action="scan-links">${ICONS.refresh} 扫描本机链接</button><button class="ghost-btn" data-action="switch-import-tab" data-tab="paste">没有找到？粘贴链接</button></div>
     ${diagnostics.length ? `<details style="margin-top:16px"><summary style="cursor:pointer;color:var(--muted);font-size:12px">查看扫描诊断（${diagnostics.length} 项）</summary><div style="margin-top:10px;max-height:220px;overflow:auto;font-family:var(--mono);font-size:10.5px;color:var(--muted-2);line-height:1.8">${diagnostics.map((x) => `${esc(x.type)} · ${esc(x.path || x.file || x.installDir || '')}${x.exists === false ? ' · 不存在' : ''}${x.error ? ' · ' + esc(x.error) : ''}`).join('<br>')}</div></details>` : ''}
   </div>` : '';
-  return `${renderMiyousheSyncCard()}${collectorCard}${cacheCard}`;
+  return `${hsrNotice}${renderMiyousheSyncCard()}${collectorCard}${cacheCard}`;
 }
 
 function renderPasteImport() {
@@ -936,7 +954,7 @@ function authRoleRows() {
     const meta = GAME_META[game];
     return `<div class="auth-game">
       <div class="auth-game-head"><span class="game-dot" style="background:${meta.color};color:${meta.color}"></span><strong>${meta.label}</strong><span>${roles.length} 个角色</span></div>
-      ${roles.length ? roles.map((r) => `<div class="role-item"><div class="role-main"><strong>${esc(r.nickname || r.uid)}</strong><span>UID ${esc(r.uid)} · ${esc(r.regionName || r.region)}</span></div><button class="ghost-btn" data-action="auth-sync" data-game="${game}" data-uid="${attr(r.uid)}">同步</button></div>`).join('') : `<div class="auth-empty">${error ? esc(error) : '没有绑定角色'}</div>`}
+      ${roles.length ? roles.map((r) => `<div class="role-item"><div class="role-main"><strong>${esc(r.nickname || r.uid)}</strong><span>UID ${esc(r.uid)} · ${esc(r.regionName || r.region)}</span></div>${game === 'hsr' ? '<span class="badge">需游戏内记录页</span>' : `<button class="ghost-btn" data-action="auth-sync" data-game="${game}" data-uid="${attr(r.uid)}">同步</button>`}</div>`).join('') : `<div class="auth-empty">${error ? esc(error) : '没有绑定角色'}</div>`}
     </div>`;
   }).filter(Boolean);
   return rows.length ? rows.join('') : '<div class="auth-empty">没有绑定米哈游角色</div>';
@@ -945,6 +963,7 @@ function authRoleRows() {
 function authTabsHtml() {
   const tabs = [
     ['miyoushe', '米游社', 'QR'],
+    ['hoyolab', 'HoYoLAB', 'OS'],
     ['skland', '森空岛', 'QR'],
     ['tajiduo', '塔吉多', 'SMS'],
   ];
@@ -1007,9 +1026,48 @@ function renderLoginTajiduoBody() {
     ${state.thirdparty?.status?.tajiduo?.lastError ? `<div class="notice red" style="margin-top:10px">${ICONS.warn}<div>${esc(state.thirdparty.status.tajiduo.lastError.stage)}：${esc(state.thirdparty.status.tajiduo.lastError.message)}</div></div>` : ''}`;
 }
 
+function hoyolabRoleRows() {
+  const h = state.hoyolab;
+  const order = ['genshin', 'hsr', 'zzz'];
+  const rows = order.map((game) => {
+    const roles = h.rolesByGame?.[game] || [];
+    const error = h.errors?.[game];
+    if (!roles.length && !error) return '';
+    const meta = GAME_META[game];
+    return `<div class="auth-game">
+      <div class="auth-game-head"><span class="game-dot" style="background:${meta.color};color:${meta.color}"></span><strong>${meta.label}</strong><span>${roles.length} 个角色</span></div>
+      ${roles.length
+        ? roles.map((r) => `<div class="role-item"><div class="role-main"><strong>${esc(r.nickname || r.uid)}</strong><span>UID ${esc(r.uid)} · ${esc(r.regionName || r.region)} · Lv.${esc(r.level || '?')}</span></div><button class="ghost-btn" data-action="hol-sync" data-game="${game}" data-uid="${attr(r.uid)}">同步</button></div>`).join('')
+        : `<div class="auth-empty">${esc(error || '没有绑定角色')}</div>`}
+    </div>`;
+  }).filter(Boolean);
+  return rows.length ? rows.join('') : '<div class="auth-empty">没有读取到国际服角色</div>';
+}
+
+function renderLoginHoyolabBody() {
+  const h = state.hoyolab;
+  const desktop = Boolean(window.desktop?.hoyolab);
+  if (h.status === 'Confirmed') {
+    return `<div class="qr-status ok"><span class="pulse"></span><span>已登录 HoYoLAB${h.user?.nickname ? ' · ' + esc(h.user.nickname) : ''}${h.user?.aid ? ' · ' + esc(h.user.aid) : ''}</span></div>
+      <div class="auto-hint">国际服（America / Europe / Asia / TW-HK-MO）。角色读取和同步只使用本机登录态。</div>
+      ${h.error ? `<div class="notice red" style="margin-top:12px">${ICONS.warn}<div>${esc(h.error)}</div></div>` : ''}
+      ${hoyolabRoleRows()}
+      <div class="modal-actions" style="justify-content:flex-start">
+        <button class="ghost-btn" data-action="hol-roles">刷新角色</button>
+        <button class="ghost-btn" data-action="hol-logout">退出 HoYoLAB</button>
+        <button class="ghost-btn" data-action="account-tab" data-tab="accounts">游戏账号</button>
+      </div>`;
+  }
+  return `<div class="auto-hint">用 HoYoLAB 账号登录国际服，读取原神 / 崩铁 / 绝区零的抽卡记录，无需打开游戏。会打开一个仅含官方登录表单的小窗口（不需要浏览器）；如果页面提示地区不可用，请换网络后重试。登录态用 Windows DPAPI 加密保存。</div>
+    ${desktop
+      ? `<div class="qr-actions" style="margin-top:14px"><button class="primary-btn" data-action="hol-login">打开 HoYoLAB 登录窗口</button></div>`
+      : `<div class="notice red" style="margin-top:12px">${ICONS.warn}<div>HoYoLAB 登录仅桌面版可用。浏览器版可以改用「粘贴链接」导入国际服 authkey。</div></div>`}
+    ${h.error ? `<div class="notice red" style="margin-top:12px">${ICONS.warn}<div>${esc(h.error)}</div></div>` : ''}`;
+}
+
 function renderAccountLoginTab() {
   const tab = state.authTab || 'miyoushe';
-  const body = tab === 'skland' ? renderLoginSklandBody() : tab === 'tajiduo' ? renderLoginTajiduoBody() : renderLoginMiyousheBody();
+  const body = tab === 'skland' ? renderLoginSklandBody() : tab === 'tajiduo' ? renderLoginTajiduoBody() : tab === 'hoyolab' ? renderLoginHoyolabBody() : renderLoginMiyousheBody();
   return `<div class="auto-hint">登录成功后会自动切回游戏账号列表。</div>
     ${authTabsHtml()}
     <div class="auth-tab-body">${body}</div>`;
@@ -1017,9 +1075,11 @@ function renderAccountLoginTab() {
 
 function renderAccountListTab() {
   const a = state.auth;
+  const ho = state.hoyolab;
   const hg = state.thirdparty?.status?.hypergryph || {};
   const tjd = state.thirdparty?.status?.tajiduo || {};
   const miLogged = a.status === 'Confirmed';
+  const hoLogged = ho.status === 'Confirmed';
   const hgBindings = hg.bindings || [];
   const loginCard = (type, title, subtitle) => `<div class="auth-game"><div class="auth-game-head"><strong>${title}</strong><span>${subtitle}</span></div><div class="role-item"><div class="role-main"><strong>未登录</strong><span>${subtitle}</span></div><button class="ghost-btn" data-action="account-login-go" data-tab="${type}">去登录</button></div></div>`;
   const sklandRow = (game, label) => {
@@ -1030,16 +1090,19 @@ function renderAccountListTab() {
     </div>`;
   };
   const nteCard = `<div class="auth-game"><div class="auth-game-head"><strong>异环</strong><span>塔吉多</span></div>${tjd.connected ? `<div class="role-item"><div class="role-main"><strong>${esc(tjd.user?.nickname || tjd.user?.roleId || '已登录')}</strong><span>UID ${esc(tjd.user?.uid || '')} · 官方记录约 180 天</span></div><button class="ghost-btn" data-action="tp-tjd-sync">同步</button></div>` : `<div class="role-item"><div class="role-main"><strong>未登录</strong><span>塔吉多</span></div><button class="ghost-btn" data-action="account-login-go" data-tab="tajiduo">去登录</button></div>`}</div>`;
+  const hoCard = `<div class="auth-game"><div class="auth-game-head"><strong>HoYoLAB</strong><span>国际服</span></div>${hoLogged ? `<div class="role-item"><div class="role-main"><strong>${esc(ho.user?.nickname || '已登录')}</strong><span>原神 / 星铁 / 绝区零 · 国际服</span></div><button class="ghost-btn" data-action="account-login-go" data-tab="hoyolab">管理</button></div>` : `<div class="role-item"><div class="role-main"><strong>未登录</strong><span>国际服 原神 / 星铁 / 绝区零</span></div><button class="ghost-btn" data-action="account-login-go" data-tab="hoyolab">去登录</button></div>`}</div>`;
   const sklandCards = hg.connected
     ? `${sklandRow('arknights', '明日方舟')}${sklandRow('endfield', '终末地')}${hgBindings.length ? '' : '<div class="auth-game"><div class="auth-empty">没有读取到森空岛绑定角色</div><button class="ghost-btn" data-action="tp-skland-refresh">刷新绑定</button></div>'}`
     : loginCard('skland', '森空岛', '明日方舟 / 终末地');
   return `<div class="account-summary">
       <span class="badge ${miLogged ? 'accent' : ''}">米游社 ${miLogged ? '已登录' : '未登录'}</span>
+      <span class="badge ${hoLogged ? 'accent' : ''}">HoYoLAB ${hoLogged ? '已登录' : '未登录'}</span>
       <span class="badge ${hg.connected ? 'accent' : ''}">森空岛 ${hg.connected ? '已登录' : '未登录'}</span>
       <span class="badge ${tjd.connected ? 'accent' : ''}">塔吉多 ${tjd.connected ? '已登录' : '未登录'}</span>
     </div>
     <div class="auth-games">
       ${miLogged ? authRoleRows() : loginCard('miyoushe', '米游社', '原神 / 星铁 / 绝区零')}
+      ${hoCard}
       ${sklandCards}
       ${nteCard}
     </div>`;
@@ -1095,6 +1158,9 @@ async function openAccountModal() {
   if (state.auth.status === 'Confirmed' && !Object.keys(state.auth.rolesByGame || {}).length) {
     loadAllAuthRoles().catch(() => {});
   }
+  if (state.hoyolab.status === 'Confirmed' && !Object.keys(state.hoyolab.rolesByGame || {}).length) {
+    loadHoyolabRoles().catch(() => {});
+  }
   ensureLoginTab();
 }
 
@@ -1106,6 +1172,9 @@ function ensureLoginTab() {
   }
   if (state.authTab === 'skland' && state.thirdparty?.qr?.url && state.thirdparty.qr.status !== 'Confirmed') {
     startThirdPartyQrPolling();
+  }
+  if (state.authTab === 'hoyolab' && state.hoyolab.status === 'Confirmed' && !Object.keys(state.hoyolab.rolesByGame || {}).length) {
+    loadHoyolabRoles().catch(() => {});
   }
 }
 
@@ -1183,6 +1252,7 @@ async function syncAllAuthGames() {
   for (const game of ['genshin', 'hsr', 'zzz']) {
     const role = (roleMap[game] || [])[0];
     if (!role) { results.push({ game, ok: false, message: '无角色' }); continue; }
+    if (game === 'hsr') { results.push({ game, ok: false, message: '需游戏内记录页' }); continue; }
     try {
       const data = await api('/api/auth/link', { method: 'POST', body: JSON.stringify({ sessionId, game, role }) });
       results.push({ game, ok: true, added: data.addedFive || 0, total: data.totalFetched || 0 });
@@ -1224,6 +1294,52 @@ async function logoutAuth() {
   renderShell();
   if (state.view === 'import' && state.importTab === 'auto') renderView();
   toast('已退出米游社');
+}
+
+async function loginHoyolab(el) {
+  if (!window.desktop?.hoyolab) throw new Error('当前环境不支持 HoYoLAB 登录窗口');
+  if (el) setBusy(el, true, '等待登录');
+  state.hoyolab.error = '';
+  try {
+    const result = await window.desktop.hoyolab.login();
+    if (!result?.ok) throw new Error(result?.message || 'HoYoLAB 登录失败');
+    state.hoyolab = { ...state.hoyolab, status: 'Confirmed', user: result.session?.user || null, error: '' };
+    await loadHoyolabRoles();
+    toast('HoYoLAB 登录成功');
+  } catch (e) {
+    state.hoyolab.error = e.message;
+    refreshAuthModal();
+    throw e;
+  } finally {
+    if (el) setBusy(el, false);
+  }
+}
+
+async function loadHoyolabRoles() {
+  const data = await api('/api/auth/hoyolab/roles-all');
+  state.hoyolab.rolesByGame = data.roles || {};
+  state.hoyolab.errors = data.errors || {};
+  state.hoyolab.error = '';
+  refreshAuthModal();
+  renderShell();
+  if (state.view === 'import' && state.importTab === 'auto') renderView();
+}
+
+async function syncHoyolabRole(game, uid) {
+  const role = (state.hoyolab.rolesByGame?.[game] || []).find((r) => String(r.uid) === String(uid));
+  if (!role) throw new Error('找不到该角色');
+  const data = await api('/api/auth/hoyolab/link', { method: 'POST', body: JSON.stringify({ game, role }) });
+  state.accountTab = 'accounts';
+  await reloadAfterSync(data);
+  refreshAuthModal();
+}
+
+async function logoutHoyolab() {
+  await api('/api/auth/hoyolab/logout', { method: 'POST', body: '{}' }).catch(() => {});
+  state.hoyolab = { status: '', user: null, rolesByGame: {}, errors: {}, error: '' };
+  refreshAuthModal();
+  renderShell();
+  toast('已退出 HoYoLAB');
 }
 
 
@@ -1269,7 +1385,7 @@ function loadCorsImage(src) {
     const img = new Image();
     img.crossOrigin = 'anonymous';
     img.decoding = 'async';
-    const timer = setTimeout(() => resolve(null), 5000);
+    const timer = setTimeout(() => resolve(null), 12000);
     const finish = (value) => { clearTimeout(timer); resolve(value); };
     img.onload = () => finish(img);
     img.onerror = () => finish(null);
@@ -1283,8 +1399,8 @@ async function loadShareImage(iconUrl) {
   if (iconUrl.startsWith('/api/asset')) return loadImageElement(iconUrl);
   const direct = /^https?:/i.test(iconUrl) ? await loadCorsImage(iconUrl) : null;
   const proxied = direct || await Promise.race([
-    loadImageElement(`/api/asset?u=${encodeURIComponent(iconUrl)}`),
-    new Promise((resolve) => setTimeout(() => resolve(null), 6000)),
+    loadImageElement(iconUrl.startsWith('/api/asset') ? iconUrl : `/api/asset?u=${encodeURIComponent(iconUrl)}`),
+    new Promise((resolve) => setTimeout(() => resolve(null), 12000)),
   ]);
   if (proxied) shareImageCache.set(iconUrl, proxied);
   return proxied;
@@ -1461,6 +1577,24 @@ async function loadCatalog() {
   if (state.view === 'catalog' || state.view === 'import') renderView();
 }
 
+function retryCatalogImage(img) {
+  if (!img || img.dataset.retry) {
+    if (img) {
+      img.onerror = null;
+      img.parentElement?.classList.add('img-missing');
+      img.remove();
+    }
+    return;
+  }
+  img.dataset.retry = '1';
+  const src = img.src;
+  setTimeout(() => {
+    if (!img.isConnected) return;
+    img.src = `${src}${src.includes('?') ? '&' : '?'}retry=${Date.now()}`;
+  }, 650);
+}
+window.retryCatalogImage = retryCatalogImage;
+
 function renderCatalog() {
   const c = state.catalog;
   const d = state.dashboard;
@@ -1492,7 +1626,7 @@ function renderCatalog() {
     <select id="catalog-rarity" class="select" style="width:120px"><option value="all">全部稀有度</option><option value="5" ${f.rarity === '5' ? 'selected' : ''}>${rarityText(5)}</option><option value="4" ${f.rarity === '4' ? 'selected' : ''}>${rarityText(4)}</option><option value="3" ${f.rarity === '3' ? 'selected' : ''}>${rarityText(3)}</option></select>
     <span class="hint" style="margin-left:auto;color:var(--muted-2);font-size:11px" title="${attr(c.source || '')}">${c.items.length} 条 · ${esc(c.version || '')} · ${esc(c.source || '')}</span>
   </div>
-  <div class="card"><div class="catalog-grid">${items.length ? items.map((i) => `<div class="catalog-item"><div class="art ${i.iconUrl ? '' : 'img-missing'}"><span class="fallback">✦</span>${i.iconUrl ? `<img loading="${['arknights', 'endfield', 'nte'].includes(state.game) ? 'eager' : 'lazy'}" src="${attr(i.iconUrl)}" alt="" onerror="this.onerror=null;this.parentElement?.classList.add('img-missing');this.remove()">` : ''}<span class="rarity-line">${rarityLine(i.rarity || 0)}</span>${owned.has(i.name) ? `<span class="owned">✓</span>` : ''}</div><div class="meta"><strong title="${attr(i.name)}">${esc(i.name)}</strong><span>${esc(i.type)}${i.path ? ` · ${esc(i.path)}` : ''}</span></div></div>`).join('') : `<div class="catalog-empty">没有匹配的图鉴条目</div>`}</div></div>
+  <div class="card"><div class="catalog-grid">${items.length ? items.map((i) => `<div class="catalog-item"><div class="art ${i.iconUrl ? '' : 'img-missing'}"><span class="fallback">✦</span>${i.iconUrl ? `<img loading="${['arknights', 'endfield', 'nte'].includes(state.game) ? 'eager' : 'lazy'}" src="${attr(i.iconUrl)}" alt="" onerror="retryCatalogImage(this)">` : ''}<span class="rarity-line">${rarityLine(i.rarity || 0)}</span>${owned.has(i.name) ? `<span class="owned">✓</span>` : ''}</div><div class="meta"><strong title="${attr(i.name)}">${esc(i.name)}</strong><span>${esc(i.type)}${i.path ? ` · ${esc(i.path)}` : ''}</span></div></div>`).join('') : `<div class="catalog-empty">没有匹配的图鉴条目</div>`}</div></div>
 `;
 }
 
@@ -2150,7 +2284,7 @@ document.addEventListener('click', async (e) => {
     if (action === 'open-auth') { state.accountTab = 'accounts'; await openAccountModal(); return; }
     if (action === 'open-login') {
       state.accountTab = 'login';
-      state.authTab = ['skland', 'tajiduo'].includes(el.dataset.tab) ? el.dataset.tab : 'miyoushe';
+      state.authTab = ['skland', 'tajiduo', 'hoyolab'].includes(el.dataset.tab) ? el.dataset.tab : 'miyoushe';
       await openAccountModal();
       return;
     }
@@ -2166,7 +2300,7 @@ document.addEventListener('click', async (e) => {
     }
     if (action === 'account-login-go') {
       state.accountTab = 'login';
-      state.authTab = ['skland', 'tajiduo'].includes(el.dataset.tab) ? el.dataset.tab : 'miyoushe';
+      state.authTab = ['skland', 'tajiduo', 'hoyolab'].includes(el.dataset.tab) ? el.dataset.tab : 'miyoushe';
       refreshAuthModal();
       ensureLoginTab();
       return;
@@ -2174,7 +2308,7 @@ document.addEventListener('click', async (e) => {
     if (action === 'login-tab') {
       if (state.authTimer) { clearInterval(state.authTimer); state.authTimer = null; }
       state.accountTab = 'login';
-      state.authTab = ['skland', 'tajiduo'].includes(el.dataset.tab) ? el.dataset.tab : 'miyoushe';
+      state.authTab = ['skland', 'tajiduo', 'hoyolab'].includes(el.dataset.tab) ? el.dataset.tab : 'miyoushe';
       if (state.authTab !== 'skland') clearThirdPartyQrTimer();
       refreshAuthModal();
       ensureLoginTab();
@@ -2191,6 +2325,10 @@ document.addEventListener('click', async (e) => {
     if (action === 'auth-sync-all') { setBusy(el, true, '同步中'); await syncAllAuthGames(); setBusy(el, false); return; }
     if (action === 'auth-zzz') { await authZzzStats(); return; }
     if (action === 'auth-logout') { await logoutAuth(); return; }
+    if (action === 'hol-login') { await loginHoyolab(el); return; }
+    if (action === 'hol-roles') { setBusy(el, true, '刷新中'); await loadHoyolabRoles(); setBusy(el, false); return; }
+    if (action === 'hol-sync') { await syncHoyolabRole(el.dataset.game, el.dataset.uid); return; }
+    if (action === 'hol-logout') { await logoutHoyolab(); return; }
     if (action === 'auth-close') { $('#modal-root').innerHTML = ''; return; }
     if (action === 'qr-start') { await startQr(el); return; }
     if (action === 'qr-roles') { await loadQrRoles(el); return; }
@@ -2629,33 +2767,107 @@ async function saveManualRecord(e) {
 async function drawShareCard() {
   const d = state.dashboard;
   if (!d) throw new Error('还没有可分享的数据');
+  const skin = (typeof window.__gachaThemeShare === 'function' && window.__gachaThemeShare()) || { preset: 'classic' };
+  const themed = skin.preset !== 'classic';
+  const scheme = skin.scheme || (skin.variant === 'light' ? 'light' : 'dark');
   const W = 1200, H = 1800;
   const canvas = document.createElement('canvas');
   canvas.width = W; canvas.height = H;
   const ctx = canvas.getContext('2d');
-  const accent = GAME_META[state.game]?.color || '#9b8cff';
+  const accent = GAME_META[state.game]?.color || skin.accent || '#9b8cff';
+  const signal = skin.signal || accent;
+  const text = skin.text || '#f7f5ff';
+  const muted = skin.muted || '#8e96ab';
+  const dim = skin.dim || '#6f7890';
+  const line = skin.line || 'rgba(255,255,255,0.08)';
+  const surface = skin.surface || 'rgba(255,255,255,0.045)';
+  const surface2 = skin.surface2 || 'rgba(255,255,255,0.04)';
   const gameName = GAME_META[state.game]?.name || '二游档案';
   const pad = 72;
-  const round = (x, y, w, h, r) => roundRect(ctx, x, y, w, h, r);
+  const radius = themed ? Math.min(8, Math.max(0, Number(skin.radius ?? 2))) : 22;
+  const round = (x, y, w, h, r = radius) => roundRect(ctx, x, y, w, h, r);
   const font = (size, weight = 400) => `${weight} ${size}px "Microsoft YaHei", "PingFang SC", sans-serif`;
+  const mono = (size, weight = 500) => `${weight} ${size}px "Consolas", "SFMono-Regular", monospace`;
+  const rgba = (color, alpha) => {
+    if (!color) return `rgba(0,0,0,${alpha})`;
+    if (color.startsWith('#')) {
+      const raw = color.slice(1);
+      const full = raw.length === 3 ? raw.split('').map((c) => c + c).join('') : raw;
+      const num = Number.parseInt(full, 16);
+      if (Number.isFinite(num)) return `rgba(${(num >> 16) & 255},${(num >> 8) & 255},${num & 255},${alpha})`;
+    }
+    const match = color.match(/rgba?\(([^)]+)\)/);
+    if (match) {
+      const parts = match[1].split(',').map((part) => part.trim());
+      return `rgba(${parts[0]},${parts[1]},${parts[2]},${alpha})`;
+    }
+    return color;
+  };
 
-  const bg = ctx.createLinearGradient(0, 0, W, H);
-  bg.addColorStop(0, '#090d16');
-  bg.addColorStop(0.55, '#111526');
-  bg.addColorStop(1, '#171226');
-  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  if (themed) {
+    const bg = ctx.createLinearGradient(0, 0, W, H);
+    bg.addColorStop(0, skin.background || '#0b0d0c');
+    bg.addColorStop(1, skin.background2 || skin.background || '#101411');
+    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+    if (skin.grid !== false) {
+      ctx.save();
+      ctx.strokeStyle = line;
+      ctx.globalAlpha = 0.38;
+      ctx.lineWidth = 1;
+      for (let x = pad; x < W - pad; x += 48) {
+        ctx.beginPath(); ctx.moveTo(x, 24); ctx.lineTo(x, H - 24); ctx.stroke();
+      }
+      for (let y = 24; y < H - 24; y += 48) {
+        ctx.beginPath(); ctx.moveTo(pad, y); ctx.lineTo(W - pad, y); ctx.stroke();
+      }
+      ctx.restore();
+    }
+    const glow = ctx.createRadialGradient(W * 0.86, 80, 10, W * 0.86, 80, 620);
+    glow.addColorStop(0, rgba(signal, 0.16));
+    glow.addColorStop(1, rgba(signal, 0));
+    ctx.fillStyle = glow; ctx.fillRect(0, 0, W, 900);
+    ctx.strokeStyle = signal;
+    ctx.globalAlpha = 0.7;
+    ctx.lineWidth = 1;
+    const bracket = (x, y, dx, dy) => {
+      ctx.beginPath(); ctx.moveTo(x, y + dy); ctx.lineTo(x, y); ctx.lineTo(x + dx, y); ctx.stroke();
+    };
+    bracket(26, 26, 22, 22);
+    bracket(W - 26, 26, -22, 22);
+    bracket(26, H - 26, 22, -22);
+    bracket(W - 26, H - 26, -22, -22);
+    ctx.globalAlpha = 1;
+  } else {
+    const bg = ctx.createLinearGradient(0, 0, W, H);
+    bg.addColorStop(0, '#090d16');
+    bg.addColorStop(0.55, '#111526');
+    bg.addColorStop(1, '#171226');
+    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+    const glow = ctx.createRadialGradient(W * 0.86, 80, 10, W * 0.86, 80, 600);
+    glow.addColorStop(0, `${accent}42`);
+    glow.addColorStop(1, `${accent}00`);
+    ctx.fillStyle = glow; ctx.fillRect(0, 0, W, 900);
+  }
 
-  const glow = ctx.createRadialGradient(W * 0.86, 80, 10, W * 0.86, 80, 600);
-  glow.addColorStop(0, `${accent}42`);
-  glow.addColorStop(1, `${accent}00`);
-  ctx.fillStyle = glow; ctx.fillRect(0, 0, W, 900);
+  ctx.fillStyle = themed ? signal : accent;
+  if (themed) ctx.fillRect(pad, 62, 6, 38); else round(pad, 62, 8, 38, 4), ctx.fill();
+  ctx.fillStyle = text; ctx.font = font(28, 600); ctx.fillText('二游档案', pad + 24, 92);
+  ctx.fillStyle = muted;
+  ctx.font = themed ? mono(11, 500) : font(16, 400);
+  ctx.fillText(themed ? (skin.kicker || 'MECHANICAL / SHARE') : 'GACHA ARCHIVE · SHARE', pad + 24, 120);
+  if (themed) {
+    ctx.fillStyle = dim;
+    ctx.font = mono(10, 500);
+    ctx.textAlign = 'right';
+    ctx.fillText(skin.mode || 'SYS // SHARE', W - pad, 92);
+    ctx.textAlign = 'left';
+    ctx.strokeStyle = line;
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(pad, 150); ctx.lineTo(W - pad, 150); ctx.stroke();
+  }
 
-  ctx.fillStyle = accent; round(pad, 62, 8, 38, 4); ctx.fill();
-  ctx.fillStyle = '#f5f2ff'; ctx.font = font(28, 600); ctx.fillText('二游档案', pad + 26, 92);
-  ctx.fillStyle = '#8e96ab'; ctx.font = font(16, 400); ctx.fillText('GACHA ARCHIVE · SHARE', pad + 26, 120);
-
-  ctx.fillStyle = '#f7f5ff'; ctx.font = font(64, 700); ctx.fillText(gameName, pad, 238);
-  ctx.fillStyle = '#8e96ab'; ctx.font = font(20, 400);
+  ctx.fillStyle = text; ctx.font = font(64, 700); ctx.fillText(gameName, pad, 238);
+  ctx.fillStyle = muted; ctx.font = themed ? mono(14, 500) : font(20, 400);
   ctx.fillText(d.meta?.uid ? `UID ${d.meta.uid}` : '本地抽卡档案', pad, 278);
 
   const currency = {
@@ -2666,9 +2878,13 @@ async function drawShareCard() {
     tot: { unit: '未名星石', rate: 180 },
   }[state.game] || { unit: '抽卡资源', rate: 160 };
   const spent = d.counts.exact * currency.rate;
-  ctx.fillStyle = '#a9a3c7'; ctx.font = font(18, 500); ctx.fillText('总共消耗（估测）', pad, 372);
-  ctx.fillStyle = '#ffffff'; ctx.font = font(124, 700); ctx.fillText(fmt(spent), pad, 492);
-  ctx.fillStyle = accent; ctx.font = font(22, 600); ctx.fillText(currency.unit, pad + 10, 530);
+  if (themed && scheme === 'light') {
+    ctx.shadowColor = 'rgba(57,50,34,0.18)'; ctx.shadowBlur = 10; ctx.shadowOffsetY = 3;
+  }
+  ctx.fillStyle = muted; ctx.font = font(18, 500); ctx.fillText('总共消耗（估测）', pad, 372);
+  ctx.fillStyle = text; ctx.font = font(124, 700); ctx.fillText(fmt(spent), pad, 492);
+  ctx.fillStyle = themed ? signal : accent; ctx.font = font(22, 600); ctx.fillText(currency.unit, pad + 10, 530);
+  ctx.shadowColor = 'transparent'; ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
 
   const cardY = 596, cardW = 490, cardH = 142, gap = 20;
   const charPools = {
@@ -2691,11 +2907,21 @@ async function drawShareCard() {
   stats.forEach(([label, value, en], i) => {
     const x = pad + (i % 2) * (cardW + gap);
     const y = cardY + Math.floor(i / 2) * (cardH + gap);
-    ctx.fillStyle = 'rgba(255,255,255,0.045)'; round(x, y, cardW, cardH, 22); ctx.fill();
-    ctx.strokeStyle = 'rgba(255,255,255,0.08)'; ctx.lineWidth = 1; round(x, y, cardW, cardH, 22); ctx.stroke();
-    ctx.fillStyle = '#8e96ab'; ctx.font = font(18, 400); ctx.fillText(label, x + 28, y + 42);
-    ctx.fillStyle = '#f7f5ff'; ctx.font = font(44, 700); ctx.fillText(value, x + 28, y + 100);
-    ctx.fillStyle = '#6f7890'; ctx.font = font(13, 500); ctx.fillText(en, x + 30, y + 126);
+    if (themed && scheme === 'light') {
+      ctx.shadowColor = 'rgba(57,50,34,0.14)'; ctx.shadowBlur = 9; ctx.shadowOffsetY = 2;
+    }
+    ctx.fillStyle = themed ? surface : 'rgba(255,255,255,0.045)';
+    round(x, y, cardW, cardH); ctx.fill();
+    ctx.shadowColor = 'transparent'; ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
+    ctx.strokeStyle = themed ? line : 'rgba(255,255,255,0.08)'; ctx.lineWidth = 1;
+    round(x, y, cardW, cardH); ctx.stroke();
+    if (themed) {
+      ctx.fillStyle = signal;
+      ctx.fillRect(x, y, 3, cardH);
+    }
+    ctx.fillStyle = muted; ctx.font = font(18, 400); ctx.fillText(label, x + 28, y + 42);
+    ctx.fillStyle = text; ctx.font = font(44, 700); ctx.fillText(value, x + 28, y + 100);
+    ctx.fillStyle = dim; ctx.font = themed ? mono(11, 500) : font(13, 500); ctx.fillText(en, x + 30, y + 126);
   });
 
   const limitedTypes = {
@@ -2718,31 +2944,38 @@ async function drawShareCard() {
   const [charImages, weaponImages] = await Promise.all([loadRows(charRows), loadRows(weaponRows)]);
 
   const sectionY = 960;
-  ctx.fillStyle = '#d9d3ec'; ctx.font = font(24, 600); ctx.fillText('欧皇时刻（也许）', pad, sectionY);
-  ctx.strokeStyle = 'rgba(255,255,255,0.08)'; ctx.beginPath(); ctx.moveTo(pad, sectionY + 22); ctx.lineTo(W - pad, sectionY + 22); ctx.stroke();
+  ctx.fillStyle = themed ? signal : '#d9d3ec'; ctx.font = font(24, 600); ctx.fillText('欧皇时刻（也许）', pad, sectionY);
+  ctx.strokeStyle = themed ? line : 'rgba(255,255,255,0.08)'; ctx.beginPath(); ctx.moveTo(pad, sectionY + 22); ctx.lineTo(W - pad, sectionY + 22); ctx.stroke();
 
   const drawColumn = (rows, images, x, label) => {
-    ctx.fillStyle = accent; ctx.font = font(16, 600); ctx.fillText(label, x, sectionY + 62);
+    ctx.fillStyle = accent; ctx.font = themed ? mono(13, 600) : font(16, 600); ctx.fillText(label, x, sectionY + 62);
     if (!rows.length) {
-      ctx.fillStyle = '#6f7890'; ctx.font = font(16, 400); ctx.fillText('暂无记录', x, sectionY + 96);
+      ctx.fillStyle = dim; ctx.font = font(16, 400); ctx.fillText('暂无记录', x, sectionY + 96);
       return;
     }
     rows.forEach((r, i) => {
       const y = sectionY + 80 + i * 64;
-      ctx.fillStyle = 'rgba(255,255,255,0.04)'; round(x, y, 500, 56, 14); ctx.fill();
+      ctx.fillStyle = themed ? surface2 : 'rgba(255,255,255,0.04)';
+      round(x, y, 500, 56, themed ? radius : 14); ctx.fill();
+      if (themed) {
+        ctx.strokeStyle = line; ctx.lineWidth = 1;
+        round(x, y, 500, 56, themed ? radius : 14); ctx.stroke();
+      }
       const image = images[i];
       if (image) {
         ctx.save(); ctx.beginPath(); ctx.arc(x + 28, y + 28, 23, 0, Math.PI * 2); ctx.clip();
         ctx.drawImage(image, x + 5, y + 5, 46, 46); ctx.restore();
-        ctx.strokeStyle = `${accent}55`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(x + 28, y + 28, 23, 0, Math.PI * 2); ctx.stroke();
+        ctx.strokeStyle = rgba(accent, 0.33); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(x + 28, y + 28, 23, 0, Math.PI * 2); ctx.stroke();
       } else {
-        ctx.fillStyle = `${accent}33`; ctx.beginPath(); ctx.arc(x + 28, y + 28, 23, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = rgba(accent, 0.2); ctx.beginPath(); ctx.arc(x + 28, y + 28, 23, 0, Math.PI * 2); ctx.fill();
         ctx.fillStyle = accent; ctx.font = font(17, 600); ctx.textAlign = 'center'; ctx.fillText(r.name.slice(0, 1), x + 28, y + 35); ctx.textAlign = 'left';
       }
-      ctx.fillStyle = '#f7f5ff'; ctx.font = font(18, 600); ctx.fillText(r.name, x + 64, y + 34);
+      ctx.fillStyle = text; ctx.font = font(18, 600); ctx.fillText(r.name, x + 64, y + 34);
       if (r.pity) {
         const result = r.up === 'win' ? '欧' : r.up === 'loss' ? '非' : '';
-        ctx.fillStyle = result === '欧' ? '#f08b8b' : result === '非' ? '#7fe0a8' : accent;
+        ctx.fillStyle = result === '欧'
+          ? (scheme === 'light' ? '#a8452f' : '#f08b8b')
+          : result === '非' ? (scheme === 'light' ? '#2f7d54' : '#7fe0a8') : accent;
         ctx.font = font(15, 500); ctx.textAlign = 'right';
         ctx.fillText(`${r.pity} 抽${result ? ` · ${result}` : ''}`, x + 475, y + 34);
         ctx.textAlign = 'left';
@@ -2752,8 +2985,8 @@ async function drawShareCard() {
   drawColumn(charRows, charImages, pad, '限定角色');
   drawColumn(weaponRows, weaponImages, W / 2 + 24, '限定武器');
 
-  ctx.strokeStyle = 'rgba(255,255,255,0.09)'; ctx.beginPath(); ctx.moveTo(pad, 1720); ctx.lineTo(W - pad, 1720); ctx.stroke();
-  ctx.fillStyle = '#6f7890'; ctx.font = font(14, 400); ctx.fillText('GACHA ARCHIVE · 本地抽卡档案', pad, 1762);
+  ctx.strokeStyle = line; ctx.beginPath(); ctx.moveTo(pad, 1720); ctx.lineTo(W - pad, 1720); ctx.stroke();
+  ctx.fillStyle = dim; ctx.font = themed ? mono(11, 500) : font(14, 400); ctx.fillText(themed ? 'GACHA ARCHIVE // LOCAL RECORD' : 'GACHA ARCHIVE · 本地抽卡档案', pad, 1762);
   ctx.textAlign = 'right'; ctx.fillText(new Date().toLocaleDateString('zh-CN'), W - pad, 1762); ctx.textAlign = 'left';
 
   return canvas.toDataURL('image/jpeg', 0.95);
@@ -2831,6 +3064,12 @@ async function saveShareImage(dataUrl) {
       const saved = await api('/api/auth/session');
       if (saved.session) {
         state.auth = { ...state.auth, sessionId: saved.session.sessionId, status: 'Confirmed', user: saved.session.user || null };
+      }
+    } catch {}
+    try {
+      const hol = await api('/api/auth/hoyolab/session');
+      if (hol.session) {
+        state.hoyolab = { ...state.hoyolab, status: 'Confirmed', user: hol.session.user || null };
       }
     } catch {}
     state.dataDir = shell.dataDir || '';

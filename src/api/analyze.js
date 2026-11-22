@@ -101,36 +101,45 @@ export function analyzeGame({ gameId, account, catalog }) {
   }
 
   const limitedPoolSet = new Set(game.limitedPools || []);
+  const charPoolSet = characterPools(gameId);
+  const weaponPoolSet = weaponPools(gameId);
   const careerFive = fiveExact.filter((r) => limitedPoolSet.has(String(r.uigfType || r.gachaType)));
   const limitedEntries = Object.entries(perType).filter(([key]) => limitedPoolSet.has(String(key)));
   const careerPulls = limitedEntries.length
     ? limitedEntries.reduce((sum, [, n]) => sum + (Number(n?.total ?? n) || 0), 0)
     : (Object.keys(perType).length ? 0 : exactTotal);
+  const sumPulls = (poolSet) => Object.entries(perType).reduce(
+    (sum, [type, n]) => poolSet.has(String(type)) ? sum + (Number(n?.total ?? n) || 0) : sum,
+    0,
+  );
+  const charPulls = sumPulls(charPoolSet);
+  const weaponPulls = sumPulls(weaponPoolSet);
   const exactFive = fiveExact.length;
-  const fiveUp = fiveExact.filter((r) => r.up === 'win').length;
-  const fiveLoss = fiveExact.filter((r) => r.up === 'loss').length;
-  const decided = fiveUp + fiveLoss;
-  const limitedFive = fiveUp;
-  const standardFive = fiveLoss;
-  const limitedCost = (poolSet) => {
-    const rows = fiveExact
-      .filter((r) => poolSet.has(String(r.uigfType || r.gachaType)))
-      .sort((a, b) => (a.time || '').localeCompare(b.time || ''));
-    let cost = 0;
-    const samples = [];
-    for (const r of rows) {
-      const pity = Number(r.pity) || 0;
-      if (!pity) continue;
-      cost += pity;
-      if (r.up === 'win') {
-        samples.push(cost);
-        cost = 0;
-      }
-    }
-    return { avg: samples.length ? samples.reduce((a, b) => a + b, 0) / samples.length : null, count: samples.length };
+  // Character and weapon pools have separate pity/counters, so their 5-star
+  // stats must never be combined: 50/50 hit rate only exists on character pools.
+  const charFive = fiveExact.filter((r) => charPoolSet.has(String(r.uigfType || r.gachaType)));
+  const weaponFive = fiveExact.filter((r) => weaponPoolSet.has(String(r.uigfType || r.gachaType)));
+  const charUp = charFive.filter((r) => r.up === 'win').length;
+  const charLoss = charFive.filter((r) => r.up === 'loss').length;
+  const charDecided = charUp + charLoss;
+  const fiveUp = charUp;
+  const fiveLoss = charLoss;
+  const decided = charDecided;
+  const limitedFive = charUp;
+  const standardFive = charLoss;
+  // Average 5-star cost: every 5-star (including a lost 50/50) resets pity.
+  // The old implementation only reset on UP wins, so losses were rolled into
+  // the next win and produced impossible averages (e.g. >90 on a 90-pity pool).
+  const averageFiveCost = (poolSet) => {
+    const rows = fiveExact.filter((r) => poolSet.has(String(r.uigfType || r.gachaType)));
+    const samples = rows.map((r) => Number(r.pity) || 0).filter((n) => n > 0);
+    return {
+      avg: samples.length ? samples.reduce((a, b) => a + b, 0) / samples.length : null,
+      count: samples.length,
+    };
   };
-  const charCost = limitedCost(characterPools(gameId));
-  const weaponCost = limitedCost(weaponPools(gameId));
+  const charCost = averageFiveCost(characterPools(gameId));
+  const weaponCost = averageFiveCost(weaponPools(gameId));
 
   const officialFull = snapshots
     .filter((s) => s.fullHistory && s.totalPulls > 0)
@@ -188,6 +197,10 @@ export function analyzeGame({ gameId, account, catalog }) {
   const overlapPulls = overlaps ? Math.min(snapPulls || exactTotal, exactTotal) : 0;
 
   const currentPityUnknown = Boolean(totals.currentPityUnknown);
+  const primaryPityType = (() => {
+    const first = game.limitedPools?.[0];
+    return first ? (game.uigfMap[first] || first) : game.types[0];
+  })();
   const currentPity = {};
   for (const pool of game.types) {
     const key = game.uigfMap[pool] || pool;
@@ -206,6 +219,24 @@ export function analyzeGame({ gameId, account, catalog }) {
   }
   for (const [key, value] of Object.entries(currentPityStored)) {
     if (currentPity[key] === undefined) currentPity[key] = Number(value) || 0;
+  }
+  const hasCurrentPity = !currentPityUnknown
+    && (Object.keys(currentPityStored).length > 0 || Object.keys(pitySums).length > 0);
+  const pityKinds = {};
+  for (const [kind, set, pulls] of [
+    ['character', charPoolSet, charPulls],
+    ['weapon', weaponPoolSet, weaponPulls],
+  ]) {
+    const type = [...set][0];
+    if (!type) continue;
+    const key = game.uigfMap[type] || type;
+    pityKinds[kind] = {
+      type: key,
+      label: poolLabel(game, type, account),
+      value: Number(currentPity[key]) || 0,
+      cap: game.pityCap?.[key] ?? game.pityCap?.[type] ?? 90,
+      hasCurrent: hasCurrentPity && pulls > 0 && Object.prototype.hasOwnProperty.call(currentPity, key),
+    };
   }
 
   const poolsMap = new Map();
@@ -235,7 +266,7 @@ export function analyzeGame({ gameId, account, catalog }) {
     if (!poolsMap.has(uigf)) poolsMap.set(uigf, { type: uigf, label: poolLabel(game, r.gachaType, account), count: 0, five: 0, limited: 0, standard: 0, hitApplicable: false, lastFive: null, currentPity: 0 });
     const p = poolsMap.get(uigf);
     p.five++;
-    p.hitApplicable = (game.limitedPools || []).includes(uigf);
+    p.hitApplicable = charPoolSet.has(String(uigf));
     if (r.up === 'win') p.limited++;
     if (r.up === 'loss') p.standard++;
     p.lastFive = r;
@@ -332,8 +363,12 @@ export function analyzeGame({ gameId, account, catalog }) {
     counts: {
       exact: allExactTotal,
       exactFive,
-      limitedExact: careerPulls,
-      limitedFiveAll: careerFive.length,
+      charPulls,
+      weaponPulls,
+      charFive: charFive.length,
+      weaponFive: weaponFive.length,
+      limitedExact: charPulls,
+      limitedFiveAll: charFive.length,
       lifetime: lifetimePulls,
       lifetimeFive,
       snapshotOnly: Math.max(0, lifetimePulls - exactTotal),
@@ -357,20 +392,20 @@ export function analyzeGame({ gameId, account, catalog }) {
       weaponSamples: weaponCost.count,
       upPityCount: charCost.count,
       expectedFive: game.expectedFive?.['301'] || game.expectedFive?.['11'] || game.expectedFive?.['2'] || 62.5,
-      upRate: gameId === 'nte'
-        ? (decided ? fiveUp / decided : null)
-        : (fiveExact.length ? fiveUp / fiveExact.length : null),
-      hitRateAll: fiveExact.length ? fiveUp / fiveExact.length : null,
-      upWins: fiveUp, upLosses: fiveLoss, upDecided: decided,
+      upRate: charDecided ? charUp / charDecided : null,
+      hitRateAll: charDecided ? charUp / charDecided : null,
+      upWins: charUp, upLosses: charLoss, upDecided: charDecided,
       limitedFive, standardFive,
-      limitedPerPull: exactTotal ? fiveUp / exactTotal : null,
+      limitedPerPull: charPulls ? charUp / charPulls : null,
     },
     pity: {
       current: currentPity,
+      primary: primaryPityType,
+      kinds: pityKinds,
       max: Math.max(0, ...Object.values(currentPity)),
       buckets,
       cap: game.pityCap,
-      hasCurrent: !currentPityUnknown && (Object.keys(currentPityStored).length > 0 || Object.keys(pitySums).length > 0),
+      hasCurrent: hasCurrentPity,
       unknown: currentPityUnknown,
     },
     pools,

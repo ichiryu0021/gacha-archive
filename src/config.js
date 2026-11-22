@@ -15,8 +15,8 @@ export const ASSET_DIR = path.join(DATA_DIR, 'assets');
 export const DB_FILE = path.join(DATA_DIR, 'app.json');
 export const PORT = Number(process.env.PORT || 8787);
 export const HOST = '127.0.0.1';
-export const APP_VERSION = '2.03';
-export const APP_DISPLAY_VERSION = '2.03';
+export const APP_VERSION = '2.04';
+export const APP_DISPLAY_VERSION = '2.04';
 
 export const GAMES = {
   genshin: {
@@ -43,7 +43,7 @@ export const GAMES = {
       '500': '集录祈愿',
     },
     uigfMap: { '100': '100', '200': '200', '301': '301', '400': '301', '302': '302', '500': '500' },
-    characterPools: ['301', '400', '200', '100', '500'],
+    characterPools: ['301', '400'],
     weaponPools: ['302'],
     limitedPools: ['301', '400', '302', '500'],
     pityCap: { '100': 90, '200': 90, '301': 90, '302': 80, '500': 90 },
@@ -90,7 +90,7 @@ export const GAMES = {
       '22': '光锥联动跃迁',
     },
     uigfMap: { '1': '1', '2': '2', '11': '11', '12': '12', '21': '21', '22': '22' },
-    characterPools: ['11', '21', '1', '2'],
+    characterPools: ['11', '21'],
     weaponPools: ['12', '22'],
     limitedPools: ['11', '21', '12', '22'],
     pityCap: { '1': 90, '2': 50, '11': 90, '12': 80, '21': 90, '22': 80 },
@@ -286,7 +286,7 @@ export const GAMES = {
       '103': '音擎回响',
     },
     uigfMap: { '1': '1', '2': '2', '3': '3', '5': '5', '102': '2', '103': '3' },
-    characterPools: ['2', '102', '1'],
+    characterPools: ['2', '102'],
     weaponPools: ['3', '103'],
     limitedPools: ['2', '102', '3', '103'],
     pityCap: { '1': 90, '2': 90, '3': 80, '5': 80, '102': 90, '103': 80 },

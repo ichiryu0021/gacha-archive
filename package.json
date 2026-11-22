@@ -1,7 +1,7 @@
 {
   "name": "gacha-archive",
-  "version": "2.03",
-  "displayVersion": "2.03",
+  "version": "2.04",
+  "displayVersion": "2.04",
   "private": true,
   "license": "MIT",
   "description": "二游抽卡记录本地档案：自动读链、官方同步、截图补录、图鉴与自动更新",

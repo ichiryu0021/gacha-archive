@@ -16,6 +16,9 @@
     "animations": false,
     "reducedMotion": true,
     "embeddedBuild": true
+  },
+  "share": {
+    "preset": "classic"
   }
 }
 

@@ -251,6 +251,56 @@ gameThemes[当前游戏] -> theme（全局默认） -> defaultTheme
 
 主题卡 UI 的基础样式在 `themes/mecha/theme.css` 顶部，由基础样式加载器提供。
 
+### 6.1 分享图接口
+
+应用生成分享 JPG 前会调用：
+
+```js
+const skin = window.__gachaThemeShare?.() || { preset: 'classic' };
+```
+
+- `preset: "classic"`：使用原版分享图配色。
+- `preset: "custom"`：使用主题分享图配色和装饰（直角、网格、信号黄等）。
+- 当前游戏、当前主题、按游戏映射都会影响取值。
+
+主题可在 `theme.json` 里声明 `share`：
+
+```json
+"share": {
+  "preset": "custom",
+  "background": "#0b0d0c",
+  "background2": "#101411",
+  "surface": "#121714",
+  "surface2": "#171d19",
+  "text": "#ece9dd",
+  "muted": "#aaa58f",
+  "dim": "#767d73",
+  "line": "rgba(236,233,221,0.16)",
+  "signal": "#f2d35f",
+  "radius": 2,
+  "scheme": "dark",
+  "grid": true,
+  "kicker": "MECHANICAL / DARK",
+  "mode": "SYS // SHARE"
+}
+```
+
+| 字段 | 说明 |
+| --- | --- |
+| `preset` | `classic` 或 `custom` |
+| `background` / `background2` | 渐变背景 |
+| `surface` / `surface2` | 卡片/列表底 |
+| `text` / `muted` / `dim` | 文字层级 |
+| `line` | 网格与描边 |
+| `signal` | 主题信号色 |
+| `accent` | 可选；默认取当前游戏色 |
+| `radius` | 分享图圆角，机能风用 2 |
+| `scheme` | `dark` / `light`，决定阴影和欧非色 |
+| `grid` | 是否画工程网格 |
+| `kicker` / `mode` | 页眉英文和右上角系统字 |
+
+未声明 `share` 的 package 主题会从当前 CSS 变量（`--m-ink`、`--m-panel`、`--m-cream`、`--accent` 等）推导；不建议依赖默认值做正式主题。
+
 ---
 
 ## 7. JS 契约
@@ -362,6 +412,8 @@ Schema：[`schema/theme.schema.json`](schema/theme.schema.json)、[`schema/regis
 - [ ] 经典模式不加载主题视觉覆盖。
 - [ ] 黑/白字号与经典一致。
 - [ ] 新主题 CSS 真正加载并生效。
+- [ ] 分享图跟随当前主题的配色、圆角、网格和信号色。
+- [ ] 经典主题分享图仍保持原版深色玻璃风格。
 - [ ] 顶栏无主题选择器。
 - [ ] reduced-motion 下降级。
 - [ ] 原项目测试通过。

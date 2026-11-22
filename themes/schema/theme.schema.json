@@ -111,6 +111,42 @@
           "type": "boolean"
         }
       }
+    },
+    "share": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "preset": {
+          "enum": [
+            "classic",
+            "custom"
+          ]
+        },
+        "background": { "type": "string" },
+        "background2": { "type": "string" },
+        "surface": { "type": "string" },
+        "surface2": { "type": "string" },
+        "text": { "type": "string" },
+        "muted": { "type": "string" },
+        "dim": { "type": "string" },
+        "line": { "type": "string" },
+        "signal": { "type": "string" },
+        "accent": { "type": "string" },
+        "radius": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 40
+        },
+        "scheme": {
+          "enum": [
+            "dark",
+            "light"
+          ]
+        },
+        "grid": { "type": "boolean" },
+        "kicker": { "type": "string" },
+        "mode": { "type": "string" }
+      }
     }
   },
   "allOf": [

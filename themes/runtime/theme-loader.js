@@ -183,6 +183,40 @@
     }
   }
 
+  function shareStyle() {
+    const theme = byId(current) || byId(resolveTheme()) || byId(DEFAULT_THEME);
+    if (!theme) return { preset: 'classic' };
+    if (theme.mode === 'builtin' || theme.share?.preset === 'classic' || theme.id === 'classic') {
+      return { preset: 'classic' };
+    }
+    const rootStyle = getComputedStyle(root);
+    const bodyStyle = document.body ? getComputedStyle(document.body) : rootStyle;
+    const read = (name, fallback, style = rootStyle) => (style.getPropertyValue(name) || '').trim() || fallback;
+    const share = theme.share || {};
+    const rawRadius = Number(share.radius);
+    return {
+      preset: 'custom',
+      themeId: theme.id,
+      variant: theme.variant || '',
+      background: share.background || read('--m-ink', '#0b0d0c'),
+      background2: share.background2 || read('--m-ink-2', share.background || '#0e1210'),
+      surface: share.surface || read('--m-panel', '#121714'),
+      surface2: share.surface2 || read('--m-panel-2', '#171d19'),
+      text: share.text || read('--m-text', '#ece9dd'),
+      muted: share.muted || read('--m-muted', '#aaa58f'),
+      dim: share.dim || read('--m-dim', '#767d73'),
+      line: share.line || read('--m-line', 'rgba(236,233,221,.16)'),
+      signal: share.signal || read('--m-cream', '#f2d35f'),
+      accent: share.accent || read('--accent', '#6fe0c9', bodyStyle),
+      radius: Number.isFinite(rawRadius) ? rawRadius : 2,
+      scheme: share.scheme || (theme.variant === 'light' ? 'light' : 'dark'),
+      grid: share.grid !== false,
+      kicker: share.kicker || theme.en || 'THEME / SHARE',
+      mode: share.mode || 'SYS // SHARE',
+    };
+  }
+  window.__gachaThemeShare = shareStyle;
+
   function applyTheme(themeId, { quiet = false, replay = true, announce = true } = {}) {
     const theme = byId(themeId);
     if (!theme) return '';

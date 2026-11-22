@@ -19,6 +19,10 @@ import {
 } from './api/gacha.js';
 import { scanLocalLinks } from './api/cache.js';
 import { createQrSession, fetchZzzFullHistory, generateAuthkey, getAllRoles, getRolesForGame, getSavedSessionInfo, logoutSession, pollQrSession, restoreMiyousheSession } from './api/auth.js';
+import {
+  generateHoyolabAuthkey, getAllHoyolabRoles, getHoyolabRoles, getHoyolabSessionInfo,
+  importHoyolabSession, logoutHoyolab, restoreHoyolabSession,
+} from './api/hoyolab.js';
 import { buildCsv, buildUigf, importUigf } from './api/uigf.js';
 import { HEYBOX_GAMES, buildHeybox, importHeybox } from './api/heybox.js';
 import { importHeyboxLive } from './api/heybox-live.js';
@@ -103,6 +107,7 @@ const store = await new Store().init();
 const nteRepair = repairNteAccount(store);
 if (nteRepair.changed) await store.flush(true);
 await restoreMiyousheSession();
+await restoreHoyolabSession();
 await restoreThirdPartySessions().catch((e) => console.error('[thirdparty] restore failed', e.message));
 
 const MIME = {
@@ -185,31 +190,75 @@ async function serveStatic(req, res, url) {
   }
 }
 
+let assetActive = 0;
+const assetWaiters = [];
+async function withAssetSlot(fn) {
+  if (assetActive >= 4) await new Promise((resolve) => assetWaiters.push(resolve));
+  assetActive += 1;
+  try {
+    return await fn();
+  } finally {
+    assetActive -= 1;
+    const next = assetWaiters.shift();
+    if (next) next();
+  }
+}
+
+function assetPlaceholder(target, buf) {
+  try {
+    const host = new URL(target).hostname.toLowerCase();
+    return /(^|\.)upload-bbs\.mihoyo\.com$/.test(host) && buf.length === 55633;
+  } catch {
+    return false;
+  }
+}
+
 async function proxyAsset(req, res, url) {
   const target = url.searchParams.get('u');
   if (!target) return fail(res, '缺少图片地址', 400);
   let parsed;
   try { parsed = new URL(target); } catch { return fail(res, '图片地址无效', 400); }
   if (!/^https?:$/.test(parsed.protocol) || !isAllowedAssetHost(parsed.hostname)) return fail(res, '不允许的图片域名', 403);
+  const fallback = url.searchParams.get('fallback') || '';
+  let fallbackUrl = null;
+  if (fallback) {
+    try {
+      const parsedFallback = new URL(fallback);
+      if (/^https?:$/.test(parsedFallback.protocol) && isAllowedAssetHost(parsedFallback.hostname)) fallbackUrl = fallback;
+    } catch { /* ignore invalid fallback */ }
+  }
   const ext = path.extname(parsed.pathname).slice(0, 6) || '.bin';
   const key = hash(target, 24) + ext;
   const file = path.join(ASSET_DIR, key);
   if (fs.existsSync(file)) {
     const st = await fsp.stat(file);
-    res.writeHead(200, { 'Content-Type': MIME[ext] || 'application/octet-stream', 'Cache-Control': 'public, max-age=604800', 'Content-Length': st.size });
-    return fs.createReadStream(file).pipe(res);
+    if (st.size > 1024 && st.size !== 55633) {
+      res.writeHead(200, { 'Content-Type': MIME[ext] || 'application/octet-stream', 'Cache-Control': 'public, max-age=604800', 'Content-Length': st.size });
+      return fs.createReadStream(file).pipe(res);
+    }
   }
-  try {
-    const r = await fetch(target, { headers: { 'User-Agent': 'Mozilla/5.0 GachaArchive/0.9', Referer: 'https://www.mihoyo.com/' }, signal: AbortSignal.timeout(20000) });
-    if (!r.ok) return fail(res, `图片源返回 ${r.status}`, 502);
-    const buf = Buffer.from(await r.arrayBuffer());
-    if (buf.length > 12 * 1024 * 1024) return fail(res, '图片过大', 502);
-    await fsp.writeFile(file, buf);
-    res.writeHead(200, { 'Content-Type': r.headers.get('content-type') || MIME[ext] || 'application/octet-stream', 'Cache-Control': 'public, max-age=604800', 'Content-Length': buf.length });
-    res.end(buf);
-  } catch (e) {
-    fail(res, `图片加载失败：${e.message}`, 502);
-  }
+  const candidates = [target, fallbackUrl].filter(Boolean);
+  return withAssetSlot(async () => {
+    let lastError = '';
+    for (const candidate of candidates) {
+      for (let attempt = 0; attempt < 2; attempt++) {
+        try {
+          const r = await fetch(candidate, { headers: { 'User-Agent': 'Mozilla/5.0 GachaArchive/0.9', Referer: 'https://www.mihoyo.com/' }, signal: AbortSignal.timeout(20000) });
+          if (!r.ok) { lastError = `图片源返回 ${r.status}`; continue; }
+          const buf = Buffer.from(await r.arrayBuffer());
+          if (buf.length > 12 * 1024 * 1024) { lastError = '图片过大'; continue; }
+          if (!buf.length || assetPlaceholder(candidate, buf)) { lastError = '图片源返回占位图'; continue; }
+          await fsp.writeFile(file, buf);
+          res.writeHead(200, { 'Content-Type': r.headers.get('content-type') || MIME[ext] || 'application/octet-stream', 'Cache-Control': 'public, max-age=604800', 'Content-Length': buf.length });
+          return res.end(buf);
+        } catch (e) {
+          lastError = e.message;
+        }
+        await sleep(180);
+      }
+    }
+    return fail(res, `图片加载失败：${lastError || '无可用图片源'}`, 502);
+  });
 }
 
 function annotateFivePity(gameId, records) {
@@ -745,10 +794,19 @@ async function routeApi(req, res, url) {
         const cachedSource = getRememberedSource(cached.linkId);
         if (cachedSource) {
           const result = await resync(cachedSource);
-          return ok(res, { ...result, fromCache: true });
+          // A stale cache can return zero records with per-pool errors; in that case
+          // fall through to a freshly generated authkey instead of reporting success.
+          if (result.totalFetched > 0 || !result.errors?.length) {
+            return ok(res, { ...result, fromCache: true });
+          }
         }
       }
     } catch { /* fallback to generated authkey */ }
+    if (game === 'hsr') {
+      const err = new Error('星铁需要在游戏内打开「跃迁 → 记录」刷新 authkey；米游社登录不支持星铁抽卡记录');
+      err.code = 'HSR_NEEDS_GAME_CACHE';
+      throw err;
+    }
     const key = await generateAuthkey(sessionId, game, body.role || {});
     const source = sourceFromAuthkey(game, key.authkey, {
       region: key.role.region, gameBiz: key.role.game_biz, lang: 'zh-cn', source: 'miyoushe',
@@ -779,6 +837,42 @@ async function routeApi(req, res, url) {
       },
       dashboard: summaryResponse('zzz'),
     });
+  }
+  if (req.method === 'GET' && pathname === '/api/auth/hoyolab/session') {
+    return ok(res, { session: getHoyolabSessionInfo() });
+  }
+  if (req.method === 'POST' && pathname === '/api/auth/hoyolab/import') {
+    const body = await readJsonBody(req);
+    const session = await importHoyolabSession(body.cookies || []);
+    return ok(res, { session });
+  }
+  if (req.method === 'GET' && pathname === '/api/auth/hoyolab/roles-all') {
+    const result = await getAllHoyolabRoles();
+    return ok(res, result);
+  }
+  if (req.method === 'GET' && pathname === '/api/auth/hoyolab/roles') {
+    const game = sanitizeGame(url.searchParams.get('game'));
+    const roles = await getHoyolabRoles(game);
+    return ok(res, { roles });
+  }
+  if (req.method === 'POST' && pathname === '/api/auth/hoyolab/link') {
+    const body = await readJsonBody(req);
+    const game = sanitizeGame(body.game);
+    const key = await generateHoyolabAuthkey(game, body.role || {});
+    const source = sourceFromAuthkey(game, key.authkey, {
+      region: key.role.region,
+      gameBiz: key.role.game_biz,
+      lang: 'zh-cn',
+      source: 'hoyolab',
+      isOversea: true,
+    });
+    source.linkId = rememberSource(source);
+    const result = await resync(source);
+    return ok(res, { ...result, authkeyMasked: `${key.authkey.slice(0, 4)}***${key.authkey.slice(-3)}` });
+  }
+  if (req.method === 'POST' && pathname === '/api/auth/hoyolab/logout') {
+    logoutHoyolab();
+    return ok(res, { loggedOut: true });
   }
   fail(res, '接口不存在', 404);
 }

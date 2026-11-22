@@ -27,7 +27,7 @@ jobs:
         run: |
           $root = (Get-Location).Path
           $src = Join-Path $root 'dist\二游档案'
-          $zipPath = Join-Path $root 'dist\gacha-v2.03-full.zip'
+          $zipPath = Join-Path $root 'dist\gacha-v2.04-full.zip'
           Add-Type -AssemblyName System.IO.Compression
           Add-Type -AssemblyName System.IO.Compression.FileSystem
           $zip = [IO.Compression.ZipFile]::Open($zipPath, [IO.Compression.ZipArchiveMode]::Create)
@@ -49,7 +49,7 @@ jobs:
       - name: Upload full asset to release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v2.03
-          name: v2.03 · 二游档案
-          files: dist/gacha-v2.03-full.zip
+          tag_name: v2.04
+          name: v2.04 · 二游档案
+          files: dist/gacha-v2.04-full.zip
           overwrite_files: true
