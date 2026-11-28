@@ -39,3 +39,7 @@ CHANGELOG.md
 
 # 段位描摹原稿（本地保留，不入库）
 通力57段字体矢量图.svg
+
+# 57 段方案包：个人研究用，只留本地
+dist/lcd-segment-kit/
+dist/lcd-segment-kit.zip
