@@ -446,6 +446,9 @@
         if (target) ring.style.setProperty('--p', target);
         ring.dataset.mechaGaugeToken = '';
       });
+      // 数字计数不跟随「减少动态效果」：总抽数就是要看出在跳，
+      // 否则关掉系统动画的用户只会看到数字瞬间到位。
+      countNumbers(view, force);
       return;
     }
 
@@ -502,6 +505,18 @@
 
   const numberFormats = new Map();
 
+  // 数码管转轮：每一位滚过的字符集、起始/错开时长、滚动步数
+  // 字符集只有数字 + 大写字母（36 个），滚动快、收尾利落
+  const LCD_WHEEL_FALLBACK = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const LCD_WHEEL_PATTERN = /^[0-9A-Z]$/;
+  const LCD_WHEEL_BASE_MS = 1000;     // 最左边一位停下的时间（整体时长）
+  const LCD_WHEEL_STAGGER_MS = 200;   // 往右每一位多滚多久
+  const LCD_WHEEL_SPAN_MS = 1500;     // 位数多时压缩错开，避免整体太长
+  const LCD_WHEEL_STEPS = 80;         // 最左一位滚过的字符数
+  const LCD_WHEEL_STEPS_GROW = 18;    // 每往右一位多滚几个字符
+  const LCD_WHEEL_SETTLE_STEPS = 4;   // 停下前最后几个字符一个一个过
+  const LCD_WHEEL_SETTLE_MS = 70;     // 每个字符停留多久
+
   function formatCount(value, decimals, grouped) {
     const key = `${decimals}|${grouped ? 1 : 0}`;
     let formatter = numberFormats.get(key);
@@ -527,9 +542,91 @@
     return output + text.slice(cursor);
   }
 
+  // 数码管：每一位像转轮一样滚过整串字符，最后缓慢落到目标字符上，从左往右依次停。
+  // 字符集默认取段位表里除空格外的全部字符（window.LCD_SEGMENTS.glyphs）。
+  function lcdWheelChars() {
+    const glyphs = window.LCD_SEGMENTS && window.LCD_SEGMENTS.glyphs;
+    if (!glyphs) return LCD_WHEEL_FALLBACK;
+    const chars = Object.keys(glyphs).filter((ch) => LCD_WHEEL_PATTERN.test(ch)).sort();
+    return chars.length > 1 ? chars : LCD_WHEEL_FALLBACK;
+  }
+
+  function animateNumberWheel(node, text, delay) {
+    const wheel = lcdWheelChars();
+    const size = wheel.length;
+    const chars = Array.from(text);
+    const count = chars.length;
+    const stagger = count > 1 ? Math.min(LCD_WHEEL_STAGGER_MS, LCD_WHEEL_SPAN_MS / (count - 1)) : 0;
+    const plans = chars.map((ch, index) => {
+      const target = wheel.indexOf(ch);
+      if (target < 0) return { ch, plain: true };
+      // 起点随机：每次进入卡片滚过的第一串字符都不一样；
+      // 步数向上补齐到与目标同余，保证滚完刚好停在目标字符上
+      const from = Math.floor(Math.random() * size);
+      const base = LCD_WHEEL_STEPS + index * LCD_WHEEL_STEPS_GROW;
+      const need = ((target - from) % size + size) % size;
+      const steps = base + (((need - (base % size)) % size) + size) % size;
+      const lockAt = LCD_WHEEL_BASE_MS + index * stagger;
+      const settle = Math.min(LCD_WHEEL_SETTLE_STEPS, Math.max(1, steps - 1));
+      // 前面快滚（ease-out），最后几格按固定节奏一个一个过，最后正好落在目标字符上
+      const fastSpan = Math.max(120, lockAt - settle * LCD_WHEEL_SETTLE_MS);
+      return {
+        ch,
+        target,
+        steps,
+        settle,
+        fastSteps: steps - settle,
+        fastSpan,
+        lockAt,
+        from,
+      };
+    });
+
+    const stepIndexAt = (plan, elapsed) => {
+      if (elapsed >= plan.lockAt) return plan.steps;
+      if (elapsed < plan.fastSpan) {
+        const progress = elapsed / plan.fastSpan;
+        const eased = 1 - Math.pow(1 - progress, 3);
+        return Math.round(plan.fastSteps * eased);
+      }
+      const tick = Math.floor((elapsed - plan.fastSpan) / LCD_WHEEL_SETTLE_MS) + 1;
+      return plan.fastSteps + Math.min(plan.settle, tick);
+    };
+    const lastLock = plans.reduce((max, plan) => Math.max(max, plan.lockAt || 0), 0);
+    const frameAt = (elapsed) => {
+      let output = '';
+      for (const plan of plans) {
+        if (plan.plain || elapsed >= plan.lockAt) {
+          output += plan.ch;
+          continue;
+        }
+        const index = (plan.from + stepIndexAt(plan, elapsed)) % size;
+        output += wheel[index];
+      }
+      return output;
+    };
+    // 先同步落到「滚到一半」的态：否则会先闪一帧最终值再开始滚
+    node.nodeValue = frameAt(0);
+    let startedAt = 0;
+    const step = (now) => {
+      if (!startedAt) startedAt = now + delay;
+      if (now < startedAt) { requestAnimationFrame(step); return; }
+      const elapsed = now - startedAt;
+      if (elapsed >= lastLock) {
+        node.nodeValue = text;
+        return;
+      }
+      node.nodeValue = frameAt(elapsed);
+      requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
   function animateNumberNode(node, delay = 0) {
     const text = node.nodeValue || '';
     const pattern = /\d[\d,]*(?:\.\d+)?/g;
+    // 数码管数字按字符位对齐，计数过程不能加千分位（会多出一位，和底色框架错位）
+    const plainDigits = Boolean(node.parentElement?.closest('.lcd-lit'));
     const parts = [];
     let match;
     while ((match = pattern.exec(text))) {
@@ -542,19 +639,25 @@
         end: match.index + raw.length,
         value,
         decimals,
-        grouped: raw.includes(',') || value >= 1000,
+        grouped: !plainDigits && (raw.includes(',') || value >= 1000),
       });
     }
     if (!parts.length) return;
 
+    // 数码管那一位：整串字符转轮（每一位独立滚动、从左往右停），不走数值渐进
+    if (plainDigits && parts.length === 1) {
+      animateNumberWheel(node, text, delay);
+      return;
+    }
+
     // 先落到 0 态，避免用户先看到最终值再“跳回去”计数。
     node.nodeValue = countOutput(text, parts, 0);
-    // 尾段多留一点时间，避免最后几位数字“弹”到终值。
-    const duration = 1080;
-    const started = performance.now() + delay;
+    // 其他数字：1080ms ease-out。起点取第一帧时间，避免窗口刚打开时 rAF 被节流跳帧。
+    let startedAt = 0;
     const step = (now) => {
-      if (now < started) { requestAnimationFrame(step); return; }
-      const progress = Math.min(1, (now - started) / duration);
+      if (!startedAt) startedAt = now + delay;
+      if (now < startedAt) { requestAnimationFrame(step); return; }
+      const progress = Math.min(1, (now - startedAt) / 1080);
       if (progress >= 1) {
         node.nodeValue = text;
         return;
@@ -574,7 +677,7 @@
       const walker = document.createTreeWalker(rootNode, NodeFilter.SHOW_TEXT, {
         acceptNode(node) {
           if (!/\d/.test(node.nodeValue || '')) return NodeFilter.FILTER_REJECT;
-          if (node.parentElement?.closest('small, script, style')) return NodeFilter.FILTER_REJECT;
+          if (node.parentElement?.closest('small, script, style, [aria-hidden="true"]')) return NodeFilter.FILTER_REJECT;
           return NodeFilter.FILTER_ACCEPT;
         },
       });

@@ -179,9 +179,12 @@ async function serveStatic(req, res, url) {
     const st = await fsp.stat(file);
     if (!st.isFile()) return fail(res, 'Not found', 404);
     const ext = path.extname(file).toLowerCase();
+    // 界面文件每次都要最新的：本地服务，缓存省不了什么，
+    // 反而会让 `?v=` 没跟着改的 styles.css / app.js 一直吃旧副本。
+    const fresh = ext === '.html' || ext === '.css' || ext === '.js' || ext === '.json';
     res.writeHead(200, {
       'Content-Type': MIME[ext] || 'application/octet-stream',
-      'Cache-Control': ext === '.html' ? 'no-cache' : 'public, max-age=3600',
+      'Cache-Control': fresh ? 'no-store' : 'public, max-age=3600',
       'Content-Length': st.size,
     });
     fs.createReadStream(file).pipe(res);

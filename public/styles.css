@@ -1,3 +1,6 @@
+﻿/* 数码管数字改用矢量段（public/lcd-segments.js），运行期不再加载字体；
+   原字体（CC BY-ND 3.0）仍留在 public/fonts/ 作为矢量来源与署名，见 THIRD_PARTY_NOTICES.md。 */
+
 :root {
   --bg: #0b0e14;
   --bg-soft: #111620;
@@ -19,6 +22,11 @@
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
   --font: "Segoe UI Variable Display", "Segoe UI", "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", sans-serif;
   --mono: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+  --lcd-size: clamp(112px, 15.6vw, 183px);
+  --lcd-lit: var(--text);
+  --lcd-ghost-color: #ece9dd;
+  --lcd-ghost-alpha: .08;
+  --lcd-glow: rgba(var(--accent-rgb), 0.3);
 }
 body[data-game="hsr"] { --accent: #9b8cff; --accent-2: #6ddcff; --accent-rgb: 155, 140, 255; --accent2-rgb: 109, 220, 255; }
 body[data-game="zzz"] { --accent: #f4d34d; --accent-2: #ff8b66; --accent-rgb: 244, 211, 77; --accent2-rgb: 255, 139, 102; }
@@ -194,6 +202,26 @@ h3 { margin: 0; font-size: 15px; font-weight: 600; }
 .hero-kicker .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 9px var(--accent); }
 .hero-number-row { display: flex; align-items: flex-end; gap: 12px; margin-top: 16px; }
 .hero-number { font-family: var(--mono); font-size: clamp(50px, 7vw, 82px); font-weight: 300; line-height: .9; letter-spacing: -.08em; text-shadow: 0 0 40px rgba(var(--accent-rgb),.18); }
+/* 数码管数字（KONE 57-segment，矢量段）：
+   每格 = 57 条段路径（<use> 引用 lcd-segments.js 里的 defs），
+   没点亮的段按底纹色画＝「没显示部分的框架」，点亮的段按亮色画。
+   颜色全部走变量，SVG 里不带 fill —— 换主题只改这里。 */
+.lcd { position: relative; display: inline-flex; align-items: flex-end; font-size: var(--lcd-size); }
+.lcd-cells { display: flex; align-items: flex-end; filter: drop-shadow(0 0 5px var(--lcd-glow)); }
+.lcd-cell { display: block; width: calc(var(--lcd-size) * .296); height: calc(var(--lcd-size) * .4615); margin-right: calc(var(--lcd-size) * .0455); overflow: visible; }
+.lcd-cell:last-child { margin-right: 0; }
+.lcd-cell use { fill: var(--lcd-ghost-color); fill-opacity: var(--lcd-ghost-alpha); }
+.lcd-cell use.on { fill: var(--lcd-lit); fill-opacity: 1; }
+.lcd-seg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+/* 每次进入卡片（数码管重新插进 DOM）：前 100ms 从全透明过渡到不透明。
+   放在 .lcd-cells 上就跟着 DOM 走，不用和动画脚本联动，也顺带盖住淡入期间那一帧原始值。 */
+.lcd-cells { animation: lcd-wheel-in 100ms linear both; }
+@keyframes lcd-wheel-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* 文本容器：读屏要读，计数动画改的是它的文本；视觉上藏起来 */
+.lcd .lcd-lit { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; opacity: 0; pointer-events: none; }
+.lcd-plain { display: block; font-size: inherit; }
+.lcd-plain .lcd-lit { position: static; width: auto; height: auto; clip-path: none; opacity: 1; font-family: var(--mono); font-size: inherit; line-height: inherit; letter-spacing: inherit; text-shadow: 0 0 40px rgba(var(--accent-rgb), .18); }
 .hero-unit { padding-bottom: 8px; color: var(--muted); font-size: 13px; letter-spacing: .1em; }
 .hero-sub { color: var(--muted); font-size: 13.5px; line-height: 1.7; margin-top: 13px; max-width: 480px; }
 .hero-sub b { color: var(--text); font-weight: 600; }
@@ -600,3 +628,4 @@ select option:checked { background-color: #24324a; color: #ffffff; }
 .account-group { margin-top: 14px; }
 .account-group-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; padding: 0 2px 7px; color: var(--text); font-size: 12.5px; }
 .account-group-head small { color: var(--muted-2); font-size: 10.5px; }
+

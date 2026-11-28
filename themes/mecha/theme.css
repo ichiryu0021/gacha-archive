@@ -584,6 +584,15 @@ html[data-theme="mecha"] .hero-number {
   line-height: .82; letter-spacing: -.03em; color: var(--m-cream);
   text-shadow: 0 0 40px rgba(233, 199, 74, .12); font-variant-numeric: tabular-nums;
 }
+/* 总抽数数码管：亮段奶油黄，未点亮段是一整块暖色段位框架 */
+html[data-theme="mecha"] .lcd {
+  --lcd-lit: var(--m-cream);
+  --lcd-ghost-color: rgba(233, 199, 74, 1);
+  --lcd-ghost-alpha: .1;
+  --lcd-glow: rgba(233, 199, 74, .3);
+  letter-spacing: .014em;
+}
+html[data-theme="mecha"] .lcd-plain .lcd-lit { text-shadow: 0 0 40px rgba(233, 199, 74, .12); }
 html[data-theme="mecha"] .hero-unit {
   padding-bottom: 9px; font-family: var(--m-mono); letter-spacing: .16em; color: var(--m-dim);
 }
@@ -642,7 +651,7 @@ html[data-theme="mecha"] .rate-ring::after {
 }
 html[data-theme="mecha"] .rate-ring div { z-index: 2; }
 html[data-theme="mecha"] .rate-ring strong { font-family: var(--m-display); font-weight: 500; color: var(--m-cream); }
-html[data-theme="mecha"] .rate-ring span { margin-top: 3px; font-family: var(--m-mono); letter-spacing: .12em; color: var(--m-dim); }
+html[data-theme="mecha"] .rate-ring span { margin-top: 3px; font-family: var(--m-mono); font-size: 8px; line-height: 1.2; letter-spacing: .1em; color: var(--m-dim); }
 html[data-theme="mecha"] .hero-side > .card:last-child { padding: 16px 18px; min-height: 112px; }
 
 /* ==========================================================================
@@ -1551,6 +1560,13 @@ html[data-theme="mecha"][data-mecha-variant="light"] .hero-unit { color: var(--m
 html[data-theme="mecha"][data-mecha-variant="light"] .hero-sub { border-top-color: var(--m-line); color: var(--m-muted); }
 html[data-theme="mecha"][data-mecha-variant="light"] .hero-sub b { color: var(--m-cream); }
 html[data-theme="mecha"][data-mecha-variant="light"] .hero-number { color: var(--m-cream); }
+/* 纸白主题下未点亮段改成墨色极淡的一层，亮段保持深灰 */
+html[data-theme="mecha"][data-mecha-variant="light"] .lcd {
+  --lcd-lit: var(--m-cream);
+  --lcd-ghost-color: rgba(38, 43, 37, 1);
+  --lcd-ghost-alpha: .08;
+  --lcd-glow: rgba(156, 116, 21, .16);
+}
 html[data-theme="mecha"][data-mecha-variant="light"] .hero-top > div:last-child > div:last-child { color: var(--m-muted); }
 html[data-theme="mecha"][data-mecha-variant="light"] .item-icon {
   border-color: var(--m-line-2); background: var(--l-field);

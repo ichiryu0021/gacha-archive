@@ -324,7 +324,7 @@ function renderDashboard() {
   }
   const exactPulls = d.counts.exact;
   const hasTotals = d.counts.hasExactTotals || d.counts.snapshotOnly > 0;
-  const heroValue = hasTotals ? fmt(d.counts.lifetime) : '—';
+  const heroValue = hasTotals ? d.counts.lifetime : null;
   const rate = d.rates.upRate;
   const hitRate = d.rates.upDecided ? rate : null;
   const pityRows = ['character', 'weapon']
@@ -354,7 +354,7 @@ function renderDashboard() {
         <div class="hero-top">
           <div>
             <div class="hero-kicker"><span class="dot"></span> TOTAL PULLS / ${coverageOnly ? '已覆盖抽数' : '总抽数'}</div>
-            <div class="hero-number-row"><div class="hero-number">${heroValue}</div><div class="hero-unit">${hasTotals ? (coverageOnly ? '抽（覆盖）' : '抽') : '待录入'}</div></div>
+            <div class="hero-number-row">${lcdNumber(heroValue)}<div class="hero-unit">${hasTotals ? (coverageOnly ? '抽（覆盖）' : '抽') : '待录入'}</div></div>
             <div class="hero-sub">角色池 <b>${fmt(d.counts.charPulls)}</b> 抽 · 武器池 <b>${fmt(d.counts.weaponPulls)}</b> 抽 · <b>${fmt(d.counts.lifetimeFive)}</b> 张${topLabel()}${d.meta?.uid ? ` · UID ${esc(d.meta.uid)}` : ''}</div>
             <div class="hero-pills">
               <span class="pill accent"><b>${d.counts.lifetimeFive}</b> ${topLabel()}</span>
@@ -430,6 +430,86 @@ function renderDashboard() {
 
 function statCard(label, value, unit, note, tone = '') {
   return `<div class="card stat"><div class="stat-label">${label}</div><div class="stat-value">${value}${unit ? `<small>${unit}</small>` : ''}</div><div class="stat-note ${tone}">${esc(note)}</div></div>`;
+}
+
+// 总抽数走 KONE 57 段数码管（矢量段，数据在 public/lcd-segments.js）：
+// 每个数字格 = 57 条段路径，没点亮的段按底纹色、点亮的段按亮色——底纹就是「没显示的段」。
+// 段间本身留缝，格纹是几何自带的；颜色全部由 CSS 变量控制，不去动 SVG 里的 fill。
+const LCD_SEG = window.LCD_SEGMENTS || { ids: [], paths: {}, glyphs: {}, viewBox: '0 0 2070 3227' };
+const LCD_ADVANCE_EM = .3415;   // 单格步进（宽）
+const LCD_CELL_W_EM = .296;     // 单格图形宽
+const LCD_CELL_H_EM = .4615;    // 单格图形高（按描摹比例 3227/2070 算出）
+const LCD_MAX_CHARS = 12;
+
+// 57 条段路径只插一次，后面全用 <use> 引用
+function mountLcdDefs() {
+  if (document.getElementById('lcd-seg-defs')) return;
+  const defs = Object.entries(LCD_SEG.paths || {})
+    .map(([id, d]) => `<path id="lcdseg-${id}" d="${d}"/>`).join('');
+  const holder = document.createElement('div');
+  holder.innerHTML = `<svg id="lcd-seg-defs" class="lcd-seg-defs" aria-hidden="true" focusable="false"><defs>${defs}</defs></svg>`;
+  document.body.appendChild(holder.firstElementChild);
+}
+
+function lcdCell() {
+  const uses = LCD_SEG.ids.map((id) => `<use href="#lcdseg-${id}"/>`).join('');
+  return `<svg class="lcd-cell" viewBox="${LCD_SEG.viewBox}" aria-hidden="true" focusable="false">${uses}</svg>`;
+}
+
+// 段位表里有的字符才能用数码管显示（数字、大小写字母、常见标点，见 lcd-segments.js 的 glyphs）
+function lcdRenderable(text) {
+  if (!text || text.length > LCD_MAX_CHARS) return false;
+  return Array.from(text).every((ch) => Object.prototype.hasOwnProperty.call(LCD_SEG.glyphs, ch));
+}
+
+// 没有总抽数（—）或字符不在段位表里时退回普通字形
+function lcdNumber(value, fallback = '—') {
+  const text = value == null ? fallback : String(Math.max(0, Math.trunc(Number(value) || 0)));
+  if (!lcdRenderable(text)) {
+    return `<div class="hero-number"><span class="lcd lcd-plain"><span class="lcd-lit">${esc(text)}</span></span></div>`;
+  }
+  const cells = Array.from(text, () => lcdCell()).join('');
+  return `<div class="hero-number"><span class="lcd" style="--lcd-n:${text.length}" role="img" aria-label="${attr(text)}">`
+    + `<span class="lcd-cells" aria-hidden="true">${cells}</span>`
+    + `<span class="lcd-lit">${text}</span>`
+    + '</span></div>';
+}
+
+// 把文本逐位同步到格子上；位数只在这一步体现，格子数量在渲染时就定死（计数从 0 长出来也不会重建）
+function syncLcd(root) {
+  const lit = root.querySelector('.lcd-lit');
+  const cells = root.querySelectorAll('.lcd-cell');
+  if (!lit || !cells.length) return;
+  const text = (lit.textContent || '').trim();
+  cells.forEach((cell, index) => {
+    const ch = text[index] || '';
+    if (cell.dataset.ch === ch) return;
+    cell.dataset.ch = ch;
+    const on = new Set(LCD_SEG.glyphs[ch] || []);
+    const uses = cell.querySelectorAll('use');
+    for (let i = 0; i < LCD_SEG.ids.length && i < uses.length; i += 1) {
+      uses[i].classList.toggle('on', on.has(LCD_SEG.ids[i]));
+    }
+  });
+}
+
+let lcdSyncQueued = false;
+let lcdObservers = null;
+function queueLcdSync() {
+  if (lcdSyncQueued) return;
+  lcdSyncQueued = true;
+  requestAnimationFrame(() => {
+    lcdSyncQueued = false;
+    document.querySelectorAll('.lcd:not(.lcd-plain)').forEach(syncLcd);
+  });
+}
+
+function watchLcd() {
+  mountLcdDefs();
+  // observer 必须留引用：不持有的话可能被 GC，之后计数就不再更新格子
+  lcdObservers = [new MutationObserver(queueLcdSync)];
+  lcdObservers[0].observe(document.body, { childList: true, subtree: true, characterData: true });
+  queueLcdSync();
 }
 
 function renderCoverage(d) {
@@ -1749,15 +1829,70 @@ function startThirdPartyQrPolling() {
 
 // ---------------- render & events ----------------
 
+// 视图是整块重绘的，重绘会重建搜索框。中文输入法组字期间重绘会直接打断组字、丢焦点，
+// 所以组字时把重绘挂起；普通重绘则记下焦点和光标位置，绘完放回去。
+let viewComposing = false;
+let viewRenderPending = false;
+
+function isViewComposition(event) {
+  const target = event.target;
+  return Boolean(target && typeof target.closest === 'function' && target.closest('#view'));
+}
+
+document.addEventListener('compositionstart', (event) => {
+  if (isViewComposition(event)) viewComposing = true;
+}, true);
+
+document.addEventListener('compositionend', (event) => {
+  if (!isViewComposition(event)) return;
+  viewComposing = false;
+  if (!viewRenderPending) return;
+  viewRenderPending = false;
+  // 等这次提交的 input 事件把 state 写完再重绘，避免把半截拼音写回输入框
+  setTimeout(() => { if (!viewComposing) renderView(); }, 0);
+}, true);
+
+function captureViewFocus() {
+  const active = document.activeElement;
+  if (!active || !active.id || !active.closest('#view')) return null;
+  if (active.tagName !== 'INPUT' && active.tagName !== 'TEXTAREA') return null;
+  return { id: active.id, start: active.selectionStart, end: active.selectionEnd };
+}
+
+function restoreViewFocus(snapshot) {
+  if (!snapshot) return;
+  const el = document.getElementById(snapshot.id);
+  if (!el || el === document.activeElement) return;
+  el.focus({ preventScroll: true });
+  if (typeof snapshot.start === 'number' && typeof el.setSelectionRange === 'function') {
+    const max = el.value.length;
+    try {
+      el.setSelectionRange(Math.min(snapshot.start, max), Math.min(snapshot.end ?? snapshot.start, max));
+    } catch { /* 数字等输入框不支持选区，忽略 */ }
+  }
+}
+
 function renderView() {
   const root = $('#view');
   if (!root) return;
+  if (viewComposing) {
+    const active = document.activeElement;
+    if (active && typeof active.closest === 'function' && active.closest('#view')) {
+      viewRenderPending = true;
+      return;
+    }
+    // 组字元素已经不在了，别把重绘永久挂起
+    viewComposing = false;
+    viewRenderPending = false;
+  }
+  const focus = captureViewFocus();
   if (state.view === 'dashboard') root.innerHTML = renderDashboard();
   else if (state.view === 'records') root.innerHTML = renderRecords();
   else if (state.view === 'import') root.innerHTML = renderImport();
   else if (state.view === 'catalog') root.innerHTML = renderCatalog();
   else if (state.view === 'settings') root.innerHTML = renderSettings();
   bindView();
+  restoreViewFocus(focus);
   if (state.view === 'import' && state.importTab === 'manual') {
     const setFilter = (key, value) => { state.manualFilters = { ...(state.manualFilters || {}), [key]: value }; renderView(); };
     $('#manual-version')?.addEventListener('change', (e) => setFilter('version', e.target.value));
@@ -1779,20 +1914,44 @@ function renderView() {
 
 function bindView() {
   if (state.view === 'records') {
-    let timer = null;
-    $('#record-search')?.addEventListener('input', (e) => {
-      state.recordFilter.search = e.target.value;
-      clearTimeout(timer);
-      timer = setTimeout(() => loadRecords(1).catch((err) => toast(err.message, 'err')), 280);
-    });
+    const input = $('#record-search');
+    if (input) {
+      let timer = null;
+      const schedule = () => {
+        clearTimeout(timer);
+        timer = setTimeout(() => loadRecords(1).catch((err) => toast(err.message, 'err')), 280);
+      };
+      input.addEventListener('compositionstart', () => clearTimeout(timer));
+      input.addEventListener('compositionend', () => {
+        state.recordFilter.search = input.value;
+        schedule();
+      });
+      input.addEventListener('input', (e) => {
+        state.recordFilter.search = input.value;
+        if (viewComposing || e.isComposing) return; // 组字中先不查，避免重建输入框打断输入法
+        schedule();
+      });
+    }
   }
   if (state.view === 'catalog') {
-    let timer = null;
-    $('#catalog-search')?.addEventListener('input', (e) => {
-      state.catalogFilter.search = e.target.value;
-      clearTimeout(timer);
-      timer = setTimeout(renderView, 180);
-    });
+    const input = $('#catalog-search');
+    if (input) {
+      let timer = null;
+      const schedule = () => {
+        clearTimeout(timer);
+        timer = setTimeout(renderView, 180);
+      };
+      input.addEventListener('compositionstart', () => clearTimeout(timer));
+      input.addEventListener('compositionend', () => {
+        state.catalogFilter.search = input.value;
+        schedule();
+      });
+      input.addEventListener('input', (e) => {
+        state.catalogFilter.search = input.value;
+        if (viewComposing || e.isComposing) return;
+        schedule();
+      });
+    }
     $('#catalog-type')?.addEventListener('change', (e) => { state.catalogFilter.type = e.target.value; renderView(); });
     $('#catalog-rarity')?.addEventListener('change', (e) => { state.catalogFilter.rarity = e.target.value; renderView(); });
   }
@@ -3058,6 +3217,7 @@ async function saveShareImage(dataUrl) {
 // boot
 (async function boot() {
   try {
+    watchLcd();
     const shell = await api('/api/state');
     state.shell = shell;
     try {

@@ -10,6 +10,16 @@
 - **SheetJS xlsx** — Apache License 2.0 — https://github.com/SheetJS/sheetjs
 - **NTE Gacha Exporter CLI** — MIT License — https://github.com/Anong0u0/NTE_Gacha_Exporter
 
+## 段位方案（数码管）
+
+- 界面「总抽数」用的是**通力（KONE）电梯 57 段数码管**的分段样式。
+- `public/lcd-segments.js` 里的 57 条矢量段路径，是**按通力官网公开的分段样式自行描摹**的，
+  属于本项目自有的二创矢量数据（描摹原稿本地保留，不入库），
+  不包含、也不依赖任何第三方字体文件。
+- 早期实现曾借用社区二创字体《KONE 57-segment LCD》（FontStruct，作者 Szymek）
+  作为「每个字符点亮哪些段」的**参考**；该字体文件既未随项目分发，现也已从运行链路中移除。
+- 「KONE」为通力公司商标，本项目为非官方工具，与该品牌无隶属关系。
+
 ## 数据与素材
 
 - 原神图鉴基础数据来自 genshin-db（MIT）。
