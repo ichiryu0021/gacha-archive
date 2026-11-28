@@ -4,7 +4,7 @@
 
 所有抽卡数据保存在自己电脑的软件目录里，不上传云端，不依赖账号，不写 AppData。无广告、无捆绑、无后台推广，纯绿色便携使用。
 
-> **当前版本：v2.04。** 最新发布见 [`ichiryu0021/gacha-archive`](https://github.com/ichiryu0021/gacha-archive/releases)。
+> **当前版本：v2.05。** 最新发布见 [`ichiryu0021/gacha-archive`](https://github.com/ichiryu0021/gacha-archive/releases)。
 > v2.00 起更新仓库迁移到该仓库；旧仓库 `miyou-archive` 只保留 2.00 及以前的备份，不再接收 2.00 之后的更新。
 
 ## 核心功能
